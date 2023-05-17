@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import prefetch from '@astrojs/prefetch';
 import critters from "astro-critters";
 import serviceWorker from "astrojs-service-worker";
+import { astroImageTools } from "astro-imagetools";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,7 +19,8 @@ export default defineConfig({
     }),
     prefetch(),
     critters(),
-    serviceWorker()
+    serviceWorker(),
+    astroImageTools
   ],
   vite: {
     plugins: [],
