@@ -12,6 +12,9 @@
       "@lib/*": [
         "src/lib/*"
       ],
+      "@images/*": [
+        "src/images/*"
+      ],
     },
   }
 }

@@ -1,0 +1,10 @@
+@use '@styles/variables/layout' as layout;
+
+:is(.o-header, .o-footer, .o-content) {
+	max-width: layout.$content-width;
+	margin: 0 auto;
+}
+
+img {
+	max-width: 100%;
+}
