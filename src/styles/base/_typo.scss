@@ -1,0 +1,29 @@
+@use 'sass:list';
+@use '@sass-butler/mixins' as butler-mx;
+@use '@sass-butler/functions' as butler-fn;
+@use '@styles/variables/colors' as colors;
+
+html {
+	font-family: system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
+
+	@include butler-mx.font-smoothing;
+	@include butler-mx.select-style(colors.$green-600, #fff);
+}
+
+$headlines: ();
+
+@for $h from 1 to 6 {
+	$headlines: list.append($headlines, h#{$h}, $separator: comma);
+}
+
+:is(#{$headlines}) {
+	font-weight: 700;
+}
