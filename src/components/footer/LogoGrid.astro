@@ -13,6 +13,7 @@ const { logos, classModifier } = Astro.props;
         target="_blank"
         rel="noopener"
         class="o-footer__logo-grid-item"
+        title={logo.name}
       >
         {logo.logo.includes(".svg") ? (
           <img src={logo.logo} alt={logo.alt} loading="lazy" decoding="async" />
