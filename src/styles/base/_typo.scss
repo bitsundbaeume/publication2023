@@ -28,8 +28,16 @@ $headlines: ();
 	font-weight: 700;
 }
 
+h3 {
+	font-size: clamp(1.25rem, 1.25vw + 1rem, 2rem); // 20px - 32px on 320px - 1280px
+	line-height: clamp(1.875rem, 1.208vw + 1.633rem, 2.6rem);
+}
+
 a {
 	color: var(--blue-500);
 	cursor: pointer;
-	text-decoration: none;
+}
+
+:is(a, p) {
+	font-size: butler-fn.px-to-rem(19);
 }

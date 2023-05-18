@@ -2,162 +2,124 @@
 import { Img } from "astro-imagetools/components";
 import LogoGrid from "@components/footer/LogoGrid.astro";
 import type { Logo } from "@components/footer/types";
-
-const supporters: Logo[] = [
-  {
-    name: "Deutscher Naturschutzring",
-    logo: "src/images/logos/traegerinnen/dnr.svg",
-    url: "https://www.dnr.de/",
-    alt: "Deutscher Naturschutzring Logo",
-  },
-  {
-    name: "Institut für ökologische Wirtschaftsforschung",
-    logo: "src/images/logos/traegerinnen/ioew.svg",
-    url: "https://www.ioew.de/",
-    alt: "Institut für ökologische Wirtschaftsforschung Logo",
-  },
-  {
-    name: "Technische Universität Berlin",
-    logo: "src/images/logos/traegerinnen/tu-berlin.svg",
-    url: "https://www.tu-berlin.de/",
-    alt: "Technische Universität Berlin Logo",
-  },
-  {
-    name: "Germanwatch e.V.",
-    logo: "src/images/logos/traegerinnen/germanwatch.svg",
-    url: "https://germanwatch.org/",
-    alt: "Germanwatch e.V. Logo",
-  },
-  {
-    name: "BUND",
-    logo: "src/images/logos/traegerinnen/bund.svg",
-    url: "https://www.bund.net/",
-    alt: "BUND Logo",
-  },
-  {
-    name: "Brot für die Welt",
-    logo: "src/images/logos/traegerinnen/brot-fuer-die-welt.svg",
-    url: "https://www.brot-fuer-die-welt.de/",
-    alt: "Brot für die Welt Logo",
-  },
-  {
-    name: "Chaos Computer Club",
-    logo: "src/images/logos/traegerinnen/ccc.svg",
-    url: "https://www.ccc.de/",
-    alt: "Chaos Computer Club Logo",
-  },
-  {
-    name: "Forum InformatikerInnen für Frieden und gesellschaftliche Verantwortung",
-    logo: "src/images/logos/traegerinnen/fiff-schwarz.svg",
-    url: "https://www.fiff.de/",
-    alt: "Forum InformatikerInnen für Frieden und gesellschaftliche Verantwortung Logo",
-  },
-  {
-    name: "konzeptwerk neue ökonomie",
-    logo: "src/images/logos/traegerinnen/konzeptwerk.svg",
-    url: "https://www.konzeptwerk-neue-oekonomie.org/",
-    alt: "konzeptwerk neue ökonomie Logo",
-  },
-  {
-    name: "Open Knowledge Foundation",
-    logo: "src/images/logos/traegerinnen/okfn.svg",
-    url: "https://okfn.de/",
-    alt: "Open Knowledge Foundation Logo",
-  },
-  {
-    name: "Einstein Center Digital Future",
-    logo: "src/images/logos/traegerinnen/einstein_center.svg",
-    url: "https://www.digital-future.berlin/",
-    alt: "Einstein Center Digital Future Logo",
-  },
-  {
-    name: "Free Software Foundation Europe",
-    logo: "src/images/logos/traegerinnen/fsfe.svg",
-    url: "https://fsfe.org/",
-    alt: "Free Software Foundation Europe Logo",
-  },
-  {
-    name: "Weizenbaum-Institut",
-    logo: "src/images/logos/traegerinnen/weizenbaum.png",
-    url: "https://weizenbaum-institut.de/",
-    alt: "Weizenbaum-Institut Logo",
-  },
-];
-
-const media: Logo[] = [
-  {
-    name: "Reset",
-    logo: "src/images/logos/foerderinnen/logo-reset.svg",
-    url: "https://reset.org/",
-    alt: "Reset Logo",
-  },
-  {
-    name: "Heise",
-    logo: "src/images/logos/foerderinnen/logo-heise-online.svg",
-    url: "https://www.heise.de/",
-    alt: "Heise Logo",
-  },
-];
-
-const specialThanks: Logo[] = [
-  {
-    name: "Cleaner Web",
-    logo: "src/images/logos/thanks_to/logo-cleaner-web.svg",
-    url: "https://cleaner-web.com/",
-    alt: "Cleaner Web Logo",
-  },
-  {
-    name: "Uber Space",
-    logo: "src/images/logos/thanks_to/logo-uberspace.svg",
-    url: "https://uberspace.de/",
-    alt: "Uber Space Logo",
-  },
-];
-
-const funded: Logo[] = [
-  {
-    name: "DBU",
-    logo: "src/images/logos/foerderinnen/logo-dbu.png",
-    url: "https://www.dbu.de/",
-    alt: "DBU Logo",
-  },
-  {
-    name: "Stiftung Mercator",
-    logo: "src/images/logos/foerderinnen/Stiftung_Mercator_Blau_RGB.png",
-    url: "https://www.stiftung-mercator.de/",
-    alt: "Stiftung Mercator Logo",
-  },
-  {
-    name: "Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",
-    logo: "src/images/logos/foerderinnen/BMUV.png",
-    url: "https://www.bmu.de/",
-    alt: "Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit Logo",
-  },
-];
+import { Icon } from "astro-icon";
+import {
+  supporters,
+  media,
+  specialThanks,
+  funded,
+} from "@components/footer/logos";
 ---
 
 <footer class="o-footer">
-  <h3 class="o-footer__headline">The panel of supporters ("Trägerkreis")</h3>
-  <LogoGrid logos={supporters} classModifier="supporter" />
+  <img
+    src="src/images/pixels/pixel-footer-left.svg"
+    class="o-footer__pixel is-left"
+    aria-hidden="true"
+  />
+  <img
+    src="src/images/pixels/pixel-footer-right.svg"
+    class="o-footer__pixel is-right"
+    aria-hidden="true"
+  />
 
-  <h3 class="o-footer__headline">
-    Our topics are spread by the media professionals
-  </h3>
-  <LogoGrid logos={media} classModifier="media" />
+  <div class="o-footer__inner">
+    <div class="o-footer__upper">
+      <a href="/">
+        <img
+          src="src/images/logos/bits-und-baeume-logo_CCBY-schauschau.cc.svg"
+          alt="Bits und Bäume Logo"
+          class="o-footer__logo u-scale-hover"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <nav class="o-footer__nav">
+        <menu class="o-footer__nav-menu u-list-reset">
+          <li>
+            <a
+              href="https://bits-und-baeume.org/konferenz-2022/"
+              class="o-footer__nav-menu-link">B&B Conference 2022</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://twitter.com/bitsundbaeume"
+              class="o-footer__nav-menu-link"
+              target="_blank"
+              rel="noopener">#bitsundbaeume22</a
+            >
+          </li>
+        </menu>
 
-  <h3 class="o-footer__headline">Special thanks to</h3>
-  <LogoGrid logos={specialThanks} classModifier="thanks" />
+        <div class="o-footer__social-list">
+          <p class="o-footer__social-list-label">Social:</p>
+          <a
+            rel="me noopener"
+            href="https://mastodon.bits-und-baeume.org/@bits_und_baeume"
+            target="_blank"
+            class="o-footer__social-list-link"
+          >
+            <Icon
+              name="simple-icons:mastodon"
+              class="o-footer__social-list-icon u-scale-hover"
+              width="32"
+            />
+          </a>
+          <a
+            href="https://twitter.com/bitsundbaeume"
+            target="_blank"
+            rel="noopener"
+            class="o-footer__social-list-link"
+          >
+            <Icon
+              name="simple-icons:twitter"
+              class="o-footer__social-list-icon u-scale-hover"
+              width="32"
+            />
+          </a>
+        </div>
+      </nav>
+      <nav class="o-footer__nav">
+        <menu class="o-footer__nav-menu u-list-reset">
+          <li>
+            <a
+              href="https://bits-und-baeume.org/impressum/"
+              class="o-footer__nav-menu-link">Imprint</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://bits-und-baeume.org/datenschutz/"
+              class="o-footer__nav-menu-link">Data protection statement</a
+            >
+          </li>
+        </menu>
+      </nav>
+    </div>
 
-  <h3 class="o-footer__headline">Funded by</h3>
-  <p>
-    The Conference is funded by the
-    <a href="https://www.dbu.de" target="_blank" rel="noopener">
-      German Federal Environmental Foundation (DBU)
-    </a>
-    and co-funded by Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit
-    und Verbraucherschutz (BMUV). The work of Germanwatch and Forum InformatikerInnen
-    für Frieden und gesellschaftliche Verantwortung (FIfF) related to Bits &amp;
-    Bäume 2022 is mainly funded by Stiftung Mercator.
-  </p>
-  <LogoGrid logos={funded} classModifier="funded" />
+    <h3 class="o-footer__headline">The panel of supporters ("Trägerkreis")</h3>
+    <LogoGrid logos={supporters} classModifier="supporter" />
+
+    <h3 class="o-footer__headline">
+      Our topics are spread by the media professionals
+    </h3>
+    <LogoGrid logos={media} classModifier="media" />
+
+    <h3 class="o-footer__headline">Special thanks to</h3>
+    <LogoGrid logos={specialThanks} classModifier="thanks" />
+
+    <h3 class="o-footer__headline">Funded by</h3>
+    <p class="o-footer__funded-text">
+      The Conference is funded by the
+      <a href="https://www.dbu.de" target="_blank" rel="noopener">
+        German Federal Environmental Foundation (DBU)
+      </a>
+      and co-funded by Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit
+      und Verbraucherschutz (BMUV). The work of Germanwatch and Forum InformatikerInnen
+      für Frieden und gesellschaftliche Verantwortung (FIfF) related to Bits &amp;
+      Bäume 2022 is mainly funded by Stiftung Mercator.
+    </p>
+    <LogoGrid logos={funded} classModifier="funded" />
+  </div>
 </footer>

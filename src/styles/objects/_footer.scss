@@ -1,7 +1,51 @@
-.o-footer {
-	padding: 0 25px;
+@use '@styles/variables/colors';
+@use '@sass-butler/mixins' as butler-mx;
 
-	&__logo-grid {
+.o-footer {
+	padding: 2.75rem 1rem 3.5rem;
+	border-top: 10px solid var(--green-100);
+	position: relative;
+
+	&__pixel {
+		position: absolute;
+		top: -20px;
+
+		&.is-left {
+			left: 0;
+		}
+
+		&.is-right {
+			right: 0;
+		}
+	}
+
+	&__headline {
+		margin: 8rem 0 1.625rem;
+	}
+
+	&__nav-menu {
+		display: flex;
+		flex-direction: column;
+		row-gap: .5rem;
+
+		&-link {
+			color: var(--color-nav-menu-footer, var(--blue-500));
+			border-bottom: 2px solid var(--color-border-nav-menu-footer, var(--blue-500));
+			transition: all 0.2s ease-in-out;
+			text-decoration: none;
+
+			@include butler-mx.hover {
+				--color-nav-menu-footer: #fff;
+				--color-border-nav-menu-footer: var(--green-300);
+
+				background-color: var(--blue-500);
+				padding-bottom: 0.25rem;
+			}
+		}
+	}
+
+	&__logo-grid,
+	&__upper {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 2rem;
@@ -17,5 +61,24 @@
 			max-height: 130px;
 			min-height: 100px;
 		}
+	}
+
+	&__social-list {
+		display: flex;
+		align-items: center;
+		column-gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	&__social-list-label {
+		margin: 0;
+	}
+
+	&__social-list-icon {
+		color: colors.$blue-500;
+	}
+
+	&__funded-text {
+		margin: 1rem 0 3rem;
 	}
 }

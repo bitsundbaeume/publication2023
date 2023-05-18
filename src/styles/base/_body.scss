@@ -8,7 +8,11 @@
 	}
 }
 
-:is(.o-header, .o-footer, .o-content) {
+body {
+	margin: 0;
+}
+
+:is(.o-header, .o-footer__inner, .o-content) {
 	max-width: layout.$content-width;
 	margin: 0 auto;
 }
