@@ -1,16 +1,9 @@
 ---
 import { Img } from "astro-imagetools/components";
+import LogoGrid from "@components/LogoGrid.astro";
+import type { Logo } from "@components/footer/types";
 
-interface Supporter {
-  name: string;
-  logo: string;
-  url: string;
-  alt: string;
-  width?: number;
-  height?: number;
-}
-
-const supporters: Supporter[] = [
+const supporters: Logo[] = [
   {
     name: "Deutscher Naturschutzring",
     logo: "src/images/logos/traegerinnen/dnr.svg",
@@ -94,28 +87,7 @@ const supporters: Supporter[] = [
 
 <footer class="o-footer">
   <h3>The panel of supporters ("Trägerkreis")</h3>
-  <div class="o-footer__supporter">
-    {
-      supporters.map((supporter) => (
-        <a
-          href={supporter.url}
-          target="_blank"
-          rel="noopener"
-          class="o-footer__supporter-item"
-        >
-          {supporter.logo.includes(".svg") ? (
-            <img src={supporter.logo} alt={supporter.alt} />
-          ) : (
-            <Img
-              src={supporter.logo}
-              alt={supporter.alt}
-              attributes={{
-                img: { onload: "this.style.background = 'transparent';" },
-              }}
-            />
-          )}
-        </a>
-      ))
-    }
-  </div>
+  <LogoGrid logos={supporters} classModifier="supporter" />
+
+  <h3>Our topics are spread by the media professionals</h3>
 </footer>

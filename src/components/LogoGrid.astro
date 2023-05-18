@@ -1,0 +1,31 @@
+---
+import { Img } from "astro-imagetools/components";
+import type { Logo } from "@components/footer/types";
+
+const { logos, classModifier } = Astro.props;
+---
+
+<div class={`o-footer__${classModifier}`}>
+  {
+    logos.map((logo: Logo) => (
+      <a
+        href={logo.url}
+        target="_blank"
+        rel="noopener"
+        class={`o-footer__${classModifier}-item`}
+      >
+        {logo.logo.includes(".svg") ? (
+          <img src={logo.logo} alt={logo.alt} />
+        ) : (
+          <Img
+            src={logo.logo}
+            alt={logo.alt}
+            attributes={{
+              img: { onload: "this.style.background = 'transparent';" },
+            }}
+          />
+        )}
+      </a>
+    ))
+  }
+</div>
