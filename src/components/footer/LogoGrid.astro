@@ -15,7 +15,7 @@ const { logos, classModifier } = Astro.props;
         class="o-footer__logo-grid-item"
       >
         {logo.logo.includes(".svg") ? (
-          <img src={logo.logo} alt={logo.alt} />
+          <img src={logo.logo} alt={logo.alt} loading="lazy" decoding="async" />
         ) : (
           <Img
             src={logo.logo}
