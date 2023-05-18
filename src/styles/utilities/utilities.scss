@@ -1,3 +1,5 @@
+@use '@sass-butler/mixins' as butler-mx;
+
 .u-list-reset {
 	list-style-type: none;
 	margin: 0;
@@ -7,9 +9,7 @@
 .u-scale-hover {
 	transition: transform 0.2s ease-in-out;
 
-	@media (hover: hover) {
-		&:hover {
-			transform: scale(1.05);
-		}
+	@include butler-mx.hover {
+		transform: scale(1.05);
 	}
 }
