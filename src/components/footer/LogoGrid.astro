@@ -5,14 +5,14 @@ import type { Logo } from "@components/footer/types";
 const { logos, classModifier } = Astro.props;
 ---
 
-<div class={`o-footer__${classModifier}`}>
+<div class={`o-footer__logo-grid o-footer--${classModifier}`}>
   {
     logos.map((logo: Logo) => (
       <a
         href={logo.url}
         target="_blank"
         rel="noopener"
-        class={`o-footer__${classModifier}-item`}
+        class="o-footer__logo-grid-item"
       >
         {logo.logo.includes(".svg") ? (
           <img src={logo.logo} alt={logo.alt} />

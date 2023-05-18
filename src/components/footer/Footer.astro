@@ -1,6 +1,6 @@
 ---
 import { Img } from "astro-imagetools/components";
-import LogoGrid from "@components/LogoGrid.astro";
+import LogoGrid from "@components/footer/LogoGrid.astro";
 import type { Logo } from "@components/footer/types";
 
 const supporters: Logo[] = [
@@ -83,11 +83,81 @@ const supporters: Logo[] = [
     alt: "Weizenbaum-Institut Logo",
   },
 ];
+
+const media: Logo[] = [
+  {
+    name: "Reset",
+    logo: "src/images/logos/foerderinnen/logo-reset.svg",
+    url: "https://reset.org/",
+    alt: "Reset Logo",
+  },
+  {
+    name: "Heise",
+    logo: "src/images/logos/foerderinnen/logo-heise-online.svg",
+    url: "https://www.heise.de/",
+    alt: "Heise Logo",
+  },
+];
+
+const specialThanks: Logo[] = [
+  {
+    name: "Cleaner Web",
+    logo: "src/images/logos/thanks_to/logo-cleaner-web.svg",
+    url: "https://cleaner-web.com/",
+    alt: "Cleaner Web Logo",
+  },
+  {
+    name: "Uber Space",
+    logo: "src/images/logos/thanks_to/logo-uberspace.svg",
+    url: "https://uberspace.de/",
+    alt: "Uber Space Logo",
+  },
+];
+
+const funded: Logo[] = [
+  {
+    name: "DBU",
+    logo: "src/images/logos/foerderinnen/logo-dbu.png",
+    url: "https://www.dbu.de/",
+    alt: "DBU Logo",
+  },
+  {
+    name: "Stiftung Mercator",
+    logo: "src/images/logos/foerderinnen/Stiftung_Mercator_Blau_RGB.png",
+    url: "https://www.stiftung-mercator.de/",
+    alt: "Stiftung Mercator Logo",
+  },
+  {
+    name: "Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",
+    logo: "src/images/logos/foerderinnen/BMUV.png",
+    url: "https://www.bmu.de/",
+    alt: "Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit Logo",
+  },
+];
 ---
 
 <footer class="o-footer">
-  <h3>The panel of supporters ("Trägerkreis")</h3>
+  <h3 class="o-footer__headline">The panel of supporters ("Trägerkreis")</h3>
   <LogoGrid logos={supporters} classModifier="supporter" />
 
-  <h3>Our topics are spread by the media professionals</h3>
+  <h3 class="o-footer__headline">
+    Our topics are spread by the media professionals
+  </h3>
+  <LogoGrid logos={media} classModifier="media" />
+
+  <h3 class="o-footer__headline">Special thanks to</h3>
+  <LogoGrid logos={specialThanks} classModifier="thanks" />
+
+  <h3 class="o-footer__headline">Funded by</h3>
+  <p>
+    The Conference is funded by the
+    <a href="https://www.dbu.de" target="_blank" rel="noopener">
+      German Federal Environmental Foundation (DBU)
+    </a>
+    and co-funded by Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit
+    und Verbraucherschutz (BMUV). The work of Germanwatch and Forum InformatikerInnen
+    für Frieden und gesellschaftliche Verantwortung (FIfF) related to Bits &amp;
+    Bäume 2022 is mainly funded by Stiftung Mercator.
+  </p>
+  <LogoGrid logos={funded} classModifier="funded" />
 </footer>
