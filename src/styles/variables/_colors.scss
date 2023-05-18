@@ -5,3 +5,14 @@ $orange: #efb638;
 $blue-100: #84ADC8;
 $blue-500: #233C78;
 $blue-900: #1B1448;
+
+/// Colors map
+$colors: (
+	'green-100': $green-100,
+	'green-300': $green-300,
+	'green-600': $green-600,
+	'orange': $orange,
+	'blue-100': $blue-100,
+	'blue-500': $blue-500,
+	'blue-900': $blue-900,
+);

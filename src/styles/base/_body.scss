@@ -1,4 +1,12 @@
 @use '@styles/variables/layout' as layout;
+@use '@styles/variables/colors';
+
+:root {
+	@each $name,
+		$color in colors.$colors {
+		--#{$name}: #{$color};
+	}
+}
 
 :is(.o-header, .o-footer, .o-content) {
 	max-width: layout.$content-width;
