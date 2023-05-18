@@ -1,7 +1,5 @@
 ---
-import { Img } from "astro-imagetools/components";
 import LogoGrid from "@components/footer/LogoGrid.astro";
-import type { Logo } from "@components/footer/types";
 import { Icon } from "astro-icon";
 import {
   supporters,
@@ -9,6 +7,7 @@ import {
   specialThanks,
   funded,
 } from "@components/footer/logos";
+import Logo from "@components/Logo.astro";
 ---
 
 <footer class="o-footer">
@@ -25,15 +24,7 @@ import {
 
   <div class="o-footer__inner">
     <div class="o-footer__upper">
-      <a href="/">
-        <img
-          src="src/images/logos/bits-und-baeume-logo_CCBY-schauschau.cc.svg"
-          alt="Bits und Bäume Logo"
-          class="o-footer__logo u-scale-hover"
-          loading="lazy"
-          decoding="async"
-        />
-      </a>
+      <Logo />
       <nav class="o-footer__nav">
         <menu class="o-footer__nav-menu u-list-reset">
           <li>
