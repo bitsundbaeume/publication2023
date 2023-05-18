@@ -1,8 +1,21 @@
 .c-flipbook {
-	width: 90vw;
 	height: 90vh;
 
 	&__action-bar {
+		display: flex;
+		justify-content: center;
+		padding-bottom: 3rem;
 
+		&-inner {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		&-button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 	}
 }

@@ -13,34 +13,47 @@
     @zoom-end="onZoomEnd"
   >
     <div class="c-flipbook__action-bar">
-      <p>action bar</p>
-      <button
-        :disabled="!flipbook.canFlipLeft"
-        @click="flipbook.flipLeft"
-      >
-        <ChevronLeft />
-      </button>
-      <button
-        :disabled="!flipbook.canZoomIn"
-        @click="flipbook.zoomIn"
-      >
-        <ZoomIn />
-      </button>
-      <span class="page-num">
-        Page {{ flipbook.page }} of {{ flipbook.numPages }}
-      </span>
-      <button
-        :disabled="!flipbook.canZoomOut"
-        @click="flipbook.zoomOut"
-      >
-        <ZoomOut />
-      </button>
-      <button
-        :disabled="!flipbook.canFlipRight"
-        @click="flipbook.flipRight"
-      >
-        <ChevronRight />
-      </button>
+      <div class="c-flipbook__action-bar-inner">
+        <button
+          :disabled="!flipbook.canFlipLeft"
+          aria-label="Previous page"
+          class="c-flipbook__action-bar-button c-button"
+          :class="{ 'is-disabled': !flipbook.canFlipLeft }"
+          @click="flipbook.flipLeft"
+        >
+          <ChevronLeft />
+        </button>
+        <button
+          :disabled="!flipbook.canZoomIn"
+          :class="{ 'is-disabled': !flipbook.canZoomIn }"
+          aria-label="Zoom in"
+          class="c-flipbook__action-bar-button c-button"
+          @click="flipbook.zoomIn"
+        >
+          <ZoomIn />
+        </button>
+        <span class="c-flipbook__page-num">
+          Page {{ flipbook.page }} of {{ flipbook.numPages }}
+        </span>
+        <button
+          :disabled="!flipbook.canZoomOut"
+          :class="{ 'is-disabled': !flipbook.canZoomOut }"
+          aria-label="Zoom out"
+          class="c-flipbook__action-bar-button c-button"
+          @click="flipbook.zoomOut"
+        >
+          <ZoomOut />
+        </button>
+        <button
+          :disabled="!flipbook.canFlipRight"
+          aria-label="Next page"
+          class="c-flipbook__action-bar-button c-button"
+          :class="{ 'is-disabled': !flipbook.canFlipRight }"
+          @click="flipbook.flipRight"
+        >
+          <ChevronRight />
+        </button>
+      </div>
     </div>
   </Flipbook>
 </template>
@@ -64,7 +77,8 @@ const pages = [
   'src/pdfs/jpg/0007.jpg',
   'src/pdfs/jpg/0008.jpg',
   'src/pdfs/jpg/0009.jpg',
-  'src/pdfs/jpg/0010.jpg'
+  'src/pdfs/jpg/0010.jpg',
+  'src/pdfs/jpg/0011.jpg'
 ]
 
 /**
