@@ -27,3 +27,19 @@ $headlines: ();
 :is(#{$headlines}) {
 	font-weight: 700;
 }
+
+a {
+	color: var(--blue-500);
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.u-scale-hover {
+	transition: transform 0.2s ease-in-out;
+
+	@media (hover: hover) {
+		&:hover {
+			transform: scale(1.05);
+		}
+	}
+}
