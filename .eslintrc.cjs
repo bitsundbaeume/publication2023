@@ -2,8 +2,8 @@ module.exports = {
   extends: [
     "plugin:astro/recommended",
     "plugin:astro/jsx-a11y-recommended",
-    // "plugin:vue/vue3-recommended",
-    // "plugin:vuejs-accessibility/recommended"
+    "plugin:vue/vue3-recommended",
+    "plugin:vuejs-accessibility/recommended"
   ],
   overrides: [
     {
@@ -22,30 +22,30 @@ module.exports = {
         // "astro/no-set-html-directive": "error"
       },
     },
-    // {
-    //   files: ["*.vue"],
-    //   parser: "vue-eslint-parser",
-    //   parserOptions: {
-    //     parser: "@typescript-eslint/parser",
-    //     extraFileExtensions: [".vue"],
-    //   },
-    //   rules: {
-    //     // override/add rules settings here, such as:
-    //     // "astro/no-set-html-directive": "error"
-    //   },
-    // },
+    {
+      files: ["*.vue"],
+      parser: "vue-eslint-parser",
+      parserOptions: {
+        parser: "@typescript-eslint/parser",
+        extraFileExtensions: [".vue"],
+      },
+      rules: {
+        // override/add rules settings here, such as:
+        // "astro/no-set-html-directive": "error"
+      },
+    },
   ],
   rules: {
-    // 'vuejs-accessibility/label-has-for': [
-    //   'error',
-    //   {
-    //     components: ["VLabel"],
-    //     controlComponents: ["VInput"],
-    //     required: {
-    //       every: ["id"]
-    //     },
-    //     allowChildren: false
-    //   }
-    // ]
+    'vuejs-accessibility/label-has-for': [
+      'error',
+      {
+        components: ["VLabel"],
+        controlComponents: ["VInput"],
+        required: {
+          every: ["id"]
+        },
+        allowChildren: false
+      }
+    ]
   }
 }

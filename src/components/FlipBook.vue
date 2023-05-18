@@ -1,0 +1,162 @@
+<template>
+  <Flipbook
+    ref="flipbook"
+    v-slot="flipbook"
+    class="c-flipbook"
+    :pages="pages"
+    :start-page="pageNum"
+    @flip-left-start="onFlipLeftStart"
+    @flip-left-end="onFlipLeftEnd"
+    @flip-right-start="onFlipRightStart"
+    @flip-right-end="onFlipRightEnd"
+    @zoom-start="onZoomStart"
+    @zoom-end="onZoomEnd"
+  >
+    <div class="c-flipbook__action-bar">
+      <p>action bar</p>
+      <button
+        :disabled="!flipbook.canFlipLeft"
+        @click="flipbook.flipLeft"
+      >
+        <ChevronLeft />
+      </button>
+      <button
+        :disabled="!flipbook.canZoomIn"
+        @click="flipbook.zoomIn"
+      >
+        <ZoomIn />
+      </button>
+      <span class="page-num">
+        Page {{ flipbook.page }} of {{ flipbook.numPages }}
+      </span>
+      <button
+        :disabled="!flipbook.canZoomOut"
+        @click="flipbook.zoomOut"
+      >
+        <ZoomOut />
+      </button>
+      <button
+        :disabled="!flipbook.canFlipRight"
+        @click="flipbook.flipRight"
+      >
+        <ChevronRight />
+      </button>
+    </div>
+  </Flipbook>
+</template>
+
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import Flipbook from 'flipbook-vue'
+import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-vue-next';
+
+const flipbook = ref(null)
+const pageNum = ref(0)
+
+// Example pages
+const pages = [
+  'src/pdfs/jpg/0001.jpg',
+  'src/pdfs/jpg/0002.jpg',
+  'src/pdfs/jpg/0003.jpg',
+  'src/pdfs/jpg/0004.jpg',
+  'src/pdfs/jpg/0005.jpg',
+  'src/pdfs/jpg/0006.jpg',
+  'src/pdfs/jpg/0007.jpg',
+  'src/pdfs/jpg/0008.jpg',
+  'src/pdfs/jpg/0009.jpg',
+  'src/pdfs/jpg/0010.jpg'
+]
+
+/**
+ * When the user starts to flip to the left
+ *
+ * @param   {number}  page             [page description]
+ * @param   {[type]}  flip-left-start  [flip-left-start description]
+ * @param   {[type]}  page             [page description]
+ *
+ * @return  {[type]}                   [return description]
+ */
+const onFlipLeftStart = (page: number) => { console.log('flip-left-start', page) }
+
+/**
+ * When the user ends flipping to the left
+ *
+ * @param   {number}  page  [page description]
+ *
+ * @return  {[type]}        [return description]
+ */
+const onFlipLeftEnd = (page: number) => {
+  console.log('flip-left-end', page)
+  window.location.hash = `#${page}`
+}
+
+/**
+ * When the user starts to flip to the right
+ *
+ * @param   {number}  page              [page description]
+ * @param   {[type]}  flip-right-start  [flip-right-start description]
+ * @param   {[type]}  page              [page description]
+ *
+ * @return  {[type]}                    [return description]
+ */
+const onFlipRightStart = (page: number) => { console.log('flip-right-start', page) }
+
+/**
+ * When the user ends flipping to the right
+ *
+ * @param   {number}  page  [page description]
+ *
+ * @return  {[type]}        [return description]
+ */
+const onFlipRightEnd = (page: number) => {
+  console.log('flip-right-end', page)
+  window.location.hash = `#${page}`
+}
+
+/**
+ * When the user starts to zoom
+ *
+ * @param   {number}  zoom  [zoom description]
+ *
+ * @return  {[type]}        [return description]
+ */
+const onZoomStart = (zoom: number) => {
+  console.log('zoom-start', zoom)
+}
+
+/**
+ * When the user ends zooming
+ *
+ * @param   {number}  zoom  [zoom description]
+ *
+ * @return  {[type]}        [return description]
+ */
+const onZoomEnd = (zoom: number) => {
+  console.log('zoom-end', zoom)
+}
+
+/**
+ * Set the page from the hash
+ *
+ * @return  {[type]}  [return description]
+ */
+const setPageFromHash = () => {
+  const n = parseInt(window.location.hash.slice(1), 10)
+  if (isFinite(n)) pageNum.value = n
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', (ev) => {
+    if (!flipbook.value) return
+    if (ev.code == 'ArrowLeft' && flipbook.value.canFlipLeft) flipbook.value.flipLeft()
+    if (ev.code == 'ArrowRight' && flipbook.value.canFlipRight) flipbook.value.flipRight()
+  })
+
+  window.addEventListener('hashchange', setPageFromHash)
+  setPageFromHash()
+})
+</script>
+
+<style lang="scss">
+@use '@styles/components/flipbook';
+</style>

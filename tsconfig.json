@@ -14,7 +14,8 @@
       ],
       "@images/*": [
         "src/images/*"
-      ],
+      ]
     },
+    "jsx": "preserve"
   }
 }
