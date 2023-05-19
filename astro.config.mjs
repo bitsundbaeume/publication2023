@@ -14,9 +14,19 @@ const __dirname = dirname(__filename);
 // https://astro.build/config
 export default defineConfig({
   site: 'https://publication2023.bits-und-baeume.org',
-  integrations: [sitemap({
-    lastmod: new Date()
-  }), prefetch(), critters(), serviceWorker(), astroImageTools, vue()],
+  compressHTML: true,
+  integrations: [
+    sitemap({
+      lastmod: new Date()
+    }),
+    // prefetch(),
+    critters({
+      critters: !import.meta.env.DEV,
+    }),
+    serviceWorker(),
+    astroImageTools,
+    vue()
+  ],
   vite: {
     plugins: [],
     resolve: {
