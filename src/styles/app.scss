@@ -1,8 +1,5 @@
-@use './base/base';
-@use './utilities/utilities';
-
-/// Import global objects
-@use './objects/footer';
+@use '@styles/base/base';
+@use '@styles/utilities/utilities';
 
 /// Import global components
-@use './components/button';
+@use '@styles/components/button';

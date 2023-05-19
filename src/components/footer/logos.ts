@@ -89,7 +89,7 @@ export const media: Logo[] = [
     alt: "Reset Logo",
   },
   {
-    name: "Heise",
+    name: "Heise Online",
     logo: "src/images/logos/foerderinnen/logo-heise-online.svg",
     url: "https://www.heise.de/",
     alt: "Heise Logo",
