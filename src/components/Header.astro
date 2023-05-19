@@ -1,26 +1,41 @@
 ---
 import Logo from "@components/Logo.astro";
 import MainNav from "@components/MainNav.vue";
+import "@styles/objects/_header.scss";
 
 const items = [
   {
     label: "Community",
     path: "/",
+    childItems: [
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+    ],
   },
   {
     label: "Conference 2022",
     path: "/",
     childItems: [
       {
-        label: "Antworten auf Fragen",
+        label: "Praesent egestas neque eu enim",
         path: "/",
       },
       {
-        label: "Professionelle Pflege",
+        label: "Praesent egestas neque eu enim",
         path: "/",
       },
       {
-        label: "Service & Qualität",
+        label: "Praesent egestas neque eu enim",
         path: "/",
       },
     ],
@@ -28,19 +43,63 @@ const items = [
   {
     label: "Conference 2018",
     path: "/",
+    childItems: [
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+    ],
   },
   {
     label: "Join!",
     path: "/",
+    childItems: [
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+    ],
   },
   {
     label: "Material",
     path: "/",
+    childItems: [
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+      {
+        label: "Praesent egestas neque eu enim",
+        path: "/",
+      },
+    ],
   },
 ];
 ---
 
 <header class="o-header">
-  <Logo load="eager" />
-  <MainNav menuItems={items} client:load />
+  <div class="o-header__inner">
+    <Logo load="eager" />
+    <MainNav menuItems={items} client:load />
+  </div>
 </header>

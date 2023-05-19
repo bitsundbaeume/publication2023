@@ -10,8 +10,10 @@
       :aria-expanded="isOpen"
       @click="toggleFlyout"
     >
-      <span class="c-main-nav__toggle-label">Menü</span>
-      <MenuIcon />
+      <img
+        src="src/images/icons/menu-button.svg"
+        alt="Menu Icon"
+      >
     </button>
 
     <Transition name="fade">
@@ -32,7 +34,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import MenuNav from '@components/menu-nav/MenuNav.vue';
-import { Menu as MenuIcon } from 'lucide-vue-next';
 
 export interface MainNavProps {
   menuItems: [
@@ -55,7 +56,7 @@ const isOpen = ref(false);
 
 const mainNav = ref(null);
 
-let flyoutHeight = ref('');
+const flyoutHeight = ref('');
 
 /**
  * Toggle the flyout menu
@@ -92,7 +93,7 @@ const resizeObserver = new ResizeObserver(() => {
   const headerElementsHeight = logoHeight && mainNavToggleHeight ? logoHeight + mainNavToggleHeight : 0;
   const remainingHeight = viewportHeight - headerElementsHeight;
 
-  flyoutHeight.value = remainingHeight + 'px';
+  flyoutHeight.value = `${remainingHeight}px`;
 
   if (window.innerWidth > 768) {
     isOpen.value = false;
