@@ -9,6 +9,11 @@
       }
     ]"
     role="menuitem"
+    tabindex="-1"
+    @mouseenter="direction($event)"
+    @focus="direction($event)"
+    @mouseleave="direction($event)"
+    @blur="direction($event)"
   >
     <a
       v-if="!props.menuItem.childItems"
@@ -80,11 +85,12 @@ const submenu = ref(null)
  * @return  {void}  [return description]
  */
 onClickOutside(submenu, (event) => {
-  const targetPath = event.composedPath();
-  const ignoreNode = document.querySelector('.c-menu__item.has-child');
-  if (ignoreNode && !targetPath.includes(ignoreNode)) {
-    isOpen.value = false
-  }
+  // const targetPath = event.composedPath();
+  // const ignoreNode = document.querySelector('.c-menu__item.has-child');
+  // if (ignoreNode && !targetPath.includes(ignoreNode)) {
+  //   isOpen.value = false
+  // }
+  isOpen.value = false
 })
 
 /**
@@ -94,6 +100,19 @@ onClickOutside(submenu, (event) => {
   */
 const toggleMenuItem = (): void => {
   isOpen.value = !isOpen.value;
+}
+
+// TODO: add direction control
+const direction = (event) => {
+  const el = event.target.getBoundingClientRect();
+  const left = el.left;
+  const width = el.width;
+  const windowHeight = window.innerHeight;
+  const windowWidth = window.innerWidth;
+  console.log('direction', left + width, windowWidth);
+  console.log(left + width <= windowWidth);
+
+
 }
 
 onMounted(() => {
