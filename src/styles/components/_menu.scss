@@ -11,16 +11,10 @@
 
 	@include mx.breakpoint('sm') {
 		--direction-menu: row;
-		--gap-menu: 5px;
+		--gap-menu: 30px;
 	}
 
 	&__item {
-		padding: var(--spacing-outer-menu-item, 0 0.5em 0 1.2em);
-		transition: all 0.3s ease;
-
-		@include mx.breakpoint('md') {
-			--spacing-outer-menu-item: 0 1em 0 1.5em;
-		}
 		@include butler-mx.hover {
 			background-color: var(--blue-100);
 		}
@@ -49,16 +43,15 @@
 	&__link {
 		display: flex;
 		flex: 1 1 100%;
-		font-size: var(--size-font-menu-link, var(--font-size-sm));
-		line-height: 3;
-		font-weight: 700;
 		text-decoration: none;
+		padding: 2rem .6rem;
 
 		@include butler-mx.hover {
 			text-decoration: underline;
 		}
-		@include mx.breakpoint('sm', 'max', $max-overlap: 0.1) {
-			--size-font-menu-link: var(--font-size-md);
+
+		.c-main-nav__flyout.is-open & {
+			padding: 1rem 1.5rem;
 		}
 	}
 
@@ -88,6 +81,14 @@
 		margin-block-end: 0;
 		top: 100%;
 		width: max-content;
+	}
+
+	.c-main-nav__flyout & {
+		--gap-menu: 0;
+	}
+
+	.c-menu__link {
+		padding: 10px 1.5rem;
 	}
 
 	.c-menu__item {

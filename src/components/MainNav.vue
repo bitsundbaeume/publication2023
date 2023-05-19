@@ -23,6 +23,7 @@
         <div
           v-show="isOpen"
           class="c-main-nav__flyout"
+          :class="{ 'is-open': isOpen }"
         >
           <MenuNav
             :menu-items="menuItems"
