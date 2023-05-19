@@ -1,7 +1,11 @@
 @use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
 
 .c-flipbook {
-	height: 100vh;
+	height: 80vh;
+
+	@include mx.breakpoint('md') {
+		height: 100vh;
+	}
 
 	&__action-bar {
 		display: flex;
