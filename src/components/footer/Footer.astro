@@ -8,6 +8,7 @@ import {
   funded,
 } from "@components/footer/logos";
 import Logo from "@components/Logo.astro";
+import "@styles/objects/_footer.scss";
 ---
 
 <footer class="o-footer">
@@ -25,7 +26,7 @@ import Logo from "@components/Logo.astro";
   <div class="o-footer__inner">
     <div class="o-footer__upper">
       <Logo />
-      <nav class="o-footer__nav">
+      <nav class="o-footer__nav is-first">
         <menu class="o-footer__nav-menu u-list-reset">
           <li>
             <a
@@ -42,36 +43,37 @@ import Logo from "@components/Logo.astro";
             >
           </li>
         </menu>
-
-        <div class="o-footer__social-list">
-          <p class="o-footer__social-list-label">Social:</p>
-          <a
-            rel="me noopener"
-            href="https://mastodon.bits-und-baeume.org/@bits_und_baeume"
-            target="_blank"
-            class="o-footer__social-list-link"
-          >
-            <Icon
-              name="simple-icons:mastodon"
-              class="o-footer__social-list-icon u-scale-hover"
-              width="32"
-            />
-          </a>
-          <a
-            href="https://twitter.com/bitsundbaeume"
-            target="_blank"
-            rel="noopener"
-            class="o-footer__social-list-link"
-          >
-            <Icon
-              name="simple-icons:twitter"
-              class="o-footer__social-list-icon u-scale-hover"
-              width="32"
-            />
-          </a>
-        </div>
       </nav>
-      <nav class="o-footer__nav">
+
+      <div class="o-footer__social-list">
+        <p class="o-footer__social-list-label">Social:</p>
+        <a
+          rel="me noopener"
+          href="https://mastodon.bits-und-baeume.org/@bits_und_baeume"
+          target="_blank"
+          class="o-footer__social-list-link"
+        >
+          <Icon
+            name="simple-icons:mastodon"
+            class="o-footer__social-list-icon u-scale-hover"
+            width="32"
+          />
+        </a>
+        <a
+          href="https://twitter.com/bitsundbaeume"
+          target="_blank"
+          rel="noopener"
+          class="o-footer__social-list-link"
+        >
+          <Icon
+            name="simple-icons:twitter"
+            class="o-footer__social-list-icon u-scale-hover"
+            width="32"
+          />
+        </a>
+      </div>
+
+      <nav class="o-footer__nav is-second">
         <menu class="o-footer__nav-menu u-list-reset">
           <li>
             <a
