@@ -17,7 +17,7 @@
         <button
           :disabled="!flipbook.canFlipLeft"
           aria-label="Previous page"
-          class="c-flipbook__action-bar-button c-button c-button--primary"
+          class="c-flipbook__action-bar-button c-button c-button--primary is-prev"
           :class="{ 'is-disabled': !flipbook.canFlipLeft }"
           @click="flipbook.flipLeft"
         >
@@ -27,7 +27,7 @@
           :disabled="!flipbook.canZoomIn"
           :class="{ 'is-disabled': !flipbook.canZoomIn }"
           aria-label="Zoom in"
-          class="c-flipbook__action-bar-button c-button c-button--primary"
+          class="c-flipbook__action-bar-button c-button c-button--primary is-zoom-in"
           @click="flipbook.zoomIn"
         >
           <ZoomIn />
@@ -39,7 +39,7 @@
           :disabled="!flipbook.canZoomOut"
           :class="{ 'is-disabled': !flipbook.canZoomOut }"
           aria-label="Zoom out"
-          class="c-flipbook__action-bar-button c-button c-button--primary"
+          class="c-flipbook__action-bar-button c-button c-button--primary is-zoom-out"
           @click="flipbook.zoomOut"
         >
           <ZoomOut />
@@ -47,7 +47,7 @@
         <button
           :disabled="!flipbook.canFlipRight"
           aria-label="Next page"
-          class="c-flipbook__action-bar-button c-button c-button--primary"
+          class="c-flipbook__action-bar-button c-button c-button--primary is-next"
           :class="{ 'is-disabled': !flipbook.canFlipRight }"
           @click="flipbook.flipRight"
         >
@@ -64,6 +64,7 @@ import Flipbook from 'flipbook-vue'
 import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-vue-next'
 
 const flipbook = ref(null)
+const flipbookContentHeight = ref('')
 const pageNum = ref(0)
 
 // Example pages
@@ -159,6 +160,25 @@ const setPageFromHash = () => {
   if (isFinite(n)) pageNum.value = n
 }
 
+const resizeObserver = new ResizeObserver(() => {
+  const flipbookEl = document.querySelector('.c-flipbook .bounding-box')
+
+  console.log(flipbookEl.getBoundingClientRect().height);
+  flipbookContentHeight.value = `${flipbookEl.getBoundingClientRect().height}px`
+  // const viewportHeight = window.innerHeight;
+  // const logoHeight = document.querySelector('.c-logo')?.getBoundingClientRect().height;
+  // const mainNavToggleHeight = document.querySelector('.c-main-nav__toggle')?.getBoundingClientRect().height;
+  // const headerElementsHeight = logoHeight && mainNavToggleHeight ? logoHeight + mainNavToggleHeight : 0;
+  // const remainingHeight = viewportHeight - headerElementsHeight;
+
+  // flyoutHeight.value = `${remainingHeight}px`;
+
+  // if (window.innerWidth > 768) {
+  //   isOpen.value = false;
+  //   controlScroll(false)
+  // }
+});
+
 onMounted(() => {
   window.addEventListener('keydown', (ev) => {
     if (!flipbook.value) return
@@ -168,10 +188,17 @@ onMounted(() => {
 
   window.addEventListener('hashchange', setPageFromHash)
   setPageFromHash()
+
+  // const flipbookEl = document.querySelector('body') as HTMLElement;
+  // resizeObserver.observe(flipbookEl);
 })
 
 </script>
 
 <style lang="scss">
 @use '@styles/components/flipbook';
+
+// .c-flipbook {
+//   min-height: v-bind(flipbookContentHeight);
+// }
 </style>
