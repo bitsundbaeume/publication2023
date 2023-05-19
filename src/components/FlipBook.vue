@@ -17,7 +17,7 @@
         <button
           :disabled="!flipbook.canFlipLeft"
           aria-label="Previous page"
-          class="c-flipbook__action-bar-button c-button"
+          class="c-flipbook__action-bar-button c-button c-button--primary"
           :class="{ 'is-disabled': !flipbook.canFlipLeft }"
           @click="flipbook.flipLeft"
         >
@@ -27,7 +27,7 @@
           :disabled="!flipbook.canZoomIn"
           :class="{ 'is-disabled': !flipbook.canZoomIn }"
           aria-label="Zoom in"
-          class="c-flipbook__action-bar-button c-button"
+          class="c-flipbook__action-bar-button c-button c-button--primary"
           @click="flipbook.zoomIn"
         >
           <ZoomIn />
@@ -39,7 +39,7 @@
           :disabled="!flipbook.canZoomOut"
           :class="{ 'is-disabled': !flipbook.canZoomOut }"
           aria-label="Zoom out"
-          class="c-flipbook__action-bar-button c-button"
+          class="c-flipbook__action-bar-button c-button c-button--primary"
           @click="flipbook.zoomOut"
         >
           <ZoomOut />
@@ -47,7 +47,7 @@
         <button
           :disabled="!flipbook.canFlipRight"
           aria-label="Next page"
-          class="c-flipbook__action-bar-button c-button"
+          class="c-flipbook__action-bar-button c-button c-button--primary"
           :class="{ 'is-disabled': !flipbook.canFlipRight }"
           @click="flipbook.flipRight"
         >
@@ -61,7 +61,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import Flipbook from 'flipbook-vue'
-import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-vue-next';
+import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-vue-next'
 
 const flipbook = ref(null)
 const pageNum = ref(0)
@@ -169,6 +169,7 @@ onMounted(() => {
   window.addEventListener('hashchange', setPageFromHash)
   setPageFromHash()
 })
+
 </script>
 
 <style lang="scss">

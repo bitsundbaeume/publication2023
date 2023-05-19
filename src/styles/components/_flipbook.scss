@@ -1,5 +1,6 @@
 .c-flipbook {
-	height: 90vh;
+	height: 100vh;
+	overflow: hidden;
 
 	&__action-bar {
 		display: flex;
