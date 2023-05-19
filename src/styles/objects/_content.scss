@@ -2,6 +2,7 @@
 
 .o-content {
 	padding: 3rem 1rem;
+	overflow: hidden;
 
 	@include mx.breakpoint('sm') {
 		padding: 5rem 4rem;
