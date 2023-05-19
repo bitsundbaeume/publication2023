@@ -61,38 +61,10 @@ const items = [
   {
     label: "Join!",
     path: "/",
-    childItems: [
-      {
-        label: "Praesent egestas neque eu enim",
-        path: "/",
-      },
-      {
-        label: "Praesent egestas neque eu enim",
-        path: "/",
-      },
-      {
-        label: "Praesent egestas neque eu enim",
-        path: "/",
-      },
-    ],
   },
   {
     label: "Material",
     path: "/",
-    childItems: [
-      {
-        label: "Praesent egestas neque eu enim",
-        path: "/",
-      },
-      {
-        label: "Praesent egestas neque eu enim",
-        path: "/",
-      },
-      {
-        label: "Praesent egestas neque eu enim",
-        path: "/",
-      },
-    ],
   },
 ];
 ---
@@ -100,6 +72,7 @@ const items = [
 <header class="o-header">
   <div class="o-header__inner">
     <Logo load="eager" />
-    <MainNav menuItems={items} client:load />
+    <MainNav menuItems={items} client:only />
   </div>
 </header>
+<div id="mobileNav"></div>

@@ -15,8 +15,27 @@
         alt="Menu Icon"
       >
     </button>
-
-    <Transition name="fade">
+    <Teleport
+      v-if="isMobile"
+      to="#mobileNav"
+    >
+      <Transition name="fade">
+        <div
+          v-show="isOpen"
+          class="c-main-nav__flyout"
+        >
+          <MenuNav
+            :menu-items="menuItems"
+            class="c-main-nav__menu"
+            :class="{ 'is-open': isOpen }"
+          />
+        </div>
+      </Transition>
+    </Teleport>
+    <Transition
+      v-else
+      name="fade"
+    >
       <div
         v-show="isOpen"
         class="c-main-nav__flyout"
@@ -51,12 +70,10 @@ export interface MainNavProps {
 }
 
 const props = defineProps<MainNavProps>()
-
 const isOpen = ref(false);
-
 const mainNav = ref(null);
-
 const flyoutHeight = ref('');
+const isMobile = ref(false);
 
 /**
  * Toggle the flyout menu
@@ -88,20 +105,23 @@ const controlScroll = (status: boolean): void => {
  */
 const resizeObserver = new ResizeObserver(() => {
   const viewportHeight = window.innerHeight;
-  const logoHeight = document.querySelector('.c-logo')?.getBoundingClientRect().height;
-  const mainNavToggleHeight = document.querySelector('.c-main-nav__toggle')?.getBoundingClientRect().height;
-  const headerElementsHeight = logoHeight && mainNavToggleHeight ? logoHeight + mainNavToggleHeight : 0;
-  const remainingHeight = viewportHeight - headerElementsHeight;
+  const headerInnerHeight = document.querySelector('.c-header__inner')?.getBoundingClientRect().height;
+  const headerInner = headerInnerHeight ? headerInnerHeight : 0;
+  const remainingHeight = viewportHeight - headerInner;
 
   flyoutHeight.value = `${remainingHeight}px`;
+  isMobile.value = window.innerWidth < 768;
 
-  if (window.innerWidth > 768) {
+  if (!isMobile.value) {
     isOpen.value = false;
+
     controlScroll(false)
   }
 });
 
 onMounted(() => {
+  isMobile.value = window.innerWidth < 768;
+
   const body = document.querySelector('body') as HTMLElement;
   resizeObserver.observe(body);
 })
