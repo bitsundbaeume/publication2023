@@ -2,6 +2,7 @@
 @use '@sass-butler/mixins' as butler-mx;
 @use '@sass-butler/functions' as butler-fn;
 @use '@styles/variables/colors' as colors;
+@use '@styles/variables/fonts';
 
 html {
 	font-family: system-ui,
@@ -18,6 +19,13 @@ html {
 	@include butler-mx.select-style(colors.$green-600, #fff);
 }
 
+:root {
+	@each $name,
+		$size in fonts.$font-sizes {
+		--font-size-#{$name}: #{$size};
+	}
+}
+
 $headlines: ();
 
 @for $h from 1 to 6 {
@@ -28,9 +36,12 @@ $headlines: ();
 	font-weight: 700;
 }
 
+h2 {
+	font-size: var(--font-size-2xl);
+}
+
 h3 {
-	font-size: clamp(1.25rem, 1.25vw + 1rem, 2rem); // 20px - 32px on 320px - 1280px
-	line-height: clamp(1.875rem, 1.208vw + 1.633rem, 2.6rem);
+	font-size: var(--font-size-xl); // 20px - 32px on 320px - 1280px
 }
 
 a {
@@ -39,5 +50,5 @@ a {
 }
 
 :is(a, p) {
-	font-size: butler-fn.px-to-rem(19);
+	font-size: var(--font-size-xs);
 }
