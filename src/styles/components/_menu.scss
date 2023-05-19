@@ -1,0 +1,110 @@
+@use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
+@use '@styles/variables/colors';
+@use '@styles/variables/variables';
+@use '@sass-butler/mixins' as butler-mx;
+
+.c-menu,
+.c-submenu {
+	display: flex;
+	flex-direction: var(--direction-menu, column);
+	gap: var(--gap-menu, 5px);
+
+	@include mx.breakpoint('sm') {
+		--direction-menu: row;
+		--gap-menu: 5px;
+	}
+
+	&__item {
+		padding: var(--spacing-outer-menu-item, 0 0.5em 0 1.2em);
+		transition: all 0.3s ease;
+
+		@include mx.breakpoint('md') {
+			--spacing-outer-menu-item: 0 1em 0 1.5em;
+		}
+		@include butler-mx.hover {
+			background-color: var(--red);
+
+			.c-menu__link:not(.c-submenu .c-menu__link, .has-visible-child .is-menu-title) {
+				--color-menu-link: #fff;
+			}
+		}
+
+		&.has-child {
+			flex-wrap: wrap;
+			position: relative;
+
+			.c-menu__link {
+				align-items: center;
+			}
+		}
+
+		&.is-active {
+			--color-menu-item-bulletpoint: var(--red);
+		}
+
+		&.has-visible-child {
+			background-color: var(--color-background-has-visible-child);
+
+			@include mx.breakpoint('sm') {
+				--color-background-has-visible-child: var(--red);
+
+				.is-menu-title {
+					color: #fff;
+				}
+			}
+			@include mx.breakpoint('sm', 'max', $max-overlap: 0.1) {
+				--color-background-has-visible-child: var(--grey);
+			}
+		}
+	}
+
+	&__link {
+		display: flex;
+		flex: 1 1 100%;
+		color: var(--color-menu-link, var(--black));
+		font-size: var(--size-font-menu-link, var(--font-size-sm));
+		line-height: 3;
+		font-weight: 700;
+
+		@include mx.breakpoint('sm', 'max', $max-overlap: 0.1) {
+			--size-font-menu-link: var(--font-size-md);
+		}
+	}
+
+	&__chevron {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transform: rotate(var(--rotate-chevron-angle));
+		transition: all 0.3s ease;
+
+		&.has-visible-child {
+			--rotate-chevron-angle: 90deg;
+		}
+	}
+}
+
+.c-submenu {
+	@include mx.breakpoint('sm') {
+		--direction-menu: column;
+		--gap-menu: 5px;
+
+		position: absolute;
+		z-index: 1;
+		left: 0;
+		background: currentcolor;
+		margin-block-start: 0;
+		margin-block-end: 0;
+		top: 100%;
+		width: max-content;
+		padding: 20px 25px;
+	}
+
+	.c-menu__item {
+		@include butler-mx.hover {
+			.c-menu__link {
+				--color-menu-link: #fff;
+			}
+		}
+	}
+}

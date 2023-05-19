@@ -1,4 +1,46 @@
 ---
+import Logo from "@components/Logo.astro";
+import MainNav from "@components/MainNav.vue";
+
+const items = [
+  {
+    label: "Community",
+    path: "/",
+  },
+  {
+    label: "Conference 2022",
+    path: "/",
+    childItems: [
+      {
+        label: "Antworten auf Fragen",
+        path: "/",
+      },
+      {
+        label: "Professionelle Pflege",
+        path: "/",
+      },
+      {
+        label: "Service & Qualität",
+        path: "/",
+      },
+    ],
+  },
+  {
+    label: "Conference 2018",
+    path: "/",
+  },
+  {
+    label: "Join!",
+    path: "/",
+  },
+  {
+    label: "Material",
+    path: "/",
+  },
+];
 ---
 
-<div>header</div>
+<header class="o-header">
+  <Logo load="eager" />
+  <MainNav menuItems={items} client:load />
+</header>
