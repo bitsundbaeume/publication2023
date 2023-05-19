@@ -1,22 +1,60 @@
+@use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
+
 .c-flipbook {
 	height: 100vh;
-	overflow: hidden;
 
 	&__action-bar {
 		display: flex;
 		justify-content: center;
-		padding-bottom: 3rem;
+		padding-bottom: 1.5rem;
+	}
 
-		&-inner {
-			display: flex;
-			align-items: center;
-			gap: 1rem;
+	&__action-bar-inner {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-areas:
+			'page-num page-num page-num page-num'
+			'prev zoom-in zoom-out next';
+		align-items: center;
+		gap: .5rem;
+
+		@include mx.breakpoint('sm') {
+			grid-template-columns: repeat(5, 1fr);
+			grid-template-areas:
+        'prev zoom-in page-num zoom-out next';
+		}
+	}
+
+	&__action-bar-button {
+		--padding-button: .5rem 1.425rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&.is-prev {
+			grid-area: prev;
 		}
 
-		&-button {
-			display: flex;
-			align-items: center;
-			justify-content: center;
+		&.is-next {
+			grid-area: next;
 		}
+
+		&.is-zoom-in {
+			grid-area: zoom-in;
+		}
+
+		&.is-zoom-out {
+			grid-area: zoom-out;
+		}
+	}
+
+	&__page-num {
+		grid-area: page-num;
+		text-align: center;
+	}
+
+	.viewport {
+		overflow: hidden;
 	}
 }
