@@ -1,0 +1,22 @@
+.c-box {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: 2rem;
+	background-color: var(--green-100);
+	position: relative;
+	border-radius: 8px;
+
+	&__content {
+		padding: 1.625rem 2.125rem 2.125rem 0;
+	}
+
+	&__image {
+		border-radius: 8px;
+	}
+
+	&__pixel {
+		position: absolute;
+		right: -20px;
+		bottom: 0;
+	}
+}

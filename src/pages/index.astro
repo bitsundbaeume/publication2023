@@ -1,9 +1,74 @@
 ---
+import { Img } from "astro-imagetools/components";
 import Layout from "../layouts/Layout.astro";
 import FlipBook from "@components/FlipBook.vue";
+import { Icon } from "astro-icon";
+import Share from "@components/Share.vue";
+import "@styles/components/_box.scss";
 ---
 
 <Layout title="Welcome to Astro.">
-  <h1>Content</h1>
+  <section class="c-box">
+    <Img
+      src="src/pdfs/jpg/0001.jpg"
+      alt="Astro Logo"
+      attributes={{
+        img: {
+          class: "c-box__image",
+        },
+      }}
+    />
+    <div class="c-box__content">
+      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+      <h3>Vitae ut tempore in, reiciendis deleniti nobis ea!</h3>
+      <p>
+        Vestibulum fringilla pede sit amet augue. Vestibulum ante ipsum primis
+        in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam,
+        nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor
+        lectus quis orci. Sed magna purus, fermentum eu, tincidunt eu, varius
+        ut, felis. Aliquam eu nunc. Aenean massa. Nunc egestas, augue at
+        pellentesque laoreet, felis eros vehicula leo, at malesuada velit leo
+        quis pede. Sed lectus. Integer ante arcu, accumsan a, consectetuer eget,
+        posuere ut, mauris. Maecenas vestibulum mollis diam. Integer tincidunt.
+        Vestibulum turpis sem, aliquet eget, lobortis pellentesque, rutrum eu,
+        nisl. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+        Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla
+        eleifend augue, ac auctor orci leo non est. Praesent ac massa at ligula
+        laoreet iaculis. Sed a libero. Sed augue ipsum, egestas nec, vestibulum
+        et, malesuada adipiscing, dui. Sed hendrerit. Fusce commodo aliquam
+        arcu. Nullam dictum felis eu pede mollis pretium. Phasellus gravida
+        semper nisi. Suspendisse faucibus, nunc et pellentesque egestas, lacus
+        ante convallis tellus, vitae iaculis lacus elit id tortor. Nullam
+        accumsan lorem in dui. Curabitur at lacus ac velit ornare lobortis.
+        Vestibulum rutrum, mi nec elementum vehicula, eros quam gravida nisl, id
+        fringilla neque ante vel mi. Morbi mollis tellus ac sapien.
+      </p>
+
+      <div>
+        <p>Number of pages:</p>
+        <p>1234</p>
+      </div>
+      <div>
+        <p>Publication year:</p>
+        <p>2022</p>
+      </div>
+      <a
+        href="src/pdfs/9783962386368.pdf"
+        class="c-button c-button--primary"
+        download
+      >
+        <Icon name="lucide:file-text" class="u-scale-hover" width="24" />
+        Download PDF
+      </a>
+      <Share client:only />
+    </div>
+    <img
+      src="src/images/pixels/pixel-box-img.svg"
+      alt="Pixel"
+      loading="lazy"
+      decoding="async"
+      class="c-box__pixel"
+    />
+  </section>
   <FlipBook client:only />
 </Layout>
