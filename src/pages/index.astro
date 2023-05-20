@@ -5,13 +5,28 @@ import FlipBook from "@components/FlipBook.vue";
 import { Icon } from "astro-icon";
 import Share from "@components/Share.vue";
 import "@styles/components/_box.scss";
+
+// Example pages
+const pages = [
+  "src/pdfs/jpg/0001.jpg",
+  "src/pdfs/jpg/0002.jpg",
+  "src/pdfs/jpg/0003.jpg",
+  "src/pdfs/jpg/0004.jpg",
+  "src/pdfs/jpg/0005.jpg",
+  "src/pdfs/jpg/0006.jpg",
+  "src/pdfs/jpg/0007.jpg",
+  "src/pdfs/jpg/0008.jpg",
+  "src/pdfs/jpg/0009.jpg",
+  "src/pdfs/jpg/0010.jpg",
+  "src/pdfs/jpg/0011.jpg",
+];
 ---
 
 <Layout title="Welcome to Astro.">
   <section class="c-box">
     <Img
       src="src/pdfs/jpg/0001.jpg"
-      alt="Astro Logo"
+      alt="PLATZHALTER"
       attributes={{
         img: {
           class: "c-box__image",
@@ -46,7 +61,7 @@ import "@styles/components/_box.scss";
 
       <div>
         <p>Number of pages:</p>
-        <p>1234</p>
+        <p>{pages.length}</p>
       </div>
       <div>
         <p>Publication year:</p>
@@ -54,10 +69,14 @@ import "@styles/components/_box.scss";
       </div>
       <a
         href="src/pdfs/9783962386368.pdf"
-        class="c-button c-button--primary"
+        class="c-box__download c-button c-button--primary"
         download
       >
-        <Icon name="lucide:file-text" class="u-scale-hover" width="24" />
+        <Icon
+          name="lucide:file-text"
+          class="c-box__share u-scale-hover"
+          width="24"
+        />
         Download PDF
       </a>
       <Share client:only />
@@ -70,5 +89,5 @@ import "@styles/components/_box.scss";
       class="c-box__pixel"
     />
   </section>
-  <FlipBook client:only />
+  <FlipBook pages={pages} client:only />
 </Layout>

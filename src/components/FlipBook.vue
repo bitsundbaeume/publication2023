@@ -80,33 +80,20 @@ import { onMounted, ref } from 'vue'
 import Flipbook from 'flipbook-vue'
 import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-vue-next'
 
+export interface FlipbookProps {
+  pages: string[];
+}
+
+const props = defineProps<FlipbookProps>()
+
 const flipbook = ref(null)
 const flipbookContentHeight = ref('')
 const pageNum = ref(1)
-
-// Example pages
-const pages = [
-  'src/pdfs/jpg/0001.jpg',
-  'src/pdfs/jpg/0002.jpg',
-  'src/pdfs/jpg/0003.jpg',
-  'src/pdfs/jpg/0004.jpg',
-  'src/pdfs/jpg/0005.jpg',
-  'src/pdfs/jpg/0006.jpg',
-  'src/pdfs/jpg/0007.jpg',
-  'src/pdfs/jpg/0008.jpg',
-  'src/pdfs/jpg/0009.jpg',
-  'src/pdfs/jpg/0010.jpg',
-  'src/pdfs/jpg/0011.jpg'
-]
 
 /**
  * When the user starts to flip to the left
  *
  * @param   {number}  page             [page description]
- * @param   {[type]}  flip-left-start  [flip-left-start description]
- * @param   {[type]}  page             [page description]
- *
- * @return  {[type]}                   [return description]
  */
 const onFlipLeftStart = (page: number) => { console.log('flip-left-start', page) }
 
@@ -115,7 +102,7 @@ const onFlipLeftStart = (page: number) => { console.log('flip-left-start', page)
  *
  * @param   {number}  page  [page description]
  *
- * @return  {[type]}        [return description]
+ * @return  {void}        [return description]
  */
 const onFlipLeftEnd = (page: number) => {
   console.log('flip-left-end', page)
@@ -126,10 +113,6 @@ const onFlipLeftEnd = (page: number) => {
  * When the user starts to flip to the right
  *
  * @param   {number}  page              [page description]
- * @param   {[type]}  flip-right-start  [flip-right-start description]
- * @param   {[type]}  page              [page description]
- *
- * @return  {[type]}                    [return description]
  */
 const onFlipRightStart = (page: number) => { console.log('flip-right-start', page) }
 
@@ -138,7 +121,7 @@ const onFlipRightStart = (page: number) => { console.log('flip-right-start', pag
  *
  * @param   {number}  page  [page description]
  *
- * @return  {[type]}        [return description]
+ * @return  {void}        [return description]
  */
 const onFlipRightEnd = (page: number) => {
   console.log('flip-right-end', page)
@@ -150,7 +133,7 @@ const onFlipRightEnd = (page: number) => {
  *
  * @param   {number}  zoom  [zoom description]
  *
- * @return  {[type]}        [return description]
+ * @return  {void}        [return description]
  */
 const onZoomStart = (zoom: number) => {
   console.log('zoom-start', zoom)
