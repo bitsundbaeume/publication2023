@@ -19,7 +19,7 @@ export default defineConfig({
     sitemap({
       lastmod: new Date()
     }),
-    // prefetch(),
+    prefetch(),
     critters({
       critters: !import.meta.env.DEV,
     }),
