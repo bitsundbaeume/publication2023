@@ -12,7 +12,7 @@ const pathToJpgs = "src/pdfs/jpg/";
 const jpgs = readdirSync(pathToJpgs);
 const pages: string[] = [];
 
-jpgs.map((name) => {
+jpgs.forEach((name) => {
   const fullPath = `${pathToJpgs}${name}`;
   pages.push(fullPath);
 });
@@ -22,7 +22,7 @@ const pathToHighResJpgs = "src/pdfs/high-res-jpg/";
 const highResJpgs = readdirSync(pathToHighResJpgs);
 const highResPages: string[] = [];
 
-highResJpgs.map((name) => {
+highResJpgs.forEach((name) => {
   const fullPath = `${pathToHighResJpgs}${name}`;
   highResPages.push(fullPath);
 });
