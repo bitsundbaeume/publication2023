@@ -1,6 +1,6 @@
 .c-box {
 	display: grid;
-	grid-template-columns: 1fr 2fr;
+	grid-template-columns: 2fr 3fr;
 	gap: 2rem;
 	background-color: var(--green-100);
 	position: relative;
@@ -8,6 +8,17 @@
 
 	&__content {
 		padding: 1.625rem 2.125rem 2.125rem 0;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			'headline headline'
+			'subheadline subheadline'
+			'description description'
+			'page-numbers year'
+			'download share';
+		column-gap: 1.5rem;
+
+		// row-gap: 2rem;
 	}
 
 	&__image {
@@ -18,5 +29,69 @@
 		position: absolute;
 		right: -20px;
 		bottom: 0;
+	}
+
+	&__headline,
+	&__subheadline {
+		margin-top: 0;
+	}
+
+	&__headline {
+		grid-area: headline;
+	}
+
+	&__subheadline {
+		grid-area: subheadline;
+		font-size: var(--font-size-lg);
+	}
+
+	&__description {
+		grid-area: description;
+		margin: 0;
+	}
+
+	&__page-numbers,
+	&__year {
+		margin: 2.5rem 0;
+
+		.is-label,
+		.is-number {
+			margin: 0;
+		}
+
+		.is-label {
+			font-style: italic;
+		}
+
+		.is-number {
+			font-weight: 700;
+		}
+	}
+
+	&__page-numbers {
+		grid-area: page-numbers;
+	}
+
+	&__year {
+		grid-area: year;
+	}
+
+	&__download,
+	.c-share {
+		--padding-button: 0.75rem 1.625rem;
+
+		font-size: var(--font-size-md);
+		display: flex;
+		align-items: center;
+		gap: .75rem;
+	}
+
+	&__download {
+		grid-area: download;
+		text-decoration: none;
+	}
+
+	.c-share {
+		grid-area: share;
 	}
 }

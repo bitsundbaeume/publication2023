@@ -9,6 +9,7 @@
       focusable="false"
       aria-label="Share"
       class="c-share__icon"
+      :size="26"
     />
     Share publication
   </button>
