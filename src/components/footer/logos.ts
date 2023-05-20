@@ -69,7 +69,7 @@ export const supporters: Logo[] = [
   },
   {
     name: "Free Software Foundation Europe",
-    logo: "src/images/logos/traegerinnen/fsfe.svg",
+    logo: "src/images/logos/traegerinnen/fsfe-cropped.svg",
     url: "https://fsfe.org/",
     alt: "Free Software Foundation Europe Logo",
   },
