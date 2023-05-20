@@ -19,6 +19,7 @@
           href="#1"
           aria-label="First page"
           class="c-flipbook__action-bar-button c-button c-button--primary is-first"
+          :class="{ 'is-disabled': flipbook.page === 1 }"
         >
           <ChevronFirst />
         </a>
@@ -65,6 +66,7 @@
           :href="`#${pages.length}`"
           aria-label="Last page"
           class="c-flipbook__action-bar-button c-button c-button--primary is-last"
+          :class="{ 'is-disabled': flipbook.page === pages.length }"
         >
           <ChevronLast />
         </a>
