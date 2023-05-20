@@ -5,21 +5,27 @@ import FlipBook from "@components/FlipBook.vue";
 import { Icon } from "astro-icon";
 import Share from "@components/Share.vue";
 import "@styles/components/_box.scss";
+import { readdirSync } from "node:fs";
 
-// Example pages
-const pages = [
-  "src/pdfs/jpg/0001.jpg",
-  "src/pdfs/jpg/0002.jpg",
-  "src/pdfs/jpg/0003.jpg",
-  "src/pdfs/jpg/0004.jpg",
-  "src/pdfs/jpg/0005.jpg",
-  "src/pdfs/jpg/0006.jpg",
-  "src/pdfs/jpg/0007.jpg",
-  "src/pdfs/jpg/0008.jpg",
-  "src/pdfs/jpg/0009.jpg",
-  "src/pdfs/jpg/0010.jpg",
-  "src/pdfs/jpg/0011.jpg",
-];
+// Get jpgs
+const pathToJpgs = "src/pdfs/jpg/";
+const jpgs = readdirSync(pathToJpgs);
+const pages: string[] = [];
+
+jpgs.map((name) => {
+  const fullPath = `${pathToJpgs}${name}`;
+  pages.push(fullPath);
+});
+
+// Get high res jpgs
+const pathToHighResJpgs = "src/pdfs/high-res-jpg/";
+const highResJpgs = readdirSync(pathToHighResJpgs);
+const highResPages: string[] = [];
+
+highResJpgs.map((name) => {
+  const fullPath = `${pathToHighResJpgs}${name}`;
+  highResPages.push(fullPath);
+});
 ---
 
 <Layout title="Welcome to Astro.">
@@ -89,5 +95,5 @@ const pages = [
       class="c-box__pixel"
     />
   </section>
-  <FlipBook pages={pages} client:only />
+  <FlipBook pages={pages} :pagesHiRes={highResPages} client:only />
 </Layout>

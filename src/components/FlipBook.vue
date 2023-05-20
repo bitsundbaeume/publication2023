@@ -5,6 +5,7 @@
     v-slot="flipbook"
     class="c-flipbook"
     :pages="pages"
+    :pages-hi-res="pagesHiRes"
     :start-page="pageNum"
     @flip-left-start="onFlipLeftStart"
     @flip-left-end="onFlipLeftEnd"
@@ -82,6 +83,7 @@ import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ZoomIn, ZoomOut }
 
 export interface FlipbookProps {
   pages: string[];
+  pagesHiRes?: string[];
 }
 
 const props = defineProps<FlipbookProps>()

@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import path, { resolve, dirname } from 'node:path';
+import path, { dirname } from 'node:path';
 import { fileURLToPath } from 'url';
 import sitemap from '@astrojs/sitemap';
 import prefetch from '@astrojs/prefetch';
