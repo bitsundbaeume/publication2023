@@ -1,5 +1,6 @@
 <template>
   <Flipbook
+    id="flipbook"
     ref="flipbook"
     v-slot="flipbook"
     class="c-flipbook"
@@ -14,6 +15,13 @@
   >
     <div class="c-flipbook__action-bar">
       <div class="c-flipbook__action-bar-inner">
+        <a
+          href="#1"
+          aria-label="First page"
+          class="c-flipbook__action-bar-button c-button c-button--primary is-first"
+        >
+          <ChevronFirst />
+        </a>
         <button
           :disabled="!flipbook.canFlipLeft"
           aria-label="Previous page"
@@ -53,6 +61,13 @@
         >
           <ChevronRight />
         </button>
+        <a
+          :href="`#${pages.length}`"
+          aria-label="Last page"
+          class="c-flipbook__action-bar-button c-button c-button--primary is-last"
+        >
+          <ChevronLast />
+        </a>
       </div>
     </div>
   </Flipbook>
@@ -61,11 +76,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import Flipbook from 'flipbook-vue'
-import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-vue-next'
+import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-vue-next'
 
 const flipbook = ref(null)
 const flipbookContentHeight = ref('')
-const pageNum = ref(0)
+const pageNum = ref(1)
 
 // Example pages
 const pages = [

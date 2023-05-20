@@ -18,14 +18,15 @@
 		grid-template-columns: repeat(4, 1fr);
 		grid-template-areas:
 			'page-num page-num page-num page-num'
-			'prev zoom-in zoom-out next';
+			'. zoom-in zoom-out .'
+			'first prev next last';
 		align-items: center;
 		gap: .5rem;
 
 		@include mx.breakpoint('sm') {
-			grid-template-columns: repeat(5, 1fr);
+			grid-template-columns: repeat(7, 1fr);
 			grid-template-areas:
-        'prev zoom-in page-num zoom-out next';
+        'first prev zoom-in page-num zoom-out next last';
 		}
 	}
 
@@ -42,6 +43,14 @@
 
 		&.is-next {
 			grid-area: next;
+		}
+
+		&.is-last {
+			grid-area: last;
+		}
+
+		&.is-first {
+			grid-area: first;
 		}
 
 		&.is-zoom-in {
