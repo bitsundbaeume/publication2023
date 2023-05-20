@@ -7,6 +7,13 @@ import Share from "@components/Share.vue";
 import "@styles/components/_box.scss";
 import { readdirSync } from "node:fs";
 
+// TODO: Replace with real SEO data
+const seo = {
+  title: "Example",
+  metaTitle: "Example",
+  metaDescription: "Example",
+};
+
 // Get jpgs
 const pathToJpgs = "src/pdfs/jpg/";
 const jpgs = readdirSync(pathToJpgs);
@@ -28,7 +35,7 @@ highResJpgs.forEach((name) => {
 });
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout seo={seo}>
   <section class="c-box">
     <Img
       src="src/pdfs/jpg/0001.jpg"
