@@ -1,10 +1,12 @@
 # Publication 2023
 
+<img src="https://bits-und-baeume.org/assets/images/bits-und-baeume-logo_CCBY-schauschau.cc.svg" alt="Logo Bits &amp; Bäume">
+
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
-```
+```txt
 /
 ├── public/
 │   └── favicon.svg
@@ -37,7 +39,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## How to create new flipbook content
+## 📖 How to create new flipbook content
 
 ### Delete the old content
 
