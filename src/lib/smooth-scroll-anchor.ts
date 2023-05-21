@@ -1,4 +1,3 @@
-
 /**
  * Scroll to an anchor with a nice smooth animation
  *
@@ -7,12 +6,12 @@
  *
  * @return  {void}
  */
-const smoothScrollTo = (event: Event, target: HTMLElement) => {
-  const id = target.getAttribute('href');
+const smoothScrollTo = (target: HTMLElement | string, event?: Event): void => {
+  const id = event ? target.getAttribute('href') : target;
 
   if (id === null || id === '#' || !isSelectorValid(id)) return;
 
-  event.preventDefault();
+  if (event) event.preventDefault();
 
   document.querySelector(id)?.scrollIntoView({
     block: 'start',
@@ -45,17 +44,17 @@ const isSelectorValid = (selector: string) => {
 
 export default (() => {
   const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
-  // const pushState = history.pushState;
-  // console.log(pushState);
-  // const myOldUrl = window.location.href;
-  window.addEventListener('hashchange', (event) => {
-    console.log('hashchange', window.location.href, event.target);
 
-    // window.history.pushState({}, null, myOldUrl);
+  window.addEventListener('hashchange', (event) => {
+    // if query string is number
+    if (window.location.href.match(/#(\d+)/)) {
+      smoothScrollTo('#flipbook')
+    }
   });
+
   allAnchorLinks.forEach(link => {
     link.addEventListener('click', event => {
-      smoothScrollTo(event, event.target as HTMLElement);
+      smoothScrollTo(event.target as HTMLElement, event);
     })
   })
 })();

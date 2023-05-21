@@ -2,9 +2,6 @@
 	display: grid;
 	grid-template-columns: 2fr 3fr;
 	gap: 2rem;
-	background-color: var(--green-100);
-	position: relative;
-	border-radius: 8px;
 
 	&__content {
 		padding: 1.625rem 2.125rem 2.125rem 0;
@@ -17,18 +14,10 @@
 			'page-numbers year'
 			'download share';
 		column-gap: 1.5rem;
-
-		// row-gap: 2rem;
 	}
 
 	&__image {
 		border-radius: 8px;
-	}
-
-	&__pixel {
-		position: absolute;
-		right: -20px;
-		bottom: 0;
 	}
 
 	&__headline,

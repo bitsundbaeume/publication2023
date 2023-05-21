@@ -6,6 +6,7 @@ import { Icon } from "astro-icon";
 import Share from "@components/Share.vue";
 import "@styles/components/_box.scss";
 import { readdirSync } from "node:fs";
+import TableOfContents from "@components/TableOfContents.astro";
 
 // TODO: Replace with real SEO data
 const seo = {
@@ -33,6 +34,17 @@ highResJpgs.forEach((name) => {
   const fullPath = `${pathToHighResJpgs}${name}`;
   highResPages.push(fullPath);
 });
+
+const menuItems = [
+  {
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    url: "#1",
+  },
+  {
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    url: "#2",
+  },
+];
 ---
 
 <Layout seo={seo}>
@@ -88,13 +100,9 @@ highResJpgs.forEach((name) => {
       </a>
       <Share class:list={"c-box__share"} client:only />
     </div>
-    <img
-      src="src/images/pixels/pixel-box-img.svg"
-      alt="Pixel"
-      loading="lazy"
-      decoding="async"
-      class="c-box__pixel"
-    />
   </section>
+
+  <TableOfContents menuItems={menuItems} />
+
   <FlipBook pages={pages} :pagesHiRes={highResPages} client:only />
 </Layout>

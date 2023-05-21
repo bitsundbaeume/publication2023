@@ -1,0 +1,39 @@
+---
+import "@styles/components/_table-of-contents.scss";
+import { smoothScroll } from "scr/lib/smooth-scroll";
+
+export interface Props {
+  menuItems: [
+    {
+      title: string;
+      url: string;
+    }
+  ];
+}
+
+const { menuItems } = Astro.props;
+---
+
+<section class="c-table-of-contents">
+  <h2>Table of Contents</h2>
+  <nav class="c-table-of-contents__nav">
+    <menu class="c-table-of-contents__menu">
+      {
+        menuItems.map((item) => (
+          <li class="c-table-of-contents__menu-item">
+            <a href={item.url} class="c-table-of-contents__menu-link">
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </menu>
+  </nav>
+  <img
+    src="src/images/pixels/pixel-box-img.svg"
+    alt="Pixel"
+    loading="lazy"
+    decoding="async"
+    class="c-table-of-contents__pixel"
+  />
+</section>

@@ -1,0 +1,12 @@
+.c-table-of-contents {
+	border-radius: 8px;
+	background-color: var(--green-100);
+	position: relative;
+	padding: 1.625rem 2.125rem;
+
+	&__pixel {
+		position: absolute;
+		right: -20px;
+		bottom: 0;
+	}
+}
