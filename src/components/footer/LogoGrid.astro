@@ -2,6 +2,11 @@
 import { Img } from "astro-imagetools/components";
 import type { Logo } from "@components/footer/types";
 
+export interface Props {
+  logos: Logo[];
+  classModifier?: string;
+}
+
 const { logos, classModifier } = Astro.props;
 ---
 
