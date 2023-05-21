@@ -109,6 +109,12 @@ export const specialThanks: Logo[] = [
     url: "https://uberspace.de/",
     alt: "Uber Space Logo",
   },
+  {
+    name: "Web Shaped",
+    logo: "src/images/logos/thanks_to/web_shaped_logo_23_inline_trans_dark_regular-big.svg",
+    url: "https://webshaped.de/",
+    alt: "Web Shaped (Felix Scholze) Logo",
+  },
 ];
 
 export const funded: Logo[] = [
