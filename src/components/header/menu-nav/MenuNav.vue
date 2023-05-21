@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import MenuItem from '@components/menu-nav/MenuItem.vue';
+import MenuItem from '@components/header/menu-nav/MenuItem.vue';
 
 export interface MenuProps {
   menuItems: [

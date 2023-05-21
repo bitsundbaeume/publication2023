@@ -55,7 +55,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue';
-import MenuSubmenu from '@components/menu-nav/MenuSubmenu.vue';
+import MenuSubmenu from '@components/header/menu-nav/MenuSubmenu.vue';
 import { ChevronRight } from 'lucide-vue-next';
 import { onClickOutside } from '@vueuse/core';
 

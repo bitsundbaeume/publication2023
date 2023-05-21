@@ -53,7 +53,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import MenuNav from '@components/menu-nav/MenuNav.vue';
+import MenuNav from '@components/header/menu-nav/MenuNav.vue';
 
 export interface MainNavProps {
   menuItems: [
