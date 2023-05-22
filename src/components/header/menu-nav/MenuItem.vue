@@ -28,7 +28,7 @@
         class="c-menu__link is-menu-title"
         role="button"
         tabindex="0"
-        @click="toggleMenuItem"
+        @click.prevent="toggleMenuItem"
         @keydown="toggleMenuItem"
       >
         <span>{{ props.menuItem.label }}</span>
@@ -46,6 +46,7 @@
           <MenuItem
             :menu-item="child"
             :depth="depth + 1"
+            @click="toggleMenuItem"
           />
         </template>
       </MenuSubmenu>
@@ -56,7 +57,6 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue';
 import MenuSubmenu from '@components/header/menu-nav/MenuSubmenu.vue';
-import { ChevronRight } from 'lucide-vue-next';
 import { onClickOutside } from '@vueuse/core';
 
 export interface MenuItemProps {
@@ -82,9 +82,9 @@ const submenu = ref(null)
 /**
  * If the user clicks outside the submenu, close the submenu
  *
- * @return  {void}  [return description]
+ * @return  {void}
  */
-onClickOutside(submenu, (event) => {
+onClickOutside(submenu, (event): void => {
   // const targetPath = event.composedPath();
   // const ignoreNode = document.querySelector('.c-menu__item.has-child');
   // if (ignoreNode && !targetPath.includes(ignoreNode)) {
