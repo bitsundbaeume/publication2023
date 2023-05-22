@@ -48,7 +48,7 @@ const menuItems = [
 ---
 
 <Layout seo={seo}>
-  <section class="c-box">
+  <section class="c-box" id="overview">
     <Img
       src="src/pdfs/jpg/0001.jpg"
       alt="PLATZHALTER"
@@ -102,7 +102,7 @@ const menuItems = [
     </div>
   </section>
 
-  <TableOfContents menuItems={menuItems} />
-
   <FlipBook pages={pages} :pagesHiRes={highResPages} client:only />
+
+  <TableOfContents menuItems={menuItems} />
 </Layout>
