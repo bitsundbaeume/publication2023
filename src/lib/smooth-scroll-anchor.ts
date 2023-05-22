@@ -36,25 +36,23 @@ const queryCheck = (selector: string) => document.createDocumentFragment().query
  *
  * @return  {bool}
  */
-const isSelectorValid = (selector: string) => {
+const isSelectorValid = (selector: string): Boolean => {
   try { queryCheck(selector) }
   catch { return false }
   return true
 }
 
 export default (() => {
-  const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
-
-  window.addEventListener('hashchange', (event) => {
-    // if query string is number
-    if (window.location.href.match(/#(\d+)/)) {
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash.match(/#(\d+)/)) {
       smoothScrollTo('#flipbook')
     }
-  });
+  })
 
-  allAnchorLinks.forEach(link => {
-    link.addEventListener('click', event => {
-      smoothScrollTo(event.target as HTMLElement, event);
-    })
+  window.addEventListener('click', event => {
+    const target = event.target as HTMLElement;
+
+    if (target?.tagName?.toLowerCase() !== 'a') return;
+    smoothScrollTo(event.target as HTMLElement, event);
   })
 })();
