@@ -162,25 +162,6 @@ const setPageFromHash = () => {
   if (isFinite(n)) pageNum.value = n
 }
 
-const resizeObserver = new ResizeObserver(() => {
-  const flipbookEl = document.querySelector('.c-flipbook .bounding-box')
-
-  console.log(flipbookEl.getBoundingClientRect().height);
-  flipbookContentHeight.value = `${flipbookEl.getBoundingClientRect().height}px`
-  // const viewportHeight = window.innerHeight;
-  // const logoHeight = document.querySelector('.c-logo')?.getBoundingClientRect().height;
-  // const mainNavToggleHeight = document.querySelector('.c-main-nav__toggle')?.getBoundingClientRect().height;
-  // const headerElementsHeight = logoHeight && mainNavToggleHeight ? logoHeight + mainNavToggleHeight : 0;
-  // const remainingHeight = viewportHeight - headerElementsHeight;
-
-  // flyoutHeight.value = `${remainingHeight}px`;
-
-  // if (window.innerWidth > 768) {
-  //   isOpen.value = false;
-  //   controlScroll(false)
-  // }
-});
-
 onMounted(() => {
   window.addEventListener('keydown', (ev) => {
     if (!flipbook.value) return
@@ -190,17 +171,10 @@ onMounted(() => {
 
   window.addEventListener('hashchange', setPageFromHash)
   setPageFromHash()
-
-  // const flipbookEl = document.querySelector('body') as HTMLElement;
-  // resizeObserver.observe(flipbookEl);
 })
 
 </script>
 
 <style lang="scss">
 @use '@styles/components/flipbook';
-
-// .c-flipbook {
-//   min-height: v-bind(flipbookContentHeight);
-// }
 </style>
