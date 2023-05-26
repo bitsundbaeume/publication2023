@@ -44,7 +44,7 @@ All commands are run from the root of the project, from a terminal:
 ### Delete the old content
 
 ```bash
-rm -rf src/pdfs/jpg && rm -rf src/pdfs/high-res-jps
+rm -rf public/pdfs/jpg && rm -rf public/pdfs/high-res-jps
 ```
 
 ### Create the new content
@@ -55,5 +55,5 @@ rm -rf src/pdfs/jpg && rm -rf src/pdfs/high-res-jps
    1. For the preview DPI 144 and image quality 85
    2. For the high-res DPI 300 and image quality 100
 4. Download the zip file
-5. Unzip the file in to both directories `src/pdfs/jpg` and `src/pdfs/high-res-jps`
+5. Unzip the file in to both directories `public/pdfs/jpg` and `public/pdfs/high-res-jps`
 6. Ready to go!
