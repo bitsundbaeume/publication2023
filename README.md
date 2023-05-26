@@ -1,6 +1,6 @@
 # Publication 2023
 
-<img src="https://bits-und-baeume.org/assets/images/bits-und-baeume-logo_CCBY-schauschau.cc.svg" alt="Logo Bits &amp; Bäume">
+<img src="/public/images/logos/bits-und-baeume-logo_CCBY-schauschau.cc.svg" alt="Logo Bits &amp; Bäume">
 
 ## 🚀 Project Structure
 
