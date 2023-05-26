@@ -16,22 +16,27 @@ const seo = {
 };
 
 // Get jpgs
-const pathToJpgs = "src/pdfs/jpg/";
+const pathToJpgs = "public/pdfs/jpg/";
 const jpgs = readdirSync(pathToJpgs);
 const pages: string[] = [];
 
 jpgs.forEach((name) => {
   const fullPath = `${pathToJpgs}${name}`;
+  fullPath.replace("public/", "");
+
   pages.push(fullPath);
 });
+console.log(pages);
 
 // Get high res jpgs
-const pathToHighResJpgs = "src/pdfs/high-res-jpg/";
+const pathToHighResJpgs = "public/pdfs/high-res-jpg/";
 const highResJpgs = readdirSync(pathToHighResJpgs);
 const highResPages: string[] = [];
 
 highResJpgs.forEach((name) => {
-  const fullPath = `${pathToHighResJpgs}${name}`;
+  const fullPath = `${pathToHighResJpgs.replace("public/", "")}${name}`;
+  fullPath.replace("public/", "");
+
   highResPages.push(fullPath);
 });
 
@@ -102,7 +107,7 @@ const menuItems: object[] = [
 <Layout seo={seo}>
   <section class="c-box" id="overview">
     <Img
-      src="src/pdfs/jpg/0001.jpg"
+      src="pdfs/jpg/0001.jpg"
       alt="PLATZHALTER"
       loading="eager"
       attributes={{

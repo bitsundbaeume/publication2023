@@ -8,6 +8,18 @@ export interface Props {
 }
 
 const { logos, classModifier } = Astro.props;
+
+const replaceExtension = (filename: string, newExtension: string) => {
+  const regex = /(?:\.([^.]+))?$/;
+  console.log();
+
+  return filename.replace(regex, newExtension);
+};
+
+const extensionIs = (filename: string) => {
+  const regex = /(?:\.([^.]+))?$/;
+  return regex.exec(filename)[1];
+};
 ---
 
 <div class={`o-footer__logo-grid o-footer--${classModifier}`}>
@@ -20,7 +32,7 @@ const { logos, classModifier } = Astro.props;
         class="o-footer__logo-grid-item"
         title={logo.name}
       >
-        {logo.logo.includes(".svg") ? (
+        {extensionIs(logo.logo) === "svg" ? (
           <img src={logo.logo} alt={logo.alt} loading="lazy" decoding="async" />
         ) : (
           <Img

@@ -11,7 +11,7 @@
       @click="toggleFlyout"
     >
       <img
-        src="src/images/icons/menu-button.svg"
+        src="images/icons/menu-button.svg"
         alt="Menu Icon"
       >
     </button>
