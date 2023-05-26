@@ -21,9 +21,7 @@ const jpgs = readdirSync(pathToJpgs);
 const pages: string[] = [];
 
 jpgs.forEach((name) => {
-  const fullPath = `${pathToJpgs}${name}`;
-  fullPath.replace("public/", "");
-
+  const fullPath = `${pathToJpgs.replace("public/", "")}${name}`;
   pages.push(fullPath);
 });
 console.log(pages);
@@ -35,8 +33,6 @@ const highResPages: string[] = [];
 
 highResJpgs.forEach((name) => {
   const fullPath = `${pathToHighResJpgs.replace("public/", "")}${name}`;
-  fullPath.replace("public/", "");
-
   highResPages.push(fullPath);
 });
 
