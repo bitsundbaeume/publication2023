@@ -84,7 +84,7 @@ export const supporters: Logo[] = [
 export const media: Logo[] = [
   {
     name: "Reset",
-    logo: "mages/logos/foerderinnen/logo-reset.svg",
+    logo: "images/logos/foerderinnen/logo-reset.svg",
     url: "https://reset.org/",
     alt: "Reset Logo",
   },
