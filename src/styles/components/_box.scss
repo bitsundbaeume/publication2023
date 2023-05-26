@@ -1,10 +1,21 @@
+@use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
+
 .c-box {
 	display: grid;
-	grid-template-columns: 2fr 3fr;
+	grid-template-columns: 1fr;
+	grid-template-areas:
+		'image'
+		'content';
 	gap: 2rem;
 
+	@include mx.breakpoint('sm') {
+		grid-template-columns: 2fr 3fr;
+		grid-template-areas:
+			'image content';
+	}
+
 	&__content {
-		padding: 1.625rem 2.125rem 2.125rem 0;
+		grid-area: content;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-template-areas:
@@ -12,11 +23,30 @@
 			'subheadline subheadline'
 			'description description'
 			'page-numbers year'
-			'download share';
+			'download download'
+			'share share';
 		column-gap: 1.5rem;
+
+		@include mx.breakpoint('xs') {
+			grid-template-areas:
+				'headline headline'
+				'subheadline subheadline'
+				'description description'
+				'page-numbers year'
+				'download share';
+		}
+		@include mx.breakpoint('sm') {
+			grid-template-areas:
+				'headline headline'
+				'subheadline subheadline'
+				'description description'
+				'page-numbers year'
+				'download share';
+		}
 	}
 
 	&__image {
+		grid-area: image;
 		border-radius: 8px;
 	}
 
@@ -27,6 +57,7 @@
 
 	&__headline {
 		grid-area: headline;
+		margin-top: 1.625rem;
 	}
 
 	&__subheadline {
@@ -78,6 +109,10 @@
 	&__download {
 		grid-area: download;
 		text-decoration: none;
+
+		@include mx.breakpoint('xs', 'max') {
+			margin-bottom: 1rem;
+		}
 	}
 
 	.c-share {
