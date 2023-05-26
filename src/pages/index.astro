@@ -35,14 +35,66 @@ highResJpgs.forEach((name) => {
   highResPages.push(fullPath);
 });
 
-const menuItems = [
+const menuItems: object[] = [
   {
-    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    title: "Lorem ipsum dolor ",
     url: "#1",
+    pageNumber: 1,
   },
   {
-    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    title: "Lorem ipsum dolor sit amet ",
     url: "#2",
+    pageNumber: 2,
+  },
+  {
+    title: "Lorem ipsum ",
+    url: "#3",
+    pageNumber: 3,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    url: "#4",
+    pageNumber: 4,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    url: "#5",
+    pageNumber: 5,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    url: "#6",
+    pageNumber: 6,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    url: "#7",
+    pageNumber: 7,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    url: "#8",
+    pageNumber: 8,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    url: "#9",
+    pageNumber: 9,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    url: "#10",
+    pageNumber: 10,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    url: "#11",
+    pageNumber: 11,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    url: "#12",
+    pageNumber: 12,
   },
 ];
 ---
@@ -104,5 +156,5 @@ const menuItems = [
 
   <FlipBook pages={pages} :pagesHiRes={highResPages} client:only />
 
-  <TableOfContents menuItems={menuItems} />
+  <TableOfContents toc={menuItems} />
 </Layout>
