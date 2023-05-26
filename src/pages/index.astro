@@ -104,8 +104,10 @@ const menuItems: object[] = [
     <Img
       src="src/pdfs/jpg/0001.jpg"
       alt="PLATZHALTER"
+      loading="eager"
       attributes={{
         img: {
+          fetchpriority: "high",
           class: "c-box__image",
         },
       }}
