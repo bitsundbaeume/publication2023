@@ -1,6 +1,6 @@
 ---
 import { Img } from "astro-imagetools/components";
-import Layout from "../layouts/Layout.astro";
+import Layout from "../layouts/SinglePageLayout.astro";
 import FlipBook from "@components/FlipBook.vue";
 import { Icon } from "astro-icon";
 import Share from "@components/Share.vue";
@@ -99,7 +99,7 @@ const menuItems: object[] = [
 ];
 ---
 
-<Layout seo={seo}>
+<Layout seo={seo} contentModifierClass="index">
   <section class="c-box" id="overview">
     <Img
       src="pdfs/jpg/0001.jpg"

@@ -18,6 +18,8 @@ export interface Props {
 const { seo, contentModifierClass } = Astro.props;
 
 const modifierClass = `o-content--${contentModifierClass}`;
+
+// console.log(Astro.props);
 ---
 
 <!DOCTYPE html>
@@ -69,9 +71,7 @@ const modifierClass = `o-content--${contentModifierClass}`;
   <body>
     <Header />
 
-    <main class:list={["o-content", modifierClass]}>
-      <slot />
-    </main>
+    <slot />
 
     <ToTop />
 

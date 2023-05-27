@@ -1,23 +1,28 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "../layouts/Layout.astro";
+import { CollectionEntry, getCollection } from "astro:content";
+import Layout from "../layouts/PublicationLayout.astro";
+import TableOfContents from "@components/TableOfContents.vue";
 
 export async function getStaticPaths() {
-  const journalEntries = await getCollection("journal");
+  const publication2023Entries = await getCollection("publication2023");
 
-  return journalEntries.map((entry) => ({
+  return publication2023Entries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+interface Props {
+  entry: CollectionEntry<"publication2023">;
+}
 
-console.log(entry);
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
 ---
 
 <Layout seo={entry.data.seo} contentModifierClass="publication">
-  <h1>{entry.data.title}</h1>
+  <!-- <h1>{entry.data.title}</h1> -->
   <Content />
+
+  <TableOfContents headings={headings} client:visible />
 </Layout>

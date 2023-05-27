@@ -1,7 +1,7 @@
 
 import { z, defineCollection } from 'astro:content';
 
-const journalCollection = defineCollection({
+const publication2023Collection = defineCollection({
   type: 'content',
   schema: z.object({
     isDraft: z.boolean(),
@@ -9,12 +9,12 @@ const journalCollection = defineCollection({
     seo: z.object({
       title: z.string().min(1).optional(),
       metaTitle: z.string().min(1).optional(),
-      metaDescription: z.string().min(1).optional(),
+      metaDescription: z.string().min(70).max(155).optional(),
       image: z.string().url().optional(),
     }).optional(),
   }),
 });
 
 export const collections = {
-  'journal': journalCollection,
+  'publication2023': publication2023Collection,
 };
