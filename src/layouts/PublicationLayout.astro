@@ -1,4 +1,6 @@
 ---
+import "@styles/objects/_sidebar.scss";
+
 import BaseLayout from "../layouts/Layout.astro";
 import type Props from "../layouts/Layout.astro";
 
@@ -8,12 +10,14 @@ const modifierClass = `o-content--${contentModifierClass}`;
 ---
 
 <BaseLayout seo={seo}>
-  <main class:list={["o-content", modifierClass]}>
-    <article>
-      <slot />
-    </article>
-  </main>
-  <aside>
-    <slot name="aside" />
-  </aside>
+  <div class:list={["o-content", modifierClass]}>
+    <main>
+      <article class="o-publication">
+        <slot />
+      </article>
+    </main>
+    <aside class="o-sidebar">
+      <slot name="sidebar" />
+    </aside>
+  </div>
 </BaseLayout>

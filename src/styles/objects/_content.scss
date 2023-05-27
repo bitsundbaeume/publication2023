@@ -13,4 +13,14 @@
 		flex-direction: column;
 		row-gap: 8rem;
 	}
+
+	&--publication {
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+		grid-template-areas: 'publication sidebar';
+
+		.o-publication {
+			grid-area: publication;
+		}
+	}
 }

@@ -23,11 +23,12 @@ const { Content, headings } = await entry.render();
 <Layout seo={entry.data.seo} contentModifierClass="publication">
   <!-- <h1>{entry.data.title}</h1> -->
   <Content />
+
   <TableOfContents
     headings={headings}
     collection={collection}
     currentEntry={entry.id}
-    name="aside"
     client:only
+    slot="sidebar"
   />
 </Layout>

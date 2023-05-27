@@ -13,7 +13,6 @@
           class="c-toc__page"
         >
           <a
-
             :href="`/${collectionEntry.slug}`"
             v-text="collectionEntry.data.title"
           />
