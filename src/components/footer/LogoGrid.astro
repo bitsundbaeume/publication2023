@@ -11,7 +11,6 @@ const { logos, classModifier } = Astro.props;
 
 const replaceExtension = (filename: string, newExtension: string) => {
   const regex = /(?:\.([^.]+))?$/;
-  console.log();
 
   return filename.replace(regex, newExtension);
 };

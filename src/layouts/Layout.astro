@@ -12,9 +12,12 @@ export interface Props {
     metaTitle?: string;
     metaDescription?: string;
   };
+  contentModifierClass?: string;
 }
 
-const { seo } = Astro.props;
+const { seo, contentModifierClass } = Astro.props;
+
+const modifierClass = `o-content--${contentModifierClass}`;
 ---
 
 <!DOCTYPE html>
@@ -66,7 +69,7 @@ const { seo } = Astro.props;
   <body>
     <Header />
 
-    <main class="o-content">
+    <main class:list={["o-content", modifierClass]}>
       <slot />
     </main>
 

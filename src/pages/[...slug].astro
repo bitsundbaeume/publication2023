@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const journalEntries = await getCollection("journal");
+
+  return journalEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+console.log(entry);
+---
+
+<Layout seo={entry.data.seo} contentModifierClass="publication">
+  <h1>{entry.data.title}</h1>
+  <Content />
+</Layout>
