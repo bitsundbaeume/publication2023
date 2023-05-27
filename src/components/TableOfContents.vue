@@ -3,20 +3,54 @@
     :id="tocId"
     class="c-toc"
   >
-    <template
-      v-for="(headline, index) in headings"
-      :key="index"
-    >
-      <!-- <a
-        :href="`#${slugify(JSON.parse(headline.attributesJSON).content, { lower: true })}`"
-        :class="[
-          `c-toc__link c-toc__link--depth-${JSON.parse(headline.attributesJSON).level}`,
-          {
-            'is-active': activeHeadline === slugify(JSON.parse(headline.attributesJSON).content, { lower: true })
-          }
-        ]"
-      >{{ JSON.parse(headline.attributesJSON).content }}</a> -->
-    </template>
+    <ul class="c-toc__pages">
+      <template
+        v-for="(collectionEntry, collectionIndex) in collection"
+        :key="collectionIndex"
+      >
+        <li
+          v-if="collectionEntry.id !== currentEntry"
+          class="c-toc__page"
+        >
+          <a
+
+            :href="`/${collectionEntry.slug}`"
+            v-text="collectionEntry.data.title"
+          />
+        </li>
+        <li
+          v-else
+          class="c-toc__page is-current"
+        >
+          <a
+            :href="`/${collectionEntry.slug}`"
+            v-text="collectionEntry.data.title"
+          />
+          <ul class="c-toc__current-toc">
+            <template
+              v-for="(headline, headingsIndex) in headings"
+
+              :key="headingsIndex"
+            >
+              <li
+                :class="[
+                  `c-toc__headline c-toc__headline--depth-${headline.depth}`,
+                  {
+                    'is-active': activeHeadline === headline.slug
+                  }
+                ]"
+              >
+                <a
+                  class="c-toc__link"
+                  :href="`#${headline.slug}`"
+                  v-text="headline.text"
+                />
+              </li>
+            </template>
+          </ul>
+        </li>
+      </template>
+    </ul>
   </nav>
 </template>
 
@@ -24,6 +58,8 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 
 export interface TableOfContentsProps {
+  collection: Array;
+  currentEntry: string;
   headings: [
     {
       depth: number;
@@ -54,8 +90,12 @@ observer.value = new IntersectionObserver((entries) => {
   rootMargin: '-10% 0px',
 });
 
+const activeCollection = () => {
+  return props.collection.filter((entry) => entry.slug === props.currentEntry);
+}
+
 onMounted(() => {
-  if (observer.value) document.querySelectorAll('.c-blocks h2[id], .c-blocks h3[id]').forEach(section => observer?.value?.observe(section));
+  if (observer.value) document.querySelectorAll('h1[id], h2[id], h3[id]').forEach(section => observer?.value?.observe(section));
 })
 
 onUnmounted(() => {
