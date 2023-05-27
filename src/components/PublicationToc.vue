@@ -1,31 +1,32 @@
 <template>
   <nav
     :id="tocId"
-    class="c-toc"
+    class="c-pub-toc"
   >
-    <ul class="c-toc__pages">
+    <ul class="c-pub-toc__pages u-list-reset">
       <template
         v-for="(collectionEntry, collectionIndex) in collection"
         :key="collectionIndex"
       >
         <li
           v-if="collectionEntry.id !== currentEntry"
-          class="c-toc__page"
+          class="c-pub-toc__page"
         >
           <a
+            class="c-pub-toc__link"
             :href="`/${collectionEntry.slug}`"
             v-text="collectionEntry.data.title"
           />
         </li>
         <li
           v-else
-          class="c-toc__page is-current"
+          class="c-pub-toc__page is-current"
         >
-          <a
-            :href="`/${collectionEntry.slug}`"
+          <p
+            class="c-pub-toc__page-title"
             v-text="collectionEntry.data.title"
           />
-          <ul class="c-toc__current-toc">
+          <ul class="c-pub-toc__current-toc u-list-reset">
             <template
               v-for="(headline, headingsIndex) in headings"
 
@@ -33,14 +34,14 @@
             >
               <li
                 :class="[
-                  `c-toc__headline c-toc__headline--depth-${headline.depth}`,
+                  `c-pub-toc__headline is-depth-${headline.depth}`,
                   {
                     'is-active': activeHeadline === headline.slug
                   }
                 ]"
               >
                 <a
-                  class="c-toc__link"
+                  class="c-pub-toc__link"
                   :href="`#${headline.slug}`"
                   v-text="headline.text"
                 />
@@ -85,8 +86,8 @@ observer.value = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.75,
-  rootMargin: '-10% 0px',
+  threshold: 0,
+  rootMargin: '-50% 0px',
 });
 
 const activeCollection = () => {
@@ -101,7 +102,7 @@ onUnmounted(() => {
   if (observer.value) observer.value.disconnect();
 })
 </script>
-<!--
+
 <style lang="scss">
-@use '@styles/components/table-of-contents.scss';
-</style> -->
+@use '@styles/components/pub-toc.scss';
+</style>

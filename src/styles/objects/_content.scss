@@ -16,8 +16,9 @@
 
 	&--publication {
 		display: grid;
-		grid-template-columns: 3fr 1fr;
+		grid-template-columns: 6fr 3fr;
 		grid-template-areas: 'publication sidebar';
+		column-gap: 4rem;
 
 		.o-publication {
 			grid-area: publication;

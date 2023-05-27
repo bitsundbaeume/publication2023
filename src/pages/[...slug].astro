@@ -1,7 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
 import Layout from "../layouts/PublicationLayout.astro";
-import TableOfContents from "@components/TableOfContents.vue";
+import TableOfContents from "@components/PublicationToc.vue";
 
 export async function getStaticPaths() {
   const publication2023Entries = await getCollection("publication2023");
