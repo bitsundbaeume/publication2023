@@ -1,5 +1,5 @@
 ---
-title: "1.1 What Your Data Discloses About Others"
+title: "1.2 No Blockchains on a Dead Planet "
 isDraft: false
 seo:
   title: "description"
@@ -7,12 +7,12 @@ seo:
   metaDescription: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."
 ---
 
-# 1.1 What Your Data Discloses About Others
+# 1.2 No Blockchains on a Dead Planet
 
 Is Europe getting a hold on tech? New legislation such as the General Data Protection Regulation (GDPR), the Digital Services Act, and the Digital Markets Act have followed each other in rapid succession, and the Artificial Intelligence (AI) Act is in the pipeline. Internationally, Brussels is hailed as setting a high global standard that ripples through the world, with different countries adopting the European blueprint (Bendiek and Römer, 2019).
 Beyond rules on paper, European lawyers are winning major lawsuits. Recently, based on the GDPR, it was ruled that social media giant Meta has to ask in a yes/no question for permission to show personalised advertisements (Milmo, 2023; noyb, 2023). While a major win for digital autonomy advocates, that ruling also exemplifies the focus on individual choice in reining in the fourth industrial revolution. Yet, there is another dimension to this story, one that is at the heart of the profitability of Big Tech yet remains inconspicuous to the public eye - the impact on others of sharing one’s data.
 
-## It is not just about you
+## Environmental Impact of the Blockchain Technology
 
 Current data regulation (the laws regulating how data can be extracted, stored, and shared by, for instance, companies) needs to be revised (Micheli et al., 2020; Pike, 2020), as current buzzwords such as transparency, consent, and personal data protection distract from the real deal (Affeldt and Krüger, 2020; Bietti, 2020; Finck and Pallas, 2020; Graef et al., 2018; Søe et al., 2021).
 In her recent publication ‹Relational Theory of Data› (2021), US law scholar Salomé Viljoen calls attention to the social meaning of our data and the value it holds for data collectors such as Meta, Alphabet, and Amazon. Viljoen, who specialises in the political economy of social data, proposes an informational framework that distinguishes a horizontal and a vertical dimension (2021, p. 607). The vertical dimension delineates the connection between the data subject and data collector [image 1]. It captures the technical aspect of how data flows as well as legal considerations of the contract under which the data extraction takes place (‹terms and conditions›). This relation plays a key role in current regulation: Is privacy breached? Is there genuine consent? But also, how could individuals financially profit from the value of their data?
@@ -28,7 +28,7 @@ Take for instance AI that helps smooth job application processes. The idea is si
 Let’s imagine Alex, Bo, and Charlie. Alex is a successful employee at the company to which Bo and Charlie are applying. This company uses AI to filter through its many applications and selects Bo as a potential candidate but not Charlie, even though Charlie and Bo have very similar credentials – the only difference is their gender. Like the infamous Amazon hiring algorithm (Dastin, 2018), the AI determined that CVs with gendered words such as ‹women’s college› or ‹women’s chess club› indicated a smaller likeliness to fit the company because the CVs of successful employees, such as Alex, did not contain such words.
 Societal concerns about biased programmes are being voiced and are starting to be picked up in legislation. In the upcoming European AI Act, for example, algorithms used during recruitment are flagged as high risk (Joyner, 2023). Still, these regulations are yet to address fully the relation dynamic of the data’s value.
 
-## Colouring someone else’s image
+## Lack of real-world applications and the issue of power and inequality
 
 It is important to emphasise that the population-based connections are a problem not because they are incidental to the way our data economy works. Rather, they are an issue because, even though they are the crux of the data economy (Viljoen, 2021, pp. 586–589), they stay out of the limelight. For instance, a recent study for the European Parliament finds that the money Amazon makes from selling data about the people who browse its website does not stem from personal data at all. Instead, it uses anonymised data to create abstract profiles describing groups of people (Mildebrath, 2022).
 The Cambridge Analytica scandal is a notorious example of how the data of a few is used to predict and steer the behaviour of many others. The political consulting firm used social media data to create psychological profiles (Illing, 2017). Using those profiles, it targeted particular groups with specific election advertisements that were predicted to nudge their political views. By doing so, Cambridge Analytica is said to have influenced several elections (Amer and Noujaim, 2019).
