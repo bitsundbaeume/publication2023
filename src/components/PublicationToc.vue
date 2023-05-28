@@ -15,6 +15,7 @@
           <a
             class="c-pub-toc__link"
             :href="`/${collectionEntry.slug}`"
+            rel="prefetch"
             v-text="collectionEntry.title"
           />
         </li>
