@@ -9,13 +9,13 @@
         :key="collectionIndex"
       >
         <li
-          v-if="collectionEntry.id !== currentEntry"
+          v-if="!collectionEntry.isCurrent"
           class="c-pub-toc__page"
         >
           <a
             class="c-pub-toc__link"
             :href="`/${collectionEntry.slug}`"
-            v-text="collectionEntry.data.title"
+            v-text="collectionEntry.title"
           />
         </li>
         <li
@@ -24,7 +24,7 @@
         >
           <p
             class="c-pub-toc__page-title"
-            v-text="collectionEntry.data.title"
+            v-text="collectionEntry.title"
           />
           <ul class="c-pub-toc__current-toc u-list-reset">
             <template
@@ -59,7 +59,6 @@ import { onMounted, onUnmounted, ref } from 'vue';
 
 export interface TableOfContentsProps {
   collection: Array;
-  currentEntry: string;
   headings: [
     {
       depth: number;
@@ -75,31 +74,26 @@ const tocId = 'tableOfContents';
 
 const activeHeadline = ref('');
 
-const observer = ref<IntersectionObserver>();
-
-observer.value = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries) => {
 
   entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const headline = entry.target as HTMLElement;
-      activeHeadline.value = headline.id;
-    }
+
+    if (!(entry.intersectionRatio > 0)) return;
+
+    const headline = entry.target as HTMLElement;
+    activeHeadline.value = headline.id;
   });
 }, {
   threshold: 0,
-  rootMargin: '-50% 0px',
+  rootMargin: '0px 0px -60% 0px',
 });
 
-const activeCollection = () => {
-  return props.collection.filter((entry) => entry.slug === props.currentEntry);
-}
-
 onMounted(() => {
-  if (observer.value) document.querySelectorAll('h1[id], h2[id], h3[id]').forEach(section => observer?.value?.observe(section));
+  if (observer) document.querySelectorAll('h1[id], h2[id], h3[id]').forEach(section => observer.observe(section));
 })
 
 onUnmounted(() => {
-  if (observer.value) observer.value.disconnect();
+  if (observer) observer.disconnect();
 })
 </script>
 

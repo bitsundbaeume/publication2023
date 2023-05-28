@@ -18,16 +18,22 @@ interface Props {
 
 const { entry, collection } = Astro.props;
 const { Content, headings } = await entry.render();
+
+const filteredCollection = collection.map((item) => {
+  return {
+    title: item.data.title,
+    slug: item.slug,
+    isCurrent: item.id === entry.id,
+  };
+});
 ---
 
 <Layout seo={entry.data.seo} contentModifierClass="publication">
-  <!-- <h1>{entry.data.title}</h1> -->
   <Content />
 
   <TableOfContents
     headings={headings}
-    collection={collection}
-    currentEntry={entry.id}
+    collection={filteredCollection}
     client:only
     slot="sidebar"
   />
