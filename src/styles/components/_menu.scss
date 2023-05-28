@@ -34,7 +34,7 @@
 			@include mx.breakpoint('sm') {
 				--color-background-has-visible-child: var(--blue-100);
 			}
-			@include mx.breakpoint('sm', 'max', $max-overlap: 0.1) {
+			@include mx.breakpoint('sm', 'max') {
 				--color-background-has-visible-child: var(--grey);
 			}
 		}
