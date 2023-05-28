@@ -29,6 +29,9 @@ export default defineConfig({
   ],
   vite: {
     plugins: [],
+    css: {
+      devSourcemap: true,
+    },
     resolve: {
       alias: {
         '@sass-butler/': `${path.resolve(__dirname, 'node_modules/@felix_berlin/sass-butler/')}/`,
