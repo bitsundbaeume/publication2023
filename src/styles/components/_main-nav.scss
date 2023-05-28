@@ -22,7 +22,7 @@
 	}
 
 	&__flyout {
-		@include mx.breakpoint('sm', 'max', $max-overlap: 0.1) {
+		@include mx.breakpoint('sm', 'max') {
 			height: var(--height-flyout, 100svh);
 			overflow-y: scroll;
 			width: 100%;
