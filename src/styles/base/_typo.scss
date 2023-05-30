@@ -36,6 +36,10 @@ $headlines: ();
 	font-weight: 700;
 }
 
+h1 {
+	font-size: var(--font-size-3xl);
+}
+
 h2 {
 	font-size: var(--font-size-2xl);
 }
