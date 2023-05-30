@@ -15,17 +15,25 @@ export async function getStaticPaths() {
 interface Props {
   entry: CollectionEntry<"publication2023">;
 }
-
 const { entry, collection } = Astro.props;
 const { Content, headings } = await entry.render();
 
+/**
+ * Filter the collection to only include the items that are needed
+ */
 const filteredCollection = collection.map((item) => {
   return {
     title: item.data.title,
     slug: item.slug,
     isCurrent: item.id === entry.id,
+    order: item.data.order,
   };
 });
+
+/**
+ * Sort the collection by the order property
+ */
+const sortedCollection = filteredCollection.sort((a, b) => a.order - b.order);
 ---
 
 <Layout seo={entry.data.seo} contentModifierClass="publication">
@@ -33,7 +41,7 @@ const filteredCollection = collection.map((item) => {
 
   <TableOfContents
     headings={headings}
-    collection={filteredCollection}
+    collection={sortedCollection}
     client:only
     slot="sidebar"
   />
