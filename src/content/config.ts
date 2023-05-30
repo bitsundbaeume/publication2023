@@ -6,10 +6,11 @@ const publication2023Collection = defineCollection({
   schema: z.object({
     isDraft: z.boolean(),
     title: z.string().min(1),
+    order: z.number(),
     seo: z.object({
-      title: z.string().min(1).optional(),
-      metaTitle: z.string().min(1).optional(),
-      metaDescription: z.string().min(70).max(155).optional(),
+      title: z.string().optional(),
+      metaTitle: z.string().optional(),
+      metaDescription: z.string().max(155).optional(),
       image: z.string().url().optional(),
     }).optional(),
   }),
