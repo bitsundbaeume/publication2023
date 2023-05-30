@@ -81,7 +81,7 @@ Given some highly risky and socially problematic developments in digital markets
 
 This journal presents a look back at the conference’s topics, speakers, and discussions – but it also provides a treasure trove with proposals and concepts that propel the Bits & Bäume movement beyond 2022 and serve as a compass to fight the social and political challenges ahead. Another digitalisation is possible! The following chapters present mosaic pieces of a fair future in which technology serves the people, not the other way around.
 
-Authors:
+### Authors
 
 **Tilman Santarius** is a researcher and activist who has worked on topics topics such as climate policy,
 
