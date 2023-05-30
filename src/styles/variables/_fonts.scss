@@ -6,7 +6,7 @@ $font-sizes: (
 	'sm': butler-fn.px-to-rem(21),
 	'md': butler-fn.px-to-rem(22),
 	'lg': butler-fn.px-to-rem(24),
-	'xl': butler-fn.px-to-rem(33),
-	'2xl': butler-fn.px-to-rem(36),
-	'3xl': butler-fn.px-to-rem(40),
+	'xl': butler-fn.fluid(18, 33),
+	'2xl': butler-fn.fluid(26, 36),
+	'3xl': butler-fn.fluid(30, 40),
 );
