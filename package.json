@@ -23,6 +23,8 @@
     "astrojs-service-worker": "^1.0.0",
     "flipbook-vue": "^1.0.0-beta.4",
     "lucide-vue-next": "^0.227.0",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-slug": "^5.1.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {
