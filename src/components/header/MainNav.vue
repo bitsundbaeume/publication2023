@@ -13,6 +13,8 @@
       <img
         src="images/icons/menu-button.svg"
         alt="Menu Icon"
+        width="39"
+        height="21"
       >
     </button>
     <Teleport
