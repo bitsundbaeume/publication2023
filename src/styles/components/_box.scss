@@ -14,14 +14,11 @@
 			'image content';
 	}
 
-	&__content {
+	&__col-wrapper {
 		grid-area: content;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-template-areas:
-			'headline headline'
-			'subheadline subheadline'
-			'description description'
 			'page-numbers year'
 			'download download'
 			'share share';
@@ -29,17 +26,6 @@
 
 		@include mx.breakpoint('xs') {
 			grid-template-areas:
-				'headline headline'
-				'subheadline subheadline'
-				'description description'
-				'page-numbers year'
-				'download share';
-		}
-		@include mx.breakpoint('sm') {
-			grid-template-areas:
-				'headline headline'
-				'subheadline subheadline'
-				'description description'
 				'page-numbers year'
 				'download share';
 		}
@@ -50,23 +36,21 @@
 		border-radius: 8px;
 	}
 
-	&__headline,
-	&__subheadline {
-		margin-top: 0;
+	&__publisher {
+		margin: 1.625rem 0 0;
+		font-weight: 300;
 	}
 
 	&__headline {
-		grid-area: headline;
-		margin-top: 1.625rem;
+		margin: 1.8rem 0 0;
+		font-size: var(--font-size-2xl);
 	}
 
 	&__subheadline {
-		grid-area: subheadline;
 		font-size: var(--font-size-lg);
 	}
 
 	&__description {
-		grid-area: description;
 		margin: 0;
 	}
 
@@ -113,6 +97,19 @@
 		@include mx.breakpoint('xs', 'max') {
 			margin-bottom: 1rem;
 		}
+	}
+
+	&__citation {
+		grid-area: citation;
+		background-color: var(--blue-100);
+		padding: .75rem;
+		border-radius: 3px;
+		font-size: 1rem;
+		margin: 2.5rem 0 0;
+	}
+
+	&__citation a {
+		font-size: 1rem;
 	}
 
 	.c-share {

@@ -19,7 +19,9 @@
       v-if="isMobile"
       to="#mobileNav"
     >
-      <Transition name="fade">
+      <Transition
+        name="fade"
+      >
         <div
           v-show="flyoutIsOpen"
           class="c-main-nav__flyout"

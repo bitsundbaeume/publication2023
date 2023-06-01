@@ -8,13 +8,13 @@ import "@styles/components/_box.scss";
 import { readdirSync } from "node:fs";
 import TableOfContents from "@components/TableOfContents.astro";
 
-// TODO: Replace with real SEO data
 const seo = {
   title:
     "Shaping Digital Transformation for a Sustainable Society. Contributions from Bits & Bäume.",
   metaTitle:
     "Shaping Digital Transformation for a Sustainable Society. Contributions from Bits & Bäume.",
-  metaDescription: "Example",
+  metaDescription:
+    "This companion book of the ‹Bits & Bäume› conference 2022 compiles the insights, work, research and opinions of more than 65 authors with a ‹Bits & Bäume› background, including practitioners, researchers and activists.",
 };
 
 // Get jpgs
@@ -65,9 +65,13 @@ const menuItems: object[] = [
       }}
     />
     <div class="c-box__content">
-      <h2 class="c-box__headline">
+      <p class="c-box__publisher">
+        Jankowski, P., Höfner, A., Hoffmann, M. L., Rohde, F., Rehak, R. & Graf,
+        J. (Eds.)
+      </p>
+      <h1 class="c-box__headline">
         Shaping Digital Transformation for a Sustainable Society
-      </h2>
+      </h1>
       <h3 class="c-box__subheadline">Contributions from Bits & Bäume</h3>
       <p class="c-box__description">
         The second ‹Bits & Bäume› conference took place in Berlin in 2022. Once
@@ -105,23 +109,34 @@ const menuItems: object[] = [
         society.
       </p>
 
-      <div class="c-box__page-numbers">
-        <p class="is-label">Number of pages:</p>
-        <p class="is-number">{pages.length}</p>
+      <div class="c-box__col-wrapper">
+        <div class="c-box__page-numbers">
+          <p class="is-label">Number of pages:</p>
+          <p class="is-number">{pages.length}</p>
+        </div>
+        <div class="c-box__year">
+          <p class="is-label">Publication year:</p>
+          <p class="is-number">2023</p>
+        </div>
+        <a
+          href="/pdfs/230531_B+B2022_Preview-fuer-Konferenz.pdf"
+          class="c-box__download c-button c-button--primary"
+          download
+        >
+          <Icon name="lucide:file-text" width="26" />
+          Download PDF
+        </a>
+        <Share class:list={"c-box__share"} client:only />
       </div>
-      <div class="c-box__year">
-        <p class="is-label">Publication year:</p>
-        <p class="is-number">2023</p>
-      </div>
-      <a
-        href="/pdfs/230531_B+B2022_Preview-fuer-Konferenz.pdf"
-        class="c-box__download c-button c-button--primary"
-        download
-      >
-        <Icon name="lucide:file-text" width="26" />
-        Download PDF
-      </a>
-      <Share class:list={"c-box__share"} client:only />
+      <p class="c-box__citation">
+        Suggested citation:<br /> Jankowski, P., Höfner, A., Hoffmann, M. L., Rohde,
+        F., Rehak, R. & Graf, J. (Eds.) (2023).<br /><br /> Shaping Digital Transformation
+        for a Sustainable Society. Contributions from Bits & Bäume.<br /> Technische
+        Universität Berlin.<br />
+        <a href="https://doi.org/10.14279/depositonce-17526"
+          >https://doi.org/10.14279/depositonce-17526"</a
+        >
+      </p>
     </div>
   </section>
 
