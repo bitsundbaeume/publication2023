@@ -29,6 +29,8 @@
             :menu-items="menuItems"
             class="c-main-nav__menu"
             :class="{ 'is-open': flyoutIsOpen }"
+            @submenu-state="submenuIsOpen = $event"
+            @menu-item-target-clicked="toggleFlyout"
           />
         </div>
       </Transition>
@@ -45,6 +47,7 @@
           :menu-items="menuItems"
           class="c-main-nav__menu"
           :class="{ 'is-open': flyoutIsOpen }"
+          @submenu-state="submenuIsOpen = $event"
         />
       </div>
     </Transition>
@@ -72,9 +75,10 @@ export interface MainNavProps {
 
 const props = defineProps<MainNavProps>()
 const flyoutIsOpen = ref(false);
-const mainNav = ref(null);
 const flyoutHeight = ref('');
+const mainNav = ref(null);
 const isMobile = ref(false);
+const submenuIsOpen = ref(false);
 
 /**
  * Toggle the flyout menu

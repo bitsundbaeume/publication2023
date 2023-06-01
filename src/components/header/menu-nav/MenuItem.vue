@@ -15,6 +15,7 @@
       v-if="!props.menuItem.childItems"
       :href="props.menuItem.path"
       class="c-menu__link"
+      @click="$emit('menuItemTargetClicked', true)"
     >
       {{ props.menuItem.label }}
     </a>
@@ -37,14 +38,14 @@
         :class="[`is-level-${depth}`, { 'is-open': isOpen }]"
       >
         <template
-          v-for="(child, index) in props.menuItem.childItems"
+          v-for="(child, childItemIndex) in props.menuItem.childItems"
           :key="child.label"
         >
           <MenuItem
             :menu-item="child"
             :depth="depth + 1"
-            :index="index"
-            @click="toggleMenuItem"
+            :index="childItemIndex"
+            @click="toggleMenuItem(); $emit('menuItemTargetClicked', true)"
           />
         </template>
       </MenuSubmenu>
@@ -78,15 +79,22 @@ const isOpen = ref(false)
 const isCurrentPath = ref(false)
 const submenu = ref(null)
 
+const emit = defineEmits(['submenuState', 'menuItemTargetClicked'])
+
 /**
  * If the user clicks outside the submenu, close the submenu
  *
- * @return  {void}
+ * @param   {[type]}  submenu
+ * @param   {[type]}  event
+ *
+ * @return  {void}             [return description]
  */
 onClickOutside(submenu, (event): void => {
   if ((event.target as Element).classList.contains('is-menu-title')) return;
 
   isOpen.value = false
+
+  emit('submenuState', isOpen.value)
 })
 
 /**
@@ -95,23 +103,21 @@ onClickOutside(submenu, (event): void => {
   * @return  {void}
   */
 const toggleMenuItem = (): void => {
-  console.log('toggleMenuItem', isOpen.value);
-
   isOpen.value = !isOpen.value;
+
+  emit('submenuState', isOpen.value)
 }
 
 // TODO: add direction control
-const direction = (event) => {
-  const el = event.target.getBoundingClientRect();
-  const left = el.left;
-  const width = el.width;
-  const windowHeight = window.innerHeight;
-  const windowWidth = window.innerWidth;
-  console.log('direction', left + width, windowWidth);
-  console.log(left + width <= windowWidth);
-
-
-}
+// const direction = (event) => {
+//   const el = event.target.getBoundingClientRect();
+//   const left = el.left;
+//   const width = el.width;
+//   const windowHeight = window.innerHeight;
+//   const windowWidth = window.innerWidth;
+//   console.log('direction', left + width, windowWidth);
+//   console.log(left + width <= windowWidth);
+// }
 
 onMounted(() => {
   if (import.meta.env.DEV) {
