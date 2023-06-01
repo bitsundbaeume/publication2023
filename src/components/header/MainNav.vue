@@ -7,7 +7,7 @@
       type="button"
       class="c-main-nav__toggle c-button c-button--icon"
       aria-label="Menu öffnen"
-      :aria-expanded="isOpen"
+      :aria-expanded="flyoutIsOpen"
       @click="toggleFlyout"
     >
       <img
@@ -21,14 +21,14 @@
     >
       <Transition name="fade">
         <div
-          v-show="isOpen"
+          v-show="flyoutIsOpen"
           class="c-main-nav__flyout"
-          :class="{ 'is-open': isOpen }"
+          :class="{ 'is-open': flyoutIsOpen }"
         >
           <MenuNav
             :menu-items="menuItems"
             class="c-main-nav__menu"
-            :class="{ 'is-open': isOpen }"
+            :class="{ 'is-open': flyoutIsOpen }"
           />
         </div>
       </Transition>
@@ -38,13 +38,13 @@
       name="fade"
     >
       <div
-        v-show="isOpen"
+        v-show="flyoutIsOpen"
         class="c-main-nav__flyout"
       >
         <MenuNav
           :menu-items="menuItems"
           class="c-main-nav__menu"
-          :class="{ 'is-open': isOpen }"
+          :class="{ 'is-open': flyoutIsOpen }"
         />
       </div>
     </Transition>
@@ -71,7 +71,7 @@ export interface MainNavProps {
 }
 
 const props = defineProps<MainNavProps>()
-const isOpen = ref(false);
+const flyoutIsOpen = ref(false);
 const mainNav = ref(null);
 const flyoutHeight = ref('');
 const isMobile = ref(false);
@@ -82,8 +82,8 @@ const isMobile = ref(false);
  * @return  {void}
  */
 const toggleFlyout = (): void => {
-  isOpen.value = !isOpen.value;
-  controlScroll(isOpen.value);
+  flyoutIsOpen.value = !flyoutIsOpen.value;
+  controlScroll(flyoutIsOpen.value);
 }
 
 
@@ -114,7 +114,7 @@ const resizeObserver = new ResizeObserver(() => {
   isMobile.value = window.innerWidth < 768;
 
   if (!isMobile.value) {
-    isOpen.value = false;
+    flyoutIsOpen.value = false;
 
     controlScroll(false)
   }
@@ -123,7 +123,7 @@ const resizeObserver = new ResizeObserver(() => {
 onMounted(() => {
   isMobile.value = window.innerWidth < 768;
 
-  const body = document.querySelector('body') as HTMLElement;
+  const body = document.querySelector('body') as HTMLBodyElement;
   resizeObserver.observe(body);
 })
 

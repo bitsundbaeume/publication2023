@@ -10,10 +10,6 @@
     ]"
     role="menuitem"
     tabindex="-1"
-    @mouseenter="direction($event)"
-    @focus="direction($event)"
-    @mouseleave="direction($event)"
-    @blur="direction($event)"
   >
     <a
       v-if="!props.menuItem.childItems"
@@ -25,13 +21,14 @@
 
     <template v-else>
       <a
+        :ref="`menu-title-${depth}${index}`"
         class="c-menu__link is-menu-title"
         role="button"
         tabindex="0"
-        @click.prevent="toggleMenuItem"
+        @click="toggleMenuItem"
         @keydown="toggleMenuItem"
       >
-        <span>{{ props.menuItem.label }}</span>
+        {{ props.menuItem.label }}
       </a>
 
       <MenuSubmenu
@@ -40,12 +37,13 @@
         :class="[`is-level-${depth}`, { 'is-open': isOpen }]"
       >
         <template
-          v-for="(child, childIndex) in props.menuItem.childItems"
-          :key="childIndex"
+          v-for="(child, index) in props.menuItem.childItems"
+          :key="child.label"
         >
           <MenuItem
             :menu-item="child"
             :depth="depth + 1"
+            :index="index"
             @click="toggleMenuItem"
           />
         </template>
@@ -71,6 +69,7 @@ export interface MenuItemProps {
     ];
   };
   depth: number;
+  index: number;
 }
 
 const props = defineProps<MenuItemProps>()
@@ -85,11 +84,8 @@ const submenu = ref(null)
  * @return  {void}
  */
 onClickOutside(submenu, (event): void => {
-  // const targetPath = event.composedPath();
-  // const ignoreNode = document.querySelector('.c-menu__item.has-child');
-  // if (ignoreNode && !targetPath.includes(ignoreNode)) {
-  //   isOpen.value = false
-  // }
+  if ((event.target as Element).classList.contains('is-menu-title')) return;
+
   isOpen.value = false
 })
 
@@ -99,6 +95,8 @@ onClickOutside(submenu, (event): void => {
   * @return  {void}
   */
 const toggleMenuItem = (): void => {
+  console.log('toggleMenuItem', isOpen.value);
+
   isOpen.value = !isOpen.value;
 }
 

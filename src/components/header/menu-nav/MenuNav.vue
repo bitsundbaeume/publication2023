@@ -5,11 +5,12 @@
   >
     <template
       v-for="(item, index) in props.menuItems"
-      :key="index"
+      :key="item.label"
     >
       <MenuItem
         :menu-item="item"
         :depth="0"
+        :index="index"
       />
     </template>
   </menu>
