@@ -47,12 +47,12 @@ export default (() => {
     if (window.location.hash.match(/#(\d+)/)) {
       smoothScrollTo('#flipbook')
     }
-  }, { passive: true })
+  }, { passive: false, capture: true })
 
   window.addEventListener('click', event => {
     const target = event.target as HTMLElement;
 
     if (target?.tagName?.toLowerCase() !== 'a') return;
     smoothScrollTo(event.target as HTMLElement, event);
-  }, { passive: true })
+  }, { passive: false, capture: true })
 })();
