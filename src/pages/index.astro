@@ -125,7 +125,7 @@ const menuItems: object[] = [
     </div>
   </section>
 
-  <FlipBook pages={pages} :pagesHiRes={highResPages} client:only />
+  <FlipBook pages={pages} :pagesHiRes={highResPages} client:visible />
 
   <TableOfContents toc={menuItems} />
 </Layout>
