@@ -1,0 +1,77 @@
+---
+import "@styles/app.scss";
+import "@styles/objects/_content.scss";
+
+import Header from "@components/header/Header.astro";
+import Footer from "@components/footer/Footer.astro";
+import ToTop from "@components/ToTop.astro";
+
+export interface Props {
+  seo?: {
+    title?: string;
+    metaTitle?: string;
+    metaDescription?: string;
+  };
+}
+
+const { seo } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="/favicons/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <link rel="shortcut icon" href="/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#00a300" />
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="generator" content={Astro.generator} />
+    {seo?.title && <title>{seo.title}</title>}
+    {seo?.metaTitle && <meta name="title" content={seo.metaTitle} />}
+    {
+      seo?.metaDescription && (
+        <meta name="description" content={seo.metaDescription} />
+      )
+    }
+
+    <script src="src/lib/smooth-scroll-anchor.ts"></script>
+
+    <slot name="head" />
+  </head>
+
+  <body>
+    <Header />
+
+    <main class="o-content">
+      <slot />
+    </main>
+
+    <ToTop />
+
+    <Footer />
+  </body>
+</html>

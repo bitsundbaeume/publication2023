@@ -1,0 +1,17 @@
+@use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
+@use '@styles/variables/colors';
+
+.o-header {
+	border-bottom: 10px solid var(--green-100);
+
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: .5rem 1rem;
+
+		@include mx.breakpoint('sm') {
+			padding: 0 1rem;
+		}
+	}
+}

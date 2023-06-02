@@ -1,0 +1,146 @@
+---
+import { Img } from "astro-imagetools/components";
+import Layout from "../layouts/Layout.astro";
+import FlipBook from "@components/FlipBook.vue";
+import { Icon } from "astro-icon";
+import Share from "@components/Share.vue";
+import "@styles/components/_box.scss";
+import { readdirSync } from "node:fs";
+import TableOfContents from "@components/TableOfContents.astro";
+
+const seo = {
+  title:
+    "Shaping Digital Transformation for a Sustainable Society. Contributions from Bits & Bäume.",
+  metaTitle:
+    "Shaping Digital Transformation for a Sustainable Society. Contributions from Bits & Bäume.",
+  metaDescription:
+    "This companion book of the ‹Bits & Bäume› conference 2022 compiles the insights, work, research and opinions of more than 65 authors with a ‹Bits & Bäume› background, including practitioners, researchers and activists.",
+};
+
+// Get jpgs
+const pathToJpgs = "public/pdfs/jpg/";
+const jpgs = readdirSync(pathToJpgs);
+const pages: string[] = [];
+
+jpgs.forEach((name) => {
+  const fullPath = `${pathToJpgs.replace("public/", "")}${name}`;
+  pages.push(fullPath);
+});
+
+// Get high res jpgs
+const pathToHighResJpgs = "public/pdfs/high-res-jpg/";
+const highResJpgs = readdirSync(pathToHighResJpgs);
+const highResPages: string[] = [];
+
+highResJpgs.forEach((name) => {
+  const fullPath = `${pathToHighResJpgs.replace("public/", "")}${name}`;
+  highResPages.push(fullPath);
+});
+
+const menuItems: object[] = [
+  {
+    title: "Shaping digital transformation for a sustainable society",
+    url: "#1",
+    pageNumber: 1,
+  },
+  {
+    title: "Content",
+    url: "#3",
+    pageNumber: "2-3",
+  },
+];
+---
+
+<Layout seo={seo}>
+  <section class="c-box" id="overview">
+    <Img
+      src="/src/images/Titel.jpg"
+      alt="Shaping digital transformation for a sustainable society cover"
+      loading="eager"
+      attributes={{
+        img: {
+          fetchpriority: "high",
+          class: "c-box__image",
+        },
+      }}
+    />
+    <div class="c-box__content">
+      <p class="c-box__publisher">
+        Jankowski, P., Höfner, A., Hoffmann, M. L., Rohde, F., Rehak, R. & Graf,
+        J. (Eds.)
+      </p>
+      <h1 class="c-box__headline">
+        Shaping Digital Transformation for a Sustainable Society
+      </h1>
+      <h2 class="c-box__subheadline">Contributions from Bits & Bäume</h2>
+      <p class="c-box__description">
+        The second ‹Bits & Bäume› conference took place in Berlin in 2022. Once
+        again, it provided a space for critical tech and sustainability
+        communities to share ideas and collaborate towards the common goal of
+        shaping digitalisation to foster sustainability. This companion book
+        compiles the insights, work, research and opinions of more than 65
+        authors with a ‹Bits & Bäume› background, including practitioners,
+        researchers and activists. The articles included in this journal
+        demonstrate the progress made in merging ‹Bits› and ‹Bäume› (Trees)
+        topics since our first publication in 2019 by addressing different
+        sub-areas of the intersections between digitalisation and
+        sustainability. Encompassing a wide range of topics, the articles delve
+        into pressing challenges such as the resource consumption, power
+        implications and democratic governance of digital infrastructures, AI,
+        blockchains, mobile apps, and other software applications, as well as
+        the need to address the unsustainable practices and paradigms of e.g.,
+        the platform economy. Offering not only transparency but also solutions,
+        the journal presents practical approaches and concepts related to the
+        necessary transformation, such as the Computer Science for Future
+        programme. It also contains articles commenting on current political
+        developments, such as the EU legislation on sustainability and
+        freedom-related aspects of ICT devices. Further articles highlight the
+        power of and need for an active civil society, aiming to inspire
+        activism. This journal caters for everyone: Are you just getting into
+        the topics around Bits & Bäume? Have you been involved in this field for
+        many years, or are you an expert in one of the areas touched on here? In
+        this journal you will find both introductory topics, such as
+        illustrations on the challenges of today's digitalised society, and also
+        advanced topics, such as conceptual and regulatory discussions. Whatever
+        your background, we think you’ll enjoy the read, learn something new on
+        the way, and get inspired. Ultimately, we are all united by the
+        overarching goal of shaping digitalisation as part of a necessary
+        socio-ecological change; one which contributes to a sustainable and just
+        society.
+      </p>
+
+      <div class="c-box__col-wrapper">
+        <div class="c-box__page-numbers">
+          <p class="is-label">Number of pages:</p>
+          <p class="is-number">{pages.length}</p>
+        </div>
+        <div class="c-box__year">
+          <p class="is-label">Publication year:</p>
+          <p class="is-number">2023</p>
+        </div>
+        <a
+          href="/pdfs/230531_B+B2022_Preview-fuer-Konferenz.pdf"
+          class="c-box__download c-button c-button--primary"
+          download
+        >
+          <Icon name="lucide:file-text" width="26" />
+          Download PDF
+        </a>
+        <Share class:list={"c-box__share"} client:only />
+      </div>
+      <p class="c-box__citation">
+        <b>Suggested citation:</b> Jankowski, P., Höfner, A., Hoffmann, M. L., Rohde,
+        F., Rehak, R. & Graf, J. (Eds.) (2023). Shaping Digital Transformation for
+        a Sustainable Society. Contributions from Bits & Bäume. Technische Universität
+        Berlin.
+        <a href="https://doi.org/10.14279/depositonce-17526"
+          >https://doi.org/10.14279/depositonce-17526"</a
+        >
+      </p>
+    </div>
+  </section>
+
+  <FlipBook pages={pages} :pagesHiRes={highResPages} client:only />
+
+  <TableOfContents toc={menuItems} />
+</Layout>

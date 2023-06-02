@@ -1,0 +1,56 @@
+---
+import { Img } from "astro-imagetools/components";
+import type { Logo } from "@components/footer/types";
+
+export interface Props {
+  logos: Logo[];
+  classModifier?: string;
+}
+
+const { logos, classModifier } = Astro.props;
+
+const replaceExtension = (filename: string, newExtension: string) => {
+  const regex = /(?:\.([^.]+))?$/;
+  console.log();
+
+  return filename.replace(regex, newExtension);
+};
+
+const extensionIs = (filename: string) => {
+  const regex = /(?:\.([^.]+))?$/;
+  return regex.exec(filename)[1];
+};
+---
+
+<div class={`o-footer__logo-grid o-footer--${classModifier}`}>
+  {
+    logos.map((logo: Logo) => (
+      <a
+        href={logo.url}
+        target="_blank"
+        rel="noopener"
+        class="o-footer__logo-grid-item"
+        title={logo.name}
+      >
+        {extensionIs(logo.logo) === "svg" ? (
+          <img
+            src={logo.logo}
+            alt={logo.alt}
+            loading="lazy"
+            decoding="async"
+            width={logo.width}
+            height={logo.height}
+          />
+        ) : (
+          <Img
+            src={logo.logo}
+            alt={logo.alt}
+            attributes={{
+              img: { onload: "this.style.background = 'transparent';" },
+            }}
+          />
+        )}
+      </a>
+    ))
+  }
+</div>

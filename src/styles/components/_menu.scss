@@ -1,0 +1,101 @@
+@use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
+@use '@styles/variables/colors';
+@use '@styles/variables/variables';
+@use '@sass-butler/mixins' as butler-mx;
+
+.c-menu,
+.c-submenu {
+	display: flex;
+	flex-direction: var(--direction-menu, column);
+	gap: var(--gap-menu, 5px);
+
+	@include mx.breakpoint('sm') {
+		--direction-menu: row;
+		--gap-menu: 30px;
+	}
+
+	&__item {
+		@include butler-mx.hover {
+			background-color: var(--blue-100);
+		}
+
+		&.has-child {
+			flex-wrap: wrap;
+			position: relative;
+
+			.c-menu__link {
+				align-items: center;
+			}
+		}
+
+		&.has-visible-child {
+			background-color: var(--color-background-has-visible-child);
+
+			@include mx.breakpoint('sm') {
+				--color-background-has-visible-child: var(--blue-100);
+			}
+			@include mx.breakpoint('sm', 'max') {
+				--color-background-has-visible-child: var(--grey);
+			}
+		}
+	}
+
+	&__link {
+		display: flex;
+		flex: 1 1 100%;
+		text-decoration: none;
+		padding: 2rem .6rem;
+
+		@include butler-mx.hover {
+			text-decoration: underline;
+		}
+
+		.c-main-nav__flyout.is-open & {
+			padding: 1rem 1.5rem;
+		}
+	}
+
+	&__chevron {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transform: rotate(var(--rotate-chevron-angle));
+		transition: all 0.3s ease;
+
+		&.has-visible-child {
+			--rotate-chevron-angle: 90deg;
+		}
+	}
+}
+
+.c-submenu {
+	@include mx.breakpoint('sm') {
+		--direction-menu: column;
+		--gap-menu: 0;
+
+		position: absolute;
+		z-index: 1;
+		left: 0;
+		background: #fff;
+		margin-block-start: 0;
+		margin-block-end: 0;
+		top: 100%;
+		width: max-content;
+	}
+
+	.c-main-nav__flyout & {
+		--gap-menu: 0;
+	}
+
+	.c-menu__link {
+		padding: 10px 1.5rem;
+	}
+
+	.c-menu__item {
+		border: 1px solid var(--blue-500);
+
+		&:not(:first-child) {
+			border-top: none;
+		}
+	}
+}

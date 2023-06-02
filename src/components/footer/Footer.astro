@@ -1,0 +1,120 @@
+---
+import LogoGrid from "@components/footer/LogoGrid.astro";
+import { Icon } from "astro-icon";
+import {
+  supporters,
+  media,
+  specialThanks,
+  funded,
+} from "@components/footer/logos";
+import Logo from "@components/Logo.astro";
+import "@styles/objects/_footer.scss";
+---
+
+<footer class="o-footer">
+  <img
+    src="images/pixels/pixel-footer-left.svg"
+    class="o-footer__pixel is-left"
+    aria-hidden="true"
+  />
+  <img
+    src="images/pixels/pixel-footer-right.svg"
+    class="o-footer__pixel is-right"
+    aria-hidden="true"
+  />
+
+  <div class="o-footer__inner">
+    <div class="o-footer__upper">
+      <Logo />
+      <nav class="o-footer__nav is-first">
+        <menu class="o-footer__nav-menu u-list-reset">
+          <li>
+            <a
+              href="https://bits-und-baeume.org/konferenz-2022/"
+              class="o-footer__nav-menu-link">B&B Conference 2022</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://twitter.com/bitsundbaeume"
+              class="o-footer__nav-menu-link"
+              target="_blank"
+              rel="noopener">#bitsundbaeume22</a
+            >
+          </li>
+        </menu>
+      </nav>
+
+      <div class="o-footer__social-list">
+        <p class="o-footer__social-list-label">Social:</p>
+        <a
+          rel="me noopener"
+          href="https://mastodon.bits-und-baeume.org/@bits_und_baeume"
+          target="_blank"
+          class="o-footer__social-list-link"
+          aria-label="to B&B Mastodon"
+        >
+          <Icon
+            name="simple-icons:mastodon"
+            class="o-footer__social-list-icon u-scale-hover"
+            width="32"
+          />
+        </a>
+        <a
+          href="https://twitter.com/bitsundbaeume"
+          target="_blank"
+          rel="noopener"
+          class="o-footer__social-list-link"
+          aria-label="to B&B Twitter"
+        >
+          <Icon
+            name="simple-icons:twitter"
+            class="o-footer__social-list-icon u-scale-hover"
+            width="32"
+          />
+        </a>
+      </div>
+
+      <nav class="o-footer__nav is-second">
+        <menu class="o-footer__nav-menu u-list-reset">
+          <li>
+            <a
+              href="https://bits-und-baeume.org/impressum/"
+              class="o-footer__nav-menu-link">Imprint</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://bits-und-baeume.org/datenschutz/"
+              class="o-footer__nav-menu-link">Data protection statement</a
+            >
+          </li>
+        </menu>
+      </nav>
+    </div>
+
+    <h3 class="o-footer__headline">The panel of supporters ("Trägerkreis")</h3>
+    <LogoGrid logos={supporters} classModifier="supporter" />
+
+    <h3 class="o-footer__headline">
+      Our topics are spread by the media professionals
+    </h3>
+    <LogoGrid logos={media} classModifier="media" />
+
+    <h3 class="o-footer__headline">Special thanks to</h3>
+    <LogoGrid logos={specialThanks} classModifier="thanks" />
+
+    <h3 class="o-footer__headline">Funded by</h3>
+    <p class="o-footer__funded-text">
+      The Conference is funded by the
+      <a href="https://www.dbu.de" target="_blank" rel="noopener">
+        German Federal Environmental Foundation (DBU)
+      </a>
+      and co-funded by Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit
+      und Verbraucherschutz (BMUV). The work of Germanwatch and Forum InformatikerInnen
+      für Frieden und gesellschaftliche Verantwortung (FIfF) related to Bits &amp;
+      Bäume 2022 is mainly funded by Stiftung Mercator.
+    </p>
+    <LogoGrid logos={funded} classModifier="funded" />
+  </div>
+</footer>

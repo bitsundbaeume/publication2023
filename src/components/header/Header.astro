@@ -1,0 +1,38 @@
+---
+import Logo from "@components/Logo.astro";
+import MainNav from "@components/header/MainNav.vue";
+import "@styles/objects/_header.scss";
+
+const items = [
+  {
+    label: "B&B Publication 2023",
+    path: "/",
+    childItems: [
+      {
+        label: "Overview",
+        path: "#overview",
+      },
+      {
+        label: "Browse",
+        path: "#flipbook",
+      },
+      {
+        label: "Table of Contents",
+        path: "#toc",
+      },
+    ],
+  },
+  {
+    label: "to B&B Website",
+    path: "https://bits-und-baeume.org",
+  },
+];
+---
+
+<header class="o-header" id="header">
+  <div class="o-header__inner">
+    <Logo load="eager" />
+    <MainNav menuItems={items} client:load />
+  </div>
+</header>
+<div id="mobileNav"></div>
