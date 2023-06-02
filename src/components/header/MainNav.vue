@@ -119,7 +119,7 @@ const resizeObserver = new ResizeObserver(() => {
   const remainingHeight = viewportHeight - headerInner;
 
   flyoutHeight.value = `${remainingHeight}px`;
-  isMobile.value = window.innerWidth < 768;
+  isMobile.value = window.innerWidth < 769;
 
   if (!isMobile.value) {
     flyoutIsOpen.value = false;
@@ -129,7 +129,7 @@ const resizeObserver = new ResizeObserver(() => {
 });
 
 onMounted(() => {
-  isMobile.value = window.innerWidth < 768;
+  isMobile.value = window.innerWidth < 769;
 
   const body = document.querySelector('body') as HTMLBodyElement;
   resizeObserver.observe(body);

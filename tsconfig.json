@@ -16,6 +16,7 @@
         "src/images/*"
       ]
     },
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "verbatimModuleSyntax": true,
   }
 }

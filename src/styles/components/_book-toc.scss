@@ -1,6 +1,7 @@
 @use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
+@use '@sass-butler/mixins' as butler-mx;
 
-.c-table-of-contents {
+.c-book-toc {
 	border-radius: 8px;
 	background-color: var(--green-100);
 	position: relative;
@@ -27,7 +28,7 @@
 		position: relative;
 		line-height: 1.7;
 
-		&:hover {
+		@include butler-mx.hover {
 			--text-decoration-toc-menu-link: underline;
 		}
 
