@@ -5,11 +5,14 @@
   >
     <template
       v-for="(item, index) in props.menuItems"
-      :key="index"
+      :key="item.label"
     >
       <MenuItem
         :menu-item="item"
         :depth="0"
+        :index="index"
+        @submenu-state="$emit('submenuState', $event)"
+        @menu-item-target-clicked="$emit('menuItemTargetClicked', $event)"
       />
     </template>
   </menu>
@@ -34,6 +37,8 @@ export interface MenuProps {
 }
 
 const props = defineProps<MenuProps>();
+
+const emit = defineEmits(['submenuState', 'menuItemTargetClicked'])
 </script>
 
 <style lang="scss">

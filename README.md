@@ -55,5 +55,6 @@ rm -rf public/pdfs/jpg && rm -rf public/pdfs/high-res-jps
    1. For the preview DPI 144 and image quality 85
    2. For the high-res DPI 300 and image quality 100
 4. Download the zip file
-5. Unzip the file in to both directories `public/pdfs/jpg` and `public/pdfs/high-res-jps`
-6. Ready to go!
+5. Convert all the files to .avif via <https://avif.io/>
+6. Unzip the files in to both directories `public/pdfs/jpg` and `public/pdfs/high-res-jps`
+7. Ready to go!

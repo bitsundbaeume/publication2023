@@ -32,7 +32,14 @@ const extensionIs = (filename: string) => {
         title={logo.name}
       >
         {extensionIs(logo.logo) === "svg" ? (
-          <img src={logo.logo} alt={logo.alt} loading="lazy" decoding="async" />
+          <img
+            src={logo.logo}
+            alt={logo.alt}
+            loading="lazy"
+            decoding="async"
+            width={logo.width}
+            height={logo.height}
+          />
         ) : (
           <Img
             src={logo.logo}

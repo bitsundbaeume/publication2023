@@ -39,9 +39,9 @@ export default (() => {
     if (window.location.hash.match(/#(\d+)/)) {
       smoothScrollTo('#flipbook')
     }
-  })
+  }, { passive: false, capture: true })
 
   window.addEventListener('click', event => {
     smoothScrollTo(event.target as HTMLElement, event);
-  })
+  }, { passive: false, capture: true })
 })();

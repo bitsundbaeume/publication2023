@@ -1,4 +1,5 @@
 @use '@sass-butler/mixins' as butler-mx;
+@use 'transitions';
 
 .u-list-reset {
 	list-style-type: none;
