@@ -26,7 +26,7 @@ export default defineConfig({
     }),
     prefetch(),
     critters({
-      critters: !import.meta.env.DEV,
+      critters: false,
     }),
     serviceWorker(),
     astroImageTools,
