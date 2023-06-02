@@ -4,7 +4,7 @@ import "@styles/objects/_content.scss";
 
 import Header from "@components/header/Header.astro";
 import Footer from "@components/footer/Footer.astro";
-import ToTop from "@components/ToTop.astro";
+import ToTop from "@components/ToTop.vue";
 import Search from "@components/Search.astro";
 
 export interface Props {
@@ -75,7 +75,7 @@ const modifierClass = `o-content--${contentModifierClass}`;
 
     <slot />
 
-    <ToTop />
+    <ToTop client:load />
 
     <Footer />
   </body>
