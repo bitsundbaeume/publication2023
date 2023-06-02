@@ -28,6 +28,8 @@
 			width: 100%;
 			background-color: #fff;
 			padding: 10px 15px;
+			position: relative;
+			z-index: 2;
 		}
 		@include mx.breakpoint('sm') {
 			display: block !important;
