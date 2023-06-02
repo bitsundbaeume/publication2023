@@ -9,16 +9,23 @@ import { astroImageTools } from "astro-imagetools";
 import vue from "@astrojs/vue";
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import pagefind from "astro-pagefind";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://publication2023.bits-und-baeume.org',
+  site: import.meta.env.DEV ? "http://localhost:3000" : "https://publication2023.bits-und-baeume.org",
   compressHTML: true,
   markdown: {
-    rehypePlugins: [[rehypeSlug, { prefix: 'h-' }], [rehypeAutolinkHeadings, { behavior: 'append' }]], // We need this to prevent IDs starting with a number
+    rehypePlugins: [
+      [rehypeSlug, { prefix: 'h-' }], // We need this to prevent IDs starting with a number
+      [rehypeAutolinkHeadings, { behavior: 'append' }],
+    ],
+  },
+  build: {
+    format: "file",
   },
   integrations: [
     sitemap({
@@ -30,7 +37,8 @@ export default defineConfig({
     }),
     serviceWorker(),
     astroImageTools,
-    vue()
+    vue(),
+    pagefind(),
   ],
   vite: {
     plugins: [],
