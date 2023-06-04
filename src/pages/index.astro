@@ -109,25 +109,16 @@ const menuItems: object[] = [
         society.
       </p>
 
-      <div class="c-box__col-wrapper">
-        <div class="c-box__page-numbers">
-          <p class="is-label">Number of pages:</p>
-          <p class="is-number">{pages.length}</p>
-        </div>
-        <div class="c-box__year">
-          <p class="is-label">Publication year:</p>
-          <p class="is-number">2023</p>
-        </div>
-        <a
-          href="/pdfs/230531_B+B2022_Preview-fuer-Konferenz.pdf"
-          class="c-box__download c-button c-button--primary"
-          download
-        >
-          <Icon name="lucide:file-text" width="26" />
-          Download PDF
-        </a>
-        <Share class:list={"c-box__share"} client:only />
+      <div class="c-box__page-numbers">
+        <p class="is-label">Number of pages:</p>
+        <p class="is-number">{pages.length}</p>
       </div>
+      <div class="c-box__year">
+        <p class="is-label">Publication year:</p>
+        <p class="is-number">2023</p>
+      </div>
+    </div>
+    <div class="c-box__info">
       <p class="c-box__citation">
         <b>Suggested citation:</b> Jankowski, P., Höfner, A., Hoffmann, M. L., Rohde,
         F., Rehak, R. & Graf, J. (Eds.) (2023). Shaping Digital Transformation for
@@ -137,6 +128,15 @@ const menuItems: object[] = [
           >https://doi.org/10.14279/depositonce-17526"</a
         >
       </p>
+      <a
+        href="/pdfs/230531_B+B2022_Preview-fuer-Konferenz.pdf"
+        class="c-box__download c-button c-button--primary"
+        download
+      >
+        <Icon name="lucide:file-text" width="26" />
+        Download PDF
+      </a>
+      <Share class:list={"c-box__share"} client:only />
     </div>
   </section>
 
