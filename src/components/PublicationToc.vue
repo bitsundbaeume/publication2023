@@ -30,7 +30,6 @@
           <ul class="c-pub-toc__current-toc u-list-reset">
             <template
               v-for="(headline, headingsIndex) in headings"
-
               :key="headingsIndex"
             >
               <li
@@ -64,12 +63,11 @@ export interface TableOfContentsProps {
     {
       depth: number;
       slug: string;
-      test: string;
     },
   ]
 }
 
-const props = defineProps<TableOfContentsProps>()
+defineProps<TableOfContentsProps>()
 
 const tocId = 'tableOfContents';
 

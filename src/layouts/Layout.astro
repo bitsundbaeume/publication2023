@@ -13,13 +13,10 @@ export interface Props {
     metaTitle?: string;
     metaDescription?: string;
   };
-  contentModifierClass?: string;
   bodyClass?: string;
 }
 
-const { seo, contentModifierClass, bodyClass } = Astro.props;
-
-const modifierClass = `o-content--${contentModifierClass}`;
+const { seo, bodyClass } = Astro.props;
 ---
 
 <!DOCTYPE html>
