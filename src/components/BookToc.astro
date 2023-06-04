@@ -1,14 +1,9 @@
 ---
 import "@styles/components/_book-toc.scss";
+import type { BookToc } from "@components/book-toc-types";
 
-export interface Props {
-  toc: [
-    {
-      title: string;
-      url: string;
-      pageNumber?: number;
-    }
-  ];
+interface Props extends BookToc {
+  toc: BookToc["toc"];
 }
 
 const { toc } = Astro.props;
@@ -17,20 +12,28 @@ const { toc } = Astro.props;
 <section class="c-book-toc" id="toc">
   <h2 class="c-book-toc__headline">Table of Contents</h2>
   <nav class="c-book-toc__nav">
-    <ol class="c-book-toc__menu">
-      {
-        toc.map((item) => (
-          <li class="c-book-toc__menu-item">
-            <a href={item.url} class="c-book-toc__menu-link">
-              <span class="c-book-toc__title">{item.title}</span>
-              {item.pageNumber && (
-                <span class="c-book-toc__page-number">{item.pageNumber}</span>
-              )}
-            </a>
-          </li>
-        ))
-      }
-    </ol>
+    {
+      toc.map((item) => (
+        <>
+          <h3>{item.headline}</h3>
+          {item.contents &&
+            item.contents.map((contents) => (
+              <ul class="c-book-toc__menu">
+                <li class="c-book-toc__menu-item">
+                  <a href={contents.url} class="c-book-toc__menu-link">
+                    <span class="c-book-toc__title">{contents.title}</span>
+                    {contents.pageNumber && (
+                      <span class="c-book-toc__page-number">
+                        {contents.pageNumber}
+                      </span>
+                    )}
+                  </a>
+                </li>
+              </ul>
+            ))}
+        </>
+      ))
+    }
   </nav>
   <img
     src="images/pixels/pixel-box-img.svg"

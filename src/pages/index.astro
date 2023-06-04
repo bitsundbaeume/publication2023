@@ -7,7 +7,7 @@ import Share from "@components/Share.vue";
 import "@styles/components/_box.scss";
 import { readdirSync } from "node:fs";
 import TableOfContents from "@components/BookToc.astro";
-
+import { flipBookToc } from "@lib/content/book-toc";
 const seo = {
   title:
     "Shaping Digital Transformation for a Sustainable Society. Contributions from Bits & Bäume.",
@@ -36,19 +36,6 @@ highResJpgs.forEach((name) => {
   const fullPath = `${pathToHighResJpgs.replace("public/", "")}${name}`;
   highResPages.push(fullPath);
 });
-
-const menuItems: object[] = [
-  {
-    title: "Shaping digital transformation for a sustainable society",
-    url: "#1",
-    pageNumber: 1,
-  },
-  {
-    title: "Content",
-    url: "#3",
-    pageNumber: "2-3",
-  },
-];
 ---
 
 <Layout seo={seo} contentModifierClass="index">
@@ -142,5 +129,5 @@ const menuItems: object[] = [
 
   <FlipBook pages={pages} :pagesHiRes={highResPages} client:only />
 
-  <TableOfContents toc={menuItems} />
+  <TableOfContents toc={flipBookToc} />
 </Layout>
