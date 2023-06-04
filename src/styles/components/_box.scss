@@ -53,7 +53,7 @@
 
 	&__page-numbers,
 	&__year {
-		margin: 2.5rem 0;
+		margin: 2.5rem 0 0;
 
 		.is-label,
 		.is-number {
@@ -90,10 +90,6 @@
 	&__download {
 		grid-area: download;
 		text-decoration: none;
-
-		@include mx.breakpoint('xs', 'max') {
-			margin-bottom: 1rem;
-		}
 	}
 
 	&__citation {
