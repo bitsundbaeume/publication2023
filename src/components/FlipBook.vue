@@ -86,9 +86,16 @@ export interface FlipbookProps {
   pagesHiRes?: string[];
 }
 
+interface FlipbookInstance {
+  canFlipLeft: boolean;
+  canFlipRight: boolean;
+  flipLeft(): void;
+  flipRight(): void;
+}
+
 defineProps<FlipbookProps>()
 
-const flipbook = ref(null)
+const flipbook = ref<FlipbookInstance | null>(null)
 const pageNum = ref(1)
 
 /**

@@ -58,13 +58,17 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 
 export interface TableOfContentsProps {
-  collection: Array;
-  headings: [
-    {
-      depth: number;
-      slug: string;
-    },
-  ]
+  collection: {
+    isCurrent: boolean;
+    order: number;
+    slug: string;
+    title: string;
+  }[],
+  headings: {
+    depth: number;
+    slug: string;
+    text: string;
+  }[],
 }
 
 defineProps<TableOfContentsProps>()
@@ -77,7 +81,7 @@ const observer = new IntersectionObserver((entries) => {
 
   entries.forEach((entry) => {
 
-    if (!(entry.intersectionRatio > 0)) return;
+    if (entry.intersectionRatio <= 0) return;
 
     const headline = entry.target as HTMLElement;
     activeHeadline.value = headline.id;

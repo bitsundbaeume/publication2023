@@ -1,47 +1,46 @@
-/**
- * Scroll to an anchor with a nice smooth animation
- *
- * @param   {Event}        event
- * @param   {HTMLElement}  target
- *
- * @return  {void}
- */
 const smoothScrollTo = (target: HTMLElement | string, event?: Event): void => {
-  const id = event ? target.getAttribute('href') : target;
+  const id = event ? (target as HTMLElement).getAttribute('href') : target;
 
-  if (id === null || id === '#' || !isSelectorValid(id)) return;
+  if (!id || id === '#' || !isSelectorValid(id)) return;
 
   if (event) event.preventDefault();
 
-  document.querySelector(id)?.scrollIntoView({
-    block: 'start',
-    behavior: 'smooth',
-    inline: 'start',
-  });
-
+  const element = document.querySelector(String(id));
+  if (element) {
+    element.scrollIntoView({
+      block: 'start',
+      behavior: 'smooth',
+      inline: 'start',
+    });
+  }
 };
 
-/**
- * Check if a selector is valid
- *
- * @param   {string}  selector  DOM selector
- *
- * @return  {bool}
- */
-const isSelectorValid = (selector: string): boolean => {
-  try { document.querySelector(selector) }
-  catch { return false }
-  return true
-}
+const isSelectorValid = (selector: string | HTMLElement): boolean => {
+  if (typeof selector === 'string') {
+    if (selector === '') return false;
 
-export default (() => {
-  window.addEventListener('popstate', () => {
-    if (window.location.hash.match(/#(\d+)/)) {
-      smoothScrollTo('#flipbook')
+    try {
+      document.querySelector(selector);
+      return true;
+    } catch {
+      return false;
     }
-  }, { passive: false, capture: true })
+  } else {
+    return document.body.contains(selector);
+  }
+};
 
-  window.addEventListener('click', event => {
+{
+  const handlePopState = () => {
+    if (window.location.hash.match(/#(\d+)/)) {
+      smoothScrollTo('#flipbook');
+    }
+  };
+
+  const handleClick = (event: MouseEvent) => {
     smoothScrollTo(event.target as HTMLElement, event);
-  }, { passive: false, capture: true })
-})();
+  };
+
+  window.addEventListener('popstate', handlePopState);
+  window.addEventListener('click', handleClick);
+}

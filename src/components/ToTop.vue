@@ -33,13 +33,16 @@ const isScrolled = ref(false);
 
 const handleIntersect = (entries: IntersectionObserverEntry[]) => {
   entries.forEach((entry) => {
-    isScrolled.value = entry.isIntersecting ? false : true;
+    isScrolled.value = !entry.isIntersecting;
   });
 };
 
 onMounted(() => {
   observer.value = new IntersectionObserver(handleIntersect);
-  observer.value.observe(document.querySelector(props.topElement));
+  const topElement = document.querySelector(props.topElement);
+  if (topElement instanceof Element) {
+    observer.value.observe(topElement);
+  }
 });
 
 onUnmounted(() => {

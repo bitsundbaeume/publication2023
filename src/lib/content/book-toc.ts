@@ -1,6 +1,6 @@
 import type {BookToc} from "@components/book-toc-types";
 
-export const flipBookToc: BookToc[] = [
+export const flipBookToc: BookToc["toc"] = [
   {
     headline: "0 Introduction",
     contents: [

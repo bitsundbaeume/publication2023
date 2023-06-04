@@ -4,10 +4,19 @@ module.exports = {
   extends: [
     'stylelint-config-standard',
     'stylelint-config-standard-scss',
+    'stylelint-config-recommended-vue',
+    'stylelint-config-recommended-vue/scss',
   ],
   // plugins: ['stylelint-declaration-block-no-ignored-properties'],
   // add your custom config here
   // https://stylelint.io/user-guide/configuration
+  overrides: [
+    {
+      customSyntax: 'postcss-html',
+      files: ["*.vue", "**/*.vue"],
+      rules: {}
+    }
+  ],
   rules: {
     'max-line-length': null,
     'selector-class-pattern': null,

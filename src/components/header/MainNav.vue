@@ -63,21 +63,18 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import MenuNav from '@components/header/menu-nav/MenuNav.vue';
 
 export interface MainNavProps {
-  menuItems: [
-    {
-      label: string;
-      path: string;
-      childItems: [
-        {
-          label: string;
-          path: string;
-        }
-      ];
-    }
-  ];
+  menuItems: {
+    label: string;
+    path: string;
+    childItems?:
+      {
+        label?: string;
+        path?: string;
+      }[];
+  }[];
 }
 
-const props = defineProps<MainNavProps>()
+defineProps<MainNavProps>()
 const flyoutIsOpen = ref(false);
 const flyoutHeight = ref('');
 const mainNav = ref(null);
@@ -145,6 +142,7 @@ onUnmounted(() => {
 
 .c-main-nav {
   &__flyout {
+    // stylelint-disable-next-line
     --height-flyout: v-bind(flyoutHeight);
   }
 }

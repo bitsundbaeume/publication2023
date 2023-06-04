@@ -9,15 +9,16 @@ export interface Props {
 
 const { logos, classModifier } = Astro.props;
 
-const replaceExtension = (filename: string, newExtension: string) => {
+const replaceExtension = (filename: string, newExtension: string): string => {
   const regex = /(?:\.([^.]+))?$/;
 
   return filename.replace(regex, newExtension);
 };
 
-const extensionIs = (filename: string) => {
+const extensionIs = (filename: string): string => {
   const regex = /(?:\.([^.]+))?$/;
-  return regex.exec(filename)[1];
+
+  return regex.exec(filename)![1];
 };
 ---
 
