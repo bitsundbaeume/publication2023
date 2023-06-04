@@ -86,10 +86,9 @@ export interface FlipbookProps {
   pagesHiRes?: string[];
 }
 
-const props = defineProps<FlipbookProps>()
+defineProps<FlipbookProps>()
 
 const flipbook = ref(null)
-const flipbookContentHeight = ref('')
 const pageNum = ref(1)
 
 /**

@@ -1,3 +1,4 @@
+/* eslint-env node */
 module.exports = {
   customSyntax: 'postcss-scss',
   extends: [
@@ -8,15 +9,7 @@ module.exports = {
   // add your custom config here
   // https://stylelint.io/user-guide/configuration
   rules: {
-    indentation: 'tab',
-    'string-quotes': 'single',
     'max-line-length': null,
-    'max-empty-lines': [
-      1,
-      {
-        ignore: ['comments']
-      }
-    ],
     'selector-class-pattern': null,
     'at-rule-empty-line-before': [
       'always',

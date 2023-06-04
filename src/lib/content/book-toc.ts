@@ -1,6 +1,6 @@
-// import type Props from "@components/BookToc.astro";
+import type {BookToc} from "@components/book-toc-types";
 
-export const flipBookToc: object[] = [
+export const flipBookToc: BookToc[] = [
   {
     headline: "0 Introduction",
     contents: [

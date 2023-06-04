@@ -7,7 +7,11 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "typechecking": "astro check && tsc --noEmit && vue-tsc --noEmit",
+    "lint:js": "eslint --ext \".ts,.js,.astro,.vue\" --ignore-path .gitignore ./src",
+    "lint:style": "stylelint \"**/*.{scss,sass}\" --ignore-path .gitignore",
+    "lint": "npm run lint:js && npm run lint:style"
   },
   "dependencies": {
     "@astrojs/prefetch": "^0.2.3",
@@ -32,6 +36,7 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
     "@vitejs/plugin-vue": "^4.2.3",
     "autoprefixer": "^10.4.14",
@@ -50,6 +55,7 @@
     "stylelint-config-recommended-scss": "^12.0.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-config-standard-scss": "^9.0.0",
+    "typescript": "^5.1.3",
     "vue-tsc": "^1.6.5"
   }
 }

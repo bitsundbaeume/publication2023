@@ -28,7 +28,7 @@ const smoothScrollTo = (target: HTMLElement | string, event?: Event): void => {
  *
  * @return  {bool}
  */
-const isSelectorValid = (selector: string): Boolean => {
+const isSelectorValid = (selector: string): boolean => {
   try { document.querySelector(selector) }
   catch { return false }
   return true

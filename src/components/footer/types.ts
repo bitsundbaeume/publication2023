@@ -5,4 +5,4 @@ export interface Logo {
   alt: string;
   width?: number;
   height?: number;
-};
+}
