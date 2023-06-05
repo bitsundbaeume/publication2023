@@ -2,7 +2,7 @@ import type {BookToc} from "@components/book-toc-types";
 
 export const flipBookToc: BookToc["toc"] = [
   {
-    headline: "0 Introduction",
+    headline: "0. Introduction",
     contents: [
       {
         title: "Editorial - P. Jankowski, A. Höfner & M. L. Hoffmann",
@@ -17,7 +17,7 @@ export const flipBookToc: BookToc["toc"] = [
     ]
   },
   {
-    headline: "1 Redefining Progress: Confronting the Challenges of Digitalisation and Sustainability",
+    headline: "1. Redefining Progress: Confronting the Challenges of Digitalisation and Sustainability",
     contents: [
       {
         title: "Challenges of Digitalisation and Sustainability at a Glance - Infographic - F. Rohde & P. Jankowski",
@@ -52,7 +52,7 @@ export const flipBookToc: BookToc["toc"] = [
     ]
   },
   {
-    headline: "2 Values for Transformation: Foundation for a Socio-Ecological Digitalisation",
+    headline: "2. Values for Transformation: Foundation for a Socio-Ecological Digitalisation",
     contents: [
       {
         title: "A Feminist Reminder in Times of Digitalisation - H. Völkle & E. Lindinger",
@@ -82,7 +82,7 @@ export const flipBookToc: BookToc["toc"] = [
     ]
   },
   {
-    headline: "3 Transformative Change: New Concepts and Paradigms to Update and Replace Current Socio-Technical Structures",
+    headline: "3. Transformative Change: New Concepts and Paradigms to Update and Replace Current Socio-Technical Structures",
     contents: [
       {
         title: "Open Source Hardware and Open Design - L. Zimmermann & M. Voigt",
@@ -112,7 +112,7 @@ export const flipBookToc: BookToc["toc"] = [
     ]
   },
   {
-    headline: "4 Beyond Business as Usual: Use Cases for More Sustainable Tech Design",
+    headline: "4. Beyond Business as Usual: Use Cases for More Sustainable Tech Design",
     contents: [
       {
         title: "Computer Scientists for Future - E. Eickstädt, M. Becke, M. Kohler & J. Padberg",
@@ -137,7 +137,7 @@ export const flipBookToc: BookToc["toc"] = [
     ]
   },
   {
-    headline: "5 Politics Under Pressure: Necessary Changes on the Political Level",
+    headline: "5. Politics Under Pressure: Necessary Changes on the Political Level",
     contents: [
       {
         title: "Bits & Bäume Political Demands at a Glance - Infographic - M. L. Hoffmann & J. Graf",
@@ -162,7 +162,7 @@ export const flipBookToc: BookToc["toc"] = [
     ]
   },
   {
-    headline: "6 A Collective Effort: The Power of Civil Society Driving Sustainable Change",
+    headline: "6. A Collective Effort: The Power of Civil Society Driving Sustainable Change",
     contents: [
       {
         title: "Why Designing a Sustainable Digital Future Requires Policy-Makers to Include Civil Society - V. Frick, A. Mollen & F. Rohde",
@@ -192,6 +192,13 @@ export const flipBookToc: BookToc["toc"] = [
     ]
   },
   {
-    headline: "Acknowledgements",
+    headline: "7. Closure",
+    contents: [
+      {
+        title: "Acknowledgements",
+        url: "#151",
+        pageNumber: "151",
+      },
+    ]
   },
 ];
