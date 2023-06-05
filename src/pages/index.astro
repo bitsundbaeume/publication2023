@@ -20,7 +20,7 @@ const seo = {
 };
 
 // Get images
-const pathToImages = "public/pdfs/jpg/";
+const pathToImages = "public/pdfs/images/";
 const images = readdirSync(pathToImages);
 const pages: string[] = [null]; // null needs to be here for cover image support
 
@@ -39,7 +39,7 @@ images.forEach((name) => {
 });
 
 // Get high res images
-const pathToHighResImages = "public/pdfs/high-res-jpg/";
+const pathToHighResImages = "public/pdfs/high-res-images/";
 const highResImages = readdirSync(pathToHighResImages);
 const highResPages: string[] = [null]; // null needs to be here for cover image support
 
@@ -129,7 +129,7 @@ highResImages.forEach((name) => {
         >
       </p>
       <a
-        href="/pdfs/230531_B+B2022_Preview-fuer-Konferenz.pdf"
+        href="/pdfs/230605_B&B_Journal_final.pdf"
         class="c-box__download c-button c-button--primary"
         download
       >
