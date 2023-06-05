@@ -4,7 +4,7 @@ export interface BookToc {
     contents?: {
       title: string;
       url: string;
-      pageNumber?: number | null;
+      pageNumber?: string | null;
     }[];
   }[];
 }
