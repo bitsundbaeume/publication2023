@@ -53,7 +53,7 @@ a {
 	cursor: pointer;
 }
 
-:is(a:not(.c-button), p) {
+:where(a:not(.c-button), p) {
 	font-size: var(--font-size-xs);
 	line-height: 1.5;
 }
