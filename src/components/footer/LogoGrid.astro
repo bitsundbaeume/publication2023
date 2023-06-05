@@ -1,6 +1,7 @@
 ---
 import { Img } from "astro-imagetools/components";
 import type { Logo } from "@components/footer/types";
+import { extensionIs } from "@lib/helper";
 
 export interface Props {
   logos: Logo[];
@@ -8,18 +9,6 @@ export interface Props {
 }
 
 const { logos, classModifier } = Astro.props;
-
-const replaceExtension = (filename: string, newExtension: string): string => {
-  const regex = /(?:\.([^.]+))?$/;
-
-  return filename.replace(regex, newExtension);
-};
-
-const extensionIs = (filename: string): string => {
-  const regex = /(?:\.([^.]+))?$/;
-
-  return regex.exec(filename)![1];
-};
 ---
 
 <div class={`o-footer__logo-grid o-footer--${classModifier}`}>

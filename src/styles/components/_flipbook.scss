@@ -4,7 +4,7 @@
 	height: 80vh;
 
 	@include mx.breakpoint('md') {
-		height: 100vh;
+		height: calc(100vh - 64px - 24px);
 	}
 
 	&__action-bar {

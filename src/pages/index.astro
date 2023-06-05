@@ -8,6 +8,8 @@ import "@styles/components/_box.scss";
 import { readdirSync } from "node:fs";
 import TableOfContents from "@components/BookToc.astro";
 import { flipBookToc } from "@lib/content/book-toc";
+import { extensionIs } from "@lib/helper";
+
 const seo = {
   title:
     "Shaping Digital Transformation for a Sustainable Society. Contributions from Bits & Bäume.",
@@ -17,23 +19,34 @@ const seo = {
     "This companion book of the ‹Bits & Bäume› conference 2022 compiles the insights, work, research and opinions of more than 65 authors with a ‹Bits & Bäume› background, including practitioners, researchers and activists.",
 };
 
-// Get jpgs
-const pathToJpgs = "public/pdfs/jpg/";
-const jpgs = readdirSync(pathToJpgs);
-const pages: string[] = [];
+// Get images
+const pathToImages = "public/pdfs/jpg/";
+const images = readdirSync(pathToImages);
+const pages: string[] = [null]; // null needs to be here for cover image support
 
-jpgs.forEach((name) => {
-  const fullPath = `${pathToJpgs.replace("public/", "")}${name}`;
+const filterDisallowedExtension = (
+  extension: string,
+  allowedExtension = ["jpg", "jpeg", "png", "avif", "webp"]
+): boolean => {
+  return allowedExtension.some((el) => extensionIs(extension).includes(el));
+};
+
+images.forEach((name) => {
+  if (!filterDisallowedExtension(name)) return;
+
+  const fullPath = `${pathToImages.replace("public/", "")}${name}`;
   pages.push(fullPath);
 });
 
-// Get high res jpgs
-const pathToHighResJpgs = "public/pdfs/high-res-jpg/";
-const highResJpgs = readdirSync(pathToHighResJpgs);
-const highResPages: string[] = [];
+// Get high res images
+const pathToHighResImages = "public/pdfs/high-res-jpg/";
+const highResImages = readdirSync(pathToHighResImages);
+const highResPages: string[] = [null]; // null needs to be here for cover image support
 
-highResJpgs.forEach((name) => {
-  const fullPath = `${pathToHighResJpgs.replace("public/", "")}${name}`;
+highResImages.forEach((name) => {
+  if (!filterDisallowedExtension(name)) return;
+
+  const fullPath = `${pathToHighResImages.replace("public/", "")}${name}`;
   highResPages.push(fullPath);
 });
 ---
@@ -129,5 +142,5 @@ highResJpgs.forEach((name) => {
 
   <FlipBook pages={pages} :pagesHiRes={highResPages} client:only />
 
-  <TableOfContents toc={flipBookToc} />
+  <!-- <TableOfContents toc={flipBookToc} /> -->
 </Layout>
