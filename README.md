@@ -59,8 +59,8 @@ rm -rf public/pdfs/jpg && rm -rf public/pdfs/high-res-jps
 1. Visit [PDF24 Tools](https://tools.pdf24.org/de/von-pdf-umwandeln)
 2. Upload the PDF
 3. Choose "JPG" as the output format
-   1. For the preview DPI 144 and image quality 85
-   2. For the high-res DPI 300 and image quality 100
+   1. For the preview DPI 72 and image quality 85
+   2. For the high-res DPI 144 and image quality 100
 4. Download the zip file
 5. Convert all the files to .avif via <https://avif.io/>
 6. Unzip the files in to both directories `public/pdfs/images` and `public/pdfs/high-res-images`

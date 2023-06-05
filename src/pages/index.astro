@@ -22,7 +22,7 @@ const seo = {
 // Get images
 const pathToImages = "public/pdfs/images/";
 const images = readdirSync(pathToImages);
-const pages: string[] = [null]; // null needs to be here for cover image support
+const pages: (string | null)[] = [null]; // null needs to be here for cover image support
 
 const filterDisallowedExtension = (
   extension: string,
@@ -41,7 +41,7 @@ images.forEach((name) => {
 // Get high res images
 const pathToHighResImages = "public/pdfs/high-res-images/";
 const highResImages = readdirSync(pathToHighResImages);
-const highResPages: string[] = [null]; // null needs to be here for cover image support
+const highResPages: (string | null)[] = [null]; // null needs to be here for cover image support
 
 highResImages.forEach((name) => {
   if (!filterDisallowedExtension(name)) return;
@@ -49,6 +49,8 @@ highResImages.forEach((name) => {
   const fullPath = `${pathToHighResImages.replace("public/", "")}${name}`;
   highResPages.push(fullPath);
 });
+
+console.log(highResPages);
 ---
 
 <Layout seo={seo} contentModifierClass="index">
@@ -111,7 +113,7 @@ highResImages.forEach((name) => {
 
       <div class="c-box__page-numbers">
         <p class="is-label">Number of pages:</p>
-        <p class="is-number">{pages.length}</p>
+        <p class="is-number">{pages.length - 1}</p>
       </div>
       <div class="c-box__year">
         <p class="is-label">Publication year:</p>
@@ -140,7 +142,7 @@ highResImages.forEach((name) => {
     </div>
   </section>
 
-  <FlipBook pages={pages} :pagesHiRes={highResPages} client:only />
+  <FlipBook pages={pages} pagesHiRes={highResPages} client:only />
 
-  <!-- <TableOfContents toc={flipBookToc} /> -->
+  <TableOfContents toc={flipBookToc} />
 </Layout>

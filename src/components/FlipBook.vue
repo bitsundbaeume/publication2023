@@ -82,8 +82,8 @@ import Flipbook from 'flipbook-vue'
 import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-vue-next'
 
 export interface FlipbookProps {
-  pages: string[];
-  pagesHiRes?: string[];
+  pages: (string|null)[];
+  pagesHiRes?: (string|null)[];
 }
 
 interface FlipbookInstance {
@@ -93,7 +93,7 @@ interface FlipbookInstance {
   flipRight(): void;
 }
 
-defineProps<FlipbookProps>()
+const prop = defineProps<FlipbookProps>()
 
 const flipbook = ref<FlipbookInstance | null>(null)
 const pageNum = ref(1)
