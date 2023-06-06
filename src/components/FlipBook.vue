@@ -82,31 +82,37 @@ import Flipbook from 'flipbook-vue'
 import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-vue-next'
 
 export interface FlipbookProps {
-  pages: string[];
-  pagesHiRes?: string[];
+  pages: (string|null)[];
+  pagesHiRes?: (string|null)[];
 }
 
-const props = defineProps<FlipbookProps>()
+interface FlipbookInstance {
+  canFlipLeft: boolean;
+  canFlipRight: boolean;
+  flipLeft(): void;
+  flipRight(): void;
+}
 
-const flipbook = ref(null)
-const flipbookContentHeight = ref('')
+const prop = defineProps<FlipbookProps>()
+
+const flipbook = ref<FlipbookInstance | null>(null)
 const pageNum = ref(1)
 
 /**
  * When the user starts to flip to the left
  *
- * @param   {number}  page             [page description]
+ * @param   {number}  page
  */
-const onFlipLeftStart = (page: number) => { console.log('flip-left-start', page) }
+const onFlipLeftStart = (page: number):void => { console.log('flip-left-start', page) }
 
 /**
  * When the user ends flipping to the left
  *
- * @param   {number}  page  [page description]
+ * @param   {number}  page
  *
- * @return  {void}        [return description]
+ * @return  {void}
  */
-const onFlipLeftEnd = (page: number) => {
+const onFlipLeftEnd = (page: number):void => {
   console.log('flip-left-end', page)
   window.location.hash = `#${page}`
 }
@@ -114,18 +120,18 @@ const onFlipLeftEnd = (page: number) => {
 /**
  * When the user starts to flip to the right
  *
- * @param   {number}  page              [page description]
+ * @param   {number}  page
  */
-const onFlipRightStart = (page: number) => { console.log('flip-right-start', page) }
+const onFlipRightStart = (page: number):void => { console.log('flip-right-start', page) }
 
 /**
  * When the user ends flipping to the right
  *
- * @param   {number}  page  [page description]
+ * @param   {number}  page
  *
- * @return  {void}        [return description]
+ * @return  {void}
  */
-const onFlipRightEnd = (page: number) => {
+const onFlipRightEnd = (page: number):void => {
   console.log('flip-right-end', page)
   window.location.hash = `#${page}`
 }
@@ -133,22 +139,22 @@ const onFlipRightEnd = (page: number) => {
 /**
  * When the user starts to zoom
  *
- * @param   {number}  zoom  [zoom description]
+ * @param   {number}  zoom
  *
- * @return  {void}        [return description]
+ * @return  {void}
  */
-const onZoomStart = (zoom: number) => {
+const onZoomStart = (zoom: number):void => {
   console.log('zoom-start', zoom)
 }
 
 /**
  * When the user ends zooming
  *
- * @param   {number}  zoom  [zoom description]
+ * @param   {number}  zoom
  *
- * @return  {[type]}        [return description]
+ * @return  {[type]}
  */
-const onZoomEnd = (zoom: number) => {
+const onZoomEnd = (zoom: number):void => {
   console.log('zoom-end', zoom)
 }
 

@@ -1,0 +1,64 @@
+@use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
+@use '@sass-butler/mixins' as butler-mx;
+
+.c-book-toc {
+	border-radius: 8px;
+	background-color: var(--green-100);
+	position: relative;
+	padding: 1.625rem 2.125rem;
+
+	&__headline {
+		margin-top: 0;
+	}
+
+	&__pixel {
+		position: absolute;
+		right: -20px;
+		bottom: 0;
+	}
+
+	&__menu {
+		position: relative;
+	}
+
+	&__menu-link {
+		text-decoration: var(--text-decoration-toc-menu-link, none);
+		display: flex;
+		justify-content: space-between;
+		position: relative;
+		line-height: 1.7;
+
+		@include butler-mx.hover {
+			--text-decoration-toc-menu-link: underline;
+		}
+
+		&::after {
+			content: '';
+			width: 100%;
+			min-width: 50px;
+			height: 1em;
+			position: absolute;
+			z-index: 0;
+			bottom: -.2em;
+			background-image: radial-gradient(var(--blue-500) 12%, transparent 12%);
+			background-position: 1.5em 0;
+			background-repeat: repeat-x;
+			background-size: .5em .5em;
+			font-size: 1rem;
+		}
+	}
+
+	&__title,
+	&__page-number {
+		z-index: 1;
+		background-color: var(--green-100);
+	}
+
+	&__title {
+		padding-right: 0.25em;
+	}
+
+	&__page-number {
+		padding-left: 0.25em;
+	}
+}

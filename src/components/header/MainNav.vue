@@ -11,7 +11,7 @@
       @click="toggleFlyout"
     >
       <img
-        src="images/icons/menu-button.svg"
+        src="/images/icons/menu-button.svg"
         alt="Menu Icon"
         width="39"
         height="21"
@@ -63,21 +63,18 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import MenuNav from '@components/header/menu-nav/MenuNav.vue';
 
 export interface MainNavProps {
-  menuItems: [
-    {
-      label: string;
-      path: string;
-      childItems: [
-        {
-          label: string;
-          path: string;
-        }
-      ];
-    }
-  ];
+  menuItems: {
+    label: string;
+    path: string;
+    childItems?:
+      {
+        label?: string;
+        path?: string;
+      }[];
+  }[];
 }
 
-const props = defineProps<MainNavProps>()
+defineProps<MainNavProps>()
 const flyoutIsOpen = ref(false);
 const flyoutHeight = ref('');
 const mainNav = ref(null);
@@ -119,7 +116,7 @@ const resizeObserver = new ResizeObserver(() => {
   const remainingHeight = viewportHeight - headerInner;
 
   flyoutHeight.value = `${remainingHeight}px`;
-  isMobile.value = window.innerWidth < 768;
+  isMobile.value = window.innerWidth < 769;
 
   if (!isMobile.value) {
     flyoutIsOpen.value = false;
@@ -129,7 +126,7 @@ const resizeObserver = new ResizeObserver(() => {
 });
 
 onMounted(() => {
-  isMobile.value = window.innerWidth < 768;
+  isMobile.value = window.innerWidth < 769;
 
   const body = document.querySelector('body') as HTMLBodyElement;
   resizeObserver.observe(body);
@@ -145,6 +142,7 @@ onUnmounted(() => {
 
 .c-main-nav {
   &__flyout {
+    // stylelint-disable-next-line
     --height-flyout: v-bind(flyoutHeight);
   }
 }

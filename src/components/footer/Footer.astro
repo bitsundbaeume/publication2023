@@ -1,26 +1,23 @@
 ---
 import LogoGrid from "@components/footer/LogoGrid.astro";
 import { Icon } from "astro-icon";
-import {
-  supporters,
-  media,
-  specialThanks,
-  funded,
-} from "@components/footer/logos";
+import { supporters, media, specialThanks, funded } from "@lib/content/logos";
 import Logo from "@components/Logo.astro";
 import "@styles/objects/_footer.scss";
 ---
 
 <footer class="o-footer">
   <img
-    src="images/pixels/pixel-footer-left.svg"
+    src="/images/pixels/pixel-footer-left.svg"
     class="o-footer__pixel is-left"
     aria-hidden="true"
+    alt="pixel element"
   />
   <img
-    src="images/pixels/pixel-footer-right.svg"
+    src="/images/pixels/pixel-footer-right.svg"
     class="o-footer__pixel is-right"
     aria-hidden="true"
+    alt="pixel element"
   />
 
   <div class="o-footer__inner">

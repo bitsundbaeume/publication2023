@@ -16,7 +16,7 @@ html {
 		'Segoe UI Emoji';
 
 	@include butler-mx.font-smoothing;
-	@include butler-mx.select-style(colors.$green-600, #fff);
+	@include butler-mx.select-style(colors.$green-300, #fff);
 }
 
 :root {
@@ -53,6 +53,7 @@ a {
 	cursor: pointer;
 }
 
-:is(a, p) {
+:where(a:not(.c-button), p) {
 	font-size: var(--font-size-xs);
+	line-height: 1.5;
 }

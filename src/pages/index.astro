@@ -1,12 +1,14 @@
 ---
 import { Img } from "astro-imagetools/components";
-import Layout from "../layouts/Layout.astro";
+import Layout from "../layouts/SinglePageLayout.astro";
 import FlipBook from "@components/FlipBook.vue";
 import { Icon } from "astro-icon";
 import Share from "@components/Share.vue";
 import "@styles/components/_box.scss";
 import { readdirSync } from "node:fs";
-import TableOfContents from "@components/TableOfContents.astro";
+import TableOfContents from "@components/BookToc.astro";
+import { flipBookToc } from "@lib/content/book-toc";
+import { extensionIs } from "@lib/helper";
 
 const seo = {
   title:
@@ -17,41 +19,39 @@ const seo = {
     "This companion book of the ‹Bits & Bäume› conference 2022 compiles the insights, work, research and opinions of more than 65 authors with a ‹Bits & Bäume› background, including practitioners, researchers and activists.",
 };
 
-// Get jpgs
-const pathToJpgs = "public/pdfs/jpg/";
-const jpgs = readdirSync(pathToJpgs);
-const pages: string[] = [];
+// Get images
+const pathToImages = "public/pdfs/images/";
+const images = readdirSync(pathToImages);
+const pages: (string | null)[] = [null]; // null needs to be here for cover image support
 
-jpgs.forEach((name) => {
-  const fullPath = `${pathToJpgs.replace("public/", "")}${name}`;
+const filterDisallowedExtension = (
+  extension: string,
+  allowedExtension = ["jpg", "jpeg", "png", "avif", "webp"]
+): boolean => {
+  return allowedExtension.some((el) => extensionIs(extension).includes(el));
+};
+
+images.forEach((name) => {
+  if (!filterDisallowedExtension(name)) return;
+
+  const fullPath = `${pathToImages.replace("public/", "")}${name}`;
   pages.push(fullPath);
 });
 
-// Get high res jpgs
-const pathToHighResJpgs = "public/pdfs/high-res-jpg/";
-const highResJpgs = readdirSync(pathToHighResJpgs);
-const highResPages: string[] = [];
+// Get high res images
+const pathToHighResImages = "public/pdfs/high-res-images/";
+const highResImages = readdirSync(pathToHighResImages);
+const highResPages: (string | null)[] = [null]; // null needs to be here for cover image support
 
-highResJpgs.forEach((name) => {
-  const fullPath = `${pathToHighResJpgs.replace("public/", "")}${name}`;
+highResImages.forEach((name) => {
+  if (!filterDisallowedExtension(name)) return;
+
+  const fullPath = `${pathToHighResImages.replace("public/", "")}${name}`;
   highResPages.push(fullPath);
 });
-
-const menuItems: object[] = [
-  {
-    title: "Shaping digital transformation for a sustainable society",
-    url: "#1",
-    pageNumber: 1,
-  },
-  {
-    title: "Content",
-    url: "#3",
-    pageNumber: "2-3",
-  },
-];
 ---
 
-<Layout seo={seo}>
+<Layout seo={seo} contentModifierClass="index">
   <section class="c-box" id="overview">
     <Img
       src="/src/images/Titel.jpg"
@@ -109,25 +109,16 @@ const menuItems: object[] = [
         society.
       </p>
 
-      <div class="c-box__col-wrapper">
-        <div class="c-box__page-numbers">
-          <p class="is-label">Number of pages:</p>
-          <p class="is-number">{pages.length}</p>
-        </div>
-        <div class="c-box__year">
-          <p class="is-label">Publication year:</p>
-          <p class="is-number">2023</p>
-        </div>
-        <a
-          href="/pdfs/230531_B+B2022_Preview-fuer-Konferenz.pdf"
-          class="c-box__download c-button c-button--primary"
-          download
-        >
-          <Icon name="lucide:file-text" width="26" />
-          Download PDF
-        </a>
-        <Share class:list={"c-box__share"} client:only />
+      <div class="c-box__page-numbers">
+        <p class="is-label">Number of pages:</p>
+        <p class="is-number">{pages.length - 1}</p>
       </div>
+      <div class="c-box__year">
+        <p class="is-label">Publication year:</p>
+        <p class="is-number">2023</p>
+      </div>
+    </div>
+    <div class="c-box__info">
       <p class="c-box__citation">
         <b>Suggested citation:</b> Jankowski, P., Höfner, A., Hoffmann, M. L., Rohde,
         F., Rehak, R. & Graf, J. (Eds.) (2023). Shaping Digital Transformation for
@@ -137,10 +128,19 @@ const menuItems: object[] = [
           >https://doi.org/10.14279/depositonce-17526</a
         >
       </p>
+      <a
+        href="/pdfs/230605_B&B_Journal_final.pdf"
+        class="c-box__download c-button c-button--primary"
+        download
+      >
+        <Icon name="lucide:file-text" width="26" />
+        Download PDF
+      </a>
+      <Share class:list={"c-box__share"} client:only />
     </div>
   </section>
 
-  <FlipBook pages={pages} :pagesHiRes={highResPages} client:only />
+  <FlipBook pages={pages} pagesHiRes={highResPages} client:only />
 
-  <TableOfContents toc={menuItems} />
+  <TableOfContents toc={flipBookToc} />
 </Layout>

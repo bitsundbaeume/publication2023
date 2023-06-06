@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/Layout.astro";
+
+const { seo, contentModifierClass } = Astro.props;
+
+const modifierClass = `o-content--${contentModifierClass}`;
+---
+
+<BaseLayout seo={seo}>
+  <main class:list={["o-content", modifierClass]}>
+    <slot />
+  </main>
+</BaseLayout>

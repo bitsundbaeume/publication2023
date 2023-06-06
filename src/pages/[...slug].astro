@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import Layout from "../layouts/PublicationLayout.astro";
+import TableOfContents from "@components/PublicationToc.vue";
+
+export async function getStaticPaths() {
+  const publication2023Entries = await getCollection("publication2023");
+
+  return publication2023Entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry, collection: publication2023Entries },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"publication2023">;
+  collection: CollectionEntry<"publication2023">[];
+}
+const { entry, collection } = Astro.props;
+const { Content, headings } = await entry.render();
+
+/**
+ * Filter the collection to only include the items that are needed
+ */
+const filteredCollection = collection.map((item) => {
+  return {
+    title: item.data.title,
+    slug: item.slug,
+    isCurrent: item.id === entry.id,
+    order: item.data.order,
+  };
+});
+
+/**
+ * Sort the collection by the order property
+ */
+const sortedCollection = filteredCollection.sort((a, b) => a.order - b.order);
+---
+
+<Layout seo={entry.data.seo} contentModifierClass="publication">
+  <Content />
+
+  <TableOfContents
+    headings={headings}
+    collection={sortedCollection}
+    client:only
+    slot="sidebar"
+  />
+</Layout>

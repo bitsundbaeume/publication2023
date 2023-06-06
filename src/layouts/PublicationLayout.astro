@@ -1,0 +1,23 @@
+---
+import "@styles/objects/_sidebar.scss";
+import "@styles/objects/_publication.scss";
+
+import BaseLayout from "../layouts/Layout.astro";
+
+const { seo, contentModifierClass } = Astro.props;
+
+const modifierClass = `o-content--${contentModifierClass}`;
+---
+
+<BaseLayout seo={seo}>
+  <div class:list={["o-content", modifierClass]}>
+    <main class="o-publication">
+      <article>
+        <slot />
+      </article>
+    </main>
+    <aside class="o-sidebar">
+      <slot name="sidebar" />
+    </aside>
+  </div>
+</BaseLayout>

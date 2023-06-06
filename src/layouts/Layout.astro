@@ -4,7 +4,8 @@ import "@styles/objects/_content.scss";
 
 import Header from "@components/header/Header.astro";
 import Footer from "@components/footer/Footer.astro";
-import ToTop from "@components/ToTop.astro";
+import ToTop from "@components/ToTop.vue";
+import Search from "@components/Search.astro";
 
 export interface Props {
   seo?: {
@@ -12,9 +13,10 @@ export interface Props {
     metaTitle?: string;
     metaDescription?: string;
   };
+  bodyClass?: string;
 }
 
-const { seo } = Astro.props;
+const { seo, bodyClass } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -63,14 +65,14 @@ const { seo } = Astro.props;
     <slot name="head" />
   </head>
 
-  <body>
+  <body class={bodyClass}>
     <Header />
 
-    <main class="o-content">
-      <slot />
-    </main>
+    <!-- <Search /> -->
 
-    <ToTop />
+    <slot />
+
+    <ToTop client:load />
 
     <Footer />
   </body>
