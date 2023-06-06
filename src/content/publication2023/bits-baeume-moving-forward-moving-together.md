@@ -1,6 +1,6 @@
 ---
 title: "Bits & Bäume: Moving Forward, Moving Together"
-isDraft: true
+isDraft: false
 order: 1
 seo:
   title: ""

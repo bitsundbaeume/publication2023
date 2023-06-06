@@ -1,6 +1,6 @@
 ---
 title: "1 Redefining Progress: Confronting the Challenges of Digitalisation and Sustainability"
-isDraft: true
+isDraft: false
 order: 2
 seo:
   title: ""
