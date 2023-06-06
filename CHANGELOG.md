@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/bitsundbaeume/publication2023/compare/v1.0.0...v1.1.0) (2023-06-06)
+
+
+### Bug Fixes
+
+* apply index styles only on index ([c2d7e15](https://github.com/bitsundbaeume/publication2023/commit/c2d7e15a2d09e73d9bb4716018fbc9950ca6bfd5))
+* asset paths ([d720cfd](https://github.com/bitsundbaeume/publication2023/commit/d720cfd858733301abf60dd172047083997f4450))
+* asset paths ([65d5eee](https://github.com/bitsundbaeume/publication2023/commit/65d5eee72151093473b16d6d61021a92dde3edb6))
+* box mobile spacing ([d99a3fc](https://github.com/bitsundbaeume/publication2023/commit/d99a3fc6d913c4ffb74f8a2aeeceda432b5a3df8))
+* breakpoints ([480f1ad](https://github.com/bitsundbaeume/publication2023/commit/480f1ad574d01ff1d1b411cfb2c36fe31f4eb1da))
+* button line-height ([389b916](https://github.com/bitsundbaeume/publication2023/commit/389b916c5fdbd99a01ff482fd6a0eb08e7be95ab))
+* citation font size ([1f1e95e](https://github.com/bitsundbaeume/publication2023/commit/1f1e95e9cd1434c8356e531c619c38cb291314d6))
+* citation font size ([aece63a](https://github.com/bitsundbaeume/publication2023/commit/aece63a00e757fc977a2b12b5bd285fe9e8dbbdc))
+* filter non images formats from flipbook src. ([066a3b8](https://github.com/bitsundbaeume/publication2023/commit/066a3b828a5b4404441a5e1b28006868b85019e8))
+* flyout z-index ([3a1f60d](https://github.com/bitsundbaeume/publication2023/commit/3a1f60d705879fa213e4ac489857dffca8524023))
+* grid & prevent word overflow ([5fe50da](https://github.com/bitsundbaeume/publication2023/commit/5fe50dad76d72b34493e6c71e7a0374bbc5cddcc))
+* missing try ([a0b9d9b](https://github.com/bitsundbaeume/publication2023/commit/a0b9d9bd497446e1287034ac1a4316d5b3b50f9b))
+* prevent heading id starting with a number ([75c9dde](https://github.com/bitsundbaeume/publication2023/commit/75c9ddef2e7461b91cc607652d85c331e760f267))
+* sort collection by number ([30d2469](https://github.com/bitsundbaeume/publication2023/commit/30d246997db60fa2bd1ae8616c1e5195407c0668))
+* temporary disable critters ([4ecc027](https://github.com/bitsundbaeume/publication2023/commit/4ecc0278d184c24dd3909f67bb014ddb559ccc93))
+* ts errors ([d5a8dda](https://github.com/bitsundbaeume/publication2023/commit/d5a8dda4165bd87aad92fbdf214d51ec85995b32))
+* ts errors ([4305dc4](https://github.com/bitsundbaeume/publication2023/commit/4305dc48c412f349aa414c34fd001bc2a355144a))
+* wrong breakpoints ([b52f224](https://github.com/bitsundbaeume/publication2023/commit/b52f22446c8d0cc66bf39dc16bb50549708f0723))
+
+
+### Features
+
+* add basic search styles ([3141f87](https://github.com/bitsundbaeume/publication2023/commit/3141f87778f3eea692a4e234e6df4a97121a4b9c))
+* add book toc content ([4006cad](https://github.com/bitsundbaeume/publication2023/commit/4006cad362925794e461a45d7a625ff766b63ca7))
+* add content & order prop ([f8d5b24](https://github.com/bitsundbaeume/publication2023/commit/f8d5b242933eb0a226b351eb532114ba5d025882))
+* add final pdf ([8462676](https://github.com/bitsundbaeume/publication2023/commit/8462676648b64cda9b6e0b57d55e8e410ef12052))
+* add final pdf imgs ([4e830ef](https://github.com/bitsundbaeume/publication2023/commit/4e830ef8edac2123a40b8bdb8e66402fcea16bb8))
+* add fluid typo to h1, h2, h3 ([599bcbc](https://github.com/bitsundbaeume/publication2023/commit/599bcbc5aab81c12d8b966c83d484a9555aa25ae))
+* add new content collection ([0dab2b4](https://github.com/bitsundbaeume/publication2023/commit/0dab2b495552f9ed75dcbe5c47ce4853dba4720a))
+* add pub mobile styles ([80a7f81](https://github.com/bitsundbaeume/publication2023/commit/80a7f81871e8e8c438e632f60b996331b8b98a26))
+* add publication toc displaying the complete collection ([2255a4f](https://github.com/bitsundbaeume/publication2023/commit/2255a4fb5b288607119112090a16815385fb76b2))
+* add search ([61df09b](https://github.com/bitsundbaeume/publication2023/commit/61df09bf106d0b4108b0edda73b3ad016c396e1f))
+* add sidebar, pub toc & publication styles ([ba33283](https://github.com/bitsundbaeume/publication2023/commit/ba33283c6b3c1483e5e3dca0c0d44b9f9569afeb))
+* add to top vue component ([87860d2](https://github.com/bitsundbaeume/publication2023/commit/87860d292c5b5efee86f71adf40331ac00dfa9c8))
+* add two new layouts & rename collection ([bc81b2e](https://github.com/bitsundbaeume/publication2023/commit/bc81b2e3f56f6e3ba33026bf131cfad848411631))
+* adjust box layout ([6143c81](https://github.com/bitsundbaeume/publication2023/commit/6143c81c0ffa75d6b9a61d76b7a39bd5755de61c))
+* create html markup for publication content ([211e79a](https://github.com/bitsundbaeume/publication2023/commit/211e79a24528b395e739ab3194f543c3ed74dbb0))
+* improve typo ([77bf851](https://github.com/bitsundbaeume/publication2023/commit/77bf851b7a8612c01bfa8ca861892e60f8cc4158))
+* prefetch toc pages ([32d2a26](https://github.com/bitsundbaeume/publication2023/commit/32d2a266f8ec045ed7e108ae56952caad11d9fd2))
+* reduced amount of data transferred to property & fix oberserver margin ([1ddfeba](https://github.com/bitsundbaeume/publication2023/commit/1ddfebaf2eb5b51861af474387e39ff95e5e4407))
+* toc page numbers ([88e41de](https://github.com/bitsundbaeume/publication2023/commit/88e41de4a01d7a81f146eb179720bd83175ece40))
+
 # 1.0.0 (2023-06-02)
 
 
