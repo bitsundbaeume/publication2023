@@ -4,26 +4,70 @@ import { test, expect, describe } from 'vitest'
 import MenuItem from '@components/header/menu-nav/MenuItem.vue'
 
 describe('MenuItem', () => {
-
-  test('Is component visible?', () => {
-    const wrapper = mount(MenuItem, {
-      props: {
-        menuItem: {
-          label: 'Home',
-          path: '/',
-        },
-        depth: 0,
-        index: 1,
+  const wrapper = mount(MenuItem, {
+    props: {
+      menuItem: {
+        label: 'Home',
+        path: '/',
       },
-    })
+      depth: 0,
+      index: 1,
+    },
+  })
 
+  const wrapperChilds = mount(MenuItem, {
+    props: {
+      menuItem: {
+        label: 'B&B Publication 2023',
+        path: '/',
+        childItems: [
+          {
+            label: 'Overview',
+            path: '#overview'
+          },
+          {
+            label: 'Browse',
+            path: '#flipbook'
+          },
+          {
+            label: 'Table of Contents',
+            path: '#toc'
+          }
+        ]
+      },
+      depth: 0,
+      index: 1,
+    },
+  })
+
+  test('Is component visible?', async () => {
     const menuItem = wrapper.find('.c-menu__item')
 
     expect(menuItem.exists()).toBe(true)
   })
 
-  test('Emits a submenuSate event', async () => {
-    const wrapper = mount(MenuItem, {
+  test('Emits a menuItemTargetClicked event', async () => {
+    const button = wrapper.find('.c-menu__link')
+
+    await button.trigger('click')
+
+    expect(wrapper.emitted()).toHaveProperty('menuItemTargetClicked')
+  })
+
+  test('Emits a submenuSate event, open the submenu, check if submenu elements are there', async () => {
+    const menuItem = wrapperChilds.find('.c-menu__item')
+    const button = menuItem.find('.c-menu__link.is-menu-title')
+
+    await button.trigger('click')
+
+    expect(wrapperChilds.emitted()).toHaveProperty('submenuState')
+    expect(menuItem.classes()).toContain('has-visible-child')
+    expect(menuItem.find('.c-submenu').exists()).toBe(true)
+  })
+
+
+  test('Trigger submenu, click on menu item, close submenu', async () => {
+    const wrapperChilds = mount(MenuItem, {
       props: {
         menuItem: {
           label: 'B&B Publication 2023',
@@ -48,12 +92,17 @@ describe('MenuItem', () => {
       },
     })
 
-
-    const menuItem = wrapper.find('.c-menu__item')
+    const menuItem = wrapperChilds.find('.c-menu__item')
     const button = menuItem.find('.c-menu__link.is-menu-title')
 
-    button.trigger('click')
+    // Open submenu
+    await button.trigger('click')
 
-    expect(wrapper.emitted()).toHaveProperty('submenuState')
+    // Click on submenu item and close it
+    await button.trigger('click')
+
+    expect(wrapperChilds.emitted()).toHaveProperty('submenuState')
+    expect(menuItem.classes()).not.toContain('has-visible-child')
+    expect(menuItem.find('.c-submenu').exists()).toBe(false)
   })
 })
