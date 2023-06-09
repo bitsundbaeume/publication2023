@@ -3,10 +3,13 @@
     :id="tocId"
     class="c-pub-toc"
   >
+    <h2 class="c-pub-toc__start-heading">
+      Table of Contents
+    </h2>
     <ul class="c-pub-toc__pages u-list-reset">
       <template
-        v-for="(collectionEntry, collectionIndex) in collection"
-        :key="collectionIndex"
+        v-for="collectionEntry in collection"
+        :key="collectionEntry.slug"
       >
         <li
           v-if="!collectionEntry.isCurrent"
@@ -29,8 +32,8 @@
           />
           <ul class="c-pub-toc__current-toc u-list-reset">
             <template
-              v-for="(headline, headingsIndex) in headings"
-              :key="headingsIndex"
+              v-for="headline in headings"
+              :key="headline.slug"
             >
               <li
                 :class="[
