@@ -1,12 +1,15 @@
 /* eslint-env node */
 module.exports = {
   extends: [
-    // "eslint:recommended",
+    "eslint:recommended",
     "plugin:astro/recommended",
     "plugin:astro/jsx-a11y-recommended",
     "plugin:vue/vue3-recommended",
     "plugin:vuejs-accessibility/recommended",
+    "plugin:@typescript-eslint/recommended",
   ],
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
   root: true,
   overrides: [
     {

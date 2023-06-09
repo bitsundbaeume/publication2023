@@ -1,4 +1,4 @@
-const smoothScrollTo = (target: HTMLElement | string, event?: Event): void => {
+export const smoothScrollTo = (target: HTMLElement | string, event?: Event): void => {
   const id = event ? (target as HTMLElement).getAttribute('href') : target;
 
   if (!id || id === '#' || !isSelectorValid(id)) return;
@@ -6,13 +6,12 @@ const smoothScrollTo = (target: HTMLElement | string, event?: Event): void => {
   if (event) event.preventDefault();
 
   const element = document.querySelector(String(id));
-  if (element) {
-    element.scrollIntoView({
-      block: 'start',
-      behavior: 'smooth',
-      inline: 'start',
-    });
-  }
+
+  element?.scrollIntoView({
+    block: 'start',
+    behavior: 'smooth',
+    inline: 'start',
+  });
 };
 
 const isSelectorValid = (selector: string | HTMLElement): boolean => {
