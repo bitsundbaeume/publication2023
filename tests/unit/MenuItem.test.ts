@@ -1,4 +1,3 @@
-import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
 import { test, expect, describe } from 'vitest'
 import MenuItem from '@components/header/menu-nav/MenuItem.vue'
