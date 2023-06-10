@@ -4,7 +4,7 @@
 .c-pub-toc {
 	@include mx.breakpoint('sm') {
 		overflow-y: auto;
-		height: 100vh;
+		max-height: 100vh;
 	}
 
   &__start-heading {
