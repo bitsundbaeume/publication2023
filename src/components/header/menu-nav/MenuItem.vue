@@ -79,7 +79,12 @@ const isOpen = ref(false)
 const isCurrentPath = ref(false)
 const submenu = ref(null)
 
-const emit = defineEmits(['submenuState', 'menuItemTargetClicked'])
+const emit = defineEmits<{
+  submenuState: [isOpen: boolean]
+  'submenu-state': [isOpen: boolean]
+  menuItemTargetClicked: [value: boolean]
+  'menu-item-target-clicked': [value: boolean]
+}>();
 
 /**
  * If the user clicks outside the submenu, close the submenu

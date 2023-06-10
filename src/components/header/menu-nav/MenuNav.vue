@@ -38,7 +38,11 @@ export interface MenuProps {
 
 const props = defineProps<MenuProps>();
 
-defineEmits(['submenuState', 'menuItemTargetClicked'])
+defineEmits<{
+  submenuState: [isOpen: boolean]
+  'submenu-state': [isOpen: boolean]
+  menuItemTargetClicked: [value: boolean]
+}>();
 </script>
 
 <style lang="scss">
