@@ -1,8 +1,12 @@
 /// <reference types="vitest" />
 
-import path from 'path'
+import path, { dirname } from 'node:path';
+import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default defineConfig({
   plugins: [
@@ -15,9 +19,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@components': path.resolve(__dirname, './src/components/'),
-      '@layouts': path.resolve(__dirname, './src/layouts/'),
-      '@lib': path.resolve(__dirname, './src/lib/'),
+      '@lib/': `${path.resolve(__dirname, 'src/lib/')}/`,
+      '@components/': `${path.resolve(__dirname, 'src/components/')}/`,
     },
   }
 })

@@ -18,5 +18,8 @@
     },
     "jsx": "preserve",
     "verbatimModuleSyntax": true,
-  }
+  },
+  "exclude": [
+    "tests/**/*"
+  ],
 }
