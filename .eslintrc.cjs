@@ -7,6 +7,7 @@ module.exports = {
     "plugin:vue/vue3-recommended",
     "plugin:vuejs-accessibility/recommended",
     "plugin:@typescript-eslint/recommended",
+    "prettier",
   ],
   parser: "@typescript-eslint/parser",
   plugins: ["@typescript-eslint"],
@@ -36,19 +37,19 @@ module.exports = {
         extraFileExtensions: [".vue"],
       },
       rules: {
-        'vuejs-accessibility/label-has-for': [
-          'error',
+        "vuejs-accessibility/label-has-for": [
+          "error",
           {
             components: ["VLabel"],
             controlComponents: ["VInput"],
             required: {
-              every: ["id"]
+              every: ["id"],
             },
-            allowChildren: false
-          }
-        ]
+            allowChildren: false,
+          },
+        ],
       },
     },
   ],
-  rules: {}
-}
+  rules: {},
+};

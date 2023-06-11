@@ -1,20 +1,12 @@
 <template>
-  <nav
-    :id="tocId"
-    class="c-pub-toc"
-  >
-    <h2 class="c-pub-toc__start-heading">
-      Table of Contents
-    </h2>
+  <nav :id="tocId" class="c-pub-toc">
+    <h2 class="c-pub-toc__start-heading">Table of Contents</h2>
     <ul class="c-pub-toc__pages u-list-reset">
       <template
         v-for="collectionEntry in collection"
         :key="collectionEntry.slug"
       >
-        <li
-          v-if="!collectionEntry.isCurrent"
-          class="c-pub-toc__page"
-        >
+        <li v-if="!collectionEntry.isCurrent" class="c-pub-toc__page">
           <a
             class="c-pub-toc__link"
             :href="`/${collectionEntry.slug}`"
@@ -22,25 +14,16 @@
             v-text="collectionEntry.title"
           />
         </li>
-        <li
-          v-else
-          class="c-pub-toc__page is-current"
-        >
-          <p
-            class="c-pub-toc__page-title"
-            v-text="collectionEntry.title"
-          />
+        <li v-else class="c-pub-toc__page is-current">
+          <p class="c-pub-toc__page-title" v-text="collectionEntry.title" />
           <ul class="c-pub-toc__current-toc u-list-reset">
-            <template
-              v-for="headline in headings"
-              :key="headline.slug"
-            >
+            <template v-for="headline in headings" :key="headline.slug">
               <li
                 :class="[
                   `c-pub-toc__headline is-depth-${headline.depth}`,
                   {
-                    'is-active': activeHeadline === headline.slug
-                  }
+                    'is-active': activeHeadline === headline.slug,
+                  },
                 ]"
               >
                 <a
@@ -58,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from "vue";
 
 export interface TableOfContentsProps {
   collection: {
@@ -66,43 +49,47 @@ export interface TableOfContentsProps {
     order: number;
     slug: string;
     title: string;
-  }[],
+  }[];
   headings: {
     depth: number;
     slug: string;
     text: string;
-  }[],
+  }[];
 }
 
-defineProps<TableOfContentsProps>()
+defineProps<TableOfContentsProps>();
 
-const tocId = 'tableOfContents';
+const tocId = "tableOfContents";
 
-const activeHeadline = ref('');
+const activeHeadline = ref("");
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.intersectionRatio <= 0) return;
 
-  entries.forEach((entry) => {
-
-    if (entry.intersectionRatio <= 0) return;
-
-    const headline = entry.target as HTMLElement;
-    activeHeadline.value = headline.id;
-  });
-}, {
-  threshold: 0,
-  rootMargin: '0px 0px -60% 0px',
-});
+      const headline = entry.target as HTMLElement;
+      activeHeadline.value = headline.id;
+    });
+  },
+  {
+    threshold: 0,
+    rootMargin: "0px 0px -60% 0px",
+  }
+);
 
 onMounted(() => {
-  if (observer) document.querySelectorAll('h1[id], h2[id], h3[id]').forEach(section => observer.observe(section));
-})
+  if (observer)
+    document
+      .querySelectorAll("h1[id], h2[id], h3[id]")
+      .forEach((section) => observer.observe(section));
+});
 
 onUnmounted(() => {
   if (observer) observer.disconnect();
-})
+});
 </script>
 
 <style lang="scss">
-@use '@styles/components/pub-toc.scss';
+@use "@styles/components/pub-toc.scss";
 </style>

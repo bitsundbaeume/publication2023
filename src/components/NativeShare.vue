@@ -17,10 +17,9 @@
 </template>
 
 <script setup lang="ts">
-import { Share2 } from 'lucide-vue-next';
-import { onMounted, reactive } from 'vue';
-import { useShare } from '@vueuse/core'
-
+import { Share2 } from "lucide-vue-next";
+import { onMounted, reactive } from "vue";
+import { useShare } from "@vueuse/core";
 
 export interface ShareProps {
   title?: string;
@@ -28,9 +27,9 @@ export interface ShareProps {
   url?: string | undefined;
 }
 
-const { share, isSupported } = useShare()
+const { share, isSupported } = useShare();
 
-const props = defineProps<ShareProps>()
+const props = defineProps<ShareProps>();
 
 interface Data {
   currentUrl: string | undefined;
@@ -38,16 +37,19 @@ interface Data {
 
 const data: Data = reactive({
   currentUrl: props.url,
-})
+});
 
-const startShare = (title:string | undefined, text:string | undefined, url:string | undefined) => {
-  share({title, text, url})
-}
+const startShare = (
+  title: string | undefined,
+  text: string | undefined,
+  url: string | undefined
+) => {
+  share({ title, text, url });
+};
 
 onMounted(() => {
   if (!props.url) {
-    data.currentUrl = window.location.href
+    data.currentUrl = window.location.href;
   }
-})
+});
 </script>
-

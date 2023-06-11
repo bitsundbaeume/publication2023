@@ -1,13 +1,13 @@
 .o-publication {
-	word-break: break-word;
+  word-break: break-word;
 
-	* {
-		&:first-child {
-			margin-top: 0;
-		}
+  * {
+    &:first-child {
+      margin-top: 0;
+    }
 
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }

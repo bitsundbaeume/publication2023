@@ -1,8 +1,5 @@
 <template>
-  <nav
-    ref="mainNav"
-    class="c-main-nav"
-  >
+  <nav ref="mainNav" class="c-main-nav">
     <button
       type="button"
       class="c-main-nav__toggle c-button c-button--icon"
@@ -15,15 +12,10 @@
         alt="Menu Icon"
         width="39"
         height="21"
-      >
+      />
     </button>
-    <Teleport
-      v-if="isMobile"
-      to="#mobileNav"
-    >
-      <Transition
-        name="fade"
-      >
+    <Teleport v-if="isMobile" to="#mobileNav">
+      <Transition name="fade">
         <div
           v-show="flyoutIsOpen"
           class="c-main-nav__flyout"
@@ -39,14 +31,8 @@
         </div>
       </Transition>
     </Teleport>
-    <Transition
-      v-else
-      name="fade"
-    >
-      <div
-        v-show="flyoutIsOpen"
-        class="c-main-nav__flyout"
-      >
+    <Transition v-else name="fade">
+      <div v-show="flyoutIsOpen" class="c-main-nav__flyout">
         <MenuNav
           :menu-items="menuItems"
           class="c-main-nav__menu"
@@ -59,24 +45,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import MenuNav from '@components/header/menu-nav/MenuNav.vue';
+import { ref, onMounted, onUnmounted } from "vue";
+import MenuNav from "@components/header/menu-nav/MenuNav.vue";
 
 export interface MainNavProps {
   menuItems: {
     label: string;
     path: string;
-    childItems?:
-      {
-        label?: string;
-        path?: string;
-      }[];
+    childItems?: {
+      label?: string;
+      path?: string;
+    }[];
   }[];
 }
 
-defineProps<MainNavProps>()
+defineProps<MainNavProps>();
 const flyoutIsOpen = ref(false);
-const flyoutHeight = ref('');
+const flyoutHeight = ref("");
 const mainNav = ref(null);
 const isMobile = ref(false);
 const submenuIsOpen = ref(false);
@@ -89,8 +74,7 @@ const submenuIsOpen = ref(false);
 const toggleFlyout = (): void => {
   flyoutIsOpen.value = !flyoutIsOpen.value;
   controlScroll(flyoutIsOpen.value);
-}
-
+};
 
 /**
  * Toggle disable scroll on body
@@ -100,8 +84,8 @@ const toggleFlyout = (): void => {
  * @return  {void}
  */
 const controlScroll = (status: boolean): void => {
-  if (status) document.body.style.overflow = 'hidden';
-  if (!status) document.body.removeAttribute('style');
+  if (status) document.body.style.overflow = "hidden";
+  if (!status) document.body.removeAttribute("style");
 };
 
 /**
@@ -111,7 +95,9 @@ const controlScroll = (status: boolean): void => {
  */
 const resizeObserver = new ResizeObserver(() => {
   const viewportHeight = window.innerHeight;
-  const headerInnerHeight = document.querySelector('.c-header__inner')?.getBoundingClientRect().height;
+  const headerInnerHeight = document
+    .querySelector(".c-header__inner")
+    ?.getBoundingClientRect().height;
   const headerInner = headerInnerHeight ? headerInnerHeight : 0;
   const remainingHeight = viewportHeight - headerInner;
 
@@ -121,24 +107,24 @@ const resizeObserver = new ResizeObserver(() => {
   if (!isMobile.value) {
     flyoutIsOpen.value = false;
 
-    controlScroll(false)
+    controlScroll(false);
   }
 });
 
 onMounted(() => {
   isMobile.value = window.innerWidth < 769;
 
-  const body = document.querySelector('body') as HTMLBodyElement;
+  const body = document.querySelector("body") as HTMLBodyElement;
   resizeObserver.observe(body);
-})
+});
 
 onUnmounted(() => {
   resizeObserver.disconnect();
-})
+});
 </script>
 
 <style lang="scss">
-@use '@styles/components/main-nav';
+@use "@styles/components/main-nav";
 
 .c-main-nav {
   &__flyout {

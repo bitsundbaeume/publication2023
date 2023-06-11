@@ -3,10 +3,11 @@
     :class="[
       'c-menu__item',
       {
-        'has-child': props.menuItem.childItems && props.menuItem.childItems.length > 0,
+        'has-child':
+          props.menuItem.childItems && props.menuItem.childItems.length > 0,
         'is-active': isCurrentPath,
-        'has-visible-child': isOpen
-      }
+        'has-visible-child': isOpen,
+      },
     ]"
     role="menuitem"
     tabindex="-1"
@@ -45,7 +46,10 @@
             :menu-item="child"
             :depth="depth + 1"
             :index="childItemIndex"
-            @click="toggleMenuItem(); $emit('menuItemTargetClicked', true)"
+            @click="
+              toggleMenuItem();
+              $emit('menuItemTargetClicked', true);
+            "
           />
         </template>
       </MenuSubmenu>
@@ -54,9 +58,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
-import MenuSubmenu from '@components/header/menu-nav/MenuSubmenu.vue';
-import { onClickOutside } from '@vueuse/core';
+import { ref, onMounted, watch } from "vue";
+import MenuSubmenu from "@components/header/menu-nav/MenuSubmenu.vue";
+import { onClickOutside } from "@vueuse/core";
 
 export interface MenuItemProps {
   menuItem: {
@@ -73,17 +77,17 @@ export interface MenuItemProps {
   index: number;
 }
 
-const props = defineProps<MenuItemProps>()
+const props = defineProps<MenuItemProps>();
 
-const isOpen = ref(false)
-const isCurrentPath = ref(false)
-const submenu = ref(null)
+const isOpen = ref(false);
+const isCurrentPath = ref(false);
+const submenu = ref(null);
 
 const emit = defineEmits<{
-  submenuState: [isOpen: boolean]
-  'submenu-state': [isOpen: boolean]
-  menuItemTargetClicked: [value: boolean]
-  'menu-item-target-clicked': [value: boolean]
+  submenuState: [isOpen: boolean];
+  "submenu-state": [isOpen: boolean];
+  menuItemTargetClicked: [value: boolean];
+  "menu-item-target-clicked": [value: boolean];
 }>();
 
 /**
@@ -95,23 +99,23 @@ const emit = defineEmits<{
  * @return  {void}             [return description]
  */
 onClickOutside(submenu, (event): void => {
-  if ((event.target as Element).classList.contains('is-menu-title')) return;
+  if ((event.target as Element).classList.contains("is-menu-title")) return;
 
-  isOpen.value = false
+  isOpen.value = false;
 
-  emit('submenuState', isOpen.value)
-})
+  emit("submenuState", isOpen.value);
+});
 
 /**
-  * Toggle the submenu
-  *
-  * @return  {void}
-  */
+ * Toggle the submenu
+ *
+ * @return  {void}
+ */
 const toggleMenuItem = (): void => {
   isOpen.value = !isOpen.value;
 
-  emit('submenuState', isOpen.value)
-}
+  emit("submenuState", isOpen.value);
+};
 
 // TODO: add direction control
 // const direction = (event) => {
@@ -126,10 +130,13 @@ const toggleMenuItem = (): void => {
 
 onMounted(() => {
   if (import.meta.env.DEV) {
-    isCurrentPath.value = window.location.pathname.slice(1) === props.menuItem.path.replace(/^\//gm, '');
+    isCurrentPath.value =
+      window.location.pathname.slice(1) ===
+      props.menuItem.path.replace(/^\//gm, "");
   } else {
-
-    isCurrentPath.value = window.location.pathname.replace(/^\/|\/$/gm, '') === props.menuItem.path.replace(/^\//gm, '');
+    isCurrentPath.value =
+      window.location.pathname.replace(/^\/|\/$/gm, "") ===
+      props.menuItem.path.replace(/^\//gm, "");
   }
-})
+});
 </script>

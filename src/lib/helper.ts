@@ -11,7 +11,10 @@ export const extensionIs = (filename: string): string => {
   return regex.exec(filename)![1];
 };
 
-export const replaceExtension = (filename: string, newExtension: string): string => {
+export const replaceExtension = (
+  filename: string,
+  newExtension: string
+): string => {
   const regex = /(?:\.([^.]+))?$/;
 
   return filename.replace(regex, newExtension);

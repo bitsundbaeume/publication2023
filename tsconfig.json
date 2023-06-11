@@ -3,23 +3,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@lib/*": [
-        "src/lib/*"
-      ],
-      "@images/*": [
-        "src/images/*"
-      ]
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@lib/*": ["src/lib/*"],
+      "@images/*": ["src/images/*"]
     },
     "jsx": "preserve",
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": true
   },
-  "exclude": [
-    "tests/**/*"
-  ],
+  "exclude": ["tests/**/*"]
 }

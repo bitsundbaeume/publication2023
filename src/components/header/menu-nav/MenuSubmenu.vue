@@ -1,10 +1,6 @@
 <template>
   <Transition name="fade">
-    <menu
-      v-if="isOpen"
-      role="menu"
-      class="c-submenu u-list-reset"
-    >
+    <menu v-if="isOpen" role="menu" class="c-submenu u-list-reset">
       <slot />
     </menu>
   </Transition>
@@ -14,5 +10,5 @@
 export interface MenuSubmenuProps {
   isOpen: boolean;
 }
-const props = defineProps<MenuSubmenuProps>()
+const props = defineProps<MenuSubmenuProps>();
 </script>

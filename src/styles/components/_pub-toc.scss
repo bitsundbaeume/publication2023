@@ -1,51 +1,50 @@
-@use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
-@use '@sass-butler/mixins' as butler-mx;
+@use "@styles/mixins/mixins" as mx; // Needs to be loaded before the sass-butler mixins
+@use "@sass-butler/mixins" as butler-mx;
 
 .c-pub-toc {
-	@include mx.breakpoint('sm') {
-		overflow-y: auto;
-		max-height: 100vh;
-	}
+  @include mx.breakpoint("sm") {
+    overflow-y: auto;
+    max-height: 100vh;
+  }
 
   &__start-heading {
     margin: 0 0 1rem;
     font-size: var(--font-size-xl);
   }
 
-	&__link {
-		text-decoration: none;
-		font-size: 1.025rem;
+  &__link {
+    text-decoration: none;
+    font-size: 1.025rem;
 
-		@include butler-mx.hover {
-			text-decoration: underline;
-		}
-	}
+    @include butler-mx.hover {
+      text-decoration: underline;
+    }
+  }
 
-	&__page {
-		padding: .5rem;
+  &__page {
+    padding: 0.5rem;
 
-		&-title {
-			font-weight: bold;
-			margin: 0 0 .5rem;
-		}
+    &-title {
+      font-weight: bold;
+      margin: 0 0 0.5rem;
+    }
 
-		&.is-current {
-			background-color: var(--green-100);
-			border-radius: 3px;
-		}
-	}
+    &.is-current {
+      background-color: var(--green-100);
+      border-radius: 3px;
+    }
+  }
 
-	&__current-toc {
-		padding-inline-start: 1rem;
+  &__current-toc {
+    padding-inline-start: 1rem;
+  }
 
-	}
+  &__headline {
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
 
-	&__headline {
-		padding: .25rem .5rem;
-		border-radius: 3px;
-
-		&.is-active {
-			background-color: var(--green-300);
-		}
-	}
+    &.is-active {
+      background-color: var(--green-300);
+    }
+  }
 }
