@@ -1,5 +1,8 @@
 <template>
-  <Transition name="fade">
+  <Transition
+    v-once
+    name="fade"
+  >
     <a
       v-show="isScrolled"
       :href="linkToTop"

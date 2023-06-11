@@ -1,6 +1,7 @@
 <template>
   <button
     v-if="isSupported"
+    v-once
     type="button"
     class="c-share c-button c-button--primary"
     @click.prevent="startShare(title, text, data.currentUrl)"

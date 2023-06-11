@@ -3,7 +3,7 @@ import { Img } from "astro-imagetools/components";
 import Layout from "../layouts/SinglePageLayout.astro";
 import FlipBook from "@components/FlipBook.vue";
 import { Icon } from "astro-icon";
-import Share from "@components/Share.vue";
+import NativeShare from "@components/NativeShare.vue";
 import "@styles/components/_box.scss";
 import { readdirSync } from "node:fs";
 import TableOfContents from "@components/BookToc.astro";
@@ -136,7 +136,7 @@ highResImages.forEach((name) => {
         <Icon name="lucide:file-text" width="26" />
         Download PDF
       </a>
-      <Share class:list={"c-box__share"} client:only />
+      <NativeShare class:list={"c-box__share"} client:only />
     </div>
   </section>
 
