@@ -89,8 +89,8 @@ import {
 } from "lucide-vue-next";
 
 export interface FlipbookProps {
-  pages: (string | null)[];
-  pagesHiRes?: (string | null)[];
+  pages: string[];
+  pagesHiRes?: string[];
 }
 
 interface FlipbookInstance {

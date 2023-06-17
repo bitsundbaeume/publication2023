@@ -14,20 +14,10 @@
 
 <script setup lang="ts">
 import MenuItem from "@components/header/menu-nav/MenuItem.vue";
+import type { MenuItemData } from "@components/header/menu-nav/MenuItem.vue";
 
 export interface MenuProps {
-  menuItems: [
-    {
-      label: string;
-      path: string;
-      childItems: [
-        {
-          label: string;
-          path: string;
-        }
-      ];
-    }
-  ];
+  menuItems: MenuItemData[];
 }
 
 const props = defineProps<MenuProps>();

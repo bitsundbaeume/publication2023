@@ -58,21 +58,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted } from "vue";
 import MenuSubmenu from "@components/header/menu-nav/MenuSubmenu.vue";
 import { onClickOutside } from "@vueuse/core";
 
+export interface MenuItemData {
+  label: string;
+  path: string;
+  childItems?: MenuItemData[];
+}
+
 export interface MenuItemProps {
-  menuItem: {
-    label: string;
-    path: string;
-    childItems?: [
-      {
-        label: string;
-        path: string;
-      }
-    ];
-  };
+  menuItem: MenuItemData;
   depth: number;
   index: number;
 }

@@ -22,7 +22,7 @@ const seo = {
 // Get images
 const pathToImages = "public/pdfs/images/";
 const images = readdirSync(pathToImages);
-const pages: (string | null)[] = [null]; // null needs to be here for cover image support
+const pages: string[] = [""]; // null needs to be here for cover image support
 
 const filterDisallowedExtension = (
   extension: string,
@@ -41,7 +41,7 @@ images.forEach((name) => {
 // Get high res images
 const pathToHighResImages = "public/pdfs/high-res-images/";
 const highResImages = readdirSync(pathToHighResImages);
-const highResPages: (string | null)[] = [null]; // null needs to be here for cover image support
+const highResPages: string[] = [""]; // null needs to be here for cover image support
 
 highResImages.forEach((name) => {
   if (!filterDisallowedExtension(name)) return;
@@ -52,7 +52,6 @@ highResImages.forEach((name) => {
 ---
 
 <Layout seo={seo} contentModifierClass="index">
-
   <section class="c-box" id="overview">
     <Img
       src="/src/images/Titel.jpg"

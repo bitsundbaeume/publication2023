@@ -47,19 +47,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import MenuNav from "@components/header/menu-nav/MenuNav.vue";
+import type { MenuProps } from "@components/header/menu-nav/MenuNav.vue";
 
-export interface MainNavProps {
-  menuItems: {
-    label: string;
-    path: string;
-    childItems?: {
-      label?: string;
-      path?: string;
-    }[];
-  }[];
-}
-
-defineProps<MainNavProps>();
+defineProps<MenuProps>();
 const flyoutIsOpen = ref(false);
 const flyoutHeight = ref("");
 const mainNav = ref(null);
