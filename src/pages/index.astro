@@ -1,7 +1,8 @@
 ---
 import { Img } from "astro-imagetools/components";
 import Layout from "../layouts/SinglePageLayout.astro";
-import FlipBook from "@components/FlipBook.vue";
+// import FlipBook from "@components/FlipBook.vue";
+import FlipBook from "@components/FlipBook.astro";
 import { Icon } from "astro-icon";
 import NativeShare from "@components/NativeShare.vue";
 import "@styles/components/_box.scss";
@@ -140,7 +141,8 @@ highResImages.forEach((name) => {
     </div>
   </section>
 
-  <FlipBook pages={pages} pagesHiRes={highResPages} client:only />
+  <!-- <FlipBook pages={pages} pagesHiRes={highResPages} client:only /> -->
+  <FlipBook />
 
   <TableOfContents toc={flipBookToc} />
 </Layout>
