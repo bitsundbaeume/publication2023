@@ -30,6 +30,7 @@
     "astro-pagefind": "^1.2.1",
     "astrojs-service-worker": "^1.0.0",
     "flipbook-vue": "^1.0.0-beta.4",
+    "jquery": "^3.7.0",
     "lucide-vue-next": "^0.257.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",
