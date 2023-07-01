@@ -34,7 +34,7 @@
 }
 
 .wowbook-loading .wowbook-page-content {
-  background-image: url("wow_book/loading.gif");
+  background-image: url("/wow_book/loading.gif");
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
@@ -49,7 +49,7 @@
 }
 
 .wowbook.wowbook-loading {
-  background-image: url("wow_book/loading.gif");
+  background-image: url("/wow_book/loading.gif");
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
@@ -139,7 +139,7 @@ img.wowbook-lazy {
 }
 
 .wowbook-shadow-internal {
-  background: url("wow_book/shadow_internal_fold.png") repeat-y;
+  background: url("/wow_book/shadow_internal_fold.png") repeat-y;
   height: 500px;
   width: 200px;
   position: absolute;
@@ -148,7 +148,7 @@ img.wowbook-lazy {
 }
 
 .wowbook-shadow-fold {
-  background: url("wow_book/shadow_fold.png") right top repeat-y;
+  background: url("/wow_book/shadow_fold.png") right top repeat-y;
   height: 500px;
   width: 100px;
   position: absolute;
@@ -157,11 +157,11 @@ img.wowbook-lazy {
 }
 
 .wowbook-shadow-fold-flipped {
-  background-image: url("wow_book/shadow_fold_flip_h.png");
+  background-image: url("/wow_book/shadow_fold_flip_h.png");
 }
 
 .wowbook-fold-gradient {
-  background: url("wow_book/fold_gradient.png") right top repeat-y;
+  background: url("/wow_book/fold_gradient.png") right top repeat-y;
   height: 500px;
   width: 125px;
   position: absolute;
@@ -171,7 +171,7 @@ img.wowbook-lazy {
 }
 
 .wowbook-fold-gradient-flipped {
-  background-image: url("wow_book/fold_gradient_flip_h.png");
+  background-image: url("/wow_book/fold_gradient_flip_h.png");
 }
 
 .wowbook-fold-gradient-container {
@@ -189,13 +189,13 @@ img.wowbook-lazy {
 }
 
 .wowbook-left .wowbook-gutter-shadow {
-  background: url("wow_book/gutter_shadow_left.png") right top repeat-y;
+  background: url("/wow_book/gutter_shadow_left.png") right top repeat-y;
   right: 0;
   width: 70px;
 }
 
 .wowbook-right .wowbook-gutter-shadow {
-  background: url("wow_book/gutter_shadow_right.png") right top repeat-y;
+  background: url("/wow_book/gutter_shadow_right.png") right top repeat-y;
   left: 0;
 }
 
@@ -303,7 +303,7 @@ img.wowbook-lazy {
 }
 
 .wowbook-thumbnail-custom.wowbook-loading {
-  background-image: url("wow_book/loading.gif");
+  background-image: url("/wow_book/loading.gif");
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: auto;
@@ -807,7 +807,7 @@ img.wowbook-lazy {
 
 @font-face {
   font-family: wowbook-toolbar-fonts;
-  src: url("fonts/wowbook-toolbar-fonts.eot");
+  src: url("/wow_book/fonts/wowbook-toolbar-fonts.eot");
 }
 @font-face {
   font-family: wowbook-toolbar-fonts;
@@ -1398,7 +1398,7 @@ img.wowbook-lazy {
 }
 
 .wowbook-findbar.wowbook-find-pending .wowbook-find-count {
-  background-image: url("loading-small.png");
+  background-image: url("/wow_book/loading-small.png");
   background-position: left center;
   background-repeat: no-repeat;
   padding-left: 21px;
