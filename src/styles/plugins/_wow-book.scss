@@ -1,3 +1,5 @@
+@use "@styles/variables/colors";
+
 .c-wow-book {
   overflow: hidden;
 }
@@ -280,13 +282,15 @@ img.wowbook-lazy {
 }
 
 .wowbook-thumbnails .wowbook-button {
-  background: none no-repeat 50% 50% #333;
+  background-color: colors.$blue-900;
   cursor: pointer;
   font-family: wowbook-toolbar-fonts;
   left: 0;
   position: absolute;
   top: 0;
   text-align: center;
+
+  // background: none no-repeat 50% 50% #333;
 }
 
 .wowbook-thumbnail {
@@ -755,13 +759,15 @@ img.wowbook-lazy {
 }
 
 .wowbook-controls {
-  border-radius: 0;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   display: inline-block;
-  box-shadow: 0 0 4px rgb(0 0 0 / 30%);
   height: auto;
   line-height: 46px;
   width: 100%;
   vertical-align: top;
+
+  // box-shadow: 0 0 4px rgb(0 0 0 / 30%);
 }
 
 .wowbook-control {
@@ -783,7 +789,7 @@ img.wowbook-lazy {
 }
 
 .wowbook-control:hover {
-  background: #2c2c2c;
+  background: colors.$blue-200;
 }
 
 .wowbook-control,
@@ -1524,11 +1530,12 @@ input.wowbook-find-text {
 .wowbook-controls,
 .wowbook-share-buttons,
 .wowbook-nav {
-  box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
-  background: #222;
-  background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%);
-  background-repeat: repeat-x;
+  background: colors.$blue-500;
   color: white;
+
+  // box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+  // background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%);
+  // background-repeat: repeat-x;
 }
 
 .wowbook-control,
@@ -1547,7 +1554,7 @@ input.wowbook-find-text {
 .wowbook-nav:hover,
 .wowbook-control:active,
 .wowbook-control:hover {
-  background: #2d2d2d;
+  background: colors.$blue-200;
 }
 
 .wowbook-toc {
