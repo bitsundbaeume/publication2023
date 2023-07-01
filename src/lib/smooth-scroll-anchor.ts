@@ -34,8 +34,8 @@ const isSelectorValid = (selector: string | HTMLElement): boolean => {
 
 {
   const handlePopState = () => {
-    if (window.location.hash.match(/#(\d+)/)) {
-      smoothScrollTo("#flipbook");
+    if (window.location.hash.match(/#book\/(\d+)/)) {
+      smoothScrollTo("#book");
     }
   };
 
