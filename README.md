@@ -59,7 +59,7 @@ npm run dev
 rm -rf public/pdfs/jpg && rm -rf public/pdfs/high-res-jps
 ```
 
-### Create the new content
+### Create the new content (deprecated)
 
 1. Visit [PDF24 Tools](https://tools.pdf24.org/de/von-pdf-umwandeln)
 2. Upload the PDF
