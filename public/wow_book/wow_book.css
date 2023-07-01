@@ -294,8 +294,6 @@ img.wowbook-lazy {
 .wowbook-thumbnail {
   cursor: pointer;
   display: inline-block;
-  *display: inline; /* for IE7 */
-  zoom: 1; /* for IE7 */
   overflow: hidden;
   position: relative;
   vertical-align: top;
@@ -338,12 +336,6 @@ img.wowbook-lazy {
   text-align: center;
 }
 
-/* BUGFIX. IE8 apparently ignores background-position
-   when zoom<>1 is applied and the element has position:absolute */
-.wowbook-thumbnail .wowbook-page-content {
-  position: relative;
-}
-
 .wowbook-thumbnail.wowbook-right {
   margin-right: 1em;
 }
@@ -370,8 +362,6 @@ img.wowbook-lazy {
 
 .wowbook-horizontal.wowbook-thumbnails ul {
   display: inline-block;
-  *display: inline; /* IE7 */
-  *zoom: 1; /* IE7 */
   white-space: nowrap;
 }
 
@@ -399,14 +389,6 @@ img.wowbook-lazy {
   /* without this, the "nowrap" value set in the "ul" will
 	   be inherited and (probably)	mess with your thumbnails */
   white-space: normal;
-
-  /* BUT IE7 NEED THIS */
-  *white-space: nowrap;
-}
-
-.wowbook-horizontal .wowbook-thumbnail .wowbook-page-content {
-  /* AGAIN, IE7 NEED THIS */
-  *white-space: normal;
 }
 
 /* Thumbnails - vertical */
@@ -1406,7 +1388,7 @@ img.wowbook-lazy {
   width: 100%;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
-  zindex: 1001;
+  z-index: 1001;
 }
 
 .wowbook-findbar.wowbook-hidden {
@@ -1707,8 +1689,8 @@ input.wowbook-find-text {
   background: transparent;
   color: #adadad;
   margin-right: 10px;
-  bborder: 1px solid #f3f3f3;
-  bborder-radius: 2px;
+  border: 1px solid #f3f3f3;
+  border-radius: 2px;
 }
 
 .wowbook-cs-white .wowbook-toc .wowbook-close:hover {

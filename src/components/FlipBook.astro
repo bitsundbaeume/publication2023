@@ -2,13 +2,9 @@
 import "src/vendor/wow_book/wow_book.css";
 ---
 
-<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"
-></script>
-<script type="text/javascript" src="src/vendor/wow_book/pdf.combined.min.js"
-></script>
-<script type="text/javascript" src="src/vendor/wow_book/wow_book.min.js"
-></script>
-
+<script type="text/javascript" src="/wow_book/jquery.min.js"></script>
+<script type="text/javascript" src="/wow_book/pdf.combined.min.js"></script>
+<script type="text/javascript" src="/wow_book/wow_book.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
     $("#book").wowBook({
@@ -28,7 +24,6 @@ import "src/vendor/wow_book/wow_book.css";
     });
   });
 </script>
-
 <div class="book-container">
   <div id="book"></div>
 </div>
