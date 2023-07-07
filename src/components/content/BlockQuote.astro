@@ -1,0 +1,22 @@
+---
+import "@styles/components/_quote.scss";
+
+interface Blockquote {
+  cite?: string;
+  refNumber?: number;
+}
+
+const { cite, refNumber } = Astro.props as Blockquote;
+---
+<blockquote cite={cite} class="c-blockquote">
+{
+  refNumber &&
+  <a href={cite}>
+    <sup class="c-blockquote__ref-number">{refNumber}</sup>
+  </a>
+}
+<i class="c-blockquote__content">
+  <slot />
+</i>
+
+</blockquote>
