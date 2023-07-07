@@ -28,5 +28,20 @@
     .o-publication {
       grid-area: publication;
     }
+
+    article {
+      ul {
+        padding-inline-start: 1rem;
+
+        li {
+          padding-inline-start: 0.75rem;
+
+          &::marker {
+            content: "///";
+            color: var(--color-page-list-marker, var(--green-300));
+          }
+        }
+      }
+    }
   }
 }
