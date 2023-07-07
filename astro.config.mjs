@@ -10,6 +10,7 @@ import vue from "@astrojs/vue";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import pagefind from "astro-pagefind";
+import mdx from "@astrojs/mdx";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -21,8 +22,19 @@ export default defineConfig({
   compressHTML: true,
   markdown: {
     rehypePlugins: [
-      [rehypeSlug, { prefix: "h-" }], // We need this to prevent IDs starting with a number
-      [rehypeAutolinkHeadings, { behavior: "append" }],
+      [
+        rehypeSlug,
+        {
+          prefix: "h-",
+        },
+      ],
+      // We need this to prevent IDs starting with a number
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "append",
+        },
+      ],
     ],
   },
   build: {
@@ -41,6 +53,23 @@ export default defineConfig({
     astroImageTools,
     vue(),
     pagefind(),
+    mdx({
+      rehypePlugins: [
+        [
+          rehypeSlug,
+          {
+            prefix: "h-",
+          },
+        ],
+        // We need this to prevent IDs starting with a number
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: "append",
+          },
+        ],
+      ],
+    }),
   ],
   vite: {
     plugins: [],
@@ -51,7 +80,7 @@ export default defineConfig({
       alias: {
         "@sass-butler/": `${path.resolve(
           __dirname,
-          "node_modules/@felix_berlin/sass-butler/"
+          "node_modules/@felix_berlin/sass-butler/",
         )}/`,
         "@styles/": `${path.resolve(__dirname, "src/styles/")}/`,
       },
