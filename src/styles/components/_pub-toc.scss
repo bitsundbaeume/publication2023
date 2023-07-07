@@ -21,8 +21,24 @@
     }
   }
 
+  &__chapter,
   &__page {
     padding: 0.5rem;
+  }
+
+  &__chapter {
+    &.is-current {
+      border: 1px solid var(--green-300);
+      border-radius: 3px;
+    }
+  }
+
+  &__chapter-title {
+    margin-block-start: 0;
+  }
+
+  &__page {
+    border: 1px solid var(--green-300);
 
     &-title {
       font-weight: bold;
@@ -33,10 +49,6 @@
       background-color: var(--green-100);
       border-radius: 3px;
     }
-  }
-
-  &__current-toc {
-    padding-inline-start: 1rem;
   }
 
   &__headline {

@@ -3,6 +3,9 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import Layout from "../layouts/PublicationLayout.astro";
 import TableOfContents from "@components/PublicationToc.vue";
+import { Breadcrumbs } from "astro-breadcrumbs";
+import { Icon } from 'astro-icon'
+import 'astro-breadcrumbs/breadcrumbs.css';
 
 export async function getStaticPaths() {
   const publication2023Entries = await getCollection("publication2023");
@@ -19,6 +22,7 @@ interface Props {
 }
 const { entry, collection } = Astro.props;
 const { Content, headings } = await entry.render();
+// console.log(Astro.request);
 
 /**
  * Filter the collection to only include the items that are needed
@@ -28,22 +32,56 @@ const filteredCollection = collection.map((item) => {
     title: item.data.title,
     slug: item.slug,
     isCurrent: item.id === entry.id,
+    chapter: item.data.chapter,
     order: item.data.order,
   };
 });
 
 /**
+ * Group the collection by chapter
+ */
+const groupedByChapter = filteredCollection.reduce<{ [key: number]: typeof filteredCollection}>((acc, item) => {
+  const chapter = item.chapter;
+  if (!acc[chapter]) {
+    acc[chapter] = [];
+  }
+  acc[chapter].push(item);
+  acc[chapter].sort((a, b) => a.order - b.order);
+
+  return acc;
+}, {});
+
+/**
  * Sort the collection by the order property
  */
 const sortedCollection = filteredCollection.sort((a, b) => a.order - b.order);
+
+const chapterTitles = [
+  "0. Introduction",
+  "1. Redefining progress: confronting the challenges of digitalisation and sustainability",
+  "2. Values for transformation: foundation for a socio-ecological digitalisation",
+  "3. transformative change: new concepts and paradigms to upgrade current socio-technicalstructures",
+  "4. beyond business as usual: use cases for more sustainable tech design",
+  "5. politics under pressure: necessary changes on the political level",
+  "6. a collective effort: the power of civil society driving sustainable change",
+  "7. Closure"
+]
 ---
 
 <Layout seo={entry.data.seo} contentModifierClass="publication">
+
+  <Breadcrumbs indexText="home">
+
+      <Icon slot="separator" name="lucide:chevron-right" width="24" height="24" />
+
+  </Breadcrumbs>
+
   <Content />
 
   <TableOfContents
     headings={headings}
-    collection={sortedCollection}
+    chapters={groupedByChapter}
+    chapterTitles={chapterTitles}
     client:only
     slot="sidebar"
   />

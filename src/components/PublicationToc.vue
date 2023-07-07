@@ -2,35 +2,47 @@
   <nav :id="tocId" class="c-pub-toc">
     <h2 class="c-pub-toc__start-heading">Table of Contents</h2>
     <ul class="c-pub-toc__pages u-list-reset">
-      <template
-        v-for="collectionEntry in collection"
-        :key="collectionEntry.slug"
-      >
-        <li v-if="!collectionEntry.isCurrent" class="c-pub-toc__page">
-          <a
-            class="c-pub-toc__link"
-            :href="`/${collectionEntry.slug}`"
-            rel="prefetch"
-            v-text="collectionEntry.title"
-          />
-        </li>
-        <li v-else class="c-pub-toc__page is-current">
-          <p class="c-pub-toc__page-title" v-text="collectionEntry.title" />
-          <ul class="c-pub-toc__current-toc u-list-reset">
-            <template v-for="headline in headings" :key="headline.slug">
-              <li
-                :class="[
-                  `c-pub-toc__headline is-depth-${headline.depth}`,
-                  {
-                    'is-active': activeHeadline === headline.slug,
-                  },
-                ]"
-              >
+      <template v-for="chapter of chapters" :key="chapter">
+        <li
+          class="c-pub-toc__chapter"
+          :class="{
+            'is-current':
+              chapter.find((item) => item.isCurrent === true)?.chapter ===
+              chapter[0].chapter,
+          }"
+        >
+          <p class="c-pub-toc__chapter-title">
+            {{ chapterTitles[chapter[0].chapter] }}
+          </p>
+          <ul>
+            <template v-for="article in chapter" :key="article.order">
+              <li v-if="!article.isCurrent">
                 <a
                   class="c-pub-toc__link"
-                  :href="`#${headline.slug}`"
-                  v-text="headline.text"
+                  :href="`/${article.slug}`"
+                  rel="prefetch"
+                  v-text="article.title"
                 />
+              </li>
+              <li v-else class="c-pub-toc__page is-current">
+                <ul class="c-pub-toc__current-toc u-list-reset">
+                  <template v-for="headline in headings" :key="headline.slug">
+                    <li
+                      :class="[
+                        `c-pub-toc__headline is-depth-${headline.depth}`,
+                        {
+                          'is-active': activeHeadline === headline.slug,
+                        },
+                      ]"
+                    >
+                      <a
+                        class="c-pub-toc__link"
+                        :href="`#${headline.slug}`"
+                        v-text="headline.text"
+                      />
+                    </li>
+                  </template>
+                </ul>
               </li>
             </template>
           </ul>
@@ -43,18 +55,26 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 
+interface Item {
+  title: string;
+  slug: string;
+  isCurrent: boolean;
+  chapter: number;
+  order: number;
+}
+
+interface Data {
+  [key: number]: Item[];
+}
+
 export interface TableOfContentsProps {
-  collection: {
-    isCurrent: boolean;
-    order: number;
-    slug: string;
-    title: string;
-  }[];
   headings: {
     depth: number;
     slug: string;
     text: string;
   }[];
+  chapters: Data;
+  chapterTitles: string[];
 }
 
 defineProps<TableOfContentsProps>();
@@ -75,7 +95,7 @@ const observer = new IntersectionObserver(
   {
     threshold: 0,
     rootMargin: "0px 0px -60% 0px",
-  }
+  },
 );
 
 onMounted(() => {
