@@ -22,7 +22,6 @@ interface Props {
 }
 const { entry, collection } = Astro.props;
 const { Content, headings } = await entry.render();
-// console.log(Astro.request);
 
 /**
  * Filter the collection to only include the items that are needed
@@ -66,9 +65,11 @@ const chapterTitles = [
   "6. a collective effort: the power of civil society driving sustainable change",
   "7. Closure"
 ]
+
+const currentChapter = entry.data.chapter;
 ---
 
-<Layout seo={entry.data.seo} contentModifierClass="publication">
+<Layout seo={entry.data.seo} contentModifierClass="publication" chapterThemeClass={currentChapter}>
 
   <Breadcrumbs indexText="home">
 

@@ -1,4 +1,6 @@
+@use "sass:list";
 @use "@styles/mixins/mixins" as mx; // Needs to be loaded before the sass-butler mixins
+@use "@styles/variables/colors";
 
 .o-content {
   padding: 1rem 1rem 3rem;
@@ -30,6 +32,16 @@
     }
 
     article {
+      $headlines: ();
+
+      @for $h from 1 to 6 {
+        $headlines: list.append($headlines, h#{$h}, $separator: comma);
+      }
+
+      :is(#{$headlines}) {
+        color: var(--chapter-theme-color);
+      }
+
       ul {
         padding-inline-start: 1rem;
 
@@ -38,10 +50,21 @@
 
           &::marker {
             content: "///";
-            color: var(--color-page-list-marker, var(--green-300));
+            color: var(--color-page-list-marker, var(--chapter-theme-color));
           }
         }
       }
     }
+  }
+
+  @for $i from 1 through 6 {
+    &--chapter-#{$i} {
+      --chapter-theme-color: #{list.nth(colors.$chapter-theme-colors, $i)};
+    }
+  }
+
+  &--chapter-0,
+  &--chapter-7 {
+    --chapter-theme-color: var(--green-300);
   }
 }
