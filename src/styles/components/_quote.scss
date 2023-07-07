@@ -1,0 +1,21 @@
+.c-quote {
+  float: left;
+  font-family: monospace;
+  font-size: 1.1rem;
+  margin-inline-start: -3ch;
+
+  &__tag,
+  p {
+    background-color: var(--background-color-quote, var(--green-300));
+    padding: 8px;
+  }
+
+  &__tag {
+    display: inline-block;
+    color: white;
+  }
+
+  p {
+    display: inline;
+  }
+}
