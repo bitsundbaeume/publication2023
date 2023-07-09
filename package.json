@@ -30,7 +30,7 @@
     "astro-imagetools": "^0.8.1",
     "astro-pagefind": "^1.2.1",
     "astrojs-service-worker": "^1.0.0",
-    "lucide-vue-next": "^0.258.0",
+    "lucide-vue-next": "^0.259.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",
     "vue": "^3.3.4"
