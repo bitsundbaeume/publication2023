@@ -31,6 +31,10 @@
       grid-area: publication;
     }
 
+    .c-tag + h1 {
+      margin-block-start: 0.5rem;
+    }
+
     article {
       $headlines: ();
 
@@ -40,27 +44,46 @@
 
       :is(#{$headlines}) {
         color: var(--chapter-theme-color);
+        text-transform: uppercase;
       }
 
       ul {
         padding-inline-start: 1rem;
 
         li {
-          padding-inline-start: 0.75rem;
+          padding-inline-start: 0.5rem;
 
           &::marker {
-            content: "///";
+            content: "\25A0";
             color: var(--color-page-list-marker, var(--chapter-theme-color));
           }
         }
       }
 
-      .c-blockquote {
-        + p,
-        ~ p {
-          display: inline;
+      footer {
+        ul {
+          li {
+            padding-inline-start: 0.75rem;
+
+            &::marker {
+              content: "///";
+              color: var(--color-page-list-marker, var(--chapter-theme-color));
+            }
+          }
         }
       }
+    }
+
+    .c-blockquote,
+    .c-quote {
+      + p {
+        display: inline;
+      }
+    }
+
+    p:has(+ .c-blockquote),
+    p:has(+ .c-quote) {
+      display: inline;
     }
   }
 
