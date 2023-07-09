@@ -1,4 +1,8 @@
+@use "sass:list";
+@use "@sass-butler/functions" as butler-fn;
+
 .o-publication {
+  grid-area: publication;
   word-break: break-word;
 
   * {
@@ -9,5 +13,88 @@
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  .c-tag {
+    + h1 {
+      margin-block-start: 0.5rem;
+    }
+
+    &:has(+ h1) {
+      margin-block-start: 4rem;
+    }
+  }
+
+  $headlines: ();
+
+  @for $h from 1 to 6 {
+    $headlines: list.append($headlines, h#{$h}, $separator: comma);
+  }
+
+  :is(#{$headlines}) {
+    color: var(--chapter-theme-color);
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin-block-end: 4rem;
+
+    + h2 {
+      color: #000;
+      margin-block-start: 1rem;
+      margin-block-end: 4rem;
+      font-size: butler-fn.fluid(16, 26);
+      text-transform: none;
+    }
+
+    &:has(+ h2) {
+      margin-block-end: 0;
+    }
+
+    &:has(+ :not(h2)) {
+      margin-block-start: 4rem;
+    }
+  }
+
+  ul {
+    padding-inline-start: 1rem;
+
+    li {
+      padding-inline-start: 0.5rem;
+
+      &::marker {
+        content: "\25A0";
+        color: var(--color-page-list-marker, var(--chapter-theme-color));
+      }
+    }
+  }
+
+  footer {
+    ul {
+      li {
+        padding-inline-start: 0.75rem;
+
+        &::marker {
+          content: "///";
+          color: var(--color-page-list-marker, var(--chapter-theme-color));
+        }
+      }
+    }
+  }
+
+  .c-author {
+    margin: 2rem 0 0;
+  }
+
+  .c-blockquote,
+  .c-quote {
+    + p {
+      display: inline;
+    }
+  }
+
+  p:has(+ .c-blockquote),
+  p:has(+ .c-quote) {
+    display: inline;
   }
 }
