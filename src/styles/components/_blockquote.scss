@@ -1,0 +1,17 @@
+.c-blockquote {
+  float: right;
+  max-width: 250px;
+  min-width: 200px;
+  margin-inline-end: 0;
+
+  &__ref-number {
+    display: inline-block;
+    margin-inline-start: -1ch;
+    font-weight: bold;
+    color: #000;
+  }
+
+  &__content p {
+    display: inline;
+  }
+}

@@ -54,6 +54,13 @@
           }
         }
       }
+
+      .c-blockquote {
+        + p,
+        ~ p {
+          display: inline;
+        }
+      }
     }
   }
 
