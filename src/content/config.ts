@@ -5,6 +5,8 @@ const publication2023Collection = defineCollection({
   schema: z.object({
     isDraft: z.boolean(),
     title: z.string().min(1),
+    authors: z.array(z.string()).optional(),
+    tag: z.string().optional(),
     chapter: z.number(),
     order: z.number(),
     seo: z
