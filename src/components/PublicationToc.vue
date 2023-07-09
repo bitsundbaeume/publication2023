@@ -98,11 +98,32 @@ const observer = new IntersectionObserver(
   },
 );
 
+const scrollIfNeeded = (element: HTMLElement, container: HTMLElement): void => {
+  if (element.offsetTop < container.scrollTop) {
+    container.scrollTop = element.offsetTop;
+    return;
+  }
+  const offsetBottom: number = element.offsetTop + element.offsetHeight;
+  const scrollBottom: number = container.scrollTop + container.offsetHeight;
+  if (offsetBottom > scrollBottom) {
+    container.scrollTop = offsetBottom - container.offsetHeight;
+  }
+};
+
 onMounted(() => {
   if (observer)
     document
       .querySelectorAll("h1[id], h2[id], h3[id]")
       .forEach((section) => observer.observe(section));
+
+  const toc = document.querySelector(".c-pub-toc") as HTMLElement;
+  const currentChapter = document.querySelector(
+    ".c-pub-toc__chapter.is-current",
+  ) as HTMLElement;
+
+  if (toc && currentChapter) {
+    scrollIfNeeded(currentChapter, toc);
+  }
 });
 
 onUnmounted(() => {
