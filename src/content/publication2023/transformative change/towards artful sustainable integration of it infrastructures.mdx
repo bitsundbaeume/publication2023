@@ -1,8 +1,12 @@
 ---
 title: "Towards artful sustainable integration of it infrastructures"
+authors:
+  - Estrid Sørensen
+  - Stefan Laser
+tag: research perspective
 isDraft: false
 chapter: 3
-order: 5
+order: 6
 seo:
   title: ""
   metaTitle: ""
@@ -12,4 +16,91 @@ seo:
 import Quote from "@components/content/Quote.astro";
 import BlockQuote from "@components/content/BlockQuote.astro";
 
-;
+# {frontmatter.title}
+
+## A Report from the Construction of a University Data Centre
+
+In 2021, data centres consumed 17 billion kWh in Germany. This was 6.5% more electricity than in the previous year **(Hintemann et al., 2022)**. Despite significant efficiency gains in storage, servers, and processors, Hintemann et al. **(2022)** expect data centres’ electricity consumption to increase to around 28 billion kWh by 2030. This enormous amount of electricity is primarily required for the uninterrupted operation of the servers and cooling.
+
+For data centres, climate change is a problem. Servers cannot operate at a temperature that is too high, and the warmer the atmosphere gets,
+
+<Quote>
+  The more data
+  <br />
+  is processed and stored,
+  <br />
+  the more CO
+  <br />
+  2 is emitted.
+  <br />
+</Quote>
+
+the more cooling of servers and thus the more energy is needed. But data centres are a problem for the climate, too. The more data is processed and stored, the more CO2 is emitted. The environmental sustainability of data centres is, thus, an important concern. Discussions of data centre sustainability often address technical improvements and political regulations. Innovations make data centres more energy efficient, and political guidelines help – and force – industry to prioritise environmental sustainability. Such innovations are important, but they tend to overlook implementation. Not only must a new technology always be connected to the local infrastructures, which includes local governance systems and practices: No technical innovation runs on its own. Furthermore, the same applies to political regulations. These are necessarily vaguely formulated to allow adaptation to local conditions. This vagueness means that regulations leave space for many decisions to be made locally, often without any prior examples to build on. Lucy Suchman **(2011)** calls this process of adapting innovations the artful integration of technology in existing social and technical environments.<br/> In this article, we use the case of a university data centre to reflect on what artful integration means for building sustainable IT infrastructures. We, furthermore, point to the need for institutional ownership and responsibility to achieve artful sustainable integration of IT infrastructures. The study is ongoing and is based on qualitative research interviews with (so far) 18 people from technical, administrative and scientific university staff and with three non-university consultants and contractors. We have also studied documents involved in planning the data centre: minutes from meetings, contracts, technical documents, need analyses, etc.
+
+<div>
+## The examined university data centre
+
+The university data centre<sup id="1">1</sup> we report on has a total area of approximately 900 square metres. There are 318 square metres of pure server space hosting more than 100 racks. The remaining area is reserved for network and energy infrastructure. Up to an outside temperature of plus 18 degrees Celsius, the heat emitted from of the servers (of a power value of max. 700 kW) can be cooled using outdoor air. The building was constructed in accordance with the European data centre norm DIN EN 50600 with a PUE<sup id="2">2</sup> value of 1.4, and the TIER 3 class for protection, availability, and granularity.<sup id="3">3</sup> The data centre has been certified by the German technical inspection association TÜV-IT. It is probably the first university data centre in the country to be built and certified according to the data centre norm. The data centre started operating in spring 2022.
+
+</div>
+
+<BlockQuote cite={1} refNumber={1}>
+  We would like to warmly thank staff of the university data centre who have
+  contributed considerably as participants of the study and in commenting on
+  this text. However, they prefer to remain anonymous. For this reason, the
+  university also remains anonymous in this article.
+</BlockQuote>
+
+<BlockQuote cite={2} refNumber={2}>
+  PUE: Power Usage Effectiveness: This unit of measurement expresses how much of
+  the total amount of energy supplied to the data centre is used to run the
+  servers, storage systems, and network technology. The average PUE value of
+  data centres in Germany is 1.56 **(Hintemann and Hinterholzer, 2021)**.
+</BlockQuote>
+
+<BlockQuote cite={3} refNumber={3}>
+  We would like to warmly thank staff of the university data centre who have
+  contributed considerably as participants of the study and in commenting on
+  this text. However, they prefer to remain anonymous. For this reason, the
+  university also remains anonymous in this article.
+</BlockQuote>
+
+The need for a new data centre arose in the early 2010s. The old ‹machine hall› from the 1960s, which had housed the university’s central servers, had to be replaced due to campus refurbishment. Over the following years of planning, the staff had several conversations about how the data centre could become sustainable, for example, by ensuring renewable energy supply, reusing the surplus heat for housing heating, or operating the emergency power generator without diesel. In general, environmental sustainability has become increasingly important at the university: A sustainability forum has been established, a sustainability office was recently introduced, and in 2022 the rector appointed a sustainability officer whose job includes realising the university’s sustainability goals by 2030. With this broad concern about sustainability, how come the new data centre relies on natural gas supply, has no use of waste heat, and works with a diesel tank of 20,000 litres consuming hundreds of litres every month in test runs?
+
+## The (non-)sustainability of en 50600
+
+It is crucial to acknowledge that a university is a public institution that must be able to justify the construction of new IT infrastructure to the federal state (Bundesland), university employees, and students, among others. In the following, we discuss what criteria were applied when making decisions about the data centre at the university and how they came about.<br/> To determine the university’s infrastructural needs, the parties involved conducted risk analyses, needs analyses, financial budgeting, and more. All this had to be agreed on internally by the university’s rectorate, technical staff, scientific staff, chancellor, IT administration, network administration, staff council and, externally, with the Ministry for Culture and Research as well as the relevant construction company. Consequently, decisions required prior negotiations.<br/> The data centre staff expressed it as a relief when the data centre norm EN 50600 was finalised in 2016. EN 50600 is a European-wide set of standards that, for the first time, combines norms for building construction, energy supply, environmental conditions, telecommunication cable infrastructure, and security systems for data centres. Although it is, in principle, non-binding, what is stated in EN 50600 has authority at the university: Once it was introduced, there was little need for further negotiations. Because reference to EN 50600 came to be a key criterion for decision-making around the data centre at the university, it is relevant to understand what the standard says about sustainability. First, the norm states how power effectiveness – PUE – is to be determined. Early on, the university decided to aim for a relatively low PUE value that helped push a low-energy cooling system. Yet, this value does not motivate saving data storage or processing capacity, let alone rethinking hardware selection. Second, the PUE value of a data centre is independent of the source of power supply. A regenerative power supply does not improve the PUE value, nor does a fossil-based power supply make it worse. Third, when calculating the PUE value, a reduction in energy consumption due to the use of waste heat is not considered. The standard’s neglect in considering these three points led to the university not reflecting on the related sustainability issues.<br/> Nonetheless, the university now houses a powerful, centralised server building. Many servers that were hosted under desks and in office rooms across departments were merged, saving energy and office space. Also, the growing system of hundreds of virtual machines hosted by the data centre ensures more efficient use of server capacity. In this sense, the facility is an improvement. But it is only a first step.
+
+## Green it infrastructures have to be established now
+
+While standards are important, so are organisational routines. We turn briefly to lessons learned from the design process. The safety standard of the EN 50600 data centre norm and its targeted safety class stipulate that measures must be taken so that fire can be extinguished quickly. The university staff council had reservations towards related measures using fatal gas, as it posed risks to staff. Safety measures were thus redesigned. Environmental sustainability has no institutionalised advocate similar to that available to staff through the staff council. The recently appointed sustainability officer has no comparable right of veto. Until a sustainability advocate with right of veto is institutionalised in an organisation, sustainability is and will remain a lower priority. The fight for and the institutionalising of environmental sustainability is unfolding
+
+<Quote>
+  Public institutions have
+  <br />
+  the chance to advance
+  <br />
+  the institutionalising
+  <br />
+  of environmental sustainability.
+  <br />
+</Quote>
+
+now, and public institutions have the chance to advance this process. Bits & Bäume **(2022)** have indicated that the political project of green IT deserves much more ambitious measures, from strengthening reuse and repairability while increasing service obligations to ensuring software security updates, to setting up buildings that rely less on resource-intensive concrete, to non-fossil forms of energy supply strong enough for data centres. These requirements are important. However, they ignore the organisational level and thus the practical measures for artful sustainable integration of the more ambitious requirements. Based on our ongoing study, we see leverage points for sustainability at the organisational level. If an organisation’s sustainability officer were granted the same authority as the staff council, for example when implementing the data centre norm, more pressure for sustainable change could be exercised. As Pasek et al. **(2023)** emphasise, more than global solutions, we need binding local commitments towards implementing sustainable IT infrastructure.
+
+## Acknowledgement
+
+The research discussed in this article is funded by the German Research Foundation (DFG) and part of the SFB1567 ‹Virtuelle Lebenswelten› at the Ruhr-University in Bochum. We also would like to thank Leman Celik and Laura Kocksch who participated in some of the interviews. We furthermore acknowledge the planetary resources that have been involved in the research and in publishing this article.
+
+### About the authors
+
+- **Estrid Sørensen** is a professor for the Anthropology of Knowledge at the Ruhr-University Bochum and specialised in researching the practical aspects of scientific data and IT-infrastructures. She furthermore researches the use of digital methods in qualitative research, and is the head of the RUSTlab – the Ruhr-University Science & Technology Studies Lab.
+- **Stefan Laser** is a post-doctoral researcher at the Collaborative Research Centre 1567 ‹Virtual Lifeworlds› focussing on social, material, and political aspects energy transformation with a particular interest in data infrastructures and data centres. He also researches into global supply chains of IT components, and has previously conducted research into electronic waste in Germany and India.
+
+### References
+
+- **Bits & Bäume (2022).** _Demands 2022._ Accessed on 02.03.2023: https://bits-und-baeume.org/en/conference-2022/demands/
+- **Hintemann, R. & Hinterholzer, S. (2021).** _Cloud Computing treibt das Wachstum der Rechenzentrumsbranche und ihres Energiebedarfs._ Borderstep Institute. Accessed on 16.12.2022: https://www.borderstep.de/wp-content/uploads/2022/08/Borderstep_Rechenzentren2021.pdf
+- **Hintemann, R., Graß, M., Hinterholzer, S. & Grothey, T. (2022).** _Rechenzentren in Deutschland_ – Aktuelle Marktentwicklungen. Bitkom. Accessed on 19.12.2022: https://www.bitkom.org/sites/main/files/2022-02/10.02.22-studie-rechenzentren.pdf
+- **Pasek, A., Vaughan, H., & Starosielski, N. (2023).** The World Wide Web of Carbon: Toward a Relational Footprinting of Information and Communications Technology’s Climate Impacts._ Big Data & Society_ 10 (1): 205395172311589. https://doi.org/10.1177/20539517231158994
+- **Suchman, L. A. (2011).** Practice-Based Design of Information Systems: Notes from the Hyperdeveloped World. _The Information Society_ 18(2): 129–144.
