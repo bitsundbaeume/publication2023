@@ -7,7 +7,7 @@ interface AstroProps {
 
 const { authors } = Astro.props as AstroProps;
 
-const authorText = authors?.join(" & ");
+const authorText = authors?.join(", ").replace(/,([^,]*)$/, " &$1");
 ---
 
 <div class="c-author">
