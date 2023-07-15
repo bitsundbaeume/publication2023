@@ -12,6 +12,20 @@
     font-size: var(--font-size-xl);
   }
 
+  &__controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.3rem;
+  }
+
+  &__controls-button {
+    --padding-button: 0.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &__link {
     text-decoration: none;
     font-size: 1.025rem;
@@ -34,7 +48,28 @@
   }
 
   &__chapter-title {
-    margin-block-start: 0;
+    margin: 0;
+    text-align: left;
+    flex: 1 1 100%;
+  }
+
+  &__chapter-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__chapter-icon {
+    width: 24px;
+    flex: 1 0 24px;
+
+    &.is-open {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__chapter-list {
+    margin-block-start: 0.8rem;
   }
 
   &__page {

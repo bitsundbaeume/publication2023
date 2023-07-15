@@ -5,7 +5,9 @@
   border-radius: 3px;
   cursor: pointer;
   border: none;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+  transition:
+    color 0.2s ease-in-out,
+    background-color 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
 
   &--primary {
@@ -17,6 +19,12 @@
 
       box-shadow: 0 8px 0 var(--blue-200);
     }
+  }
+
+  &--transparent {
+    --padding-button: 0;
+
+    background-color: transparent;
   }
 
   &.is-disabled {

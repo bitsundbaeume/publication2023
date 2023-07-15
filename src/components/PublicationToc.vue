@@ -1,5 +1,21 @@
 <template>
   <nav :id="tocId" class="c-pub-toc">
+    <div class="c-pub-toc__controls">
+      <button
+        class="c-button c-button--primary c-pub-toc__controls-button"
+        title="Close all chapters"
+        @click="toggleAllChapters(false)"
+      >
+        <ChevronUpSquare :size="20" />
+      </button>
+      <button
+        class="c-button c-button--primary c-pub-toc__controls-button"
+        title="Open all chapters"
+        @click="toggleAllChapters(true)"
+      >
+        <ChevronDownSquare :size="20" />
+      </button>
+    </div>
     <h2 class="c-pub-toc__start-heading">Table of Contents</h2>
     <ul class="c-pub-toc__pages u-list-reset">
       <template v-for="chapter of chapters" :key="chapter">
@@ -11,41 +27,56 @@
               chapter[0].chapter,
           }"
         >
-          <p class="c-pub-toc__chapter-title">
-            {{ chapterTitles[chapter[0].chapter] }}
-          </p>
-          <ul>
-            <template v-for="article in chapter" :key="article.order">
-              <li v-if="!article.isCurrent">
-                <a
-                  class="c-pub-toc__link"
-                  :href="`/${article.slug}`"
-                  rel="prefetch"
-                  v-text="article.title"
-                />
-              </li>
-              <li v-else class="c-pub-toc__page is-current">
-                <ul class="c-pub-toc__current-toc u-list-reset">
-                  <template v-for="headline in headings" :key="headline.slug">
-                    <li
-                      :class="[
-                        `c-pub-toc__headline is-depth-${headline.depth}`,
-                        {
-                          'is-active': activeHeadline === headline.slug,
-                        },
-                      ]"
-                    >
-                      <a
-                        class="c-pub-toc__link"
-                        :href="`#${headline.slug}`"
-                        v-text="headline.text"
-                      />
-                    </li>
-                  </template>
-                </ul>
-              </li>
-            </template>
-          </ul>
+          <button
+            type="button"
+            class="c-pub-toc__chapter-button c-button c-button--transparent"
+            @click="toggleChapter(chapter[0].chapter)"
+          >
+            <p class="c-pub-toc__chapter-title">
+              {{ chapterTitles[chapter[0].chapter] }}
+            </p>
+            <ChevronRight
+              class="c-pub-toc__chapter-icon"
+              :class="{ 'is-open': visibleStatesChapters[chapter[0].chapter] }"
+            />
+          </button>
+          <Transition name="fade">
+            <ul
+              v-show="visibleStatesChapters[chapter[0].chapter]"
+              class="c-pub-toc__chapter-list"
+            >
+              <template v-for="article in chapter" :key="article.order">
+                <li v-if="!article.isCurrent">
+                  <a
+                    class="c-pub-toc__link"
+                    :href="`/${article.slug}`"
+                    rel="prefetch"
+                    v-text="article.title"
+                  />
+                </li>
+                <li v-else class="c-pub-toc__page is-current">
+                  <ul class="c-pub-toc__current-toc u-list-reset">
+                    <template v-for="headline in headings" :key="headline.slug">
+                      <li
+                        :class="[
+                          `c-pub-toc__headline is-depth-${headline.depth}`,
+                          {
+                            'is-active': activeHeadline === headline.slug,
+                          },
+                        ]"
+                      >
+                        <a
+                          class="c-pub-toc__link"
+                          :href="`#${headline.slug}`"
+                          v-text="headline.text"
+                        />
+                      </li>
+                    </template>
+                  </ul>
+                </li>
+              </template>
+            </ul>
+          </Transition>
         </li>
       </template>
     </ul>
@@ -53,7 +84,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, onBeforeMount, ref, reactive } from "vue";
+import {
+  ChevronRight,
+  ChevronUpSquare,
+  ChevronDownSquare,
+} from "lucide-vue-next";
 
 interface Item {
   title: string;
@@ -77,11 +113,13 @@ export interface TableOfContentsProps {
   chapterTitles: string[];
 }
 
-defineProps<TableOfContentsProps>();
+const props = defineProps<TableOfContentsProps>();
 
 const tocId = "tableOfContents";
 
 const activeHeadline = ref("");
+
+const visibleStatesChapters = reactive<{ [key: number]: boolean }>({});
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -98,6 +136,13 @@ const observer = new IntersectionObserver(
   },
 );
 
+/**
+ * Scroll to the current headline
+ *
+ * @param   {string}  headline
+ *
+ * @return  {void}
+ */
 const scrollIfNeeded = (element: HTMLElement, container: HTMLElement): void => {
   if (element.offsetTop < container.scrollTop) {
     container.scrollTop = element.offsetTop;
@@ -109,6 +154,46 @@ const scrollIfNeeded = (element: HTMLElement, container: HTMLElement): void => {
     container.scrollTop = offsetBottom - container.offsetHeight;
   }
 };
+
+/**
+ * Open or close a chapter
+ *
+ * @param   {number}  chapterNumber
+ *
+ * @return  {void}
+ */
+const toggleChapter = (chapterNumber: number): void => {
+  visibleStatesChapters[chapterNumber] = !visibleStatesChapters[chapterNumber];
+};
+
+/**
+ * Open or close all chapters
+ *
+ * @param   {boolean}  state
+ *
+ * @return  {void}
+ */
+const toggleAllChapters = (state: boolean): void => {
+  Object.keys(visibleStatesChapters).forEach((chapter) => {
+    visibleStatesChapters[+chapter] = state;
+  });
+};
+
+onBeforeMount(() => {
+  // for each chapter, set a boolean to false to hide the chapter, and true when one of the articles of the chapter is "isCurrent: true"
+  Object.keys(props.chapters).forEach((chapter) => {
+    // if one of the articles of the chapter is "isCurrent: true", set the chapter to true
+    if (
+      props.chapters[+chapter].find((item) => item.isCurrent === true)
+        ?.chapter === props.chapters[+chapter][0].chapter
+    ) {
+      visibleStatesChapters[+chapter] = true;
+      return;
+    }
+
+    visibleStatesChapters[+chapter] = false;
+  });
+});
 
 onMounted(() => {
   if (observer)
