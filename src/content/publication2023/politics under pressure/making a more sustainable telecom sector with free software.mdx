@@ -1,9 +1,9 @@
 ---
 title: "Making a more sustainable telecom sector with free software"
 authors:
-  - J. Graf
-  - M. L. Hoffmann
-tag: practical perspective
+  - Lucas Lasota
+  - Erik Albers
+tag: debate article
 isDraft: false
 chapter: 5
 order: 3
@@ -17,3 +17,111 @@ import Quote from "@components/content/Quote.astro";
 import BlockQuote from "@components/content/BlockQuote.astro";
 
 # {frontmatter.title}
+
+## First step: liberate routers and smartphones
+
+The dominant power of telecommunications operators and providers over internet access has sparked policy, regulatory, and legal reactions trying to impose accountability on large enterprises that control how end-users should use their devices to connect to the internet. Network operators can be vertically and horizontally integrated with other internet platforms, controlling diverse elements of the internet value chain **(Marsden, 2017)**. Aside from the clear impact on end-users’ rights over access and control of the software, hardware, and services of their digital devices, such corporate power is also able to distort innovation **(Ezrachi and Stucke, 2022)** and competition in digital markets **(Savin, 2020)**, negatively impacting the environment **(BEREC, 2022)**. This article puts in context the latest set of norms in the EU dealing with the behaviour of network operators towards end-users’ internet devices from the perspective of sustainability and the recent legislative initiatives on the ecodesign of products. This context is achieved through two use cases: the free choice of routers/ modems and the right to replace mobile phones’ operating systems. Conclusions over both cases are reached in the light of end-user-oriented policies that positively impact the environment by mitigating e-waste and increasing the lifespan of devices.
+
+## Device lock-in and regulatory hurdles are not sustainable
+
+The digitalisation of infrastructures and services comes along with a growing number of devices connected to the internet. The telecommunications sector (ICT) is a driving force in this process. The expansion of new broadband networks such as optic fibre (FTTx) and 5G poses sustainability challenges for the entire industry. For example, personal routers/modems are important elements of the ICT infrastructure for home internet connection. Although it may seem common sense that end-users should be able to choose their routers – as they do with mobile phones –, this is not true for Europe. In many cases, network providers do not allow end-users to use their own private routers/modems **(Golem, 2022)**. This restriction is problematic for the environment because device interoperability can be limited, leading to unnecessary expense, fewer personalised features, and a lack of being able to make use of the right to repair. Safeguarding the free choice of routers/modems in Europe has followed an uneven path. While the 2015 Open Internet Regulation<sup id="1">1</sup>
+
+<BlockQuote refNumber={1} cite="#1">
+  Regulation (EU) 2015/2120 (Open Internet Regulation), Article 3(1).
+</BlockQuote>
+
+consolidated this right, further regulatory hurdles have impeded proper implementation. The latest reform of EU telecommunications law, introduced in 2018 by the European Electronic Communications Code,<sup id="2">2</sup>
+
+<BlockQuote refNumber={2} cite="#2">
+  Directive (EU) 2018/1972 – European Electronic Communications Code (EECC).
+  This law overhauls the regulatory framework for the telecommunications sector,
+  implementing rules about net neutrality, increasing consumer protection, and
+  improving data protection, as well as paving the way for the implementation of
+  next-generation broadband networks, including optic fibre and mobile **(Geus,
+  2019)**.
+</BlockQuote>
+
+allowed national regulators to limit such freedom on technical grounds. The rules have led to fragmentation of the regulatory patchwork among EU member states to the detriment of end-users **(Lasota, 2021)**. Interestingly, various reports from industry **(VTKE, 2019)**, civil society **(FSFE, 2019, 2022)**, and regulators **(BIPT, 2022)** have highlighted that, in countries where freedom of routers/modems has been guaranteed, no significant damage to public networks has been identified, fair competition evolved, and end-users’ awareness of e-waste was raised.<br/>
+Annually, almost 1.5 billion smartphones are produced worldwide **(Gartner, 2021)**. Among other factors, the lifetime of the smartphones hardware is often artificially shortened due to ‹software obsolescence›. ‹Software obsolescence› is defined as the end of life of a piece of software, mainly by the initial developer stopping support **(Albers, 2021)**. In the case of operating systems, such obsolescence often leads to the premature end-of-life of a device: Although the hardware might still work properly, the insecurity and instability of the software negatively affect the device’s performance. From the sustainability perspective, this premature end-of-life is particularly concerning since the carbon emissions and energy investments necessary for producing a new smartphone outweigh several times the energy and emissions related to the smartphone’s entire lifespan.<sup id="3">3</sup>
+
+<BlockQuote refNumber={3} cite="#3">
+  As Forti et al. **(2020)** explain, in 2019 the world generated a striking
+  53.6 Mt of e-waste, an average of 7.3 kg per capita. The global generation of
+  e-waste grew by 9.2 Mt since 2014 and is projected to grow to 74.7 Mt by 2030
+  – almost doubling in only 16 years. The growing amount of e-waste is mainly
+  fuelled by high consumption rates of digital equipment, short life cycles, and
+  few repair options. In its yearly environmental responsibility report, Apple
+  **(2019)** calculated that 79% of the overall carbon footprint of its devices
+  applies to manufacturing and product transport while only 19% of the carbon
+  footprint resulted from using the product use.
+</BlockQuote>
+
+## Free software spares hardware, thus the environment
+
+One way to overcome hardware obsolescence is to allow users to exchange the initial operating system with one that is still benefiting from development and support. This exchange is becoming a current practice in the mobile phone and tablet sector. The environmental benefits are obvious: with almost 1.5 billion smartphones being produced every year, if users could use their devices one year longer, the production of hundreds of millions of smartphones would be saved annually **(EEB, 2019)**. The same goes for routers/modems.
+
+Enabling end-users to install free operating systems in their devices _fosters reuse, repurposing, and interoperability. Free software licenses guarantee unrestricted access to software not only for all people but also unlimited in terms of space and time, fostering sustainability of solutions and hardware._ The right to install any third-party software on any device would enable users to choose software that helps them to keep their devices running even if the initial manufacturer has decided to stop support. It would, furthermore, enable diversified aftermarkets and enhanced competition regarding re-use of devices. These are all good reasons why legal, technical, commercial, or other obstacles to reusing these devices should be discouraged.<br/> In addition, ‹device neutrality› can serve as a regulatory tool to improve end-users’ control over devices. Device neutrality translates into a non-discriminatory IT environment, with any service and software application being treated equally within the running operating systems, their dominant platforms, and their respective hardware companies **(Krämer, 2019)**. Hardware providers can discriminate how users access services and apps in a fashion similar to how network operators can discriminate end-users’ internet traffic. Therefore, device neutrality’s main objective is to resolve the monopoly on devices by safeguarding end-users: supplying them with alternatives to accessing software, services, and content with their equipment **(Krämer and Feasey, 2021)**. Free software is a key in this process as it provides the alternatives for end-users to escape the restrictive lock-in imposed by device manufacturers, vendors, and internet platforms **(FSFE, 2022b)**.
+
+## Upcycling the legislation
+
+To avoid a greater impact on the environment, principles of digital sustainability can be incorporated into device-oriented policies that reflect the importance of open technologies. Specifically, for a critical, long-lasting, and sustainable change and extension of hardware lifetimes, legislation should strengthen end-user control over devices. The update of the 2009 ecodesign directive by the EU Commission (2022) has led to EU policy initiatives to make products more resource-efficient and applicable to circular economy methods. These initiatives include phones and tablets in the ecodesign criteria for the EU digital market and addressing the devices’ «shortcomings in durability, repairability, upgradability, e-waste, reuse and recycling» **(European Commission, 2022)**.<sup id="4">4</sup>
+
+<BlockQuote refNumber={4} cite="#4">
+  The update of the European ecodesign directive includes a set of regulations
+  and directives that together build the framework for the ecodesign criteria of
+  sustainable products within the EU. With the possibility for more regulations
+  or directives to come and aspects being covered through horizontal
+  rule-making, currently, two regulations directly target mobile phones and
+  tablets: «Designing mobile phones and tablets to be sustainable – ecodesign»
+  **(European Commission, 2022a)** and «Energy labelling of mobile phones and
+  tablets – informing consumers about environmental impact» **(European
+  Commission, 2022b)**.
+</BlockQuote>
+
+Although the regulatory starting point of the ecodesign directive’s update differs from the above-mentioned reform of the telecom law, sustainability aspects converge with how end-users exercise control over devices, providing ways to use devices for longer time periods. While the reform of the telecom sector relates mainly to routers/modems, the ecodesign directive’s scope is broader. Nevertheless, both cases represent a window of opportunity for civil society to step into these processes and demand from policy makers device neutrality and the right for any user or third party to install any software on any digital equipment.<sup id="5">5</sup>
+
+<BlockQuote refNumber={5} cite="#5">
+  As a policy and awareness initiative, the Free Software Foundation Europe has
+  published an open letter asking European legislators to use the update of the
+  ecodesign regulations to establish a universal right to install any software
+  on any device. By December 2022, more than 150 civil society organisations
+  across sectors and companies had signed it **(FSFE, 2022a)**.
+</BlockQuote>
+
+## Saving the planet, one device at the time
+
+Developing sustainable regulatory solutions for the telecom sector must include policies dealing with the reuse of devices by end-users. Hardware production outweighs several times the ecological footprint of reusing existing devices. Repairability, reusability, and extending hardware lifespan are a matter of accessibility and the possibility to run free software. There is room for improving the current regulatory framework in the EU. Keeping end-users safe from lock-ins can amplify competition and freedom of choice for more ecological options. For a European shift from linear production and e-waste production towards a circular electronic economy, freedom to install alternative operating systems and device neutrality must be established.
+
+<footer>
+
+### About the authors
+
+- **Lucas Lasota**, MA, PhD, is researcher and lecturer at the Humboldt University of Berlin, Chair of Civil, Technical and IT Law.
+- **Erik Albers**, MSc, works for the Free Software Foundation Europe as Coordinator for Digital Sustainability. This article may not necessarily convey the opinions of any organisation the authors represent. The authors thank Richard Schmeidler for the kind proofreading, and the reviewers for the comments and suggestions.
+
+### References
+
+- **Albers, E. (2021).** _On the Sustainability of Free Software. (3.1) Extending usage times._ Free Software Foundation Europe. Retrieved 13.12.22 from https://fsfe.org/freesoftware/sustainability/sustainability.en.html#hardware-production-and-usage-times
+- **Apple (2019).** _Environmental Responsibility Report._ Retrieved 13.12.22 from https://www.apple.com/environment/pdf/Apple_Environmental_Responsibility_Report_2019.pdf
+- **BEREC (2022).** _Report on Sustainability: Assessing BEREC’s contribution to limiting the impact of the digital sector on the environment._ BoR (22) 93.
+- **BIPT (2022).** _Draft decision on network connection point identification for broadband and TV services._ Retrieved 04.12.22 from https://www.bipt.be/file/cc73d96153bbd5448a56f19d925d05b1379c7f21/53ac3b749c235e2cb7f5576229a6f83bc618d1b1/Raadpleging_ontwerpbesluit_identificering_netwerkaansluitpunt_breedbanddiensten_TV-diensten.pdf
+- **European Commission (2022).** _Ecodesign for sustainable products._ Retrieved 13.12.22 from https://commission.europa.eu/energy-climate-change-environment/standards-tools-and-labels/products-labelling-rules-and-requirements/sustainable-products/ecodesign-sustainable-products_en
+- **European Commission (2022a).** _Environmental impact of mobile phones and tablets._ Retrieved 13.12.22 from https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/12797-Designing-mobile-phones-and-tabletsto-be-sustainable-ecodesign_en
+- **European Commission (2022b).** _Energy labelling of mobile phones and tablets – informing consumers about environmental impact._ Retrieved 13.12.22 from https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/12798-Energy-labelling-of-mobile-phones-and-tablets-informing-consumers-about-environmental-impact_en
+- **European Enviromental Bureau (EEB) (2019).** _Coolproducts don’t cost the earth – full report._ Retrieved 02.05.2023 from https://eeb.org/wp-content/uploads/2019/09/Coolproducts-report.pdf
+- **Forti V., Baldé C., Kuehr R. & Bel G. (2020).** _The Global E-waste Monitor 2020: Quantities, flows and the circular economy potential._ United Nations University (UNU)/United Nations Institute for Training and Research (UNITAR) – co-hosted SCYCLE Programme, International Telecommunication Union (ITU) & International Solid Waste Association (ISWA).
+- **FSFE (2019).** _Input on the draft BEREC Guidelines on Common Approaches to the Identification of the Network Termination Point in different Network Topologies BoR (19)_ 181. Retrieved 04.12.22 from https://download.fsfe.org/policy/routers/20191121-BEREC-Guidelines-Consultation.pdf
+- **FSFE (2022).** _Position to the EETT Public Consultation regarding the regulation for the determination of the Point Termination Network (NTP) for the provision of fixed service._ Retrieved 04.12.22 from https://download.fsfe.org/routers/fsfe-eett-ntp1-en.pdf
+- **FSFE (2022a).** _Open Letter: The universal right to install any software on any device. Free Software Foundation Europe._ Retrieved 13.12.22 from https://fsfe.org/activities/upcyclingandroid/openletter.html
+- **FSFE (2022b).** _Device Neutrality and Free Software. Free Software Foundation Europe._ Retrieved 04.12.22 from https://fsfe.org/activities/deviceneutrality/index
+- **Gartner (2021).** _Market Share: PCs, Ultramobiles and Mobile Phones, All Countries, 4Q21 Update._ Retrieved 13.12.22 from https://www.gartner.com/en/newsroom/press-releases/2022-03-01-4q21-smartphone-market-share
+- **Geus, M. (2019).** _The EECC – a new phase in the regulation of the electronic communications sector._ Bird & Bird. https://www.twobirds.com/-/media/pdfs/in-focus/eecc/the-eecc--a-new-phase-in-the-regulation-of-the-electroniccommunication.pdf
+- **Golem (2022).** _Routerfreiheit._ Retrieved 16.12.22 from https://www.golem.de/specials/router/
+- **Krämer J. (2019).** _Device Neutrality: The missing link for fair and transparent online competition?_ CERRE.
+- **Krämer, J. & Feasey R. (2021).** _Device neutrality: openness, non-discrimination and transparency._ CERRE.
+- **Lasota, L. (2021).** Net Neutrality And Free Choice Of Routers And Modems In Europe. _JIPITEC,_ 11, 303.
+- **Marsden, C. T. (2017).** _Network neutrality – from policy to law to regulation._ Manchester University Press.
+- **Savin, A. (2020).** _EU Telecommunications Law – Chapter 1._ Edward Elgar.
+- **VTKE (2019).** _Alliance of Telecommunications Terminal Equipment Manufacturers on the draft BEREC Guidelines on Common Approaches to the Identification of the Network Termination Point in different Network Topologies (BoR (19) 181)._ Retrieved 13.12.22 from https://vtke.eu/wp-content/uploads/2020/01/VTKE_Consultation-of-the-BEREC-Guidelines-for-the-definition-of-the-NTP.pdf
+
+</footer>
