@@ -40,17 +40,23 @@
     padding: 0.5rem;
   }
 
-  &__chapter {
-    &.is-current {
-      border: 1px solid var(--green-300);
-      border-radius: 3px;
-    }
+  &__chapter-title-wrap {
+    flex: 1 1 100%;
+    text-align: initial;
   }
 
   &__chapter-title {
     margin: 0;
-    text-align: left;
-    flex: 1 1 100%;
+
+    // text-transform: uppercase;
+
+    &.is-current {
+      display: inline;
+      background-color: var(--chapter-theme-color);
+      color: #fff;
+      padding: 2px 8px;
+      font-weight: 500;
+    }
   }
 
   &__chapter-button {
@@ -73,7 +79,7 @@
   }
 
   &__page {
-    border: 1px solid var(--green-300);
+    border: 1px solid var(--chapter-theme-color);
 
     &-title {
       font-weight: bold;
@@ -81,7 +87,6 @@
     }
 
     &.is-current {
-      background-color: var(--green-100);
       border-radius: 3px;
     }
   }
@@ -91,7 +96,11 @@
     border-radius: 3px;
 
     &.is-active {
-      background-color: var(--green-300);
+      background-color: var(--chapter-theme-color);
+
+      a {
+        color: #fff;
+      }
     }
   }
 }

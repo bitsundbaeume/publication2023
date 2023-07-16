@@ -32,9 +32,18 @@
             class="c-pub-toc__chapter-button c-button c-button--transparent"
             @click="toggleChapter(chapter[0].chapter)"
           >
-            <p class="c-pub-toc__chapter-title">
-              {{ chapterTitles[chapter[0].chapter] }}
-            </p>
+            <div class="c-pub-toc__chapter-title-wrap">
+              <p
+                class="c-pub-toc__chapter-title"
+                :class="{
+                  'is-current':
+                    chapter.find((item) => item.isCurrent === true)?.chapter ===
+                    chapter[0].chapter,
+                }"
+              >
+                {{ chapterTitles[chapter[0].chapter] }}
+              </p>
+            </div>
             <ChevronRight
               class="c-pub-toc__chapter-icon"
               :class="{ 'is-open': visibleStatesChapters[chapter[0].chapter] }"
