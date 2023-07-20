@@ -5,7 +5,7 @@ import "@styles/objects/_content.scss";
 import Header from "@components/header/Header.astro";
 import Footer from "@components/footer/Footer.astro";
 import ToTop from "@components/ToTop.vue";
-import Search from "@components/Search.astro";
+import SearchPages from "@components/SearchPages.astro";
 
 export interface Props {
   seo?: {
@@ -69,7 +69,7 @@ const { seo, bodyClass } = Astro.props;
   <body class={bodyClass}>
     <Header />
 
-    <Search />
+    <SearchPages />
 
     <slot />
 
