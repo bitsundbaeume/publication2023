@@ -3,17 +3,13 @@
     <div class="c-pub-toc__controls">
       <button
         class="c-button c-button--primary c-pub-toc__controls-button"
-        title="Close all chapters"
+        :title="allChaptersOpen ? 'Unfold all chapters' : 'Fold all chapters'"
         @click="toggleChapterOrAll()"
       >
-        <ChevronUpSquare :size="20" />
-      </button>
-      <button
-        class="c-button c-button--primary c-pub-toc__controls-button"
-        title="Open all chapters"
-        @click="toggleChapterOrAll()"
-      >
-        <ChevronDownSquare :size="20" />
+        <Transition name="fade" mode="out-in">
+          <ChevronDownSquare v-if="allChaptersOpen" :size="20" />
+          <ChevronUpSquare v-else :size="20" />
+        </Transition>
       </button>
     </div>
     <h2 class="c-pub-toc__start-heading">Table of Contents</h2>
@@ -94,7 +90,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, onBeforeMount, ref, reactive } from "vue";
+import {
+  onMounted,
+  onUnmounted,
+  onBeforeMount,
+  ref,
+  reactive,
+  computed,
+} from "vue";
 import {
   ChevronRight,
   ChevronUpSquare,
@@ -131,6 +134,11 @@ const activeHeadline = ref("");
 
 const visibleStatesChapters = reactive<boolean[]>(
   Object.keys(props.chapters).map(() => false),
+);
+
+// if visibleStatesChapters all true, then all chapters are open
+const allChaptersOpen = computed(() =>
+  Object.values(visibleStatesChapters).every((state) => state),
 );
 
 const observer = new IntersectionObserver(
@@ -177,9 +185,7 @@ const toggleChapterOrAll = (chapterNumber?: number): void => {
       (state) => state,
     );
     visibleStatesChapters.forEach((state, index) => {
-      if (state !== allChaptersVisible) {
-        visibleStatesChapters[index] = !allChaptersVisible;
-      }
+      visibleStatesChapters[index] = !allChaptersVisible;
     });
   }
 };
