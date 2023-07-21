@@ -75,12 +75,21 @@
 
     position: absolute;
     z-index: 1;
-    left: 0;
     background: #fff;
     margin-block-start: 0;
     margin-block-end: 0;
     top: 100%;
     width: max-content;
+  }
+
+  &.is-left {
+    left: auto;
+    right: 0;
+  }
+
+  &.is-right {
+    left: 0;
+    right: auto;
   }
 
   .c-main-nav__flyout & {

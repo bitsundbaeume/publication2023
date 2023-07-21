@@ -36,7 +36,10 @@
       <MenuSubmenu
         ref="submenu"
         :is-open="isOpen"
-        :class="[`is-level-${depth}`, { 'is-open': isOpen }]"
+        :class="[
+          `is-level-${depth} is-${submenuDirection}`,
+          { 'is-open': isOpen },
+        ]"
       >
         <template
           v-for="(child, childItemIndex) in props.menuItem.childItems"
@@ -79,6 +82,7 @@ const props = defineProps<MenuItemProps>();
 const isOpen = ref(false);
 const isCurrentPath = ref(false);
 const submenu = ref(null);
+const submenuDirection = ref("right");
 
 const emit = defineEmits<{
   submenuState: [isOpen: boolean];
@@ -112,18 +116,19 @@ const toggleMenuItem = (): void => {
   isOpen.value = !isOpen.value;
 
   emit("submenuState", isOpen.value);
-};
+  setTimeout(() => {
+    const submenuEl = document.querySelector(".c-submenu");
+    const submenuRect = submenuEl?.getBoundingClientRect();
+    const left = submenuRect?.left;
+    const width = submenuRect?.width;
+    const windowWidth = window.innerWidth;
 
-// TODO: add direction control
-// const direction = (event) => {
-//   const el = event.target.getBoundingClientRect();
-//   const left = el.left;
-//   const width = el.width;
-//   const windowHeight = window.innerHeight;
-//   const windowWidth = window.innerWidth;
-//   console.log('direction', left + width, windowWidth);
-//   console.log(left + width <= windowWidth);
-// }
+    submenuDirection.value =
+      left !== undefined && width !== undefined && left + width > windowWidth
+        ? "left"
+        : "right";
+  }, 100);
+};
 
 onMounted(() => {
   if (import.meta.env.DEV) {
