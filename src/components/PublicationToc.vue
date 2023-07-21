@@ -1,6 +1,7 @@
 <template>
   <nav :id="tocId" class="c-pub-toc">
-    <div class="c-pub-toc__controls">
+    <div class="c-pub-toc__header-wrap">
+      <h2 class="c-pub-toc__start-heading">Table of Contents</h2>
       <button
         class="c-button c-button--primary c-pub-toc__controls-button"
         :title="allChaptersOpen ? 'Unfold all chapters' : 'Fold all chapters'"
@@ -12,7 +13,7 @@
         </Transition>
       </button>
     </div>
-    <h2 class="c-pub-toc__start-heading">Table of Contents</h2>
+
     <ul class="c-pub-toc__pages u-list-reset">
       <template v-for="chapter of chapters" :key="chapter">
         <li

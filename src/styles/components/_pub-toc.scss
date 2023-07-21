@@ -8,14 +8,15 @@
   }
 
   &__start-heading {
-    margin: 0 0 1rem;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
+    margin: 0;
   }
 
-  &__controls {
+  &__header-wrap {
     display: flex;
-    justify-content: flex-end;
     gap: 0.3rem;
+    margin: 0 0 1rem;
+    justify-content: space-between;
   }
 
   &__controls-button {
