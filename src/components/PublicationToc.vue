@@ -146,25 +146,6 @@ const observer = new IntersectionObserver(
 );
 
 /**
- * Scroll to the current headline
- *
- * @param   {string}  headline
- *
- * @return  {void}
- */
-const scrollIfNeeded = (element: HTMLElement, container: HTMLElement): void => {
-  if (element.offsetTop < container.scrollTop) {
-    container.scrollTop = element.offsetTop;
-    return;
-  }
-  const offsetBottom: number = element.offsetTop + element.offsetHeight;
-  const scrollBottom: number = container.scrollTop + container.offsetHeight;
-  if (offsetBottom > scrollBottom) {
-    container.scrollTop = offsetBottom - container.offsetHeight;
-  }
-};
-
-/**
  * Open or close a chapter
  *
  * @param   {number}  chapterNumber
@@ -210,13 +191,21 @@ onMounted(() => {
       .querySelectorAll("h1[id], h2[id], h3[id]")
       .forEach((section) => observer.observe(section));
 
-  const toc = document.querySelector(".c-pub-toc") as HTMLElement;
   const currentChapter = document.querySelector(
     ".c-pub-toc__chapter.is-current",
-  ) as HTMLElement;
+  );
 
-  if (toc && currentChapter) {
-    scrollIfNeeded(currentChapter, toc);
+  if (currentChapter) {
+    const rect = currentChapter.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < 0 || rect.bottom > windowHeight) {
+      currentChapter.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "start",
+      });
+    }
   }
 });
 
