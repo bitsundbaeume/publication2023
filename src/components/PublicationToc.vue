@@ -4,14 +4,14 @@
       <button
         class="c-button c-button--primary c-pub-toc__controls-button"
         title="Close all chapters"
-        @click="toggleAllChapters(false)"
+        @click="toggleChapterOrAll()"
       >
         <ChevronUpSquare :size="20" />
       </button>
       <button
         class="c-button c-button--primary c-pub-toc__controls-button"
         title="Open all chapters"
-        @click="toggleAllChapters(true)"
+        @click="toggleChapterOrAll()"
       >
         <ChevronDownSquare :size="20" />
       </button>
@@ -22,23 +22,24 @@
         <li
           class="c-pub-toc__chapter"
           :class="{
-            'is-current':
-              chapter.find((item) => item.isCurrent === true)?.chapter ===
-              chapter[0].chapter,
+            'is-current': chapter.some(
+              (item) => item.isCurrent && item.chapter === chapter[0].chapter,
+            ),
           }"
         >
           <button
             type="button"
             class="c-pub-toc__chapter-button c-button c-button--transparent"
-            @click="toggleChapter(chapter[0].chapter)"
+            @click="toggleChapterOrAll(chapter[0].chapter)"
           >
             <div class="c-pub-toc__chapter-title-wrap">
               <p
                 class="c-pub-toc__chapter-title"
                 :class="{
-                  'is-current':
-                    chapter.find((item) => item.isCurrent === true)?.chapter ===
-                    chapter[0].chapter,
+                  'is-current': chapter.some(
+                    (item) =>
+                      item.isCurrent && item.chapter === chapter[0].chapter,
+                  ),
                 }"
               >
                 {{ chapterTitles[chapter[0].chapter] }}
@@ -51,7 +52,7 @@
           </button>
           <Transition name="fade">
             <ul
-              v-show="visibleStatesChapters[chapter[0].chapter]"
+              v-if="visibleStatesChapters[chapter[0].chapter]"
               class="c-pub-toc__chapter-list"
             >
               <template v-for="article in chapter" :key="article.order">
@@ -128,7 +129,9 @@ const tocId = "tableOfContents";
 
 const activeHeadline = ref("");
 
-const visibleStatesChapters = reactive<{ [key: number]: boolean }>({});
+const visibleStatesChapters = reactive<boolean[]>(
+  Object.keys(props.chapters).map(() => false),
+);
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -158,42 +161,35 @@ const observer = new IntersectionObserver(
 );
 
 /**
- * Open or close a chapter
+ * Toggle the visibility of a chapter or all chapters.
+ * If no chapterNumber is provided, toggle all chapters.
  *
- * @param   {number}  chapterNumber
+ * @param   {number}  chapterNumber  [chapterNumber description]
  *
- * @return  {void}
+ * @return  {void}                   [return description]
  */
-const toggleChapter = (chapterNumber: number): void => {
-  visibleStatesChapters[chapterNumber] = !visibleStatesChapters[chapterNumber];
-};
-
-/**
- * Open or close all chapters
- *
- * @param   {boolean}  state
- *
- * @return  {void}
- */
-const toggleAllChapters = (state: boolean): void => {
-  Object.keys(visibleStatesChapters).forEach((chapter) => {
-    visibleStatesChapters[+chapter] = state;
-  });
+const toggleChapterOrAll = (chapterNumber?: number): void => {
+  if (chapterNumber !== undefined) {
+    visibleStatesChapters[chapterNumber] =
+      !visibleStatesChapters[chapterNumber];
+  } else {
+    const allChaptersVisible = Object.values(visibleStatesChapters).every(
+      (state) => state,
+    );
+    visibleStatesChapters.forEach((state, index) => {
+      if (state !== allChaptersVisible) {
+        visibleStatesChapters[index] = !allChaptersVisible;
+      }
+    });
+  }
 };
 
 onBeforeMount(() => {
   // for each chapter, set a boolean to false to hide the chapter, and true when one of the articles of the chapter is "isCurrent: true"
   Object.keys(props.chapters).forEach((chapter) => {
-    // if one of the articles of the chapter is "isCurrent: true", set the chapter to true
-    if (
-      props.chapters[+chapter].find((item) => item.isCurrent === true)
-        ?.chapter === props.chapters[+chapter][0].chapter
-    ) {
-      visibleStatesChapters[+chapter] = true;
-      return;
-    }
-
-    visibleStatesChapters[+chapter] = false;
+    visibleStatesChapters[+chapter] = props.chapters[+chapter].some(
+      (item) => item.isCurrent,
+    );
   });
 });
 
