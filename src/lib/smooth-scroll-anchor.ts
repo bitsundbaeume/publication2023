@@ -1,8 +1,12 @@
 export const smoothScrollTo = (
   target: HTMLElement | string,
-  event?: Event
+  event?: Event,
 ): void => {
-  const id = event ? (target as HTMLElement).getAttribute("href") : target;
+  let id = event ? (target as HTMLElement).getAttribute("href") : target;
+  const isRootDomain = window.location.pathname === "/";
+  if (typeof id === "string" && isRootDomain) {
+    id = id.replace(/^\/#/, "#");
+  }
 
   if (!id || id === "#" || !isSelectorValid(id)) return;
 
@@ -34,8 +38,9 @@ const isSelectorValid = (selector: string | HTMLElement): boolean => {
 
 {
   const handlePopState = () => {
-    if (window.location.hash.match(/#book\/(\d+)/)) {
-      smoothScrollTo("#book");
+    const match = window.location.hash.match(/#\/?(\w+)/);
+    if (match) {
+      smoothScrollTo(`#${match[1]}`);
     }
   };
 
