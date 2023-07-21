@@ -134,9 +134,21 @@ const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.intersectionRatio <= 0) return;
-
+      const tocContainer = document.querySelector(".c-pub-toc") as HTMLElement;
       const headline = entry.target as HTMLElement;
       activeHeadline.value = headline.id;
+
+      // Make sure the current headline scrolls when the user scrolls
+      if (
+        entry.target.classList.contains("is-current") &&
+        entry.isIntersecting
+      ) {
+        tocContainer.scroll({
+          behavior: "smooth",
+          left: 0,
+          top: (entry.target as HTMLElement).offsetTop - tocContainer.offsetTop,
+        });
+      }
     });
   },
   {
@@ -193,17 +205,18 @@ onMounted(() => {
 
   const currentChapter = document.querySelector(
     ".c-pub-toc__chapter.is-current",
-  );
+  ) as HTMLElement;
+  const tocContainer = document.querySelector(".c-pub-toc") as HTMLElement;
 
-  if (currentChapter) {
+  if (currentChapter && tocContainer) {
     const rect = currentChapter.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
+    const tocRect = tocContainer.getBoundingClientRect();
 
-    if (rect.top < 0 || rect.bottom > windowHeight) {
-      currentChapter.scrollIntoView({
+    if (rect.top < tocRect.top || rect.bottom > tocRect.bottom) {
+      tocContainer.scroll({
         behavior: "smooth",
-        block: "nearest",
-        inline: "start",
+        left: 0,
+        top: currentChapter.offsetTop - tocContainer.offsetTop,
       });
     }
   }
