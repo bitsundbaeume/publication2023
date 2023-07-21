@@ -61,7 +61,7 @@ The energy consumption of a smartphone varies depending on the model and apps. I
 
 There is an ongoing debate on how to exactly allocate the energy use of data networks to the data transmitted. While many of the initial discrepancies have been resolved, estimates still vary depending on the approach and the boundaries of the network being considered (Aslan et al., 2018; Coroama, 2021; Stephens et al., 2021). Estimates are subject to specific assumptions and limitations, and technical progress quickly outdates them. Nevertheless, the maxim holds: the lower the data traffic, the lower the environmental impact.
 
-### Traffic of advertisement and tracking services
+## Traffic of advertisement and tracking services
 
 When it comes to options for reducing mobile data traffic, an obvious starting point is advertising. A study commissioned in 2021 for the European Parliament estimated that ATS alone causes 30 to 50 billion GB of traffic on smartphones in Europe. The resulting emissions from data centres and transmission networks are estimated to be as high as 5 to 14 megatons of CO2 equivalents **(Uijttewaal, 2021)**. This corresponded to about 1% to 2% of Germany’s total emissions in 2021 **(UBA, 2022)**. Especially for mobile apps, it is common for app publishers to earn money by selling ad-space – e.g., ad-banners – or by collecting and selling user data to third parties. Since ATS providers often incorporate software modules into numerous apps, user data can be tracked across apps and detailed user profiles can be built. Therefore, even apps that do not display ads can still use implemented trackers. This information can include, e.g., the types of apps used regularly, visited websites, or favourite music artists etc. This business is lucrative since ad-supported free apps are downloaded about 50 times more often than ad-free paid apps and bring in up to ten times as much
 
@@ -69,7 +69,7 @@ TODO: add image
 
 revenue **(Chen et al., 2016; Pärssinen, et al., 2018)**. Since it is not apparent to the user which company collects which data and for what purpose, the user privacy and data protection issues of this process are highly problematic. In our database of 30,000 apps from Google Playstore, we found that about three-quarters had implemented advertisement, while about 90% had at least one integrated tracker.
 
-### Measurements in the lab: games and weather apps
+## Measurements in the lab: games and weather apps
 
 We measured the data sending behaviour of numerous apps from multiple categories. As expected, apps that download large files – e.g., maps – or stream media generally transfer the highest data volume. However, apps from these categories tend to have lower ATS traffic. Contrastingly, mobile games and apps for music creation have high ATS traffic, sometimes well above 50% of total traffic. For a clearer picture of the data transferred – and the share that is required for ATS traffic – we compared two app categories for which we recorded the respective data transmission behaviour while in use: weather and games **[Figures 1 and 2]**. For the weather apps, the transmitted data volume of a single app-use lay between 0.5 and 13 MB, with ATS shares mostly ranging between 4% and 15%. Transmitted data for the games was between 4 and 60 MB, and ATS shares were generally above 30%. Different approaches can be employed to transform those data transmission levels into energy consumption and emissions. For example, using data from Gröger et
 
@@ -84,7 +84,7 @@ al. **(2021)** on the energy use of data networks and the emissions intensity of
 
 switching from 4G to Wi-Fi reduces emissions by a factor of 5. The issue at stake becomes clear when user bases are taken into account: Games such as Fruit Ninja or Candy Crush have half a billion to a billion downloads. Scaling in this factor sometimes adds up to emissions of hundreds of tons of CO 2 equivalents – i.e., several hundred thousand kilometres by car – that are caused solely by advertisement and tracking.
 
-### What can be done?
+## What can be done?
 
 Since the demand for data centres and data transmission is expected to increase sharply over the next few years, its environmental impacts cannot be neglected. A number of policies and processes are already addressing this issue. Among these are general infrastructure improvements, e.g., expanding energy efficient fibre-optic cables and 5G networks **(Köhn et al., 2020).** Germany already took an important step in this direction by switching off the energy-inefficient 3G-mobile network in 2021. Further possibilities exist. For consumer devices, video streams should automatically adjust to screen size instead of using the best quality available. This adjustment could save considerable data exchange while the difference is often not perceivable on smartphones and tablets **(Köhn et al., 2020).** Since videos made up about 70% of all internet data traffic in 2022, this change could save considerable amounts of energy while having few downsides **(Ericsson, 2022).** Cell phone contracts are further starting points for potential regulation as they often incentivise excessive data consumption by offering flat-rates with unreasonably large data packages **(Köhn et al., 2020).** Our app measurements suggest further measures. Consumers should primarily use data-intensive functions when connected to Wi-Fi. To minimise unnecessary traffic, choosing apps without advertisements and with as little tracking as possible are further options.<sub id="5">5</sub> In terms of data traffic, environmental protection here also means privacy protection.
 
@@ -98,12 +98,12 @@ Software developers should implement data sufficiency as a principle, especially
 
 <footer>
 
-#### About the authors
+### About the authors
 
 - **Florian Petri** has been working at ITUJ e.V. and mobilsicher.de on the topics of digitalisation and sustainability for the last 1.5 years. His background is in Environmental Economics.
 - **Miriam Ruhenstroth** has accompanied mobilsicher.de since its launch and is currently the project manager. Previously, she worked as a freelance technology and science journalist.
 
-#### References
+### References
 
 - **Allekotte, M., Bergk, F., Biemann, K., Deregowski, C., Knörr, W., Althaus, H.-J., Sutter, D. & Bergmann, T. (2020).** _Ökologische Bewertung von Verkehrsarten._ 156/2020. TEXTE. Umweltbundesamt.
 - **Aslan, J., Mayers, K., Koomey, J. G. & France, C. (2018).** Electricity Intensity of Internet Data Transmission: Untangling the Estimates: Electricity Intensity of Data Transmission. _Journal of Industrial Ecology,_ 22(4), 785–798. https://doi.org/10.1111/jiec.12630
