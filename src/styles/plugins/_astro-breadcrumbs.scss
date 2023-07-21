@@ -1,0 +1,3 @@
+@use "astro-breadcrumbs/breadcrumbs.scss" with (
+  $color-is-current: var(--chapter-theme-color)
+);
