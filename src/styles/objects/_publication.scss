@@ -1,4 +1,5 @@
 @use "sass:list";
+@use "@styles/mixins/mixins" as mx; // Needs to be loaded before the sass-butler mixins
 @use "@sass-butler/functions" as butler-fn;
 
 .o-publication {
@@ -34,6 +35,11 @@
   :is(#{$headlines}) {
     color: var(--chapter-theme-color);
     text-transform: uppercase;
+
+    &:has(+ p) {
+      margin-block-start: 3rem;
+      margin-block-end: 1rem;
+    }
   }
 
   h1 {
@@ -56,20 +62,40 @@
     }
   }
 
-  ul {
+  ul,
+  ol {
     padding-inline-start: 1rem;
 
     li {
       padding-inline-start: 0.5rem;
+      font-size: var(--font-size-xs);
+      line-height: 1.5;
 
       &::marker {
-        content: "\25A0";
         color: var(--color-page-list-marker, var(--chapter-theme-color));
       }
     }
   }
 
+  ul {
+    li {
+      &::marker {
+        content: "\25A0";
+      }
+    }
+  }
+
+  ol {
+    li {
+      &::marker {
+        font-weight: bold;
+      }
+    }
+  }
+
   footer {
+    margin-top: 4rem;
+
     ul {
       li {
         padding-inline-start: 0.75rem;
@@ -80,10 +106,32 @@
         }
       }
     }
+
+    :is(a, p, li) {
+      font-size: initial;
+    }
+
+    :is(h3) {
+      font-size: var(--font-size-sm);
+    }
   }
 
   .c-author {
     margin: 2rem 0 0;
+    position: relative;
+
+    &::before {
+      content: "{";
+      color: var(--chapter-theme-color);
+      font-size: 3.5rem;
+      position: absolute;
+      left: var(--spacing-bracket, -17px);
+      top: calc(-100% + -7px);
+
+      @include mx.breakpoint("sm") {
+        --spacing-bracket: -30px;
+      }
+    }
   }
 
   .c-blockquote,
@@ -96,5 +144,22 @@
   p:has(+ .c-blockquote),
   p:has(+ .c-quote) {
     display: inline;
+  }
+
+  p:has(+ footer) {
+    position: relative;
+
+    &::after {
+      content: "}";
+      color: var(--chapter-theme-color);
+      font-size: 3.5rem;
+      position: absolute;
+      right: var(--spacing-bracket, -15px);
+      bottom: -32px;
+
+      @include mx.breakpoint("sm") {
+        --spacing-bracket: -30px;
+      }
+    }
   }
 }

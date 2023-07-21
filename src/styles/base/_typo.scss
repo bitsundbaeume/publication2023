@@ -5,8 +5,16 @@
 @use "@styles/variables/fonts";
 
 html {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
 
   @include butler-mx.font-smoothing;
   @include butler-mx.select-style(colors.$green-300, #fff);
@@ -26,6 +34,7 @@ $headlines: ();
 
 :is(#{$headlines}) {
   font-weight: 700;
+  text-wrap: balance;
 }
 
 h1 {
