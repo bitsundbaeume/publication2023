@@ -4,12 +4,12 @@
       <h2 class="c-pub-toc__start-heading">Table of Contents</h2>
       <button
         class="c-button c-button--primary c-pub-toc__controls-button"
-        :title="allChaptersOpen ? 'Unfold all chapters' : 'Fold all chapters'"
+        :title="allChaptersOpen ? 'Fold all chapters' : 'Unfold all chapters'"
         @click="toggleChapterOrAll()"
       >
         <Transition name="fade" mode="out-in">
-          <ChevronDownSquare v-if="allChaptersOpen" :size="20" />
-          <ChevronUpSquare v-else :size="20" />
+          <ChevronUpSquare v-if="allChaptersOpen" :size="20" />
+          <ChevronDownSquare v-else :size="20" />
         </Transition>
       </button>
     </div>
