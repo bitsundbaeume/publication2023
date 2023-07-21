@@ -63,7 +63,7 @@
   }
 
   ul,
-  ol {
+  ol:not(.c-breadcrumbs__crumbs) {
     padding-inline-start: 1rem;
 
     li {
