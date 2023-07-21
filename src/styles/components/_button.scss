@@ -9,6 +9,7 @@
     color 0.2s ease-in-out,
     background-color 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
+  text-decoration: none;
 
   &--primary {
     background-color: var(--color-background-button, var(--blue-500));

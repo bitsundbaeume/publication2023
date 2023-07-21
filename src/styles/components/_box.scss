@@ -10,11 +10,7 @@
   gap: 2rem;
 
   @include mx.breakpoint("sm") {
-    grid-template-columns: 2fr 3fr;
-    grid-template-rows: min-content 2fr;
-    grid-template-areas:
-      "image content"
-      "buttons content";
+    grid-template: "image content" min-content "buttons content" 2fr / 2fr 3fr;
   }
 
   &__image {
@@ -90,7 +86,6 @@
 
   &__download {
     grid-area: download;
-    text-decoration: none;
   }
 
   &__citation {

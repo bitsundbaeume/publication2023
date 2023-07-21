@@ -55,6 +55,42 @@ const groupedByChapter = filteredCollection.reduce<{
 }, {});
 
 /**
+ * Get the next page
+ *
+ * @param chapter
+ * @param order
+ * @param collection
+ */
+const nextPage = (
+  chapter: number,
+  order: number,
+  collection: CollectionEntry<"publication2023">[],
+): string | null => {
+  const filteredCollection = collection.filter(
+    (item) => item.data.chapter === chapter,
+  );
+  const nextPageOrder = order + 1;
+  const nextPage = filteredCollection.find(
+    (item) => item.data.order === nextPageOrder,
+  );
+
+  if (nextPage) {
+    return `/${nextPage.slug}`;
+  } else {
+    const nextChapter = chapter + 1;
+    const nextChapterCollection = collection.filter(
+      (item) => item.data.chapter === nextChapter,
+    );
+    if (nextChapterCollection.length > 0) {
+      const firstPage = nextChapterCollection[0];
+      return `/${firstPage.slug}`;
+    } else {
+      return null;
+    }
+  }
+};
+
+/**
  * Sort the collection by the order property
  */
 const sortedCollection = filteredCollection.sort((a, b) => a.order - b.order);
@@ -71,7 +107,7 @@ const chapterTitles = [
 ];
 
 const currentChapter = entry.data.chapter;
-
+const currentPageOrder = entry.data.order;
 const authors = entry.data.authors;
 const tag = entry.data.tag;
 ---
@@ -90,6 +126,18 @@ const tag = entry.data.tag;
   {tag && <Tag tag={entry.data.tag} />}
 
   <Content />
+
+  {
+    nextPage(currentChapter, currentPageOrder, collection) && (
+      <a
+        class="c-button c-button--primary o-publication__next-page"
+        href={nextPage(currentChapter, currentPageOrder, collection)}
+      >
+        Next page
+        <Icon name="lucide:chevron-right" width="24" height="24" />
+      </a>
+    )
+  }
 
   <TableOfContents
     headings={headings}

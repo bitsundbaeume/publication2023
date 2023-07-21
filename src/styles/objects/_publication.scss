@@ -6,6 +6,13 @@
   grid-area: publication;
   word-break: break-word;
 
+  &__next-page {
+    display: flex;
+    align-items: center;
+    max-width: max-content;
+    margin-top: 4rem;
+  }
+
   * {
     &:first-child {
       margin-top: 0;
