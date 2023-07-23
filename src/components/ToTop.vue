@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
+import { onBeforeMount, onBeforeUnmount, ref } from "vue";
 import { ChevronUp } from "lucide-vue-next";
 
 interface ToTopProps {
@@ -29,12 +29,12 @@ const observer = ref<IntersectionObserver | null>(null);
 const isScrolled = ref(false);
 
 const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-  entries.forEach((entry) => {
-    isScrolled.value = !entry.isIntersecting;
-  });
+  for (const entry in entries) {
+    isScrolled.value = !entries[0].isIntersecting;
+  }
 };
 
-onMounted(() => {
+onBeforeMount(() => {
   observer.value = new IntersectionObserver(handleIntersect);
   const topElement = document.querySelector(props.topElement);
   if (topElement instanceof Element) {
@@ -42,7 +42,7 @@ onMounted(() => {
   }
 });
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   observer.value?.disconnect();
 });
 </script>
