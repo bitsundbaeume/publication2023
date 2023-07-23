@@ -4,7 +4,7 @@
     v-once
     type="button"
     class="c-share c-button c-button--primary"
-    @click.prevent="startShare(title, text, data.currentUrl)"
+    @click.prevent="startShare(title, text, currentUrl)"
   >
     <Share2
       focusable="false"
@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { Share2 } from "lucide-vue-next";
-import { onMounted, reactive } from "vue";
+import { onMounted, ref } from "vue";
 import { useShare } from "@vueuse/core";
 
 export interface ShareProps {
@@ -30,26 +30,19 @@ export interface ShareProps {
 const { share, isSupported } = useShare();
 
 const props = defineProps<ShareProps>();
-
-interface Data {
-  currentUrl: string | undefined;
-}
-
-const data: Data = reactive({
-  currentUrl: props.url,
-});
+const currentUrl = ref<string | undefined>(props.url);
 
 const startShare = (
   title: string | undefined,
   text: string | undefined,
-  url: string | undefined
+  url: string | undefined,
 ) => {
   share({ title, text, url });
 };
 
 onMounted(() => {
   if (!props.url) {
-    data.currentUrl = window.location.href;
+    currentUrl.value = window.location.href;
   }
 });
 </script>
