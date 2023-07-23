@@ -1,5 +1,5 @@
 <template>
-  <nav :id="tocId" class="c-pub-toc">
+  <nav :id="tocId" ref="pubToc" class="c-pub-toc">
     <div class="c-pub-toc__header-wrap">
       <h2 class="c-pub-toc__start-heading">Table of Contents</h2>
       <button
@@ -132,6 +132,7 @@ const props = defineProps<TableOfContentsProps>();
 const tocId = "tableOfContents";
 
 const activeHeadline = ref("");
+const pubToc = ref<HTMLElement | null>(null);
 
 const visibleStatesChapters = reactive<boolean[]>(
   Object.keys(props.chapters).map(() => false),
@@ -146,7 +147,6 @@ const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.intersectionRatio <= 0) return;
-      const tocContainer = document.querySelector(".c-pub-toc") as HTMLElement;
       const headline = entry.target as HTMLElement;
       activeHeadline.value = headline.id;
 
@@ -155,10 +155,10 @@ const observer = new IntersectionObserver(
         entry.target.classList.contains("is-current") &&
         entry.isIntersecting
       ) {
-        tocContainer.scroll({
+        pubToc.value?.scroll({
           behavior: "smooth",
           left: 0,
-          top: (entry.target as HTMLElement).offsetTop - tocContainer.offsetTop,
+          top: (entry.target as HTMLElement).offsetTop - pubToc.value.offsetTop,
         });
       }
     });
