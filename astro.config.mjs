@@ -3,7 +3,6 @@ import path, { dirname } from "node:path";
 import { fileURLToPath } from "url";
 import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
-import critters from "astro-critters";
 import serviceWorker from "astrojs-service-worker";
 import { astroImageTools } from "astro-imagetools";
 import vue from "@astrojs/vue";
@@ -46,9 +45,6 @@ export default defineConfig({
       lastmod: new Date(),
     }),
     prefetch(),
-    critters({
-      critters: false,
-    }),
     serviceWorker(),
     astroImageTools,
     vue(),
