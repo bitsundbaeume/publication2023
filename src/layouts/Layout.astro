@@ -52,6 +52,7 @@ const { seo, bodyClass } = Astro.props;
     <meta name="msapplication-TileColor" content="#00a300" />
     <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
     <meta name="theme-color" content="#ffffff" />
+    <link rel="canonical" href={Astro.url.href} />
     <meta name="generator" content={Astro.generator} />
     {seo?.title && <title>{seo.title}</title>}
     {seo?.metaTitle && <meta name="title" content={seo.metaTitle} />}
