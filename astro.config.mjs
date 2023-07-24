@@ -17,7 +17,7 @@ const __dirname = dirname(__filename);
 export default defineConfig({
   site: import.meta.env.DEV
     ? "http://localhost:3000"
-    : "https://publication2023.bits-und-baeume.org",
+    : "https://dev.publication2023.bits-und-baeume.org",
   compressHTML: true,
   markdown: {
     rehypePlugins: [
@@ -46,7 +46,7 @@ export default defineConfig({
       lastmod: new Date(),
     }),
     prefetch(),
-    // serviceWorker(),
+    serviceWorker(),
     astroImageTools,
     vue(),
     pagefind(),
