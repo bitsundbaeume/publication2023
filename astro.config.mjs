@@ -46,7 +46,7 @@ export default defineConfig({
       lastmod: new Date(),
     }),
     prefetch(),
-    serviceWorker(),
+    // serviceWorker(),
     astroImageTools,
     vue(),
     pagefind(),
