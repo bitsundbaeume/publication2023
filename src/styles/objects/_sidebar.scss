@@ -3,6 +3,9 @@
 .o-sidebar {
   grid-area: sidebar;
 
+  @include mx.breakpoint("sm", "max") {
+    padding-bottom: 4rem;
+  }
   @include mx.breakpoint("sm") {
     position: sticky;
     top: 0;
