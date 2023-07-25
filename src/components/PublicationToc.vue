@@ -30,6 +30,7 @@
             class="c-pub-toc__chapter-button c-button c-button--transparent"
             :aria-expanded="visibleStatesChapters[chapter[0].chapter]"
             :aria-controls="`chapter-${chapter[0].chapter}`"
+            role="menuitem"
             @click="toggleChapterOrAll(chapter[0].chapter)"
           >
             <div class="c-pub-toc__chapter-title-wrap">
@@ -41,7 +42,6 @@
                       item.isCurrent && item.chapter === chapter[0].chapter,
                   ),
                 }"
-                role="menuitem"
               >
                 {{ chapterTitles[chapter[0].chapter] }}
               </p>
