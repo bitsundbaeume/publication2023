@@ -106,6 +106,17 @@ const chapterTitles = [
   "7. Closure",
 ];
 
+/**
+ * If the SEO title is not set, use the title of the page
+ */
+const useSeoOrFallback = () => {
+  return {
+    title: entry.data.seo?.title || entry.data.title,
+    metaTitle: entry.data.seo?.metaTitle || entry.data.title,
+    metaDescription: entry.data.seo?.metaDescription || "",
+  };
+};
+
 const currentChapter = entry.data.chapter;
 const currentPageOrder = entry.data.order;
 const authors = entry.data.authors;
@@ -113,7 +124,7 @@ const tag = entry.data.tag;
 ---
 
 <Layout
-  seo={entry.data.seo}
+  seo={useSeoOrFallback()}
   contentModifierClass="publication"
   chapterThemeClass={currentChapter}
 >
