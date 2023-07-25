@@ -14,7 +14,7 @@
       </button>
     </div>
 
-    <ul class="c-pub-toc__pages u-list-reset">
+    <ul class="c-pub-toc__pages u-list-reset" role="menu">
       <template v-for="chapter of chapters" :key="chapter">
         <li
           class="c-pub-toc__chapter"
@@ -23,10 +23,13 @@
               (item) => item.isCurrent && item.chapter === chapter[0].chapter,
             ),
           }"
+          role="presentation"
         >
           <button
             type="button"
             class="c-pub-toc__chapter-button c-button c-button--transparent"
+            :aria-expanded="visibleStatesChapters[chapter[0].chapter]"
+            :aria-controls="`chapter-${chapter[0].chapter}`"
             @click="toggleChapterOrAll(chapter[0].chapter)"
           >
             <div class="c-pub-toc__chapter-title-wrap">
@@ -38,6 +41,7 @@
                       item.isCurrent && item.chapter === chapter[0].chapter,
                   ),
                 }"
+                role="menuitem"
               >
                 {{ chapterTitles[chapter[0].chapter] }}
               </p>
@@ -50,19 +54,26 @@
           <Transition name="fade">
             <ul
               v-if="visibleStatesChapters[chapter[0].chapter]"
+              :id="`chapter-${chapter[0].chapter}`"
               class="c-pub-toc__chapter-list"
+              role="menu"
             >
               <template v-for="article in chapter" :key="article.order">
-                <li v-if="!article.isCurrent">
+                <li v-if="!article.isCurrent" role="presentation">
                   <a
                     class="c-pub-toc__link"
                     :href="`/${article.slug}`"
                     rel="prefetch"
+                    role="menuitem"
                     v-text="article.title"
                   />
                 </li>
-                <li v-else class="c-pub-toc__page is-current">
-                  <ul class="c-pub-toc__current-toc u-list-reset">
+                <li
+                  v-else
+                  class="c-pub-toc__page is-current"
+                  role="presentation"
+                >
+                  <ul class="c-pub-toc__current-toc u-list-reset" role="menu">
                     <template v-for="headline in headings" :key="headline.slug">
                       <li
                         :class="[
@@ -71,10 +82,12 @@
                             'is-active': activeHeadline === headline.slug,
                           },
                         ]"
+                        role="presentation"
                       >
                         <a
                           class="c-pub-toc__link"
                           :href="`#${headline.slug}`"
+                          role="menuitem"
                           v-text="headline.text"
                         />
                       </li>
