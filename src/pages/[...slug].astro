@@ -113,7 +113,11 @@ const useSeoOrFallback = () => {
   return {
     title: entry.data.seo?.title || entry.data.title,
     metaTitle: entry.data.seo?.metaTitle || entry.data.title,
-    metaDescription: entry.data.seo?.metaDescription || "",
+    metaDescription:
+      entry.data.seo?.metaDescription ||
+      `${chapterTitles[entry.data.chapter]}: ${
+        entry.data.title
+      } - Shaping Digital Transformation for a Sustainable Society`,
   };
 };
 
