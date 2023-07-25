@@ -38,7 +38,6 @@ export default defineConfig({
   },
   output: "static",
   build: {
-    format: "file",
     inlineStylesheets: "auto",
   },
   integrations: [
