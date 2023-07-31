@@ -8,6 +8,7 @@ import { Icon } from "astro-icon";
 import "@styles/plugins/_astro-breadcrumbs.scss";
 import Author from "@components/content/Author.astro";
 import Tag from "@components/content/Tag.astro";
+import { Img } from "astro-imagetools/components";
 
 export async function getStaticPaths() {
   const publication2023Entries = await getCollection("publication2023");
@@ -135,6 +136,25 @@ const tag = entry.data.tag;
   <Breadcrumbs indexText="home">
     <Icon slot="separator" name="lucide:chevron-right" width="24" height="24" />
   </Breadcrumbs>
+
+  {
+    entry.data.headerImage && (
+      <figure>
+        <Img
+          src={entry.data.headerImage.src}
+          alt={entry.data.headerImage.alt}
+          loading="eager"
+          attributes={{
+            img: {
+              fetchpriority: "high",
+              class: "c-box__image",
+            },
+          }}
+        />
+        <figcaption>CC BY: {entry.data.headerImage.caption}</figcaption>
+      </figure>
+    )
+  }
 
   {authors && authors.length > 0 && <Author authors={entry.data.authors} />}
 
