@@ -1,0 +1,25 @@
+---
+import { Img } from "astro-imagetools/components";
+
+interface Figure {
+  src: string;
+  alt?: string;
+  caption?: string;
+}
+
+const { src, alt, caption } = Astro.props as Figure;
+---
+
+<figure>
+  <Img
+    src={src}
+    alt={alt ?? ""}
+    loading="lazy"
+    attributes={{
+      img: {
+        fetchpriority: "high",
+      },
+    }}
+  />
+  <figcaption>{caption}</figcaption>
+</figure>
