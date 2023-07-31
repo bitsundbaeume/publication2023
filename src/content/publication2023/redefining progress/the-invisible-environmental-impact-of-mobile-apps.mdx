@@ -15,6 +15,7 @@ seo:
 
 import Quote from "@components/content/Quote.astro";
 import BlockQuote from "@components/content/BlockQuote.astro";
+import Figure from "@components/content/Figure.astro";
 
 # {frontmatter.title}
 
@@ -65,7 +66,10 @@ There is an ongoing debate on how to exactly allocate the energy use of data net
 
 When it comes to options for reducing mobile data traffic, an obvious starting point is advertising. A study commissioned in 2021 for the European Parliament estimated that ATS alone causes 30 to 50 billion GB of traffic on smartphones in Europe. The resulting emissions from data centres and transmission networks are estimated to be as high as 5 to 14 megatons of CO2 equivalents **(Uijttewaal, 2021)**. This corresponded to about 1% to 2% of Germany’s total emissions in 2021 **(UBA, 2022)**. Especially for mobile apps, it is common for app publishers to earn money by selling ad-space – e.g., ad-banners – or by collecting and selling user data to third parties. Since ATS providers often incorporate software modules into numerous apps, user data can be tracked across apps and detailed user profiles can be built. Therefore, even apps that do not display ads can still use implemented trackers. This information can include, e.g., the types of apps used regularly, visited websites, or favourite music artists etc. This business is lucrative since ad-supported free apps are downloaded about 50 times more often than ad-free paid apps and bring in up to ten times as much
 
-TODO: add image
+<Figure
+  src="/src/images/info-graphics/BB22_1.5.jpg"
+  caption="Florian Petri, Miriam Ruhenstroth, Illustration- Lone Thomasky"
+/>
 
 revenue **(Chen et al., 2016; Pärssinen, et al., 2018)**. Since it is not apparent to the user which company collects which data and for what purpose, the user privacy and data protection issues of this process are highly problematic. In our database of 30,000 apps from Google Playstore, we found that about three-quarters had implemented advertisement, while about 90% had at least one integrated tracker.
 
