@@ -15,6 +15,7 @@ seo:
 
 import Quote from "@components/content/Quote.astro";
 import BlockQuote from "@components/content/BlockQuote.astro";
+import Figure from "@components/content/Figure.astro";
 
 # {frontmatter.title}
 
@@ -53,7 +54,10 @@ Digitalisation plays a key role in decentralising energy production and supply a
 
 Smart meters not only collect consumption data at regular intervals and pass this information on to consumers, but they can also transmit it automatically and manage access rights. By connecting energy suppliers, consumer devices, and the electricity grid, they can form an important interface for controlling decentralised electricity generators such as photovoltaic or wind energy plants as well as for organising energy communities or joint self-consumption. In addition, smart meters can be used to introduce flexible electricity tariffs that take into account price fluctuations, grid loads, and electricity demand.<br/> With the [‹Newtonprojekt›](https://www.polarstern-energie.de/mieterstrom/passivhaussiedlung-einer-baugemeinschaft/#_blank) passive house development in Berlin’s Adlershof district, a pioneering tenant electricity project has already been implemented. The project includes solar systems on the roofs of the houses and facades, a solar thermal system managing hot water supply, battery storage for electricity surpluses, and a fed-in connection to a district heating network if too much heat is produced. In addition, residents have access to 17 charging points for electric cars and e-bikes, which charge electric vehicles with locally generated electricity.
 
-TODO: add image
+<Figure
+  src="/src/images/info-graphics/BB22_4.2.jpg"
+  caption="A. Aretz & I. Jungblut based on BDEW, Illustration Lone Thomasky"
+/>
 
 To ensure that electricity generation and use are ideally coordinated and to achieve the highest possible electricity self-sufficiency, the project’s green energy provider has installed a local electricity grid with smart meters and intelligent tariffs. With a two-tariff model, residents are motivated to use as much of the electricity generated on site as possible. For the electricity from their own roof, they pay a reduced tenant electricity tariff. _«By recording electricity generation and consumption with smart meters — for each generation and consumption point — the residents end up with an individual electricity price that is made up of the share of local electricity they use and the share of grid electricity. This means that the highest possible direct consumption is rewarded directly via the electricity price»_, explains Florian Henle, Managing Director of Polarstern **(Polarstern, n.d.)**.
 

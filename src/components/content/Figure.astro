@@ -5,9 +5,10 @@ interface Figure {
   src: string;
   alt?: string;
   caption?: string;
+  showCc?: boolean;
 }
 
-const { src, alt, caption } = Astro.props as Figure;
+const { src, alt, caption, showCc = true } = Astro.props as Figure;
 ---
 
 <figure>
@@ -21,5 +22,5 @@ const { src, alt, caption } = Astro.props as Figure;
       },
     }}
   />
-  <figcaption>{caption}</figcaption>
+  <figcaption>{showCc && "CC BY "}{caption}</figcaption>
 </figure>

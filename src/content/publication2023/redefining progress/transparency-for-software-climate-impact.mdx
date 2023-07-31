@@ -16,6 +16,7 @@ seo:
 
 import Quote from "@components/content/Quote.astro";
 import BlockQuote from "@components/content/BlockQuote.astro";
+import Figure from "@components/content/Figure.astro";
 
 # {frontmatter.title}
 
@@ -38,7 +39,10 @@ The information and communication technology (ICT) sector is estimated to curren
 
 It is the hardware that consumes the electricity in the ICT area and the software that utilises this hardware. The software determines how and for what kind of computations the hardware is used and influences the energy consumption of the hardware for a certain task. **[Figure 1]** shows an example from Gröger et al. **(2018)** with different resources and therefore different energy consumptions for various software products performing the same task. In our approach, we are guided by the methodology of life cycle assessments (LCA) and view software as the main target for the energy used by the hardware itself but also for the environmental impacts generated from manufacturing the hardware. The environmental impacts of energy consumption stem from the way energy is currently produced, which generally entails large CO2 emissions **(bp, 2021)**. Furthermore, the manufacturing of hardware causes CO2 emissions through mineral mining, plastics and metals production, and the factories required to execute the related processes **(Boavizta, 2023).**
 
-TODO: add image
+<Figure
+  src="/src/images/info-graphics/BB22_1.6_1.jpg"
+  caption="S. Kruijer et al. based on Gröger et al., llustr. Lone Thomasky"
+/>
 
 Another factor influencing energy con- [ Figure 1 Own Figure, data from study of Gröger et al. (2018) sumption is the ‹software bloat› effect, in which software products continue to grow. However, the additional functionality they acquire entail using increasing resources since more processor performance, memory, and hard disk space are required. Software thus becomes more unspecific over time. But beyond the overhead from additional functionality, some more resource consumption also comes from a relatively unspecific growth of the code over time, for example, from adding additional software packages or from increasing abstraction. This growth in overhead is almost natural as the number of developers increases the longer the software is in use and, in many cases, developers bring their own preferences in libraries and frameworks. To be able to manage the environmental impact of the digital sector in a targeted manner, we split the resource consumption of software into ‹digital resource primitives›. These primitives make it possible to map software in the different phases of its life-cycle (Manufacturing/Development, Distribution, Usage, Disposal/Removal) to its environmental impact. A LCA requires solutions to perform an inventory analysis of resource usage and environmental impacts. We show how to perform this analysis in our ‹double conversion model› using digital resource primitives in a detailed example for the software usage phase. In this article, we consider only the usage phase of software and focus on determining the embedded environmental impacts and resource use of ICT equipment as well as the primary energy use. The described process and model can easily be extended to the other life-cycle phases.
 
@@ -46,7 +50,10 @@ Another factor influencing energy con- [ Figure 1 Own Figure, data from study of
 
 Digital Resource Primitives (DRPs) are defined as the low-level digital resources required to operate digital products and services. They can be seen as the fuel that powers software applications **[Figure 2]**. They allow a direct mapping onto a physical hardware resource.
 
-TODO: add image
+<Figure
+  src="/src/images/info-graphics/BB22_1.6_2.jpg"
+  caption="SDIA e.V. (2022), Illustration Lone Thomasky"
+/>
 
 A central processing unit (CPU) is a digital resource that a software can consume. CPU utilisation has the most significant correlation to power consumption, e.g., a utilisation of 80% is responsible for a similar percentage of energy use.
 
@@ -94,7 +101,10 @@ have shown, easily constructed for arbitrary software. [Figure 3a] shows an exam
 
 To generate reliable measurements, a special prepared system is needed that does not generate any noise during the measurement. We use a standard Ubuntu operating system and turn off every functionality that typically caters for automatic updates, the NMI watchdog, cronjobs etc.
 
-TODO: add image
+<Figure
+  src="/src/images/info-graphics/BB22_1.6_3.jpg"
+  caption="Green Coding Berlin GmbH (2022), Illustration Lone Thomasky"
+/>
 
 The measurement of the development phase, which consists of writing the software and testing it, can leverage the same tools as those used in the usage phase. Here we use the resource consumption on a process level and accumulate the resource consumption of all associated processes needed for developing and testing the development phase. The same holds true for the removal and distribution phase, where typically a process is responsible for removing/creating software artefacts on the hard disk, caches etc.
 

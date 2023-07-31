@@ -142,7 +142,7 @@ const tag = entry.data.tag;
       <figure>
         <Img
           src={entry.data.headerImage.src}
-          alt={entry.data.headerImage.alt}
+          alt={entry.data.headerImage.alt ?? ""}
           loading="eager"
           attributes={{
             img: {
@@ -151,7 +151,7 @@ const tag = entry.data.tag;
             },
           }}
         />
-        <figcaption>CC BY: {entry.data.headerImage.caption}</figcaption>
+        <figcaption>CC BY {entry.data.headerImage.caption}</figcaption>
       </figure>
     )
   }
