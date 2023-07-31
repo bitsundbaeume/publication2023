@@ -54,7 +54,7 @@
             role="menu"
           >
             <template v-for="article in chapter" :key="article.order">
-              <li v-show="!article.isCurrent" role="presentation">
+              <li v-if="!article.isCurrent" role="presentation">
                 <a
                   class="c-pub-toc__link"
                   :href="`/${article.slug}`"
@@ -63,11 +63,7 @@
                   v-text="article.title"
                 />
               </li>
-              <li
-                v-show="article.isCurrent"
-                class="c-pub-toc__page is-current"
-                role="presentation"
-              >
+              <li v-else class="c-pub-toc__page is-current" role="presentation">
                 <ul class="c-pub-toc__current-toc u-list-reset" role="menu">
                   <template v-for="headline in headings" :key="headline.slug">
                     <li
