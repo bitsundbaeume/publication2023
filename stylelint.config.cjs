@@ -4,9 +4,9 @@ module.exports = {
   extends: [
     "stylelint-config-standard",
     "stylelint-config-recommended-scss",
-    "stylelint-config-prettier-scss",
     "stylelint-config-recommended-vue",
     "stylelint-config-recommended-vue/scss",
+    "stylelint-config-prettier-scss",
   ],
   // plugins: ['stylelint-declaration-block-no-ignored-properties'],
   // add your custom config here
