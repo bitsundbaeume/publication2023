@@ -19,16 +19,14 @@
         <li
           class="c-pub-toc__chapter"
           :class="{
-            'is-current': chapter.some(
-              (item) => item.isCurrent && item.chapter === chapter[0].chapter,
-            ),
+            'is-current': isCurrentChapter(chapter),
           }"
           role="presentation"
         >
           <button
             type="button"
             class="c-pub-toc__chapter-button c-button c-button--transparent"
-            :aria-expanded="visibleStatesChapters[chapter[0].chapter]"
+            :aria-expanded="isVisibleChapter(chapter)"
             :aria-controls="`chapter-${chapter[0].chapter}`"
             role="menuitem"
             @click="toggleChapterOrAll(chapter[0].chapter)"
@@ -37,10 +35,7 @@
               <p
                 class="c-pub-toc__chapter-title"
                 :class="{
-                  'is-current': chapter.some(
-                    (item) =>
-                      item.isCurrent && item.chapter === chapter[0].chapter,
-                  ),
+                  'is-current': isCurrentChapter(chapter),
                 }"
               >
                 {{ chapterTitles[chapter[0].chapter] }}
@@ -48,55 +43,54 @@
             </div>
             <ChevronRight
               class="c-pub-toc__chapter-icon"
-              :class="{ 'is-open': visibleStatesChapters[chapter[0].chapter] }"
+              :class="{ 'is-open': isVisibleChapter(chapter) }"
             />
           </button>
-          <Transition name="fade">
-            <ul
-              v-show="visibleStatesChapters[chapter[0].chapter]"
-              :id="`chapter-${chapter[0].chapter}`"
-              class="c-pub-toc__chapter-list"
-              role="menu"
-            >
-              <template v-for="article in chapter" :key="article.order">
-                <li v-if="!article.isCurrent" role="presentation">
-                  <a
-                    class="c-pub-toc__link"
-                    :href="`/${article.slug}`"
-                    rel="prefetch"
-                    role="menuitem"
-                    v-text="article.title"
-                  />
-                </li>
-                <li
-                  v-else
-                  class="c-pub-toc__page is-current"
-                  role="presentation"
-                >
-                  <ul class="c-pub-toc__current-toc u-list-reset" role="menu">
-                    <template v-for="headline in headings" :key="headline.slug">
-                      <li
-                        :class="[
-                          `c-pub-toc__headline is-depth-${headline.depth}`,
-                          {
-                            'is-active': activeHeadline === headline.slug,
-                          },
-                        ]"
-                        role="presentation"
-                      >
-                        <a
-                          class="c-pub-toc__link"
-                          :href="`#${headline.slug}`"
-                          role="menuitem"
-                          v-text="headline.text"
-                        />
-                      </li>
-                    </template>
-                  </ul>
-                </li>
-              </template>
-            </ul>
-          </Transition>
+
+          <ul
+            v-show="isVisibleChapter(chapter)"
+            :id="`chapter-${chapter[0].chapter}`"
+            class="c-pub-toc__chapter-list"
+            role="menu"
+          >
+            <template v-for="article in chapter" :key="article.order">
+              <li v-show="!article.isCurrent" role="presentation">
+                <a
+                  class="c-pub-toc__link"
+                  :href="`/${article.slug}`"
+                  rel="prefetch"
+                  role="menuitem"
+                  v-text="article.title"
+                />
+              </li>
+              <li
+                v-show="article.isCurrent"
+                class="c-pub-toc__page is-current"
+                role="presentation"
+              >
+                <ul class="c-pub-toc__current-toc u-list-reset" role="menu">
+                  <template v-for="headline in headings" :key="headline.slug">
+                    <li
+                      :class="[
+                        `c-pub-toc__headline is-depth-${headline.depth}`,
+                        {
+                          'is-active': activeHeadline === headline.slug,
+                        },
+                      ]"
+                      role="presentation"
+                    >
+                      <a
+                        class="c-pub-toc__link"
+                        :href="`#${headline.slug}`"
+                        role="menuitem"
+                        v-text="headline.text"
+                      />
+                    </li>
+                  </template>
+                </ul>
+              </li>
+            </template>
+          </ul>
         </li>
       </template>
     </ul>
@@ -147,9 +141,7 @@ const tocId = "tableOfContents";
 const activeHeadline = ref("");
 const pubToc = ref<HTMLElement | null>(null);
 
-const visibleStatesChapters = reactive<boolean[]>(
-  Object.keys(props.chapters).map(() => false),
-);
+const visibleStatesChapters = reactive({} as { [key: number]: boolean });
 
 // if visibleStatesChapters all true, then all chapters are open
 const allChaptersOpen = computed(() =>
@@ -191,17 +183,41 @@ const observer = new IntersectionObserver(
  * @return  {void}                   [return description]
  */
 const toggleChapterOrAll = (chapterNumber?: number): void => {
-  if (chapterNumber !== undefined) {
-    visibleStatesChapters[chapterNumber] =
-      !visibleStatesChapters[chapterNumber];
-  } else {
+  if (chapterNumber === undefined) {
     const allChaptersVisible = Object.values(visibleStatesChapters).every(
       (state) => state,
     );
-    visibleStatesChapters.forEach((state, index) => {
-      visibleStatesChapters[index] = !allChaptersVisible;
+    Object.keys(visibleStatesChapters).forEach((chapter) => {
+      visibleStatesChapters[+chapter] = !allChaptersVisible;
     });
+  } else {
+    visibleStatesChapters[chapterNumber] =
+      !visibleStatesChapters[chapterNumber];
   }
+};
+
+/**
+ * Check if the current chapter is the current one.
+ *
+ * @param   {Item[]}   chapter
+ *
+ * @return  {boolean}
+ */
+const isCurrentChapter = (chapter: Item[]): boolean => {
+  return chapter.some(
+    (item) => item.isCurrent && item.chapter === chapter[0].chapter,
+  );
+};
+
+/**
+ * Check if the current chapter is visible.
+ *
+ * @param   {Item[]}   currentChapter  [currentChapter description]
+ *
+ * @return  {boolean}                  [return description]
+ */
+const isVisibleChapter = (currentChapter: Item[]): boolean => {
+  return visibleStatesChapters[currentChapter[0].chapter];
 };
 
 onBeforeMount(() => {
@@ -224,17 +240,18 @@ onMounted(() => {
   ) as HTMLElement;
   const tocContainer = document.querySelector(".c-pub-toc") as HTMLElement;
 
-  if (currentChapter && tocContainer) {
-    const rect = currentChapter.getBoundingClientRect();
-    const tocRect = tocContainer.getBoundingClientRect();
+  if (!(currentChapter && tocContainer)) {
+    return;
+  }
+  const rect = currentChapter.getBoundingClientRect();
+  const tocRect = tocContainer.getBoundingClientRect();
 
-    if (rect.top < tocRect.top || rect.bottom > tocRect.bottom) {
-      tocContainer.scroll({
-        behavior: "smooth",
-        left: 0,
-        top: currentChapter.offsetTop - tocContainer.offsetTop,
-      });
-    }
+  if (rect.top < tocRect.top || rect.bottom > tocRect.bottom) {
+    tocContainer.scroll({
+      behavior: "smooth",
+      left: 0,
+      top: currentChapter.offsetTop - tocContainer.offsetTop,
+    });
   }
 });
 
