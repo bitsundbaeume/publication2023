@@ -15,7 +15,7 @@
     </div>
 
     <ul class="c-pub-toc__pages u-list-reset" role="menu">
-      <template v-for="chapter of chapters" :key="chapter">
+      <template v-for="chapter of chapters" :key="chapter.slug">
         <li
           class="c-pub-toc__chapter"
           :class="{
@@ -53,7 +53,7 @@
           </button>
           <Transition name="fade">
             <ul
-              v-if="visibleStatesChapters[chapter[0].chapter]"
+              v-show="visibleStatesChapters[chapter[0].chapter]"
               :id="`chapter-${chapter[0].chapter}`"
               class="c-pub-toc__chapter-list"
               role="menu"
