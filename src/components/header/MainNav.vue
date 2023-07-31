@@ -3,7 +3,7 @@
     <button
       type="button"
       class="c-main-nav__toggle c-button c-button--icon"
-      aria-label="Menu öffnen"
+      aria-label="Open Menu"
       :aria-expanded="flyoutIsOpen"
       @click="toggleFlyout"
     >
