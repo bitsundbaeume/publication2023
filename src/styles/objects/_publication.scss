@@ -42,6 +42,7 @@
   :is(#{$headlines}) {
     color: var(--chapter-theme-color);
     text-transform: uppercase;
+    clear: both;
 
     &:has(+ p) {
       margin-block-start: 3rem;
@@ -124,19 +125,26 @@
   }
 
   .c-author {
-    margin: 2rem 0 0;
-    position: relative;
+    margin: 2rem 0 0 var(--spacing-left-author, 0.5rem);
 
-    &::before {
-      content: "{";
-      color: var(--chapter-theme-color);
-      font-size: 3.5rem;
-      position: absolute;
-      left: var(--spacing-bracket, -17px);
-      top: calc(-100% + -7px);
+    @include mx.breakpoint("sm") {
+      --spacing-left-author: 0;
+    }
 
-      @include mx.breakpoint("sm") {
-        --spacing-bracket: -30px;
+    &__label {
+      position: relative;
+
+      &::before {
+        content: "{";
+        color: var(--chapter-theme-color);
+        font-size: 3.5rem;
+        position: absolute;
+        left: var(--spacing-bracket, -22px);
+        top: calc(-100% + -7px);
+
+        @include mx.breakpoint("sm") {
+          --spacing-bracket: -30px;
+        }
       }
     }
   }
@@ -144,25 +152,31 @@
   .c-blockquote,
   .c-quote {
     + p {
-      display: inline;
+      @include mx.breakpoint("xs") {
+        display: inline;
+      }
     }
   }
 
   p:has(+ .c-blockquote),
   p:has(+ .c-quote) {
-    display: inline;
+    @include mx.breakpoint("xs") {
+      display: inline;
+    }
   }
 
   p:has(+ footer) {
-    position: relative;
-
     &::after {
       content: "}";
       color: var(--chapter-theme-color);
       font-size: 3.5rem;
-      position: absolute;
+      position: relative;
       right: var(--spacing-bracket, -15px);
-      bottom: -32px;
+      bottom: 10px;
+      display: block;
+      line-height: 0;
+      margin-left: auto;
+      text-align: right;
 
       @include mx.breakpoint("sm") {
         --spacing-bracket: -30px;
