@@ -2,6 +2,12 @@
   $color-is-current: var(--chapter-theme-color)
 );
 
-.c-breadcrumbs__crumbs {
-  row-gap: 0.5rem;
+.c-breadcrumbs {
+  &__crumbs {
+    row-gap: 0.5rem;
+  }
+
+  &__link {
+    line-height: initial;
+  }
 }
