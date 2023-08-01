@@ -139,7 +139,7 @@ const tag = entry.data.tag;
 
   {
     entry.data.headerImage && (
-      <figure>
+      <figure class="c-figure">
         <Img
           src={entry.data.headerImage.src}
           alt={entry.data.headerImage.alt ?? ""}
@@ -147,11 +147,13 @@ const tag = entry.data.tag;
           attributes={{
             img: {
               fetchpriority: "high",
-              class: "c-box__image",
+              class: "c-figure__image",
             },
           }}
         />
-        <figcaption>CC BY {entry.data.headerImage.caption}</figcaption>
+        <figcaption class="c-figure__caption">
+          CC BY {entry.data.headerImage.caption}
+        </figcaption>
       </figure>
     )
   }
