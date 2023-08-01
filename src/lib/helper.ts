@@ -26,5 +26,5 @@ export const replaceExtension = (
  * @return  {boolean}
  */
 export const isMobileViewport = (): boolean => {
-  return window.innerWidth < 768;
+  return window.innerWidth <= 768;
 };

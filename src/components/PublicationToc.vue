@@ -275,6 +275,14 @@ onMounted(() => {
       .forEach((section) => observer.observe(section));
 
   if (!isMobileViewport()) scrollCurrentChapterIntoView();
+  if (isMobileViewport()) {
+    // Scroll main content in to view (skip toc)
+    document.getElementById("contentStart")?.scrollIntoView({
+      block: "start",
+      behavior: "smooth",
+      inline: "start",
+    });
+  }
 });
 
 onUnmounted(() => {
