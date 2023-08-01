@@ -13,9 +13,18 @@ export const extensionIs = (filename: string): string => {
 
 export const replaceExtension = (
   filename: string,
-  newExtension: string
+  newExtension: string,
 ): string => {
   const regex = /(?:\.([^.]+))?$/;
 
   return filename.replace(regex, newExtension);
+};
+
+/**
+ * Check if viewport is mobile
+ *
+ * @return  {boolean}
+ */
+export const isMobileViewport = (): boolean => {
+  return window.innerWidth < 768;
 };
