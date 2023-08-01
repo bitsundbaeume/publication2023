@@ -1,11 +1,16 @@
 @use "@styles/mixins/mixins" as mx; // Needs to be loaded before the sass-butler mixins
 
 .c-quote {
-  float: left;
   font-family: monospace;
   font-size: 1.1rem;
   margin-inline-start: var(--margin-inline-start-quote, 0);
 
+  @include mx.breakpoint("xs", "max") {
+    margin-right: 0;
+  }
+  @include mx.breakpoint("xs") {
+    float: left;
+  }
   @include mx.breakpoint("sm") {
     --margin-inline-start-quote: -3ch;
   }
