@@ -4,6 +4,7 @@ export const smoothScrollTo = (
 ): void => {
   let id = event ? (target as HTMLElement).getAttribute("href") : target;
   const isRootDomain = window.location.pathname === "/";
+
   if (typeof id === "string" && isRootDomain) {
     id = id.replace(/^\/#/, "#");
   }
@@ -36,18 +37,20 @@ const isSelectorValid = (selector: string | HTMLElement): boolean => {
   }
 };
 
-{
-  const handlePopState = () => {
-    const match = window.location.hash.match(/#\/?(\w+)/);
-    if (match) {
-      smoothScrollTo(`#${match[1]}`);
-    }
-  };
+const handlePopState = () => {
+  const match = window.location.hash.match(/#\/?(\w+)/);
 
-  const handleClick = (event: MouseEvent) => {
-    smoothScrollTo(event.target as HTMLElement, event);
-  };
+  // Workaround: Prevents the page from scrolling to the book when the page is loaded
+  const initLoadHash = window.location.hash.match(/#book\/?$/);
 
-  window.addEventListener("popstate", handlePopState);
-  window.addEventListener("click", handleClick);
-}
+  if (match && !initLoadHash) {
+    smoothScrollTo(`#${match[1]}`);
+  }
+};
+
+const handleClick = (event: MouseEvent) => {
+  smoothScrollTo(event.target as HTMLElement, event);
+};
+
+window.addEventListener("popstate", handlePopState);
+window.addEventListener("click", handleClick);
