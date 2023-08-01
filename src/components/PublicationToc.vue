@@ -8,8 +8,8 @@
         @click="toggleChapterOrAll()"
       >
         <Transition name="fade" mode="out-in">
-          <ChevronUpSquare v-if="allChaptersOpen" :size="20" />
-          <ChevronDownSquare v-else :size="20" />
+          <ChevronUp v-if="allChaptersOpen" :size="20" />
+          <ChevronDown v-else :size="20" />
         </Transition>
       </button>
     </div>
@@ -102,11 +102,8 @@ import {
   reactive,
   computed,
 } from "vue";
-import {
-  ChevronRight,
-  ChevronUpSquare,
-  ChevronDownSquare,
-} from "lucide-vue-next";
+import { ChevronRight, ChevronDown, ChevronUp } from "lucide-vue-next";
+import { isMobileViewport } from "@lib/helper";
 
 interface Item {
   title: string;
@@ -144,6 +141,11 @@ const allChaptersOpen = computed(() =>
   Object.values(visibleStatesChapters).every((state) => state),
 );
 
+/**
+ * Get the current chapter and scroll to it.
+ *
+ * @return  {[type]}
+ */
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -154,7 +156,8 @@ const observer = new IntersectionObserver(
       // Make sure the current headline scrolls when the user scrolls
       if (
         entry.target.classList.contains("is-current") &&
-        entry.isIntersecting
+        entry.isIntersecting &&
+        !isMobileViewport()
       ) {
         pubToc.value?.scroll({
           behavior: "smooth",
@@ -174,9 +177,9 @@ const observer = new IntersectionObserver(
  * Toggle the visibility of a chapter or all chapters.
  * If no chapterNumber is provided, toggle all chapters.
  *
- * @param   {number}  chapterNumber  [chapterNumber description]
+ * @param   {number}  chapterNumber
  *
- * @return  {void}                   [return description]
+ * @return  {void}
  */
 const toggleChapterOrAll = (chapterNumber?: number): void => {
   if (chapterNumber === undefined) {
@@ -208,21 +211,61 @@ const isCurrentChapter = (chapter: Item[]): boolean => {
 /**
  * Check if the current chapter is visible.
  *
- * @param   {Item[]}   currentChapter  [currentChapter description]
+ * @param   {Item[]}   currentChapter
  *
- * @return  {boolean}                  [return description]
+ * @return  {boolean}
  */
 const isVisibleChapter = (currentChapter: Item[]): boolean => {
   return visibleStatesChapters[currentChapter[0].chapter];
 };
 
-onBeforeMount(() => {
-  // for each chapter, set a boolean to false to hide the chapter, and true when one of the articles of the chapter is "isCurrent: true"
+/**
+ * Create a list of all chapters with their visibility state.
+ * For each chapter, set a boolean to false to hide the chapter, and true when one of the articles of the chapter is "isCurrent: true".
+ *
+ * If the viewport is mobile, set all chapters to false.
+ *
+ * @return  {void}
+ */
+const initVisibleStatesChapters = (): void => {
   Object.keys(props.chapters).forEach((chapter) => {
-    visibleStatesChapters[+chapter] = props.chapters[+chapter].some(
-      (item) => item.isCurrent,
-    );
+    visibleStatesChapters[+chapter] = isMobileViewport()
+      ? false
+      : props.chapters[+chapter].some((item) => item.isCurrent);
   });
+};
+
+/**
+ * Scroll the current chapter into view.
+ *
+ * @return  {void}
+ */
+const scrollCurrentChapterIntoView = (): void => {
+  const currentChapter = document.querySelector(
+    ".c-pub-toc__chapter.is-current",
+  ) as HTMLElement;
+  const tocContainer = document.querySelector(".c-pub-toc") as HTMLElement;
+
+  // If the current chapter or the toc container is not found, do nothing
+  if (!(currentChapter && tocContainer)) {
+    return;
+  }
+
+  const rect = currentChapter.getBoundingClientRect();
+  const tocRect = tocContainer.getBoundingClientRect();
+
+  // If the current chapter is not visible, scroll to it
+  if (rect.top < tocRect.top || rect.bottom > tocRect.bottom) {
+    tocContainer.scroll({
+      behavior: "smooth",
+      left: 0,
+      top: currentChapter.offsetTop - tocContainer.offsetTop,
+    });
+  }
+};
+
+onBeforeMount(() => {
+  initVisibleStatesChapters();
 });
 
 onMounted(() => {
@@ -231,24 +274,7 @@ onMounted(() => {
       .querySelectorAll("h1[id], h2[id], h3[id]")
       .forEach((section) => observer.observe(section));
 
-  const currentChapter = document.querySelector(
-    ".c-pub-toc__chapter.is-current",
-  ) as HTMLElement;
-  const tocContainer = document.querySelector(".c-pub-toc") as HTMLElement;
-
-  if (!(currentChapter && tocContainer)) {
-    return;
-  }
-  const rect = currentChapter.getBoundingClientRect();
-  const tocRect = tocContainer.getBoundingClientRect();
-
-  if (rect.top < tocRect.top || rect.bottom > tocRect.bottom) {
-    tocContainer.scroll({
-      behavior: "smooth",
-      left: 0,
-      top: currentChapter.offsetTop - tocContainer.offsetTop,
-    });
-  }
+  if (!isMobileViewport()) scrollCurrentChapterIntoView();
 });
 
 onUnmounted(() => {
