@@ -1,3 +1,4 @@
+@use "@styles/mixins/mixins" as mx; // Needs to be loaded before the sass-butler mixins
 @use "astro-breadcrumbs/breadcrumbs.scss" with (
   $color-is-current: var(--chapter-theme-color)
 );
@@ -8,6 +9,8 @@
   }
 
   &__link {
-    line-height: initial;
+    @include mx.breakpoint("sm", "max") {
+      padding-block: 0.4rem;
+    }
   }
 }
