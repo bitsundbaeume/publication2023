@@ -16,6 +16,7 @@ const publication2023Collection = defineCollection({
         caption: z.string().optional(),
       })
       .optional(),
+    isIntro: z.boolean().optional(),
     seo: z
       .object({
         title: z.string().optional(),

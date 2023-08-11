@@ -1,5 +1,10 @@
 ---
 title: "Editorial"
+authors:
+  - Patricia Jankowski
+  - Anja Höfner
+  - Marja Lena Hoffmann
+isIntro: true
 isDraft: false
 chapter: 0
 order: 1
@@ -10,6 +15,7 @@ seo:
 ---
 
 import Quote from "@components/content/Quote.astro";
+import Author from "@components/content/Author.astro";
 
 # Editorial
 
@@ -17,7 +23,7 @@ Dear reader,
 
 in the face of aggregating planetary crises, the importance of aligning digitalisation and new technologies with sustainability is increasingly recognised in politics and society. Yet, the current design of digitalisation continues to fail societies and ecosystems on multiple fronts. To address these pressing issues, the critical tech community (‹Bits›) and environmental community (‹Bäume›) came together for the second Bits & Bäume conference in Berlin in autumn 2022. The conference served as a platform for researchers, practitioners, activists, government officials, hackers and many more to network, learn, collaborate and delve into scenarios and frameworks to shape digitalisation in the service of environmental and social sustainability. Simultaneously, the community-based organisation model of the conference proved that embracing unconventional approaches creates – notwithstanding any new challenges they might bring – a fruitful outcome and rewarding experience for all. With over 250 contributions, the conference programme spanned across the numerous and diverse interconnections between Bits & Bäume and all socio-political spheres. While the 2018 and 2022 conferences were milestones for connecting environmental and tech communities and raising key issues to the political agenda, Bits & Bäume is more than just a conference. We strive to be a movement and a community that is constructive, active, inclusive and solution-oriented. We believe that together we can take decisive action to achieve a social-ecological transformation where digital technologies and infrastructures serve rather than counteract sustainability. This journal builds on the discussions that took place on the stages and the sidelines of the conference and intends to promote further exchange among participants and beyond. We are grateful and encouraged by the overwhelming response from practitioners and researchers to the call for papers. Nonetheless, the selection of contributions to this journal can only cover a fraction of the topics and viewpoints related to digitalisation and sustainability. We want to offer solutions and continue not only to set the political agenda, but also directly influence political decisions to enable a democratic, socially just and ecologically sustainable digital transformation. By combining our political demands set by all 13 Bits & Bäume hosting organisations with the different perspectives of our more than 65 authors, we want to demonstrate that a different digitalisation is feasible. To help the discourse transcend national boundaries, we have made this journal accessible to a broad audience by publishing it free, digitally and in English. We hope that this publication offers you fresh perspectives, illuminates new pathways and inspires you to get or stay actively involved in the Bits & Bäume movement.
 
-_Patricia Jankowski, Anja Höfner & Marja Lena Hoffmann_
+<Author authors={frontmatter.authors} showSimple={true} />
 
 ## How to read
 
