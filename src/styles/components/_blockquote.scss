@@ -4,9 +4,14 @@
   margin-inline-end: 0;
 
   @include mx.breakpoint("xs") {
-    float: right;
-    max-width: 250px;
-    min-width: 200px;
+    float: var(--float-blockquote, none);
+
+    &:not(.is-full-width) {
+      --float-blockquote: right;
+
+      max-width: 250px;
+      min-width: 200px;
+    }
   }
 
   &__ref-number {
