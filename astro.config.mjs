@@ -19,6 +19,9 @@ export default defineConfig({
     ? "http://localhost:3000"
     : "https://dev.publication2023.bits-und-baeume.org",
   compressHTML: true,
+  experimental: {
+    viewTransitions: true,
+  },
   markdown: {
     rehypePlugins: [
       [

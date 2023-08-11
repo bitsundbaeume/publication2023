@@ -6,11 +6,11 @@ interface Props {
 const { load = "lazy" } = Astro.props;
 ---
 
-<a href="/" class="c-logo">
+<a href="/" class="c-logo" transition:animate="slide">
   <img
     src="/images/logos/bits-und-baeume-logo_CCBY-schauschau.cc.svg"
     alt="Bits und Bäume Logo"
-    class="u-scale-hover"
+    class="c-logo__image u-scale-hover"
     loading={load}
     decoding="async"
     width="130"
