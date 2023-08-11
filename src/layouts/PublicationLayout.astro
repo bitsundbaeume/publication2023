@@ -3,7 +3,6 @@ import "@styles/objects/_sidebar.scss";
 import "@styles/objects/_publication.scss";
 
 import BaseLayout from "../layouts/Layout.astro";
-import { ViewTransitions } from "astro:transitions";
 
 const { seo, contentModifierClass, chapterThemeClass } = Astro.props;
 
@@ -12,9 +11,6 @@ const themeClass = `o-content--chapter-${chapterThemeClass}`;
 ---
 
 <BaseLayout seo={seo}>
-  <tempalte slot="head">
-    <ViewTransitions />
-  </tempalte>
   <div class:list={["o-content", modifierClass, themeClass]}>
     <main class="o-publication" id="contentStart">
       <article>
