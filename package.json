@@ -24,7 +24,7 @@
     "@astrojs/vue": "^2.2.1",
     "@felix_berlin/sass-butler": "^2.3.0",
     "@vueuse/core": "^10.3.0",
-    "astro": "^2.10.5",
+    "astro": "^2.10.6",
     "astro-breadcrumbs": "^1.6.1",
     "astro-icon": "^0.8.1",
     "astro-imagetools": "^0.9.0",
@@ -32,8 +32,7 @@
     "astrojs-service-worker": "^1.0.0",
     "lucide-vue-next": "^0.265.0",
     "rehype-autolink-headings": "^6.1.1",
-    "rehype-slug": "^5.1.0",
-    "vue": "^3.3.4"
+    "rehype-slug": "^5.1.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
@@ -46,7 +45,7 @@
     "@vue/test-utils": "^2.4.1",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
-    "eslint": "^8.46.0",
+    "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-astro": "^0.28.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
