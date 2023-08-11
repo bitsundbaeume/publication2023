@@ -6,7 +6,6 @@ import Header from "@components/header/Header.astro";
 import Footer from "@components/footer/Footer.astro";
 import ToTop from "@components/ToTop.vue";
 import SearchPages from "@components/SearchPages.astro";
-import { ViewTransitions } from "astro:transitions";
 export interface Props {
   seo?: {
     title?: string;
@@ -63,7 +62,6 @@ const { seo, bodyClass } = Astro.props;
     }
 
     <script src="src/lib/smooth-scroll-anchor.ts"></script>
-    <ViewTransitions />
     <slot name="head" />
   </head>
 
