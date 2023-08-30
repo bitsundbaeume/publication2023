@@ -3,10 +3,11 @@
     :class="[
       'c-menu__item',
       {
-        'has-child': props.menuItem.childItems && props.menuItem.childItems.length > 0,
+        'has-child':
+          props.menuItem.childItems && props.menuItem.childItems.length > 0,
         'is-active': isCurrentPath,
-        'has-visible-child': isOpen
-      }
+        'has-visible-child': isOpen,
+      },
     ]"
     role="menuitem"
     tabindex="-1"
@@ -35,7 +36,10 @@
       <MenuSubmenu
         ref="submenu"
         :is-open="isOpen"
-        :class="[`is-level-${depth}`, { 'is-open': isOpen }]"
+        :class="[
+          `is-level-${depth} is-${submenuDirection}`,
+          { 'is-open': isOpen },
+        ]"
       >
         <template
           v-for="(child, childItemIndex) in props.menuItem.childItems"
@@ -45,7 +49,10 @@
             :menu-item="child"
             :depth="depth + 1"
             :index="childItemIndex"
-            @click="toggleMenuItem(); $emit('menuItemTargetClicked', true)"
+            @click="
+              toggleMenuItem();
+              $emit('menuItemTargetClicked', true);
+            "
           />
         </template>
       </MenuSubmenu>
@@ -54,32 +61,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
-import MenuSubmenu from '@components/header/menu-nav/MenuSubmenu.vue';
-import { onClickOutside } from '@vueuse/core';
+import { ref, onMounted } from "vue";
+import MenuSubmenu from "@components/header/menu-nav/MenuSubmenu.vue";
+import { onClickOutside } from "@vueuse/core";
+
+export interface MenuItemData {
+  label: string;
+  path: string;
+  childItems?: MenuItemData[];
+}
 
 export interface MenuItemProps {
-  menuItem: {
-    label: string;
-    path: string;
-    childItems?: [
-      {
-        label: string;
-        path: string;
-      }
-    ];
-  };
+  menuItem: MenuItemData;
   depth: number;
   index: number;
 }
 
-const props = defineProps<MenuItemProps>()
+const props = defineProps<MenuItemProps>();
 
-const isOpen = ref(false)
-const isCurrentPath = ref(false)
-const submenu = ref(null)
+const isOpen = ref(false);
+const isCurrentPath = ref(false);
+const submenu = ref(null);
+const submenuDirection = ref("right");
 
-const emit = defineEmits(['submenuState', 'menuItemTargetClicked'])
+const emit = defineEmits<{
+  submenuState: [isOpen: boolean];
+  "submenu-state": [isOpen: boolean];
+  menuItemTargetClicked: [value: boolean];
+  "menu-item-target-clicked": [value: boolean];
+}>();
 
 /**
  * If the user clicks outside the submenu, close the submenu
@@ -90,41 +100,45 @@ const emit = defineEmits(['submenuState', 'menuItemTargetClicked'])
  * @return  {void}             [return description]
  */
 onClickOutside(submenu, (event): void => {
-  if ((event.target as Element).classList.contains('is-menu-title')) return;
+  if ((event.target as Element).classList.contains("is-menu-title")) return;
 
-  isOpen.value = false
+  isOpen.value = false;
 
-  emit('submenuState', isOpen.value)
-})
+  emit("submenuState", isOpen.value);
+});
 
 /**
-  * Toggle the submenu
-  *
-  * @return  {void}
-  */
+ * Toggle the submenu
+ *
+ * @return  {void}
+ */
 const toggleMenuItem = (): void => {
   isOpen.value = !isOpen.value;
 
-  emit('submenuState', isOpen.value)
-}
+  emit("submenuState", isOpen.value);
+  setTimeout(() => {
+    const submenuEl = document.querySelector(".c-submenu");
+    const submenuRect = submenuEl?.getBoundingClientRect();
+    const left = submenuRect?.left;
+    const width = submenuRect?.width;
+    const windowWidth = window.innerWidth;
 
-// TODO: add direction control
-// const direction = (event) => {
-//   const el = event.target.getBoundingClientRect();
-//   const left = el.left;
-//   const width = el.width;
-//   const windowHeight = window.innerHeight;
-//   const windowWidth = window.innerWidth;
-//   console.log('direction', left + width, windowWidth);
-//   console.log(left + width <= windowWidth);
-// }
+    submenuDirection.value =
+      left !== undefined && width !== undefined && left + width > windowWidth
+        ? "left"
+        : "right";
+  }, 100);
+};
 
 onMounted(() => {
   if (import.meta.env.DEV) {
-    isCurrentPath.value = window.location.pathname.slice(1) === props.menuItem.path.replace(/^\//gm, '');
+    isCurrentPath.value =
+      window.location.pathname.slice(1) ===
+      props.menuItem.path.replace(/^\//gm, "");
   } else {
-
-    isCurrentPath.value = window.location.pathname.replace(/^\/|\/$/gm, '') === props.menuItem.path.replace(/^\//gm, '');
+    isCurrentPath.value =
+      window.location.pathname.replace(/^\/|\/$/gm, "") ===
+      props.menuItem.path.replace(/^\//gm, "");
   }
-})
+});
 </script>

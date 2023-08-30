@@ -1,0 +1,66 @@
+---
+import "@styles/plugins/_wow-book.scss";
+---
+
+<script src="/wow_book/jquery.min.js" is:inline></script>
+<script src="/wow_book/pdf.combined.min.js" is:inline></script>
+<script src="/wow_book/wow_book.min.js" is:inline></script>
+<script type="text/javascript">
+  function waitForJQuery(callback) {
+    if (window.jQuery) {
+      callback();
+    } else {
+      setTimeout(() => {
+        waitForJQuery(callback);
+      }, 100);
+    }
+  }
+
+  waitForJQuery(() => {
+    jQuery.event.special.touchstart = {
+      setup: function (_, ns, handle) {
+        this.addEventListener("touchstart", handle, {
+          passive: !ns.includes("noPreventDefault"),
+        });
+      },
+    };
+    jQuery.event.special.touchmove = {
+      setup: function (_, ns, handle) {
+        this.addEventListener("touchmove", handle, {
+          passive: !ns.includes("noPreventDefault"),
+        });
+      },
+    };
+    jQuery.event.special.wheel = {
+      setup: function (_, ns, handle) {
+        this.addEventListener("wheel", handle, { passive: true });
+      },
+    };
+    jQuery.event.special.mousewheel = {
+      setup: function (_, ns, handle) {
+        this.addEventListener("mousewheel", handle, { passive: true });
+      },
+    };
+
+    $(document).ready(function () {
+      $("#book").wowBook({
+        pdf: "pdfs/Shaping Digital Transformation for a Sustainable Society- Bits Baeume 2023.pdf",
+        pdfTextSelectable: true,
+        height: 500,
+        width: 600,
+        container: true,
+        centeredWhenClosed: true,
+        hardcovers: false,
+        pageNumbers: false,
+        toolbar:
+          "lastLeft, left, right, lastRight, zoomin, zoomout, slideshow, fullscreen, thumbnails, download",
+        thumbnailsPosition: "left",
+        responsiveHandleWidth: 50,
+        flipSound: false,
+      });
+    });
+  });
+</script>
+<div class="c-wow-book">
+  <div id="book"></div>
+</div>

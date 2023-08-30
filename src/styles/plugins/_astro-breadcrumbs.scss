@@ -1,0 +1,16 @@
+@use "@styles/mixins/mixins" as mx; // Needs to be loaded before the sass-butler mixins
+@use "astro-breadcrumbs/breadcrumbs.scss" with (
+  $color-is-current: var(--chapter-theme-color)
+);
+
+.c-breadcrumbs {
+  &__crumbs {
+    row-gap: 0.5rem;
+  }
+
+  &__link {
+    @include mx.breakpoint("sm", "max") {
+      padding-block: 0.4rem;
+    }
+  }
+}

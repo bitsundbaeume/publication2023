@@ -1,0 +1,10 @@
+---
+import "@styles/components/_tag.scss";
+
+interface TapProps {
+  tag?: string;
+}
+
+const { tag } = Astro.props as TapProps;
+---
+<div class="c-tag">{ tag }</div>

@@ -4,14 +4,15 @@ import "@styles/objects/_publication.scss";
 
 import BaseLayout from "../layouts/Layout.astro";
 
-const { seo, contentModifierClass } = Astro.props;
+const { seo, contentModifierClass, chapterThemeClass } = Astro.props;
 
 const modifierClass = `o-content--${contentModifierClass}`;
+const themeClass = `o-content--chapter-${chapterThemeClass}`;
 ---
 
 <BaseLayout seo={seo}>
-  <div class:list={["o-content", modifierClass]}>
-    <main class="o-publication">
+  <div class:list={["o-content", modifierClass, themeClass]}>
+    <main class="o-publication" id="contentStart">
       <article>
         <slot />
       </article>

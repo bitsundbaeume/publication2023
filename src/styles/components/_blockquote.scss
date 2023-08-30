@@ -1,0 +1,27 @@
+@use "@styles/mixins/mixins" as mx; // Needs to be loaded before the sass-butler mixins
+
+.c-blockquote {
+  margin-inline-end: 0;
+
+  @include mx.breakpoint("xs") {
+    float: var(--float-blockquote, none);
+
+    &:not(.is-full-width) {
+      --float-blockquote: right;
+
+      max-width: 250px;
+      min-width: 200px;
+    }
+  }
+
+  &__ref-number {
+    display: inline-block;
+    margin-inline-start: -1ch;
+    font-weight: bold;
+    color: #000;
+  }
+
+  &__content p {
+    display: inline;
+  }
+}

@@ -5,7 +5,8 @@ import "@styles/objects/_content.scss";
 import Header from "@components/header/Header.astro";
 import Footer from "@components/footer/Footer.astro";
 import ToTop from "@components/ToTop.vue";
-import Search from "@components/Search.astro";
+import SearchPages from "@components/SearchPages.astro";
+import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
   seo?: {
@@ -19,11 +20,12 @@ export interface Props {
 const { seo, bodyClass } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -51,6 +53,7 @@ const { seo, bodyClass } = Astro.props;
     <meta name="msapplication-TileColor" content="#00a300" />
     <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
     <meta name="theme-color" content="#ffffff" />
+    <link rel="canonical" href={Astro.url.href} />
     <meta name="generator" content={Astro.generator} />
     {seo?.title && <title>{seo.title}</title>}
     {seo?.metaTitle && <meta name="title" content={seo.metaTitle} />}
@@ -61,19 +64,20 @@ const { seo, bodyClass } = Astro.props;
     }
 
     <script src="src/lib/smooth-scroll-anchor.ts"></script>
+    <ViewTransitions />
 
     <slot name="head" />
   </head>
 
   <body class={bodyClass}>
-    <Header />
+    <Header transition:persist />
 
-    <!-- <Search /> -->
+    <SearchPages />
 
     <slot />
 
     <ToTop client:load />
 
-    <Footer />
+    <Footer transition:persist />
   </body>
 </html>
