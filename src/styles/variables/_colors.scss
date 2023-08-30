@@ -1,44 +1,20 @@
-$green-100: #c1d98d;
-$green-300: #a1c854;
-$green-600: #52aa5a;
+$green-100: #C1D98D;
+$green-300: #A1C854;
+$green-600: #52AA5A;
 $orange: #efb638;
 $blue-100: #d0dee7;
-$blue-200: #84adc8;
-$blue-500: #233c78;
-$blue-900: #1b1448;
-
-/// Publication colors
-$pub-orange: #efa56d;
-$pub-green-light: #96c184;
-$pub-green-dark: #6b8e60;
-$pub-blue: #7ca3b7;
-$pub-red: #dd7a60;
-$pub-turquoise: #7db5a9;
-
-// Chapter theme colors list
-$chapter-theme-colors: (
-  $pub-orange,
-  $pub-green-light,
-  $pub-green-dark,
-  $pub-blue,
-  $pub-red,
-  $pub-turquoise
-);
+$blue-200: #84ADC8;
+$blue-500: #233C78;
+$blue-900: #1B1448;
 
 /// Colors map
 $colors: (
-  "green-100": $green-100,
-  "green-300": $green-300,
-  "green-600": $green-600,
-  "orange": $orange,
-  "blue-100": $blue-100,
-  "blue-200": $blue-200,
-  "blue-500": $blue-500,
-  "blue-900": $blue-900,
-  "pub-orange": $pub-orange,
-  "pub-green-light": $pub-green-light,
-  "pub-green-dark": $pub-green-dark,
-  "pub-blue": $pub-blue,
-  "pub-red": $pub-red,
-  "pub-turquoise": $pub-turquoise,
+	'green-100': $green-100,
+	'green-300': $green-300,
+	'green-600': $green-600,
+	'orange': $orange,
+	'blue-100': $blue-100,
+	'blue-200': $blue-200,
+	'blue-500': $blue-500,
+	'blue-900': $blue-900,
 );

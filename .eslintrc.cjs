@@ -1,16 +1,12 @@
 /* eslint-env node */
 module.exports = {
   extends: [
-    "eslint:recommended",
+    // "eslint:recommended",
     "plugin:astro/recommended",
     "plugin:astro/jsx-a11y-recommended",
     "plugin:vue/vue3-recommended",
     "plugin:vuejs-accessibility/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
   ],
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
   root: true,
   overrides: [
     {
@@ -37,19 +33,19 @@ module.exports = {
         extraFileExtensions: [".vue"],
       },
       rules: {
-        "vuejs-accessibility/label-has-for": [
-          "error",
+        'vuejs-accessibility/label-has-for': [
+          'error',
           {
             components: ["VLabel"],
             controlComponents: ["VInput"],
             required: {
-              every: ["id"],
+              every: ["id"]
             },
-            allowChildren: false,
-          },
-        ],
+            allowChildren: false
+          }
+        ]
       },
     },
   ],
-  rules: {},
-};
+  rules: {}
+}

@@ -1,30 +1,23 @@
-export const smoothScrollTo = (
-  target: HTMLElement | string,
-  event?: Event,
-): void => {
-  let id = event ? (target as HTMLElement).getAttribute("href") : target;
-  const isRootDomain = window.location.pathname === "/";
+const smoothScrollTo = (target: HTMLElement | string, event?: Event): void => {
+  const id = event ? (target as HTMLElement).getAttribute('href') : target;
 
-  if (typeof id === "string" && isRootDomain) {
-    id = id.replace(/^\/#/, "#");
-  }
-
-  if (!id || id === "#" || !isSelectorValid(id)) return;
+  if (!id || id === '#' || !isSelectorValid(id)) return;
 
   if (event) event.preventDefault();
 
   const element = document.querySelector(String(id));
-
-  element?.scrollIntoView({
-    block: "start",
-    behavior: "smooth",
-    inline: "start",
-  });
+  if (element) {
+    element.scrollIntoView({
+      block: 'start',
+      behavior: 'smooth',
+      inline: 'start',
+    });
+  }
 };
 
 const isSelectorValid = (selector: string | HTMLElement): boolean => {
-  if (typeof selector === "string") {
-    if (selector === "") return false;
+  if (typeof selector === 'string') {
+    if (selector === '') return false;
 
     try {
       document.querySelector(selector);
@@ -37,20 +30,17 @@ const isSelectorValid = (selector: string | HTMLElement): boolean => {
   }
 };
 
-const handlePopState = () => {
-  const match = window.location.hash.match(/#\/?(\w+)/);
+{
+  const handlePopState = () => {
+    if (window.location.hash.match(/#(\d+)/)) {
+      smoothScrollTo('#flipbook');
+    }
+  };
 
-  // Workaround: Prevents the page from scrolling to the book when the page is loaded
-  const initLoadHash = window.location.hash.match(/#book\/?$/);
+  const handleClick = (event: MouseEvent) => {
+    smoothScrollTo(event.target as HTMLElement, event);
+  };
 
-  if (match && !initLoadHash) {
-    smoothScrollTo(`#${match[1]}`);
-  }
-};
-
-const handleClick = (event: MouseEvent) => {
-  smoothScrollTo(event.target as HTMLElement, event);
-};
-
-window.addEventListener("popstate", handlePopState);
-window.addEventListener("click", handleClick);
+  window.addEventListener('popstate', handlePopState);
+  window.addEventListener('click', handleClick);
+}

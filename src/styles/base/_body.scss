@@ -1,21 +1,22 @@
-@use "@styles/variables/layout" as layout;
-@use "@styles/variables/colors";
+@use '@styles/variables/layout' as layout;
+@use '@styles/variables/colors';
 
 :root {
-  @each $name, $color in colors.$colors {
-    --#{$name}: #{$color};
-  }
+	@each $name,
+		$color in colors.$colors {
+		--#{$name}: #{$color};
+	}
 }
 
 body {
-  margin: 0;
+	margin: 0;
 }
 
 :is(.o-header__inner, .o-footer__inner, .o-content, .c-search) {
-  max-width: layout.$content-width;
-  margin: 0 auto;
+	max-width: layout.$content-width;
+	margin: 0 auto;
 }
 
 img {
-  max-width: 100%;
+	max-width: 100%;
 }

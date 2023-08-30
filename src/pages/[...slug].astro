@@ -3,12 +3,6 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import Layout from "../layouts/PublicationLayout.astro";
 import TableOfContents from "@components/PublicationToc.vue";
-import { Breadcrumbs } from "astro-breadcrumbs";
-import { Icon } from "astro-icon";
-import "@styles/plugins/_astro-breadcrumbs.scss";
-import Author from "@components/content/Author.astro";
-import Tag from "@components/content/Tag.astro";
-import { Img } from "astro-imagetools/components";
 
 export async function getStaticPaths() {
   const publication2023Entries = await getCollection("publication2023");
@@ -34,170 +28,23 @@ const filteredCollection = collection.map((item) => {
     title: item.data.title,
     slug: item.slug,
     isCurrent: item.id === entry.id,
-    chapter: item.data.chapter,
     order: item.data.order,
   };
 });
 
 /**
- * Group the collection by chapter
- */
-const groupedByChapter = filteredCollection.reduce<{
-  [key: number]: typeof filteredCollection;
-}>((acc, item) => {
-  const chapter = item.chapter;
-  if (!acc[chapter]) {
-    acc[chapter] = [];
-  }
-  acc[chapter].push(item);
-  acc[chapter].sort((a, b) => a.order - b.order);
-
-  return acc;
-}, {});
-
-/**
- * Get the next page
- *
- * @param chapter
- * @param order
- * @param collection
- */
-const nextPage = (
-  chapter: number,
-  order: number,
-  collection: CollectionEntry<"publication2023">[],
-): string | null => {
-  const filteredCollection = collection.filter(
-    (item) => item.data.chapter === chapter,
-  );
-  const nextPageOrder = order + 1;
-  const nextPage = filteredCollection.find(
-    (item) => item.data.order === nextPageOrder,
-  );
-
-  if (nextPage) {
-    return `/${nextPage.slug}`;
-  } else {
-    const nextChapter = chapter + 1;
-    const nextChapterCollection = collection.filter(
-      (item) => item.data.chapter === nextChapter,
-    );
-    if (nextChapterCollection.length > 0) {
-      const firstPage = nextChapterCollection[0];
-      return `/${firstPage.slug}`;
-    } else {
-      return null;
-    }
-  }
-};
-
-/**
  * Sort the collection by the order property
  */
 const sortedCollection = filteredCollection.sort((a, b) => a.order - b.order);
-
-const chapterTitles = [
-  "0. Introduction",
-  "1. Redefining progress: Confronting the Challenges of Digitalisation and Sustainability",
-  "2. Values for transformation: Foundation for a Socio-ecological Digitalisation",
-  "3. Transformative change: New Concepts and Paradigms to Update and Replace Current Socio-technical Structures",
-  "4. Beyond business as usual: Use Cases for More Sustainable Tech Design",
-  "5. Politics under pressure: Necessary Changes on the Political Level",
-  "6. A collective effort: The Power of Civil Society in Driving Sustainable Change",
-  "7. Closure",
-];
-
-/**
- * If the SEO title is not set, use the title of the page
- */
-const useSeoOrFallback = () => {
-  return {
-    title: entry.data.seo?.title || entry.data.title,
-    metaTitle: entry.data.seo?.metaTitle || entry.data.title,
-    metaDescription:
-      entry.data.seo?.metaDescription ||
-      `${chapterTitles[entry.data.chapter]}: ${
-        entry.data.title
-      } - Shaping Digital Transformation for a Sustainable Society`,
-  };
-};
-
-const currentChapter = entry.data.chapter;
-const currentPageOrder = entry.data.order;
-const authors = entry.data.authors;
-const tag = entry.data.tag;
-const isIntro = entry.data.isIntro;
 ---
 
-<Layout
-  seo={useSeoOrFallback()}
-  contentModifierClass="publication"
-  chapterThemeClass={currentChapter}
->
-  <Breadcrumbs indexText="home">
-    <svg
-      slot="separator"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg
-    >
-  </Breadcrumbs>
-
-  {
-    entry.data.headerImage && (
-      <figure class="c-figure">
-        <Img
-          src={entry.data.headerImage.src}
-          alt={entry.data.headerImage.alt ?? ""}
-          loading="eager"
-          attributes={{
-            img: {
-              fetchpriority: "high",
-              class: "c-figure__image",
-            },
-          }}
-        />
-        <figcaption class="c-figure__caption">
-          CC BY {entry.data.headerImage.caption}
-        </figcaption>
-      </figure>
-    )
-  }
-
-  {
-    authors && authors.length > 0 && !isIntro && (
-      <Author authors={entry.data.authors} />
-    )
-  }
-
-  {tag && <Tag tag={entry.data.tag} />}
-
+<Layout seo={entry.data.seo} contentModifierClass="publication">
   <Content />
-
-  {
-    nextPage(currentChapter, currentPageOrder, collection) && (
-      <a
-        class="c-button c-button--primary o-publication__next-page"
-        href={nextPage(currentChapter, currentPageOrder, collection)}
-      >
-        Next page
-        <Icon name="lucide:chevron-right" width="24" height="24" />
-      </a>
-    )
-  }
 
   <TableOfContents
     headings={headings}
-    chapters={groupedByChapter}
-    chapterTitles={chapterTitles}
-    client:load
+    collection={sortedCollection}
+    client:only
     slot="sidebar"
   />
 </Layout>

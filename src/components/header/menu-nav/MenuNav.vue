@@ -1,6 +1,12 @@
 <template>
-  <menu class="c-menu u-list-reset" role="menu">
-    <template v-for="(item, index) in props.menuItems" :key="item.label">
+  <menu
+    class="c-menu u-list-reset"
+    role="menu"
+  >
+    <template
+      v-for="(item, index) in props.menuItems"
+      :key="item.label"
+    >
       <MenuItem
         :menu-item="item"
         :depth="0"
@@ -13,22 +19,28 @@
 </template>
 
 <script setup lang="ts">
-import MenuItem from "@components/header/menu-nav/MenuItem.vue";
-import type { MenuItemData } from "@components/header/menu-nav/MenuItem.vue";
+import MenuItem from '@components/header/menu-nav/MenuItem.vue';
 
 export interface MenuProps {
-  menuItems: MenuItemData[];
+  menuItems: [
+    {
+      label: string;
+      path: string;
+      childItems: [
+        {
+          label: string;
+          path: string;
+        }
+      ];
+    }
+  ];
 }
 
 const props = defineProps<MenuProps>();
 
-defineEmits<{
-  submenuState: [isOpen: boolean];
-  "submenu-state": [isOpen: boolean];
-  menuItemTargetClicked: [value: boolean];
-}>();
+defineEmits(['submenuState', 'menuItemTargetClicked'])
 </script>
 
 <style lang="scss">
-@use "@styles/components/menu";
+@use '@styles/components/menu';
 </style>

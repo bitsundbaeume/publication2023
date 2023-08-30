@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://https://publication2023.bits-und-baeume.org/sitemap-index.xml

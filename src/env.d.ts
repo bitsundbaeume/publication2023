@@ -1,4 +1,4 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
-declare module "astro-imagetools/components";
-declare module "astro-pagefind/components/Search";
+declare module 'astro-imagetools/components';
+declare module 'astro-pagefind/components/Search';

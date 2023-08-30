@@ -1,35 +1,25 @@
-@use "@sass-butler/mixins" as butler-mx;
+@use '@sass-butler/mixins' as butler-mx;
 
 .c-button {
-  padding: var(--padding-button, 0.5rem 1.625rem);
-  border-radius: 3px;
-  cursor: pointer;
-  border: none;
-  transition:
-    color 0.2s ease-in-out,
-    background-color 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
-  text-decoration: none;
+	padding: var(--padding-button, .5rem 1.625rem);
+	border-radius: 3px;
+	cursor: pointer;
+	border: none;
+	transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
-  &--primary {
-    background-color: var(--color-background-button, var(--blue-500));
-    color: var(--color-button-text, #fff);
+	&--primary {
+		background-color: var(--color-background-button, var(--blue-500));
+		color: var(--color-button-text, #fff);
 
-    @include butler-mx.hover {
-      --color-background-button: var(--blue-900);
+		@include butler-mx.hover {
+			--color-background-button: var(--blue-900);
 
-      box-shadow: 0 8px 0 var(--blue-200);
-    }
-  }
+			box-shadow: 0 8px 0 var(--blue-200);
+		}
+	}
 
-  &--transparent {
-    --padding-button: 0;
-
-    background-color: transparent;
-  }
-
-  &.is-disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
+	&.is-disabled {
+		opacity: .5;
+		pointer-events: none;
+	}
 }

@@ -1,41 +1,34 @@
-@use "sass:list";
-@use "@styles/mixins/mixins" as mx; // Needs to be loaded before the sass-butler mixins
-@use "@styles/variables/colors";
+@use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
 
 .o-content {
-  padding: 1rem 1rem 3rem;
+	// padding: 1rem 1rem 3rem; TODO: add when search is implemented
+  padding: 3rem 1rem;
 
-  @include mx.breakpoint("sm") {
-    padding: 1rem 4rem 5rem;
-  }
+	@include mx.breakpoint('sm') {
+		// padding: 1rem 4rem 5rem; TODO: add when search is implemented
+		padding: 5rem 4rem;
+	}
 
-  &--index {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    row-gap: 8rem;
-  }
+	&--index {
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		row-gap: 8rem;
+	}
 
-  &--publication {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: "sidebar" "publication";
-    column-gap: 4rem;
+	&--publication {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-areas: 'sidebar' 'publication';
+		column-gap: 4rem;
 
-    @include mx.breakpoint("sm") {
-      grid-template-columns: 6fr 3fr;
-      grid-template-areas: "publication sidebar";
-    }
-  }
+		@include mx.breakpoint('sm') {
+			grid-template-columns: 6fr 3fr;
+			grid-template-areas: 'publication sidebar';
+		}
 
-  @for $i from 1 through 6 {
-    &--chapter-#{$i} {
-      --chapter-theme-color: #{list.nth(colors.$chapter-theme-colors, $i)};
-    }
-  }
-
-  &--chapter-0,
-  &--chapter-7 {
-    --chapter-theme-color: var(--green-300);
-  }
+		.o-publication {
+			grid-area: publication;
+		}
+	}
 }
