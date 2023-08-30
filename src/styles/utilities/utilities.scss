@@ -1,20 +1,24 @@
-@use '@sass-butler/mixins' as butler-mx;
-@use 'transitions';
+@use "@sass-butler/mixins" as butler-mx;
+@use "transitions";
 
 .u-list-reset {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .u-scale-hover {
-	transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 
-	@include butler-mx.hover {
-		transform: scale(1.05);
-	}
+  @include butler-mx.hover {
+    transform: scale(1.05);
+  }
 }
 
 .u-ignore-click {
-	pointer-events: none;
+  pointer-events: none;
+}
+
+.u-clear-both {
+  clear: both;
 }

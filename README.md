@@ -2,6 +2,11 @@
 
 <img src="/public/images/logos/bits-und-baeume-logo_CCBY-schauschau.cc.svg" alt="Logo Bits &amp; Bäume">
 
+![Lines of code](https://img.shields.io/tokei/lines/github/bitsundbaeume/publication2023?style=flat-square)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/bitsundbaeume/publication2023?label=github&logo=github&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/bitsundbaeume/publication2023/release.yml?label=release&logo=semantic-release&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/bitsundbaeume/publication2023/unit-test.yml?label=unit-tests&logo=vitest&style=flat-square)
+
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
@@ -54,7 +59,7 @@ npm run dev
 rm -rf public/pdfs/jpg && rm -rf public/pdfs/high-res-jps
 ```
 
-### Create the new content
+### Create the new content (deprecated)
 
 1. Visit [PDF24 Tools](https://tools.pdf24.org/de/von-pdf-umwandeln)
 2. Upload the PDF

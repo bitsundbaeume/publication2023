@@ -1,46 +1,107 @@
-@use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
-@use '@sass-butler/mixins' as butler-mx;
+@use "@styles/mixins/mixins" as mx; // Needs to be loaded before the sass-butler mixins
+@use "@sass-butler/mixins" as butler-mx;
 
 .c-pub-toc {
-	@include mx.breakpoint('sm') {
-		overflow-y: auto;
-		height: 100vh;
-	}
+  @include mx.breakpoint("sm") {
+    overflow-y: auto;
+    max-height: 100vh;
+  }
 
-	&__link {
-		text-decoration: none;
-		font-size: 1.025rem;
+  &__start-heading {
+    font-size: var(--font-size-lg);
+    margin: 0;
+  }
 
-		@include butler-mx.hover {
-			text-decoration: underline;
-		}
-	}
+  &__header-wrap {
+    display: flex;
+    gap: 0.3rem;
+    margin: 0 0 1rem;
+    justify-content: space-between;
+  }
 
-	&__page {
-		padding: .25rem .5rem;
+  &__controls-button {
+    --padding-button: 0.4rem;
 
-		&-title {
-			font-weight: bold;
-			margin: .25rem 0;
-		}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-		&.is-current {
-			background-color: var(--green-100);
-			border-radius: 3px;
-		}
-	}
+  &__link {
+    text-decoration: none;
+    font-size: 1.025rem;
 
-	&__current-toc {
-		padding-inline-start: 1rem;
+    @include butler-mx.hover {
+      text-decoration: underline;
+    }
+  }
 
-	}
+  &__chapter,
+  &__page {
+    padding: 0.5rem;
+  }
 
-	&__headline {
-		padding: .25rem .5rem;
-		border-radius: 3px;
+  &__chapter-title-wrap {
+    flex: 1 1 100%;
+    text-align: initial;
+  }
 
-		&.is-active {
-			background-color: var(--green-300);
-		}
-	}
+  &__chapter-title {
+    margin: 0;
+
+    // text-transform: uppercase;
+
+    &.is-current {
+      display: inline;
+      background-color: var(--chapter-theme-color);
+      color: #fff;
+      padding: 2px 8px;
+      font-weight: 500;
+    }
+  }
+
+  &__chapter-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__chapter-icon {
+    width: 24px;
+    flex: 1 0 24px;
+
+    &.is-open {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__chapter-list {
+    margin-block-start: 0.8rem;
+  }
+
+  &__page {
+    border: 1px solid var(--chapter-theme-color);
+
+    &-title {
+      font-weight: bold;
+      margin: 0 0 0.5rem;
+    }
+
+    &.is-current {
+      border-radius: 3px;
+    }
+  }
+
+  &__headline {
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+
+    &.is-active {
+      background-color: var(--chapter-theme-color);
+
+      a {
+        color: #fff;
+      }
+    }
+  }
 }

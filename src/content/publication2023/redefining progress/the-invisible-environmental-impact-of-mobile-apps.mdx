@@ -1,0 +1,128 @@
+---
+title: "The Invisible Environmental Impact of Mobile Apps"
+authors:
+  - Florian Petri
+  - Miriam Ruhenstroth
+tag: research article
+isDraft: false
+chapter: 1
+order: 6
+seo:
+  title: ""
+  metaTitle: ""
+  metaDescription: ""
+---
+
+import Quote from "@components/content/Quote.astro";
+import BlockQuote from "@components/content/BlockQuote.astro";
+import Figure from "@components/content/Figure.astro";
+
+# {frontmatter.title}
+
+Understanding the environmental impact of air travel or the steak on your plate is relatively easy. For the software on electronic devices, the connection is less obvious – however, it is no less important.
+
+<Quote>
+  Data centres and
+  <br />
+  data transmission networks
+  <br />
+  currently consume
+  <br />
+  about 2% to 3%
+  <br />
+  of total global electricity.
+  <br />
+</Quote>
+
+Demand for digital services is growing rapidly. Since 2010, the internet’s global user base has more than doubled while global internet traffic has increased by a factor of 20. So far, ongoing efficiency gains have not been able to compensate for the steep rise in demand, leading to a constant increase in energy consumption. Data centres and data transmission networks currently consume about 2% to 3% of total global electricity **(IEA, 2022).** With the advance of AI applications, cloud storage, and the Internet of Things, the increasing demand for data centres is not expected to slow down any time soon. Similarly, global mobile network data traffic has grown exponentially over the last ten years. While well below 10 EB<sup id="1">1</sup> permonth
+
+<BlockQuote refNumber={1} cite="#1">
+  EB = exabyte or one billion gigabytes
+</BlockQuote>
+
+in 2015, it surpassed the threshold of 100 EB per month in 2022, almost doubling in the last two years alone. This trend is fuelled by increasing smartphone subscriptions globally, as well as by a continuous rise in the average data usage per smartphone. The latter is expected to increase, tripling from about 15 GB per month in 2022 to 46 GB per month in 2028 **(Ericsson, 2022).** We have developed a tool that highlights a specific aspect of the data traffic of mobile apps. It allows the necessary traffic enabling the app’s core function to be separated from unnecessary traffic used for advertisement and tracking services (ATS). The traffic data can subsequently be shown as energy consumption and emissions. This information makes the abstract environmental impact of app usage relatable for consumers and developers alike while simultaneously visualising concrete implications for decreasing emissions.
+
+## The energy consumption of smartphone usage
+
+Using a smartphone consumes energy on three different levels: the phone itself, the data centres, and the data transmission networks.<sup id="2">2</sup> The most obvious one is the phone itself, i.e., the battery draining during use.
+
+<BlockQuote refNumber={2} cite="#2">
+  The production and disposal of ICT equipment such as smartphones is another
+  major source of emissions. However, here only the usage phase is considered.
+</BlockQuote>
+
+The energy consumption of a smartphone varies depending on the model and apps. In our lab, we use a Google Pixel 2, which requires about 10 watt-hours of energy to be fully charged. This amount of energy is roughly equal to that consumed by an LED lamp with medium brightness in one hour **(Eartheasy, 2023).** Except for offline apps, apps usually connect to a data centre. Here, different data storage or processing services can be performed, ranging from retrieving account information to streaming video contents or ad-banners. Different services require different amounts of energy. One hour of Full-HD video streaming consumes about 2.3 watt-hours in the data centre **(Gröger et al., 2021).** Finally, the large infrastructure of data transmission networks requires energy for the data traffic from the smartphone to the data centre and vice versa. For many applications, the power consumption of data networks makes up the largest share of energy consumption of smartphone use, especially when using mobile data. According to a study by the German Federal Environmental Agency **(Gröger et al., 2021)**, one hour of Full-HD streaming consumes about 18 watt-hours using mobile 4G LTE. Streaming through Wi-Fi reduces this energy consumption to about 1 to 3 watt-hours.<sup id="3">3</sup>
+
+<BlockQuote refNumber={3} cite="#3">
+  This applies to a resolution of 1080p, corresponding to approx. 2 GB/h, and
+  the 2020 technology generation of network infrastructure.
+</BlockQuote>
+
+There is an ongoing debate on how to exactly allocate the energy use of data networks to the data transmitted. While many of the initial discrepancies have been resolved, estimates still vary depending on the approach and the boundaries of the network being considered (Aslan et al., 2018; Coroama, 2021; Stephens et al., 2021). Estimates are subject to specific assumptions and limitations, and technical progress quickly outdates them. Nevertheless, the maxim holds: the lower the data traffic, the lower the environmental impact.
+
+## Traffic of advertisement and tracking services
+
+When it comes to options for reducing mobile data traffic, an obvious starting point is advertising. A study commissioned in 2021 for the European Parliament estimated that ATS alone causes 30 to 50 billion GB of traffic on smartphones in Europe. The resulting emissions from data centres and transmission networks are estimated to be as high as 5 to 14 megatons of CO2 equivalents **(Uijttewaal, 2021)**. This corresponded to about 1% to 2% of Germany’s total emissions in 2021 **(UBA, 2022)**. Especially for mobile apps, it is common for app publishers to earn money by selling ad-space – e.g., ad-banners – or by collecting and selling user data to third parties. Since ATS providers often incorporate software modules into numerous apps, user data can be tracked across apps and detailed user profiles can be built. Therefore, even apps that do not display ads can still use implemented trackers. This information can include, e.g., the types of apps used regularly, visited websites, or favourite music artists etc. This business is lucrative since ad-supported free apps are downloaded about 50 times more often than ad-free paid apps and bring in up to ten times as much
+
+<Figure
+  src="/src/images/info-graphics/BB22_1.5.jpg"
+  caption="Florian Petri, Miriam Ruhenstroth, Illustration- Lone Thomasky"
+/>
+
+revenue **(Chen et al., 2016; Pärssinen, et al., 2018)**. Since it is not apparent to the user which company collects which data and for what purpose, the user privacy and data protection issues of this process are highly problematic. In our database of 30,000 apps from Google Playstore, we found that about three-quarters had implemented advertisement, while about 90% had at least one integrated tracker.
+
+## Measurements in the lab: games and weather apps
+
+We measured the data sending behaviour of numerous apps from multiple categories. As expected, apps that download large files – e.g., maps – or stream media generally transfer the highest data volume. However, apps from these categories tend to have lower ATS traffic. Contrastingly, mobile games and apps for music creation have high ATS traffic, sometimes well above 50% of total traffic. For a clearer picture of the data transferred – and the share that is required for ATS traffic – we compared two app categories for which we recorded the respective data transmission behaviour while in use: weather and games **[Figures 1 and 2]**. For the weather apps, the transmitted data volume of a single app-use lay between 0.5 and 13 MB, with ATS shares mostly ranging between 4% and 15%. Transmitted data for the games was between 4 and 60 MB, and ATS shares were generally above 30%. Different approaches can be employed to transform those data transmission levels into energy consumption and emissions. For example, using data from Gröger et
+
+<Figure
+  src="/src/images/info-graphics/BB22_1.5_2.jpg"
+  caption="Florian Petri &Miriam Ruhenstroth, Illustration- Lone Thomasky"
+/>
+
+al. **(2021)** on the energy use of data networks and the emissions intensity of the German energy mix **(Icha and Lauf, 2022)**, a single app use leads to emissions of between tens to hundreds of milligrams of CO2 equivalents. For apps with high data transmission levels, the emissions correspond to those of driving a few metres in a car.<sub id="4">4</sub> Here,
+
+<BlockQuote refNumber={4} cite="#4">
+  Here, it is assumed that a car emits an average of 131 g CO2 per kilometer
+  **(Allekotte et al., 2020)**
+</BlockQuote>
+
+switching from 4G to Wi-Fi reduces emissions by a factor of 5. The issue at stake becomes clear when user bases are taken into account: Games such as Fruit Ninja or Candy Crush have half a billion to a billion downloads. Scaling in this factor sometimes adds up to emissions of hundreds of tons of CO 2 equivalents – i.e., several hundred thousand kilometres by car – that are caused solely by advertisement and tracking.
+
+## What can be done?
+
+Since the demand for data centres and data transmission is expected to increase sharply over the next few years, its environmental impacts cannot be neglected. A number of policies and processes are already addressing this issue. Among these are general infrastructure improvements, e.g., expanding energy efficient fibre-optic cables and 5G networks **(Köhn et al., 2020).** Germany already took an important step in this direction by switching off the energy-inefficient 3G-mobile network in 2021. Further possibilities exist. For consumer devices, video streams should automatically adjust to screen size instead of using the best quality available. This adjustment could save considerable data exchange while the difference is often not perceivable on smartphones and tablets **(Köhn et al., 2020).** Since videos made up about 70% of all internet data traffic in 2022, this change could save considerable amounts of energy while having few downsides **(Ericsson, 2022).** Cell phone contracts are further starting points for potential regulation as they often incentivise excessive data consumption by offering flat-rates with unreasonably large data packages **(Köhn et al., 2020).** Our app measurements suggest further measures. Consumers should primarily use data-intensive functions when connected to Wi-Fi. To minimise unnecessary traffic, choosing apps without advertisements and with as little tracking as possible are further options.<sub id="5">5</sub> In terms of data traffic, environmental protection here also means privacy protection.
+
+<BlockQuote refNumber={5} cite="#5">
+  The Google Play Store displays whether apps have implemented advertisement.
+  For a detailed database of the implemented tracking services of mobile apps,
+  visit: https://appcheck.mobilsicher.de/
+</BlockQuote>
+
+Software developers should implement data sufficiency as a principle, especially for smartphone apps, where data traffic via mobile networks is more energy intensive. Data sufficiency can entail data traffic monitoring and optimising during development, also for implemented third-party services such as ATS. Further, developers have to enable conscious consumption of their products by including data-saving features. These could come in the form of an offline mode allowing the user to download large files via Wi-Fi before using them on the road, a low-resolution mode for streaming contents, or, when connected to mobile networks, a simple warning if a certain function requires large amounts of data. For these measures to be effective, they have to be implemented by developers and deployed by a relevant share of users. Therefore, the overarching goal in meeting this challenge should be the development of a general critical awareness of the environmental impact of digital services such as mobile apps.
+
+<footer>
+
+### About the authors
+
+- **Florian Petri** has been working at ITUJ e.V. and mobilsicher.de on the topics of digitalisation and sustainability for the last 1.5 years. His background is in Environmental Economics.
+- **Miriam Ruhenstroth** has accompanied mobilsicher.de since its launch and is currently the project manager. Previously, she worked as a freelance technology and science journalist.
+
+### References
+
+- **Allekotte, M., Bergk, F., Biemann, K., Deregowski, C., Knörr, W., Althaus, H.-J., Sutter, D. & Bergmann, T. (2020).** _Ökologische Bewertung von Verkehrsarten._ 156/2020. TEXTE. Umweltbundesamt.
+- **Aslan, J., Mayers, K., Koomey, J. G. & France, C. (2018).** Electricity Intensity of Internet Data Transmission: Untangling the Estimates: Electricity Intensity of Data Transmission. _Journal of Industrial Ecology,_ 22(4), 785–798. https://doi.org/10.1111/jiec.12630
+- **Chen, G., Cox, J. H., Uluagac, A. S. & Copeland, J. A. (2016).** In-Depth Survey of Digital Advertising Technologies. _IEEE Communications Surveys & Tutorials,_ 18(3), 2124–2148. https://doi.org/10.1109/COMST.2016.2519912
+- **Coroama, V. C. (2021).** Investigating the Inconsistencies among Energy and Energy Intensity Estimates of the Internet— Metrics and Harmonising Values. _Swiss Federal Office of Energy SFOE._ https://www.vs.inf.ethz.ch/publ/papers/Coroama2021_InternetEnergy.pdf
+- **Eartheasy (2023).** _LED Light Bulbs: Comparison Charts._ Retrieved March 23, 2023, from https://learn.eartheasy.com/guides/led-light-bulbs-comparison-charts/
+- **Ericsson (2022).** _Ericsson Mobility Report November 2022._ Retrieved March 23, 2023, from https://www.ericsson.com/en/reports-and-papers/mobility-report
+- **Gröger, J., Liu, R., Stobbe, L., Druschke, J. & Richter, N. (2021).** _Green Cloud Computing. Lebenszyklusbasierte Datenerhebung zu Umweltwirkungen des Cloud Computing,_ Texte, 94/2021. Umweltbundesamt.
+- **Icha, P., & Lauf, T. (2022).** Entwicklung der spezifischen Treibhausgas-Emissionen des deutschen Strommix in den Jahren 1990–2021, _Climate Change,_ 15/2022. Umweltbundesamt.
+- **IEA (2022).** Data Centres and Data Transmission Networks. _International Energy Agency._ https://www.iea.org/reports/data-centres-and-data-transmission-networks
+- **Köhn, M., Gröger, J. & Stobbe, L. (2020).** _Energie- und Ressourceneffizienz digitaler Infrastrukturen: Ergebnisse des Forschungsprojektes ‹Green Cloud-Computing›._ Umweltbundesamt.
+- **Pärssinen, M., Kotila, M., Cuevas, R., Phansalkar, A. & Manner, J. (2018).** Environmental Impact Assessment of Online Advertising. _Environmental Impact Assement Review,_ 73, 177–200. https://doi.org/10.1016/j.eiar.2018.08.004
+- **Stephens, A., Tremlettt-Williams, Fitzpatrick, L., Acerini, L., Anderson, M. & Crabbendam, N. (2021).** _Carbon Impact of Video Streaming._ Carbon Trust. https://policycommons.net/artifacts/2387662/carbon-impact-of-video-streaming/3408674/
+- **UBA (2022, März 15).** _Treibhausgas-Emissionen in Deutschland._ Retrieved March 23, 2023, from https://www.umweltbundesamt.de/daten/klima/treibhausgas-emissionen-in-deutschland#emissionsentwicklung
+- **Uijttewaal, M. (2021).** _Carbon Footprint of Unwanted Data-Use by Smartphones._ An Analysis for the EU. CE Delft. https://policycommons.net/artifacts/1962744/carbon-footprint-of-unwanted-data-use-by-smartphones/2714509/
+
+</footer>

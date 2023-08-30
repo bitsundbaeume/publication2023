@@ -1,38 +1,38 @@
-@use '@styles/mixins/mixins' as mx; // Needs to be loaded before the sass-butler mixins
-@use '@styles/variables/colors';
+@use "@styles/mixins/mixins" as mx; // Needs to be loaded before the sass-butler mixins
+@use "@styles/variables/colors";
 
 .c-main-nav {
-	grid-area: main-nav;
+  grid-area: main-nav;
 
-	&__toggle {
-		background-color: #fff;
-		color: var(--blue-500);
-		display: flex;
-		align-items: center;
-		border: none;
-		gap: 5px;
-		text-transform: uppercase;
-		width: 100%;
-		justify-content: flex-end;
-		padding: 10px 20px;
+  &__toggle {
+    background-color: #fff;
+    color: var(--blue-500);
+    display: flex;
+    align-items: center;
+    border: none;
+    gap: 5px;
+    text-transform: uppercase;
+    width: 100%;
+    justify-content: flex-end;
+    padding: 10px 20px;
 
-		@include mx.breakpoint('sm') {
-			display: none;
-		}
-	}
+    @include mx.breakpoint("sm") {
+      display: none;
+    }
+  }
 
-	&__flyout {
-		@include mx.breakpoint('sm', 'max') {
-			height: var(--height-flyout, 100svh);
-			overflow-y: scroll;
-			width: 100%;
-			background-color: #fff;
-			padding: 10px 15px;
-			position: relative;
-			z-index: 2;
-		}
-		@include mx.breakpoint('sm') {
-			display: block !important;
-		}
-	}
+  &__flyout {
+    @include mx.breakpoint("sm", "max") {
+      height: var(--height-flyout, 100svh);
+      overflow-y: scroll;
+      width: 100%;
+      background-color: #fff;
+      padding: 10px 15px;
+      position: relative;
+      z-index: 2;
+    }
+    @include mx.breakpoint("sm") {
+      display: block !important;
+    }
+  }
 }
