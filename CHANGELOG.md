@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/bitsundbaeume/publication2023/compare/v1.2.0...v1.2.1) (2023-08-30)
+
+
+### Reverts
+
+* Revert "Revert "fix: peer dependency conflict"" ([ae84ab5](https://github.com/bitsundbaeume/publication2023/commit/ae84ab575a37d30a45a3a518eca23c646a36540b))
+
 # [1.2.0](https://github.com/bitsundbaeume/publication2023/compare/v1.1.0...v1.2.0) (2023-08-30)
 
 
