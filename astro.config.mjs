@@ -18,31 +18,7 @@ export default defineConfig({
   site: import.meta.env.DEV
     ? "http://localhost:3000"
     : "https://dev.publication2023.bits-und-baeume.org",
-  compressHTML: true,
-  experimental: {
-    viewTransitions: true,
-  },
-  markdown: {
-    rehypePlugins: [
-      [
-        rehypeSlug,
-        {
-          prefix: "h-",
-        },
-      ],
-      // We need this to prevent IDs starting with a number
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: "append",
-        },
-      ],
-    ],
-  },
   output: "static",
-  build: {
-    inlineStylesheets: "auto",
-  },
   integrations: [
     sitemap({
       lastmod: new Date(),

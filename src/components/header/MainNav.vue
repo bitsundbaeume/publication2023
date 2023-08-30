@@ -55,6 +55,7 @@ const flyoutHeight = ref("");
 const mainNav = ref(null);
 const isMobile = ref(false);
 const submenuIsOpen = ref(false);
+let resizeObserver: ResizeObserver;
 
 /**
  * Toggle the flyout menu
@@ -78,30 +79,30 @@ const controlScroll = (status: boolean): void => {
   if (!status) document.body.removeAttribute("style");
 };
 
-/**
- * Calculate the height of the flyout menu
- *
- * @return  {void}
- */
-const resizeObserver = new ResizeObserver(() => {
-  const viewportHeight = window.innerHeight;
-  const headerInnerHeight = document
-    .querySelector(".c-header__inner")
-    ?.getBoundingClientRect().height;
-  const headerInner = headerInnerHeight ? headerInnerHeight : 0;
-  const remainingHeight = viewportHeight - headerInner;
-
-  flyoutHeight.value = `${remainingHeight}px`;
-  isMobile.value = window.innerWidth < 769;
-
-  if (!isMobile.value) {
-    flyoutIsOpen.value = false;
-
-    controlScroll(false);
-  }
-});
-
 onMounted(() => {
+  /**
+   * Calculate the height of the flyout menu
+   *
+   * @return  {void}
+   */
+  resizeObserver = new ResizeObserver(() => {
+    const viewportHeight = window.innerHeight;
+    const headerInnerHeight = document
+      .querySelector(".c-header__inner")
+      ?.getBoundingClientRect().height;
+    const headerInner = headerInnerHeight ? headerInnerHeight : 0;
+    const remainingHeight = viewportHeight - headerInner;
+
+    flyoutHeight.value = `${remainingHeight}px`;
+    isMobile.value = window.innerWidth < 769;
+
+    if (!isMobile.value) {
+      flyoutIsOpen.value = false;
+
+      controlScroll(false);
+    }
+  });
+
   isMobile.value = window.innerWidth < 769;
 
   const body = document.querySelector("body") as HTMLBodyElement;

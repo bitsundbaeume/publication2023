@@ -128,49 +128,15 @@ export interface TableOfContentsProps {
 }
 
 const props = defineProps<TableOfContentsProps>();
-
 const tocId = "tableOfContents";
-
 const activeHeadline = ref("");
 const pubToc = ref<HTMLElement | null>(null);
-
 const visibleStatesChapters = reactive({} as { [key: number]: boolean });
+let observer: IntersectionObserver | null = null;
 
 // if visibleStatesChapters all true, then all chapters are open
 const allChaptersOpen = computed(() =>
   Object.values(visibleStatesChapters).every((state) => state),
-);
-
-/**
- * Get the current chapter and scroll to it.
- *
- * @return  {[type]}
- */
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.intersectionRatio <= 0) return;
-      const headline = entry.target as HTMLElement;
-      activeHeadline.value = headline.id;
-
-      // Make sure the current headline scrolls when the user scrolls
-      if (
-        entry.target.classList.contains("is-current") &&
-        entry.isIntersecting &&
-        !isMobileViewport()
-      ) {
-        pubToc.value?.scroll({
-          behavior: "smooth",
-          left: 0,
-          top: (entry.target as HTMLElement).offsetTop - pubToc.value.offsetTop,
-        });
-      }
-    });
-  },
-  {
-    threshold: 0,
-    rootMargin: "0px 0px -60% 0px",
-  },
 );
 
 /**
@@ -269,10 +235,44 @@ onBeforeMount(() => {
 });
 
 onMounted(() => {
-  if (observer)
+  /**
+   * Get the current chapter and scroll to it.
+   *
+   * @return  {[type]}
+   */
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.intersectionRatio <= 0) return;
+        const headline = entry.target as HTMLElement;
+        activeHeadline.value = headline.id;
+
+        // Make sure the current headline scrolls when the user scrolls
+        if (
+          entry.target.classList.contains("is-current") &&
+          entry.isIntersecting &&
+          !isMobileViewport()
+        ) {
+          pubToc.value?.scroll({
+            behavior: "smooth",
+            left: 0,
+            top:
+              (entry.target as HTMLElement).offsetTop - pubToc.value.offsetTop,
+          });
+        }
+      });
+    },
+    {
+      threshold: 0,
+      rootMargin: "0px 0px -60% 0px",
+    },
+  );
+
+  if (observer) {
     document
       .querySelectorAll("h1[id], h2[id], h3[id]")
-      .forEach((section) => observer.observe(section));
+      .forEach((section) => observer?.observe(section));
+  }
 
   if (!isMobileViewport()) scrollCurrentChapterIntoView();
   if (isMobileViewport()) {
