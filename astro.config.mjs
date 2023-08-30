@@ -16,8 +16,8 @@ const __dirname = dirname(__filename);
 // https://astro.build/config
 export default defineConfig({
   site: import.meta.env.DEV
-    ? "http://localhost:3000"
-    : "https://dev.publication2023.bits-und-baeume.org",
+    ? "http://localhost:4321"
+    : "https://publication2023.bits-und-baeume.org",
   output: "static",
   integrations: [
     sitemap({
