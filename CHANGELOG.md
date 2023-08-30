@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/bitsundbaeume/publication2023/compare/v1.2.1...v2.0.0) (2023-08-30)
+
+
+* fix!: ignore peer deps for the new release ([715287c](https://github.com/bitsundbaeume/publication2023/commit/715287c3a9bb96e747c771ab51344316956ee0f3))
+
+
+### BREAKING CHANGES
+
+* astro-pagefind needs to update there peer deps
+
 ## [1.2.1](https://github.com/bitsundbaeume/publication2023/compare/v1.2.0...v1.2.1) (2023-08-30)
 
 
