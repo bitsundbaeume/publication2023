@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/bitsundbaeume/publication2023/compare/v2.0.1...v2.0.2) (2023-09-06)
+
+
+### Bug Fixes
+
+* pagefind ([9c65e9f](https://github.com/bitsundbaeume/publication2023/commit/9c65e9fde24d020a80a1fd43e833f6f6d0539123))
+
 ## [2.0.1](https://github.com/bitsundbaeume/publication2023/compare/v2.0.0...v2.0.1) (2023-08-30)
 
 
