@@ -1,26 +1,43 @@
 ---
+import "@pagefind/default-ui/css/ui.css";
 import "@styles/plugins/_pagefind.scss";
 import "@styles/components/_search.scss";
+
+const bundlePath = `${import.meta.env.BASE_URL}_pagefind/`;
 ---
 
 <div class="c-search">
-  <div id="search" class="ml-3 p-4 -mt-8"></div>
+  <div id="search" data-bundle-path={bundlePath}></div>
+  {
+    import.meta.env.DEV && (
+      <b>
+        The search is not functional in Dev Mode. Please build and preview the
+        site to test the search.
+        <pre>npm run build && npm run preview</pre>
+      </b>
+    )
+  }
 </div>
 
-<script is:inline>
-  if (!window.PagefindUI) {
-    window.addEventListener("DOMContentLoaded", (event) => {
-      new PagefindUI({ element: "#search", resetStyles: false });
-    });
-  }
+<script>
+  import { PagefindUI } from "@pagefind/default-ui";
 
-  document.addEventListener(
-    "astro:page-load",
-    () => {
-      new PagefindUI({ element: "#search", resetStyles: false });
-    },
-    { once: true },
-  );
+  const initPagefind = () => {
+    const bundlePath = document
+      ?.querySelector("#search")
+      ?.getAttribute("data-bundle-path");
+
+    new PagefindUI({
+      element: "#search",
+      resetStyles: false,
+      bundlePath,
+      showImages: false,
+    });
+  };
+
+  window.addEventListener("DOMContentLoaded", initPagefind);
+
+  document.addEventListener("astro:after-swap", initPagefind);
 
   window.addEventListener("keydown", (event) => {
     if (event.key === "/" || event.key === ".") {

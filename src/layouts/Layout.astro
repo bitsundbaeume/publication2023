@@ -66,13 +66,6 @@ const pathToPagefind = import.meta.env.DEV ? "/dist/" : "";
     }
 
     <script src="src/lib/smooth-scroll-anchor.ts"></script>
-    <link
-      href={pathToPagefind + "_pagefind/pagefind-ui.css"}
-      rel="stylesheet"
-    />
-    <script
-      src={pathToPagefind + "_pagefind/pagefind-ui.js"}
-      type="text/javascript"></script>
 
     <ViewTransitions />
 
@@ -82,7 +75,7 @@ const pathToPagefind = import.meta.env.DEV ? "/dist/" : "";
   <body class={bodyClass}>
     <Header transition:persist />
 
-    <SearchPages transition:persist />
+    <SearchPages />
 
     <slot />
 
