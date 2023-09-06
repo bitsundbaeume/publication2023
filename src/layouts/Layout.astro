@@ -18,6 +18,8 @@ export interface Props {
 }
 
 const { seo, bodyClass } = Astro.props;
+
+const pathToPagefind = import.meta.env.DEV ? "/dist/" : "";
 ---
 
 <!doctype html>
@@ -64,6 +66,14 @@ const { seo, bodyClass } = Astro.props;
     }
 
     <script src="src/lib/smooth-scroll-anchor.ts"></script>
+    <link
+      href={pathToPagefind + "_pagefind/pagefind-ui.css"}
+      rel="stylesheet"
+    />
+    <script
+      src={pathToPagefind + "_pagefind/pagefind-ui.js"}
+      type="text/javascript"></script>
+
     <ViewTransitions />
 
     <slot name="head" />
@@ -72,7 +82,7 @@ const { seo, bodyClass } = Astro.props;
   <body class={bodyClass}>
     <Header transition:persist />
 
-    <SearchPages />
+    <SearchPages transition:persist />
 
     <slot />
 

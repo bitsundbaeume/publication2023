@@ -1,10 +1,31 @@
 ---
-import Search from "astro-pagefind/components/Search";
-
 import "@styles/plugins/_pagefind.scss";
 import "@styles/components/_search.scss";
 ---
 
 <div class="c-search">
-  <Search />
+  <div id="search" class="ml-3 p-4 -mt-8"></div>
 </div>
+
+<script is:inline>
+  if (!window.PagefindUI) {
+    window.addEventListener("DOMContentLoaded", (event) => {
+      new PagefindUI({ element: "#search", resetStyles: false });
+    });
+  }
+
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      new PagefindUI({ element: "#search", resetStyles: false });
+    },
+    { once: true },
+  );
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "/" || event.key === ".") {
+      event.preventDefault();
+      document?.querySelector("div#search input")?.focus();
+    }
+  });
+</script>

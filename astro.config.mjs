@@ -8,7 +8,6 @@ import { astroImageTools } from "astro-imagetools";
 import vue from "@astrojs/vue";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import pagefind from "astro-pagefind";
 import mdx from "@astrojs/mdx";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -27,7 +26,6 @@ export default defineConfig({
     serviceWorker(),
     astroImageTools,
     vue(),
-    pagefind(),
     mdx({
       rehypePlugins: [
         [
