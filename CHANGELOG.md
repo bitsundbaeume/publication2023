@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/bitsundbaeume/publication2023/compare/v2.0.2...v2.1.0) (2023-09-06)
+
+
+### Features
+
+* **search:** init more smoothly after page transition ([cbb8bcb](https://github.com/bitsundbaeume/publication2023/commit/cbb8bcb60e9d13f779f551e8cb40a900aa8e8430))
+
 ## [2.0.2](https://github.com/bitsundbaeume/publication2023/compare/v2.0.1...v2.0.2) (2023-09-06)
 
 
