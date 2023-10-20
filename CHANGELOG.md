@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/bitsundbaeume/publication2023/compare/v2.1.0...v2.2.0) (2023-10-20)
+
+
+### Features
+
+* quality variations & lazy load WowBook & deps upgrade ([9cffde0](https://github.com/bitsundbaeume/publication2023/commit/9cffde0c1c1fb1ce22738887fdde79ec3116d9a0))
+
 # [2.1.0](https://github.com/bitsundbaeume/publication2023/compare/v2.0.2...v2.1.0) (2023-09-06)
 
 
