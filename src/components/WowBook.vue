@@ -1,0 +1,83 @@
+<template>
+  <div class="c-wow-book">
+    <div id="book"></div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { onMounted, onBeforeMount } from "vue";
+onBeforeMount(() => {
+  const jQuery = document.createElement("script");
+  jQuery.src = "/wow_book/jquery.min.js";
+  document.body.appendChild(jQuery);
+
+  const pdf = document.createElement("script");
+  pdf.src = "/wow_book/pdf.combined.min.js";
+  document.body.appendChild(pdf);
+
+  const wow_book = document.createElement("script");
+  wow_book.src = "/wow_book/wow_book.min.js";
+  document.body.appendChild(wow_book);
+});
+
+onMounted(() => {
+  function waitForJQuery(callback) {
+    if (window.jQuery) {
+      callback();
+    } else {
+      setTimeout(() => {
+        waitForJQuery(callback);
+      }, 100);
+    }
+  }
+
+  waitForJQuery(() => {
+    jQuery.event.special.touchstart = {
+      setup: function (_, ns, handle) {
+        this.addEventListener("touchstart", handle, {
+          passive: !ns.includes("noPreventDefault"),
+        });
+      },
+    };
+    jQuery.event.special.touchmove = {
+      setup: function (_, ns, handle) {
+        this.addEventListener("touchmove", handle, {
+          passive: !ns.includes("noPreventDefault"),
+        });
+      },
+    };
+    jQuery.event.special.wheel = {
+      setup: function (_, ns, handle) {
+        this.addEventListener("wheel", handle, { passive: true });
+      },
+    };
+    jQuery.event.special.mousewheel = {
+      setup: function (_, ns, handle) {
+        this.addEventListener("mousewheel", handle, { passive: true });
+      },
+    };
+
+    $(document).ready(function () {
+      $("#book").wowBook({
+        pdf: "pdfs/Shaping_Digital_Transformation_for_a_Sustainable_Society-Bits_Baeume_2023-LQ.pdf",
+        pdfTextSelectable: true,
+        height: 500,
+        width: 600,
+        container: true,
+        centeredWhenClosed: true,
+        hardcovers: false,
+        pageNumbers: false,
+        toolbar:
+          "lastLeft, left, right, lastRight, zoomin, zoomout, slideshow, fullscreen, thumbnails, download",
+        thumbnailsPosition: "left",
+        responsiveHandleWidth: 50,
+        flipSound: false,
+      });
+    });
+  });
+});
+</script>
+
+<style lang="scss">
+@use "@styles/plugins/_wow-book.scss";
+</style>

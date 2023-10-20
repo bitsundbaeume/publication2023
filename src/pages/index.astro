@@ -1,7 +1,7 @@
 ---
 import { Img } from "astro-imagetools/components";
 import Layout from "../layouts/SinglePageLayout.astro";
-import WowBook from "@components/WowBook.astro";
+import WowBook from "@components/WowBook.vue";
 import { Icon } from "astro-icon";
 import NativeShare from "@components/NativeShare.vue";
 import "@styles/components/_box.scss";
@@ -108,7 +108,7 @@ const seo = {
     </div>
   </section>
 
-  <WowBook />
+  <WowBook client:visible />
 
   <TableOfContents toc={flipBookToc} />
 </Layout>
