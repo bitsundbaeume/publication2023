@@ -39,7 +39,7 @@ export const flipBookToc: BookToc["toc"] = [
         pageNumber: "021",
       },
       {
-        title: "Artificial Intelligence for Real Sustainability - R. Rehak",
+        title: "Artificial Intelligence for Real Sustainability? - R. Rehak",
         url: `${preHash}26`,
         pageNumber: "026",
       },
