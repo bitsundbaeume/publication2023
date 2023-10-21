@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/bitsundbaeume/publication2023/compare/v2.4.0...v2.4.1) (2023-10-21)
+
+
+### Bug Fixes
+
+* **main nav:** link to book page ([da9a3e7](https://github.com/bitsundbaeume/publication2023/commit/da9a3e73d35cf80151e7d1e255fac86737179f99))
+
 # [2.4.0](https://github.com/bitsundbaeume/publication2023/compare/v2.3.1...v2.4.0) (2023-10-21)
 
 
