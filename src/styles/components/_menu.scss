@@ -51,6 +51,7 @@
     border: none;
     font-size: var(--font-size-xs);
     line-height: 1.5;
+    width: 100%;
 
     @include butler-mx.hover {
       text-decoration: underline;
