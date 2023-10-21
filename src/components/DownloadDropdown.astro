@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon";
+import "@styles/components/_download-dropdown.scss";
+---
+
+<details class="c-download-dropdown">
+  <summary class="c-box__download c-button c-button--primary">
+    <Icon name="lucide:file-text" width="26" />
+     Download PDF
+  </summary>
+  <div class="c-download-dropdown__content">
+    <a
+      class="c-download-dropdown__link"
+      href="/pdfs/Shaping_Digital_Transformation_for_a_Sustainable_Society-Bits_Baeume_2023-LQ.pdf"
+      download="Shaping Digital Transformation for a Sustainable Society- Bits Baeume 2023 - LQ"
+      target="_blank"
+    >
+      <span>low quality images</span><span>~20MB</span>
+    </a>
+    <a
+      class="c-download-dropdown__link has-recommended"
+      href="/pdfs/Shaping_Digital_Transformation_for_a_Sustainable_Society-Bits_Baeume_2023-HQ.pdf"
+      download="Shaping Digital Transformation for a Sustainable Society- Bits Baeume 2023 - HQ"
+      target="_blank"
+    >
+      <span class="is-recommended">
+        high quality images
+        <span class="c-download-dropdown__badge">recommended</span>
+      </span>
+      <span>~41MB</span>
+    </a>
+    <a
+      class="c-download-dropdown__link"
+      href="/pdfs/Shaping_Digital_Transformation_for_a_Sustainable_Society-Bits_Baeume_2023-HQ.pdf"
+      download="Shaping Digital Transformation for a Sustainable Society- Bits Baeume 2023 - HQ"
+      target="_blank"
+    >
+      <span>print quality images</span><span>~87MB</span>
+    </a>
+  </div>
+</details>

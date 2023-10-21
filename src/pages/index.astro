@@ -7,6 +7,7 @@ import NativeShare from "@components/NativeShare.vue";
 import "@styles/components/_box.scss";
 import TableOfContents from "@components/BookToc.astro";
 import { flipBookToc } from "@lib/content/book-toc";
+import DownloadDropdown from "@components/DownloadDropdown.astro";
 
 const seo = {
   title:
@@ -97,15 +98,7 @@ const seo = {
           >https://doi.org/10.14279/depositonce-17526</a
         >
       </p>
-      <a
-        href="/pdfs/Shaping_Digital_Transformation_for_a_Sustainable_Society-Bits_Baeume_2023.pdf"
-        class="c-box__download c-button c-button--primary"
-        download="Shaping Digital Transformation for a Sustainable Society- Bits Baeume 2023"
-        target="_blank"
-      >
-        <Icon name="lucide:file-text" width="26" />
-         Download PDF
-      </a>
+      <DownloadDropdown />
       <NativeShare class:list={"c-box__share"} client:only="vue" />
     </div>
   </section>
