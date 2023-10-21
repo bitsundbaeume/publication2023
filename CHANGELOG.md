@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/bitsundbaeume/publication2023/compare/v2.2.1...v2.3.0) (2023-10-21)
+
+
+### Features
+
+* **main nav:** improve main nav ([3571d12](https://github.com/bitsundbaeume/publication2023/commit/3571d12efe66a0ac3eacf3ed59f5aa77f26f0b21))
+
 ## [2.2.1](https://github.com/bitsundbaeume/publication2023/compare/v2.2.0...v2.2.1) (2023-10-20)
 
 
