@@ -43,3 +43,16 @@ const { toc } = Astro.props;
     class="c-book-toc__pixel"
   />
 </section>
+
+<script is:inline>
+  // Find all buttons with the `alert` class on the page.
+  const buttons = document.querySelectorAll(".c-book-toc__menu-link");
+
+  // Handle clicks on each button.
+  buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const hash = event.target.parentElement.getAttribute("href");
+      window.location.hash = hash;
+    });
+  });
+</script>
