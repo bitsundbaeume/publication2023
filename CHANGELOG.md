@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/bitsundbaeume/publication2023/compare/v2.3.0...v2.3.1) (2023-10-21)
+
+
+### Bug Fixes
+
+* **wow book:** enforce hash navigation ([d934233](https://github.com/bitsundbaeume/publication2023/commit/d934233733cbc580c7ffd047cef3c97fbacee631))
+
 # [2.3.0](https://github.com/bitsundbaeume/publication2023/compare/v2.2.1...v2.3.0) (2023-10-21)
 
 
