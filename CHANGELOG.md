@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/bitsundbaeume/publication2023/compare/v2.2.0...v2.2.1) (2023-10-20)
+
+
+### Bug Fixes
+
+* set real image dimensions ([53bbf23](https://github.com/bitsundbaeume/publication2023/commit/53bbf23df8f2a0ccfa3c749c45f92e697ed6d927))
+
 # [2.2.0](https://github.com/bitsundbaeume/publication2023/compare/v2.1.0...v2.2.0) (2023-10-20)
 
 
