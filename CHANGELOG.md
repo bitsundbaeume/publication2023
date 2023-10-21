@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.2](https://github.com/bitsundbaeume/publication2023/compare/v2.4.1...v2.4.2) (2023-10-21)
+
+
+### Bug Fixes
+
+* **menu item:** was not full width ([46b12af](https://github.com/bitsundbaeume/publication2023/commit/46b12affd99b8521b506dffa340e3ddb0e1fec86))
+* typos ([927409a](https://github.com/bitsundbaeume/publication2023/commit/927409ac289653f5380dc7563faa08e145b590b3))
+
 ## [2.4.1](https://github.com/bitsundbaeume/publication2023/compare/v2.4.0...v2.4.1) (2023-10-21)
 
 
