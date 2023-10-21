@@ -45,6 +45,12 @@
     flex: 1 1 100%;
     text-decoration: none;
     padding: 2rem 0.6rem;
+    color: var(--blue-500);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: var(--font-size-xs);
+    line-height: 1.5;
 
     @include butler-mx.hover {
       text-decoration: underline;
@@ -76,8 +82,7 @@
     position: absolute;
     z-index: 1;
     background: #fff;
-    margin-block-start: 0;
-    margin-block-end: 0;
+    margin-block: 0 0;
     top: 100%;
     width: max-content;
   }

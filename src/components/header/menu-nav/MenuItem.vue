@@ -1,5 +1,6 @@
 <template>
   <li
+    ref="menuItemRef"
     :class="[
       'c-menu__item',
       {
@@ -22,16 +23,14 @@
     </a>
 
     <template v-else>
-      <a
+      <button
         :ref="`menu-title-${depth}${index}`"
         class="c-menu__link is-menu-title"
-        role="button"
         tabindex="0"
         @click="toggleMenuItem"
-        @keydown="toggleMenuItem"
       >
         {{ props.menuItem.label }}
-      </a>
+      </button>
 
       <MenuSubmenu
         ref="submenu"
@@ -67,7 +66,7 @@ import { onClickOutside } from "@vueuse/core";
 
 export interface MenuItemData {
   label: string;
-  path: string;
+  path?: string;
   childItems?: MenuItemData[];
 }
 
@@ -81,7 +80,7 @@ const props = defineProps<MenuItemProps>();
 
 const isOpen = ref(false);
 const isCurrentPath = ref(false);
-const submenu = ref(null);
+const menuItemRef = ref(null);
 const submenuDirection = ref("right");
 
 const emit = defineEmits<{
@@ -92,16 +91,13 @@ const emit = defineEmits<{
 }>();
 
 /**
- * If the user clicks outside the submenu, close the submenu
+ * Close the submenu when clicking outside of it
  *
- * @param   {[type]}  submenu
- * @param   {[type]}  event
+ * @param   {[type]}  menuItemRef
  *
- * @return  {void}             [return description]
+ * @return  {void}
  */
-onClickOutside(submenu, (event): void => {
-  if ((event.target as Element).classList.contains("is-menu-title")) return;
-
+onClickOutside(menuItemRef, (): void => {
   isOpen.value = false;
 
   emit("submenuState", isOpen.value);
@@ -134,11 +130,11 @@ onMounted(() => {
   if (import.meta.env.DEV) {
     isCurrentPath.value =
       window.location.pathname.slice(1) ===
-      props.menuItem.path.replace(/^\//gm, "");
+      props.menuItem?.path?.replace(/^\//gm, "");
   } else {
     isCurrentPath.value =
       window.location.pathname.replace(/^\/|\/$/gm, "") ===
-      props.menuItem.path.replace(/^\//gm, "");
+      props.menuItem?.path?.replace(/^\//gm, "");
   }
 });
 </script>
