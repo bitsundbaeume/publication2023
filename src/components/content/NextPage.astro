@@ -1,0 +1,59 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon";
+
+interface NextPageProps {
+  chapter: number;
+  order: number;
+  collection: CollectionEntry<"publication2023">[];
+}
+
+const { chapter, order, collection } = Astro.props as NextPageProps;
+
+/**
+ * Get the next page.
+ * As long as there is a next page, return the next page url.
+ * If there is no next page, return the first page of the next chapter.
+ *
+ * @param chapter
+ * @param order
+ * @param collection
+ */
+const nextPage = (
+  chapter: number,
+  order: number,
+  collection: CollectionEntry<"publication2023">[],
+): string | null => {
+  let nextPageOrder = order + 1;
+  let nextChapter = chapter;
+  let nextPage = collection.find(
+    (item) =>
+      item.data.chapter === nextChapter && item.data.order === nextPageOrder,
+  );
+
+  if (!nextPage) {
+    nextChapter++;
+    nextPageOrder = 1;
+    nextPage = collection.find(
+      (item) =>
+        item.data.chapter === nextChapter && item.data.order === nextPageOrder,
+    );
+  }
+
+  return nextPage ? `/${nextPage.slug}` : null;
+};
+
+const nextPageLink = nextPage(chapter, order, collection);
+---
+
+{
+  nextPageLink && (
+    <a
+      class="c-button c-button--primary o-publication__next-page"
+      href={nextPageLink}
+    >
+      Next page
+      <Icon name="lucide:chevron-right" width="24" height="24" />
+    </a>
+  )
+}

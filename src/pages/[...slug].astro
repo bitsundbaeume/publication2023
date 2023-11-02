@@ -4,11 +4,11 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/PublicationLayout.astro";
 import TableOfContents from "@components/PublicationToc.vue";
 import { Breadcrumbs } from "astro-breadcrumbs";
-import { Icon } from "astro-icon";
 import "@styles/plugins/_astro-breadcrumbs.scss";
 import Author from "@components/content/Author.astro";
 import Tag from "@components/content/Tag.astro";
 import { Img } from "astro-imagetools/components";
+import NextPage from "@components/content/NextPage.astro";
 
 export async function getStaticPaths() {
   const publication2023Entries = await getCollection("publication2023");
@@ -54,42 +54,6 @@ const groupedByChapter = filteredCollection.reduce<{
 
   return acc;
 }, {});
-
-/**
- * Get the next page
- *
- * @param chapter
- * @param order
- * @param collection
- */
-const nextPage = (
-  chapter: number,
-  order: number,
-  collection: CollectionEntry<"publication2023">[],
-): string | null => {
-  const filteredCollection = collection.filter(
-    (item) => item.data.chapter === chapter,
-  );
-  const nextPageOrder = order + 1;
-  const nextPage = filteredCollection.find(
-    (item) => item.data.order === nextPageOrder,
-  );
-
-  if (nextPage) {
-    return `/${nextPage.slug}`;
-  } else {
-    const nextChapter = chapter + 1;
-    const nextChapterCollection = collection.filter(
-      (item) => item.data.chapter === nextChapter,
-    );
-    if (nextChapterCollection.length > 0) {
-      const firstPage = nextChapterCollection[0];
-      return `/${firstPage.slug}`;
-    } else {
-      return null;
-    }
-  }
-};
 
 /**
  * Sort the collection by the order property
@@ -181,17 +145,11 @@ const isIntro = entry.data.isIntro;
 
   <Content />
 
-  {
-    nextPage(currentChapter, currentPageOrder, collection) && (
-      <a
-        class="c-button c-button--primary o-publication__next-page"
-        href={nextPage(currentChapter, currentPageOrder, collection)}
-      >
-        Next page
-        <Icon name="lucide:chevron-right" width="24" height="24" />
-      </a>
-    )
-  }
+  <NextPage
+    chapter={currentChapter}
+    order={currentPageOrder}
+    collection={collection}
+  />
 
   <TableOfContents
     headings={headings}
