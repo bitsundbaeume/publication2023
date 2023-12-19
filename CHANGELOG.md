@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/bitsundbaeume/publication2023/compare/v2.4.3...v2.5.0) (2023-12-19)
+
+
+### Features
+
+* migrate to astro v4 and change browser targets ([303aabe](https://github.com/bitsundbaeume/publication2023/commit/303aabef1a7d6539a864ac3876a1161096e70f6e))
+
 ## [2.4.3](https://github.com/bitsundbaeume/publication2023/compare/v2.4.2...v2.4.3) (2023-11-02)
 
 
