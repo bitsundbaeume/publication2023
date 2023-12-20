@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://github.com/bitsundbaeume/publication2023/compare/v2.5.0...v2.5.1) (2023-12-20)
+
+
+### Bug Fixes
+
+* unit test ([a5ba7e0](https://github.com/bitsundbaeume/publication2023/commit/a5ba7e09119ece483047a2518fe6d20783886c85))
+
 # [2.5.0](https://github.com/bitsundbaeume/publication2023/compare/v2.4.3...v2.5.0) (2023-12-19)
 
 
