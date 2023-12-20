@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/bitsundbaeume/publication2023/compare/v2.5.1...v2.6.0) (2023-12-20)
+
+
+### Features
+
+* add license and link to github ([b460d0c](https://github.com/bitsundbaeume/publication2023/commit/b460d0cf5d0bea14af8073c13af33623fc19ee47))
+
 ## [2.5.1](https://github.com/bitsundbaeume/publication2023/compare/v2.5.0...v2.5.1) (2023-12-20)
 
 
