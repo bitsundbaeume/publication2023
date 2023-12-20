@@ -19,7 +19,6 @@ module.exports = {
     },
   ],
   rules: {
-    "max-line-length": null,
     "selector-class-pattern": null,
     "at-rule-empty-line-before": [
       "always",

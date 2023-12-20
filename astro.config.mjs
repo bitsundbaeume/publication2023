@@ -9,6 +9,7 @@ import vue from "@astrojs/vue";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import mdx from "@astrojs/mdx";
+import tsconfigPaths from "vite-tsconfig-paths";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -45,7 +46,7 @@ export default defineConfig({
     }),
   ],
   vite: {
-    plugins: [],
+    plugins: [tsconfigPaths()],
     css: {
       devSourcemap: true,
     },

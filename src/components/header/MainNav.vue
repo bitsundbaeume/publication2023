@@ -7,7 +7,13 @@
       :aria-expanded="flyoutIsOpen"
       @click="toggleFlyout"
     >
-      <img :src="menuButton.src" alt="Menu Icon" width="39" height="21" />
+      <img
+        :src="menuButton.src"
+        alt="Menu Icon"
+        width="39"
+        height="21"
+        decoding="async"
+      />
     </button>
     <Teleport v-if="isMobile" to="#mobileNav">
       <Transition name="fade">
@@ -43,7 +49,7 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import MenuNav from "@components/header/menu-nav/MenuNav.vue";
 import type { MenuProps } from "@components/header/menu-nav/MenuNav.vue";
-import menuButton from "src/images/icons/menu-button.svg";
+import menuButton from "@images/icons/menu-button.svg";
 
 defineProps<MenuProps>();
 const flyoutIsOpen = ref(false);
