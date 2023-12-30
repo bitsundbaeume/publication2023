@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/bitsundbaeume/publication2023/compare/v2.6.0...v2.7.0) (2023-12-30)
+
+
+### Features
+
+* remove image deps, now using astro buildin image tools ([efe52a3](https://github.com/bitsundbaeume/publication2023/commit/efe52a3700c61bed634346e40b5b726130af4b4b))
+
 # [2.6.0](https://github.com/bitsundbaeume/publication2023/compare/v2.5.1...v2.6.0) (2023-12-20)
 
 
