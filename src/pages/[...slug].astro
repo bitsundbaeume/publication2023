@@ -7,8 +7,8 @@ import { Breadcrumbs } from "astro-breadcrumbs";
 import "@styles/plugins/_astro-breadcrumbs.scss";
 import Author from "@components/content/Author.astro";
 import Tag from "@components/content/Tag.astro";
-import { Img } from "astro-imagetools/components";
 import NextPage from "@components/content/NextPage.astro";
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const publication2023Entries = await getCollection("publication2023");
@@ -117,16 +117,12 @@ const isIntro = entry.data.isIntro;
   {
     entry.data.headerImage && (
       <figure class="c-figure">
-        <Img
+        <Image
           src={entry.data.headerImage.src}
           alt={entry.data.headerImage.alt ?? ""}
           loading="eager"
-          attributes={{
-            img: {
-              fetchpriority: "high",
-              class: "c-figure__image",
-            },
-          }}
+          fetchpriority="high"
+          class="c-figure__image"
         />
         <figcaption class="c-figure__caption">
           CC BY {entry.data.headerImage.caption}
