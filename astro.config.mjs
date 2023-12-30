@@ -4,12 +4,12 @@ import { fileURLToPath } from "url";
 import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 import serviceWorker from "astrojs-service-worker";
-import { astroImageTools } from "astro-imagetools";
 import vue from "@astrojs/vue";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import mdx from "@astrojs/mdx";
 import tsconfigPaths from "vite-tsconfig-paths";
+import icon from "astro-icon";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -25,8 +25,8 @@ export default defineConfig({
     }),
     prefetch(),
     serviceWorker(),
-    astroImageTools,
     vue(),
+    icon(),
     mdx({
       rehypePlugins: [
         [

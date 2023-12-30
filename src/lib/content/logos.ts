@@ -1,4 +1,8 @@
 import type { Logo } from "@components/footer/types";
+import DBU from "/src/images/logos/foerderinnen/logo-dbu.png";
+import Mercator from "/src/images/logos/foerderinnen/Stiftung_Mercator_Blau_RGB.png";
+import BMUV from "/src/images/logos/foerderinnen/BMUV.png";
+import Weizenbaum from "/src/images/logos/traegerinnen/weizenbaum.png";
 
 export const supporters: Logo[] = [
   {
@@ -99,7 +103,7 @@ export const supporters: Logo[] = [
   },
   {
     name: "Weizenbaum-Institut",
-    logo: "/src/images/logos/traegerinnen/weizenbaum.png",
+    logo: Weizenbaum,
     url: "https://weizenbaum-institut.de/",
     alt: "Weizenbaum-Institut Logo",
     width: 296,
@@ -156,19 +160,19 @@ export const specialThanks: Logo[] = [
 export const funded: Logo[] = [
   {
     name: "DBU",
-    logo: "/src/images/logos/foerderinnen/logo-dbu.png",
+    logo: DBU,
     url: "https://www.dbu.de/",
     alt: "DBU Logo",
   },
   {
     name: "Stiftung Mercator",
-    logo: "/src/images/logos/foerderinnen/Stiftung_Mercator_Blau_RGB.png",
+    logo: Mercator,
     url: "https://www.stiftung-mercator.de/",
     alt: "Stiftung Mercator Logo",
   },
   {
     name: "Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",
-    logo: "/src/images/logos/foerderinnen/BMUV.png",
+    logo: BMUV,
     url: "https://www.bmu.de/",
     alt: "Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit Logo",
   },
@@ -257,7 +261,7 @@ export const organised_by: Logo[] = [
   },
   {
     name: "Weizenbaum-Institut",
-    logo: "/src/images/logos/traegerinnen/weizenbaum.png",
+    logo: Weizenbaum,
     url: "https://weizenbaum-institut.de/",
     alt: "Weizenbaum-Institut Logo",
     width: 296,

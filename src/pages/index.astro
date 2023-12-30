@@ -1,13 +1,13 @@
 ---
-import { Img } from "astro-imagetools/components";
+import { Picture } from "astro:assets";
 import Layout from "../layouts/SinglePageLayout.astro";
 import WowBook from "@components/WowBook.vue";
-import { Icon } from "astro-icon";
 import NativeShare from "@components/NativeShare.vue";
 import "@styles/components/_box.scss";
 import TableOfContents from "@components/BookToc.astro";
 import { flipBookToc } from "@lib/content/book-toc";
 import DownloadDropdown from "@components/DownloadDropdown.astro";
+import Title from "src/images/Titel.jpg";
 
 const seo = {
   title:
@@ -21,18 +21,14 @@ const seo = {
 
 <Layout seo={seo} contentModifierClass="index">
   <section class="c-box" id="overview">
-    <Img
-      src="/src/images/Titel.jpg"
+    <Picture
+      src={Title}
       alt="Shaping digital transformation for a sustainable society cover"
       loading="eager"
-      attributes={{
-        img: {
-          fetchpriority: "high",
-          class: "c-box__image",
-        },
-      }}
-      width={448}
-      height={633}
+      fetchpriority="high"
+      widths={[296, 343, 346, 394, 448, 736, Title.width]}
+      formats={["avif", "webp"]}
+      pictureAttributes={{ class: "c-box__image" }}
     />
     <div class="c-box__content">
       <p class="c-box__publisher">

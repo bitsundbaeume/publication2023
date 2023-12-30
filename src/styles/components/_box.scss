@@ -15,7 +15,10 @@
 
   &__image {
     grid-area: image;
-    border-radius: 8px;
+
+    img {
+      border-radius: 8px;
+    }
   }
 
   &__content {

@@ -1,5 +1,5 @@
 ---
-import { Img } from "astro-imagetools/components";
+import { Image } from "astro:assets";
 import type { Logo } from "@components/footer/types";
 import { extensionIs } from "@lib/helper";
 
@@ -31,12 +31,11 @@ const { logos, classModifier } = Astro.props;
             height={logo.height}
           />
         ) : (
-          <Img
+          <Image
             src={logo.logo}
+            width={logo.width}
+            height={logo.height}
             alt={logo.alt}
-            attributes={{
-              img: { onload: "this.style.background = 'transparent';" },
-            }}
           />
         )}
       </a>

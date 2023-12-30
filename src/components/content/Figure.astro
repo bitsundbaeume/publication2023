@@ -1,6 +1,7 @@
 ---
-import { Img } from "astro-imagetools/components";
+import { Image } from "astro:assets";
 import "@styles/components/_figure.scss";
+import type { ImageMetadata } from "astro";
 
 interface Figure {
   src: string;
@@ -10,18 +11,33 @@ interface Figure {
 }
 
 const { src, alt, caption, showCc = true } = Astro.props as Figure;
+
+const images = import.meta.glob("../../images/*/*");
+
+// find the image that matches the src
+const imageEntry = Object.entries(images).find(([key]) => {
+  // remove any ../ also duplicate slashes
+  const cleanKey = key.replace(/(\.\.\/)+|images\//g, "");
+
+  // remove src/image from "src"
+  const cleanSrc = src.replace("/src/images/", "");
+
+  return cleanKey.includes(cleanSrc);
+});
+
+if (!imageEntry) {
+  throw new Error(`No image found for src: ${src}`);
+}
+
+const [key, imageSrc] = imageEntry;
 ---
 
 <figure class="c-figure">
-  <Img
-    src={src}
+  <Image
+    src={imageSrc()}
     alt={alt ?? ""}
     loading="lazy"
-    attributes={{
-      img: {
-        class: "c-figure__image",
-      },
-    }}
+    class="c-figure__image"
   />
   <figcaption class="c-figure__caption">
     {showCc && "CC BY "}{caption}
